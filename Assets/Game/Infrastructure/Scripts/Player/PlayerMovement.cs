@@ -3,7 +3,8 @@ using Unity.Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float _currentSpeed;
+    [SerializeField] private float _defaultSpeed;
+    [SerializeField] private float _sprintMultiplier;
     [SerializeField] private float _defaultXSensitivity = 1f;
     [SerializeField] private float _defaultYSensitivity = 1f;
     //[SerializeField] private PlayerInteractions _playerInteractions;
@@ -15,7 +16,10 @@ public class PlayerMovement : MonoBehaviour
     private CinemachineCamera _cinCam;
     private CinemachineInputAxisController _inputAxisController;
 
-    private PlayerInputActions _playerInputActions;
+    private InputController _inputController;
+
+    private bool _sprintActive = false;
+    private float _currentSpeed;
 
     private void Awake()
     {
@@ -30,27 +34,15 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         ApplySensitivity();
-        _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Player.Enable();
+        _inputController = new InputController();
+        
+        _inputController.SprintPressed += () =>  _sprintActive = true;
+        _inputController.SprintFinished += () =>  _sprintActive = false;
         
         //_playerInteractions.Initialize(_playerInputActions);
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-    }
-    
-    [ContextMenu("Enable")]
-    public void Enable()
-    {
-        _playerInputActions.Player.Enable();
-        _inputAxisController.enabled = true;
-    }
-    
-    [ContextMenu("Disable")]
-    public void Disable()
-    {
-        _playerInputActions?.Player.Disable();
-        _inputAxisController.enabled = false;
     }
 
     private void Update()
@@ -60,7 +52,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        Vector2 move = _playerInputActions.Player.Move.ReadValue<Vector2>();
+        Vector2 move = _inputController.MoveDirection;
+        
+        if (_sprintActive &&  move.y > 0)
+            _currentSpeed = _defaultSpeed * _sprintMultiplier;
+        else
+            _currentSpeed = _defaultSpeed;
+        
         _characterController.Move( 
             (GetForward()* move.y + GetRight() * move.x) * Time.deltaTime * _currentSpeed);
     }
