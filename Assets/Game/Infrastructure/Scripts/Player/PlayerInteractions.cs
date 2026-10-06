@@ -5,6 +5,7 @@ public class PlayerInteractions : MonoBehaviour
     [SerializeField] private float _interactionDistance;
     
     private InputController _inputController;
+    private IInteractable _interactable;
         
     public void Init(InputController inputController)
     {
@@ -16,28 +17,29 @@ public class PlayerInteractions : MonoBehaviour
         _inputController.InteractPressed += Interact;
     }
 
+    private void Update()
+    {
+        FindInteractable();
+    }
+
     private void Interact()
     {
         Debug.Log("Interact");
-        IInteractable interactable = FindInteractable();
         
-        if (interactable == null) return;
+        if (_interactable == null) return;
         
-        interactable.Interact();
+        _interactable.Interact();
     }
         
-    private IInteractable FindInteractable()
+    private void FindInteractable()
     {
-        if (!Physics.Raycast(new Ray(transform.position, transform.forward),
-                out var hit, _interactionDistance, LayerMask.GetMask("Interactable"))) 
-            return null;
-        
-        if (hit.transform.TryGetComponent(out IInteractable interactable))
+        if (Physics.Raycast(new Ray(transform.position, transform.forward),
+                out var hit, _interactionDistance, LayerMask.GetMask("Interactable")))
         {
-            return interactable;
+            if (hit.transform.TryGetComponent(out IInteractable interactable))
+            {
+                _interactable = interactable;
+            }
         }
-
-
-        return null;
     }
 }
