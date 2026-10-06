@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         if (_characterController.isGrounded && _verticalVelocity < 0)
             _verticalVelocity = -2f;
 
-        _verticalVelocity += _gravity * Time.deltaTime;
+        _verticalVelocity += -_gravity * Time.deltaTime;
 
         Vector3 movement =
             (GetForward() * move.y + GetRight() * move.x) * _currentSpeed;
