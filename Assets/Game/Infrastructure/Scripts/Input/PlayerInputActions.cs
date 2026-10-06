@@ -154,6 +154,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""f33de749-3454-4171-9d3e-161f4e66e0b3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RemoveWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""c026258c-469f-4513-aac3-31b66cbdf522"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -277,6 +295,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b0a90f4-c3f4-4a22-b6cc-21a7e8ac4056"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b59ce73d-e1f3-488d-b2ee-5ab83a6961f9"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RemoveWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -320,6 +360,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
+        m_Player_NextWeapon = m_Player.FindAction("NextWeapon", throwIfNotFound: true);
+        m_Player_RemoveWeapon = m_Player.FindAction("RemoveWeapon", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Back = m_UI.FindAction("Back", throwIfNotFound: true);
@@ -411,6 +453,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Zoom;
+    private readonly InputAction m_Player_NextWeapon;
+    private readonly InputAction m_Player_RemoveWeapon;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -450,6 +494,14 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Zoom".
         /// </summary>
         public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/NextWeapon".
+        /// </summary>
+        public InputAction @NextWeapon => m_Wrapper.m_Player_NextWeapon;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/RemoveWeapon".
+        /// </summary>
+        public InputAction @RemoveWeapon => m_Wrapper.m_Player_RemoveWeapon;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -497,6 +549,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Zoom.started += instance.OnZoom;
             @Zoom.performed += instance.OnZoom;
             @Zoom.canceled += instance.OnZoom;
+            @NextWeapon.started += instance.OnNextWeapon;
+            @NextWeapon.performed += instance.OnNextWeapon;
+            @NextWeapon.canceled += instance.OnNextWeapon;
+            @RemoveWeapon.started += instance.OnRemoveWeapon;
+            @RemoveWeapon.performed += instance.OnRemoveWeapon;
+            @RemoveWeapon.canceled += instance.OnRemoveWeapon;
         }
 
         /// <summary>
@@ -529,6 +587,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Zoom.started -= instance.OnZoom;
             @Zoom.performed -= instance.OnZoom;
             @Zoom.canceled -= instance.OnZoom;
+            @NextWeapon.started -= instance.OnNextWeapon;
+            @NextWeapon.performed -= instance.OnNextWeapon;
+            @NextWeapon.canceled -= instance.OnNextWeapon;
+            @RemoveWeapon.started -= instance.OnRemoveWeapon;
+            @RemoveWeapon.performed -= instance.OnRemoveWeapon;
+            @RemoveWeapon.canceled -= instance.OnRemoveWeapon;
         }
 
         /// <summary>
@@ -714,6 +778,20 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnZoom(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "NextWeapon" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnNextWeapon(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RemoveWeapon" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRemoveWeapon(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
