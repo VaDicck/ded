@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _defaultXSensitivity = 1f;
     [SerializeField] private float _defaultYSensitivity = 1f;
     //[SerializeField] private PlayerInteractions _playerInteractions;
+    [SerializeField] private float _gravity = 9.81f;
+    
+    private float _verticalVelocity;
 
     private float _currentXSensitivity;
     private float _currentYSensitivity;
@@ -58,14 +61,23 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         Vector2 move = _inputController.MoveDirection;
-        
-        if (_sprintActive &&  move.y > 0)
+
+        if (_sprintActive && move.y > 0)
             _currentSpeed = _defaultSpeed * _sprintMultiplier;
         else
             _currentSpeed = _defaultSpeed;
-        
-        _characterController.Move( 
-            (GetForward()* move.y + GetRight() * move.x) * Time.deltaTime * _currentSpeed);
+
+        if (_characterController.isGrounded && _verticalVelocity < 0)
+            _verticalVelocity = -2f;
+
+        _verticalVelocity += _gravity * Time.deltaTime;
+
+        Vector3 movement =
+            (GetForward() * move.y + GetRight() * move.x) * _currentSpeed;
+
+        movement.y = _verticalVelocity;
+
+        _characterController.Move(movement * Time.deltaTime);
     }
 
     private Vector3 GetForward()
