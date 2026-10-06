@@ -4,6 +4,7 @@ using Unity.Cinemachine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerWeapons _pw;
+    [SerializeField] private PlayerInteractions _pi;
     
     [SerializeField] private float _defaultSpeed;
     [SerializeField] private float _sprintMultiplier;
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         _inputController = new InputController();
         
         _pw.Init(_inputController);
+        _pi.Init(_inputController);
         
         _characterController = GetComponent<CharacterController>();
         _cinCam = GetComponentInChildren<CinemachineCamera>();

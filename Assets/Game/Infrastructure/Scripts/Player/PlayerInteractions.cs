@@ -18,6 +18,7 @@ public class PlayerInteractions : MonoBehaviour
 
     private void Interact()
     {
+        Debug.Log("Interact");
         IInteractable interactable = FindInteractable();
         
         if (interactable == null) return;
@@ -27,15 +28,16 @@ public class PlayerInteractions : MonoBehaviour
         
     private IInteractable FindInteractable()
     {
-        if (Physics.Raycast(new Ray(transform.position, transform.forward),
-                out var hit, _interactionDistance, LayerMask.GetMask("Interactable")))
+        if (!Physics.Raycast(new Ray(transform.position, transform.forward),
+                out var hit, _interactionDistance, LayerMask.GetMask("Interactable"))) 
             return null;
         
         if (hit.transform.TryGetComponent(out IInteractable interactable))
         {
             return interactable;
         }
-        
+
+
         return null;
     }
 }
