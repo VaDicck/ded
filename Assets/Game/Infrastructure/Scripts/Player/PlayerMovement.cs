@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
 using Unity.Cinemachine;
+using Zenject;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private PlayerWeapons _pw;
-    [SerializeField] private PlayerInteractions _pi;
-    
     [SerializeField] private float _defaultSpeed;
     [SerializeField] private float _sprintMultiplier;
     [SerializeField] private float _defaultXSensitivity = 1f;
     [SerializeField] private float _defaultYSensitivity = 1f;
-    //[SerializeField] private PlayerInteractions _playerInteractions;
     [SerializeField] private float _gravity = 9.81f;
     
     private float _verticalVelocity;
@@ -24,16 +21,17 @@ public class PlayerMovement : MonoBehaviour
 
     private InputController _inputController;
 
-    private bool _sprintActive = false;
+    private bool _sprintActive;
     private float _currentSpeed;
 
+    [Inject]
+    private void Init(InputController inputController)
+    {
+        _inputController = inputController;
+    }
+    
     private void Awake()
     {
-        _inputController = new InputController();
-        
-        _pw.Init(_inputController);
-        _pi.Init(_inputController);
-        
         _characterController = GetComponent<CharacterController>();
         _cinCam = GetComponentInChildren<CinemachineCamera>();
         _inputAxisController = GetComponentInChildren<CinemachineInputAxisController>();
@@ -49,8 +47,6 @@ public class PlayerMovement : MonoBehaviour
         _inputController.SprintPressed += () =>  _sprintActive = true;
         _inputController.SprintFinished += () =>  _sprintActive = false;
         
-        //_playerInteractions.Initialize(_playerInputActions);
-        
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -58,6 +54,32 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Move();
+    }
+    
+    public void SetSensitivity(float xSensitivity, float ySensitivity)
+    {
+        _currentXSensitivity = Mathf.Clamp(xSensitivity, 0.1f, 50f);
+        _currentYSensitivity = Mathf.Clamp(ySensitivity, 0.1f, 50f);
+        ApplySensitivity();
+    }
+
+    public void SetXSensitivity(float xSensitivity)
+    {
+        _currentXSensitivity = Mathf.Clamp(xSensitivity, 0.1f, 50f);
+        ApplySensitivity();
+    }
+
+    public void SetYSensitivity(float ySensitivity)
+    {
+        _currentYSensitivity = Mathf.Clamp(ySensitivity, 0.1f, 50f);
+        ApplySensitivity();
+    }
+
+    public void ResetSensitivity()
+    {
+        _currentXSensitivity = _defaultXSensitivity;
+        _currentYSensitivity = _defaultYSensitivity;
+        ApplySensitivity();
     }
 
     private void Move()
@@ -70,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
             _currentSpeed = _defaultSpeed;
 
         if (_characterController.isGrounded && _verticalVelocity < 0)
-            _verticalVelocity = -2f;
+            _verticalVelocity = 0;
 
         _verticalVelocity += -_gravity * Time.deltaTime;
 
@@ -96,32 +118,6 @@ public class PlayerMovement : MonoBehaviour
         right.y = 0f;
 
         return right.normalized;
-    }
-
-    public void SetSensitivity(float xSensitivity, float ySensitivity)
-    {
-        _currentXSensitivity = Mathf.Clamp(xSensitivity, 0.1f, 50f);
-        _currentYSensitivity = Mathf.Clamp(ySensitivity, 0.1f, 50f);
-        ApplySensitivity();
-    }
-
-    public void SetXSensitivity(float xSensitivity)
-    {
-        _currentXSensitivity = Mathf.Clamp(xSensitivity, 0.1f, 50f);
-        ApplySensitivity();
-    }
-
-    public void SetYSensitivity(float ySensitivity)
-    {
-        _currentYSensitivity = Mathf.Clamp(ySensitivity, 0.1f, 50f);
-        ApplySensitivity();
-    }
-
-    public void ResetSensitivity()
-    {
-        _currentXSensitivity = _defaultXSensitivity;
-        _currentYSensitivity = _defaultYSensitivity;
-        ApplySensitivity();
     }
 
     private void ApplySensitivity()

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class PlayerInteractions : MonoBehaviour
 { 
@@ -6,8 +7,9 @@ public class PlayerInteractions : MonoBehaviour
     
     private InputController _inputController;
     private IInteractable _interactable;
-        
-    public void Init(InputController inputController)
+    
+    [Inject]
+    private void Init(InputController inputController)
     {
         _inputController = inputController;
     }
@@ -36,10 +38,18 @@ public class PlayerInteractions : MonoBehaviour
         if (Physics.Raycast(new Ray(transform.position, transform.forward),
                 out var hit, _interactionDistance, LayerMask.GetMask("Interactable")))
         {
-            if (hit.transform.TryGetComponent(out IInteractable interactable))
+            if (hit.transform.TryGetComponent<IInteractable>(out var interactable))
             {
                 _interactable = interactable;
             }
+            else
+            {
+                _interactable = null;
+            }
+        }
+        else
+        {
+            _interactable = null;
         }
     }
 }

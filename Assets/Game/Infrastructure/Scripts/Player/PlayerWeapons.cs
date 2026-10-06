@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Zenject;
 
 public class PlayerWeapons : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class PlayerWeapons : MonoBehaviour
     private IWeapon _currentWeapon;
     private int _currentIndex;
 
-    public void Init(InputController inputController)
+    [Inject]
+    private void Init(InputController inputController)
     {
         _inputController = inputController;
     }
