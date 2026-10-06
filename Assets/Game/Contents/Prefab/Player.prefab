@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 8769369652283036733}
   - component: {fileID: 6301002893765602297}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -281,7 +281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399111ce979a4b0eb7c5f76edacabace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  _currentSpeed: 4
+  _defaultSpeed: 4
+  _sprintMultiplier: 2
   _defaultXSensitivity: 10
   _defaultYSensitivity: 10
 --- !u!143 &6301002893765602297
