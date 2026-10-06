@@ -10,6 +10,8 @@ public class InputController
     public event Action ReloadPressed;
     public event Action InteractPressed;
     public event Action BackPressed;
+    public event Action NextWeapon;
+    public event Action RemoveWeapon;
     
     public Vector2 MoveDirection => _playerInputActions.Player.Move.ReadValue<Vector2>();
     
@@ -47,6 +49,8 @@ public class InputController
         _playerInputActions.Player.Sprint.canceled += _ => SprintFinished?.Invoke();
         _playerInputActions.Player.Reload.performed += _ => ReloadPressed?.Invoke();
         _playerInputActions.Player.Interact.performed += _ => InteractPressed?.Invoke();
+        _playerInputActions.Player.NextWeapon.performed += _ => NextWeapon?.Invoke();
+        _playerInputActions.Player.RemoveWeapon.performed += _ => RemoveWeapon?.Invoke();
         _playerInputActions.UI.Back.performed += _ => BackPressed?.Invoke();
     }
 }

@@ -3,6 +3,8 @@ using Unity.Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private PlayerWeapons _pw;
+    
     [SerializeField] private float _defaultSpeed;
     [SerializeField] private float _sprintMultiplier;
     [SerializeField] private float _defaultXSensitivity = 1f;
@@ -23,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        _inputController = new InputController();
+        
+        _pw.Init(_inputController);
+        
         _characterController = GetComponent<CharacterController>();
         _cinCam = GetComponentInChildren<CinemachineCamera>();
         _inputAxisController = GetComponentInChildren<CinemachineInputAxisController>();
@@ -34,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         ApplySensitivity();
-        _inputController = new InputController();
         
         _inputController.SprintPressed += () =>  _sprintActive = true;
         _inputController.SprintFinished += () =>  _sprintActive = false;
