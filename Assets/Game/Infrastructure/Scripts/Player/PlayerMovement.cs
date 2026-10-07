@@ -4,6 +4,11 @@ using Zenject;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Menu Components")]
+    [SerializeField] private CharacterController _characterController;
+    [SerializeField] private CinemachineCamera _cinCam;
+    [SerializeField] private CinemachineInputAxisController _inputAxisController;
+    
     [SerializeField] private float _defaultSpeed;
     [SerializeField] private float _sprintMultiplier;
     [SerializeField] private float _defaultXSensitivity = 1f;
@@ -14,11 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float _currentXSensitivity;
     private float _currentYSensitivity;
-
-    private CharacterController _characterController;
-    private CinemachineCamera _cinCam;
-    private CinemachineInputAxisController _inputAxisController;
-
+    
     private InputController _inputController;
 
     private bool _sprintActive;
@@ -32,10 +33,6 @@ public class PlayerMovement : MonoBehaviour
     
     private void Awake()
     {
-        _characterController = GetComponent<CharacterController>();
-        _cinCam = GetComponentInChildren<CinemachineCamera>();
-        _inputAxisController = GetComponentInChildren<CinemachineInputAxisController>();
-        
         _currentXSensitivity = _defaultXSensitivity;
         _currentYSensitivity = _defaultYSensitivity;
     }

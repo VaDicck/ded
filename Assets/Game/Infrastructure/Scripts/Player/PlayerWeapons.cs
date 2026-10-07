@@ -3,15 +3,14 @@ using Zenject;
 
 public class PlayerWeapons : MonoBehaviour
 {
-    public IWeapon CurrentWeapon => _currentWeapon;
+    public Weapon CurrentWeapon => _currentWeapon;
     
     [SerializeField] private MonoBehaviour _weaponBehaviour;
     
     private InputController _inputController;
     
-    private IWeapon _weapon;
-    private IWeapon _currentWeapon;
-    private int _currentIndex;
+    private Weapon _weapon;
+    private Weapon _currentWeapon;
 
     [Inject]
     private void Init(InputController inputController)
@@ -21,7 +20,7 @@ public class PlayerWeapons : MonoBehaviour
     
     private void Awake()
     {
-        _weapon = (IWeapon)_weaponBehaviour;
+        _weapon = (Weapon)_weaponBehaviour;
     }
     
     private void Start()

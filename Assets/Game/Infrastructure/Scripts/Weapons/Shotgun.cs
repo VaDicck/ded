@@ -1,38 +1,50 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Shotgun : MonoBehaviour, IWeapon
+public class Shotgun : Weapon
 {
-    [SerializeField] private int _maxCountPatron = 2;
-    private int _currentCountPatron;
-    
-    private void Start()
-    {
-        _currentCountPatron = _maxCountPatron;
-    }
-    
-    public void Shoot()
-    {
-        if(_currentCountPatron < 1)
-            return;
+    [Header("Shotgun Settings")]
+    [SerializeField] private float _pelletDamage = 12f;
+    [SerializeField] private int _pelletCount = 8;
+    [SerializeField] private float _spreadAngle = 10f;
+    [SerializeField] private float _effectiveRange = 15f;
 
-        _currentCountPatron--;
+    protected override List<RaycastHit> RaycastTarget()
+    {
+        List<RaycastHit> hits = new List<RaycastHit>();
         
-        Debug.Log("Стреляем");
+        for (int i = 0; i < _pelletCount; i++)
+        {
+            Vector3 direction;
+            
+            direction = GetCircularSpreadDirection(transform.forward, _spreadAngle);
+            
+            Ray ray = new Ray(transform.position, direction);
+            
+            if (Physics.Raycast(ray, out var hit, LayerMask.GetMask("Damageable")))
+            {
+                hits.Add(hit);
+            }
+        }
+        
+        return hits;
+    }
+    
+    private Vector3 GetCircularSpreadDirection(Vector3 forward, float maxAngle)
+    {
+        Vector2 randomPointInCircle = UnityEngine.Random.insideUnitCircle * maxAngle;
+        
+        Quaternion rotX = Quaternion.AngleAxis(randomPointInCircle.x, Vector3.up);
+        Quaternion rotY = Quaternion.AngleAxis(randomPointInCircle.y, Vector3.right);
+        
+        return rotX * rotY * forward;
     }
 
-    public void Reload()
+    protected override float damageCalculation(float distance)
     {
-        _currentCountPatron=_maxCountPatron;
-        Debug.Log("Перезаряжаем");
-    }
-
-    public void Equip()
-    {
-        Debug.Log("Взяли");
-    }
-
-    public void Unequip()
-    {
-        Debug.Log("Убрали");
+        float distanceFactor = Mathf.Clamp01(1 - (distance / _effectiveRange));
+        float damageMultiplier = distanceFactor * distanceFactor;
+        
+        return _pelletDamage * damageMultiplier;
     }
 }
