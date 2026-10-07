@@ -2527,18 +2527,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4298353007483271019, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-    - {fileID: 8555342042170023492, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 770189586896823310, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1167745611}
-    - targetCorrespondingSourceObject: {fileID: 770189586896823310, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1167745612}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
 --- !u!1 &898882114
 GameObject:
@@ -3385,42 +3377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500b96a947e16d442a34147c830cf1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DAMAGEBOX
---- !u!1 &1167745605 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 770189586896823310, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-  m_PrefabInstance: {fileID: 843421211}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1167745611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167745605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d425e7e7ac84f469a5d346bff40c0b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapons
-  _weaponBehaviour: {fileID: 1167745612}
---- !u!114 &1167745612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167745605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dbad3e2616c7dd4586ad5a3eab9d1d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Shotgun
-  _maxCountPatron: 2
-  _reloadTime: 0
-  _pelletDamage: 12
-  _pelletCount: 8
-  _spreadAngle: 25
-  _effectiveRange: 15
 --- !u!1 &1172934672
 GameObject:
   m_ObjectHideFlags: 0

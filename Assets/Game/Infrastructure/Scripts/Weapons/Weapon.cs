@@ -7,7 +7,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private int _maxCountPatron = 2;
     [SerializeField] private float _fireRate = 1f;
     private int _currentCountPatron;
-    private float _lastShotTime = Time.time;
+    private float _lastShotTime;
     
     [Header("Reload")]
     [SerializeField] private float _reloadTime;
@@ -17,6 +17,7 @@ public abstract class Weapon : MonoBehaviour
     private void Start()
     {
         _currentCountPatron = _maxCountPatron;
+        _lastShotTime = Time.time;
     }
     
     public void Shoot()
