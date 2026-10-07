@@ -329,6 +329,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399111ce979a4b0eb7c5f76edacabace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  _characterController: {fileID: 6301002893765602297}
+  _cinCam: {fileID: 2488406409111001338}
+  _inputAxisController: {fileID: 1312720657425152207}
   _defaultSpeed: 4
   _sprintMultiplier: 2
   _defaultXSensitivity: 10
