@@ -30,6 +30,8 @@ public class PlayerInteractions : MonoBehaviour
         
         if (_interactable == null) return;
         
+        // TODO: Use with tool
+        
         _interactable.Interact();
     }
         

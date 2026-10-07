@@ -6,4 +6,9 @@ public class BOX : MonoBehaviour, IInteractable
     {
         Debug.Log("Interact with BOX");
     }
+
+    public bool Use(BaseTool tool)
+    {
+        throw new System.NotImplementedException();
+    }
 }
