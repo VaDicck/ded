@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 840112125637229977}
   - component: {fileID: 1312720657425152207}
   - component: {fileID: 3461452245047153355}
+  - component: {fileID: 2918627911804522192}
+  - component: {fileID: 79432078421767019}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -166,6 +168,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractions
   _interactionDistance: 2
+--- !u!114 &2918627911804522192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770189586896823310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d425e7e7ac84f469a5d346bff40c0b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapons
+  _weaponBehaviour: {fileID: 79432078421767019}
+--- !u!114 &79432078421767019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770189586896823310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dbad3e2616c7dd4586ad5a3eab9d1d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shotgun
+  _maxCountPatron: 2
+  _fireRate: 1
+  _reloadTime: 2
+  _pelletDamage: 12
+  _pelletCount: 8
+  _spreadAngle: 19
+  _effectiveRange: 25
 --- !u!1 &1146625480943203812
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,8 +214,6 @@ GameObject:
   - component: {fileID: 6945808159112669111}
   - component: {fileID: 8769369652283036733}
   - component: {fileID: 6301002893765602297}
-  - component: {fileID: 4298353007483271019}
-  - component: {fileID: 8555342042170023492}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -297,6 +329,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399111ce979a4b0eb7c5f76edacabace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  _characterController: {fileID: 6301002893765602297}
+  _cinCam: {fileID: 2488406409111001338}
+  _inputAxisController: {fileID: 1312720657425152207}
   _defaultSpeed: 4
   _sprintMultiplier: 2
   _defaultXSensitivity: 10
@@ -327,29 +362,3 @@ CharacterController:
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4298353007483271019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1146625480943203812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d425e7e7ac84f469a5d346bff40c0b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapons
-  _weaponBehaviour: {fileID: 8555342042170023492}
---- !u!114 &8555342042170023492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1146625480943203812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dbad3e2616c7dd4586ad5a3eab9d1d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Shotgun
-  _maxCountPatron: 2
