@@ -30,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770189586896823310}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.506, z: 0.173}
+  m_LocalRotation: {x: -0.41408086, y: 0.52574396, z: 0.3260447, w: 0.6677014}
+  m_LocalPosition: {x: -0.00000055506825, y: 0.50600004, z: 0.17300074}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -95,7 +95,7 @@ MonoBehaviour:
   ReferenceFrame: 0
   RecenterTarget: 0
   PanAxis:
-    Value: 0
+    Value: 76.43336
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -105,7 +105,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   TiltAxis:
-    Value: 0
+    Value: -63.610962
     Center: 0
     Range: {x: -70, y: 70}
     Wrap: 0
@@ -149,7 +149,7 @@ MonoBehaviour:
         InputAction: {fileID: -493091155414541446, guid: 399c786594975c4419cc9fe17654106c, type: 3}
         Gain: -1
         CancelDeltaTime: 0
-      InputValue: 0
+      InputValue: -0
       Driver:
         AccelTime: 0
         DecelTime: 0
@@ -181,6 +181,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapons
   _weaponBehaviour: {fileID: 79432078421767019}
+  _cinemachineCamera: {fileID: 2488406409111001338}
+  _zoomFOV: 40
+  _normalFOV: 60
+  _zoomSpeed: 10
 --- !u!114 &79432078421767019
 MonoBehaviour:
   m_ObjectHideFlags: 0

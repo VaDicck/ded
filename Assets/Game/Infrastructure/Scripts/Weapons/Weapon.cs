@@ -46,6 +46,7 @@ public abstract class Weapon : MonoBehaviour
         }
         Debug.Log("Перезаряжаем");   
     }
+    
     public void Equip()
     {
         Debug.Log("Берем");   

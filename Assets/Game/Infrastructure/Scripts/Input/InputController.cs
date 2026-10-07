@@ -4,7 +4,8 @@ using UnityEngine;
 public class InputController
 {
     public event Action ShootPressed;
-    public event Action ZoomPressed;
+    public event Action ZoomStarted;
+    public event Action ZoomFinished;
     public event Action SprintPressed;
     public event Action SprintFinished;
     public event Action ReloadPressed;
@@ -44,7 +45,8 @@ public class InputController
     private void Subscribe()
     {
         _playerInputActions.Player.Shoot.performed += _ => ShootPressed?.Invoke();
-        _playerInputActions.Player.Zoom.performed += _ => ZoomPressed?.Invoke();
+        _playerInputActions.Player.Zoom.started += _ => ZoomStarted?.Invoke();
+        _playerInputActions.Player.Zoom.canceled += _ => ZoomFinished?.Invoke();
         _playerInputActions.Player.Sprint.performed += _ => SprintPressed?.Invoke();
         _playerInputActions.Player.Sprint.canceled += _ => SprintFinished?.Invoke();
         _playerInputActions.Player.Reload.performed += _ => ReloadPressed?.Invoke();
