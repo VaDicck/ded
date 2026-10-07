@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2488406409111001338}
   - component: {fileID: 840112125637229977}
   - component: {fileID: 1312720657425152207}
+  - component: {fileID: 3461452245047153355}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -152,6 +153,19 @@ MonoBehaviour:
         DecelTime: 0
   PlayerIndex: -1
   AutoEnableInputs: 0
+--- !u!114 &3461452245047153355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770189586896823310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4404c72740a5ff340ac098395e7f9dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractions
+  _interactionDistance: 2
 --- !u!1 &1146625480943203812
 GameObject:
   m_ObjectHideFlags: 0

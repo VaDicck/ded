@@ -11,7 +11,6 @@ public class PlayerWeapons : MonoBehaviour
     
     private Weapon _weapon;
     private Weapon _currentWeapon;
-    private int _currentIndex;
 
     [Inject]
     private void Init(InputController inputController)
