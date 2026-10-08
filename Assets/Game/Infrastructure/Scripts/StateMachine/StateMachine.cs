@@ -24,8 +24,8 @@ public class StateMachine<T> where T : IState
         
         _states.Add(typeof(TK), state);
     }
-
-    public void RemoveState<TK>() where TK : IState
+    
+    public void RemoveState<TK>() where TK : T
     {
         if (!_states.ContainsKey(typeof(TK)))
             throw new ArgumentException("State does not exist");
@@ -33,7 +33,7 @@ public class StateMachine<T> where T : IState
         _states.Remove(typeof(TK));
     }
 
-    public void SetState<TK>() where TK : IState
+    public void SetState<TK>() where TK : T
     {
         if (!_states.ContainsKey(typeof(TK)))
             throw new ArgumentException("State does not exist");
@@ -41,5 +41,13 @@ public class StateMachine<T> where T : IState
         _currentState?.Exit();
         _currentState = _states[typeof(TK)];
         _currentState.Enter();
+    }
+
+    public TK GetState<TK>() where TK : T
+    {
+        if (!_states.ContainsKey(typeof(TK)))
+            throw new ArgumentException("State does not exist");
+
+        return (TK) _states[typeof(TK)];
     }
 }

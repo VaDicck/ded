@@ -4,6 +4,9 @@ using Cysharp.Threading.Tasks;
 public class ClosedBedState : IBedState
 {
     public event Action Performed;
+    
+    public bool IsInteractable => false;
+    public bool IsUsable => true;
 
     private readonly ToolType _toolType;
         
