@@ -5,6 +5,7 @@ using Zenject;
 public class PlayerWeapons : MonoBehaviour
 {
     public Weapon CurrentWeapon => _currentWeapon;
+    public bool IsInZoom => _isZooming;
     
     [SerializeField] private MonoBehaviour _weaponBehaviour;
     [SerializeField] private CinemachineCamera _cinemachineCamera;

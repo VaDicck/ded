@@ -6,8 +6,6 @@ public class InputController
     public event Action ShootPressed;
     public event Action ZoomStarted;
     public event Action ZoomFinished;
-    public event Action SprintPressed;
-    public event Action SprintFinished;
     public event Action ReloadPressed;
     public event Action InteractPressed;
     public event Action BackPressed;
@@ -15,6 +13,7 @@ public class InputController
     public event Action RemoveWeapon;
     
     public Vector2 MoveDirection => _playerInputActions.Player.Move.ReadValue<Vector2>();
+    public bool SprintPressed => _playerInputActions.Player.Sprint.IsInProgress();
     
     private PlayerInputActions _playerInputActions;
     
@@ -31,12 +30,19 @@ public class InputController
     {
         _playerInputActions.Player.Disable();
         _playerInputActions.UI.Enable();
+
+
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 
     public void SwitchToGameplay()
     {
         _playerInputActions.UI.Disable();
         _playerInputActions.Player.Enable();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     
     public void Enable() => _playerInputActions.Enable();
@@ -47,8 +53,6 @@ public class InputController
         _playerInputActions.Player.Shoot.performed += _ => ShootPressed?.Invoke();
         _playerInputActions.Player.Zoom.started += _ => ZoomStarted?.Invoke();
         _playerInputActions.Player.Zoom.canceled += _ => ZoomFinished?.Invoke();
-        _playerInputActions.Player.Sprint.performed += _ => SprintPressed?.Invoke();
-        _playerInputActions.Player.Sprint.canceled += _ => SprintFinished?.Invoke();
         _playerInputActions.Player.Reload.performed += _ => ReloadPressed?.Invoke();
         _playerInputActions.Player.Interact.performed += _ => InteractPressed?.Invoke();
         _playerInputActions.Player.NextWeapon.performed += _ => NextWeapon?.Invoke();

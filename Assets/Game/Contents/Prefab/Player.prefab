@@ -183,7 +183,6 @@ MonoBehaviour:
   _weaponBehaviour: {fileID: 79432078421767019}
   _cinemachineCamera: {fileID: 2488406409111001338}
   _zoomFOV: 40
-  _normalFOV: 60
   _zoomSpeed: 10
 --- !u!114 &79432078421767019
 MonoBehaviour:
@@ -336,7 +335,10 @@ MonoBehaviour:
   _characterController: {fileID: 6301002893765602297}
   _cinCam: {fileID: 2488406409111001338}
   _inputAxisController: {fileID: 1312720657425152207}
+  _playerWeapons: {fileID: 2918627911804522192}
+  _acceleration: 35
   _defaultSpeed: 4
+  _zoomSpeed: 2
   _sprintMultiplier: 2
   _defaultXSensitivity: 10
   _defaultYSensitivity: 10

@@ -4,12 +4,17 @@ using Zenject;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float Speed => _currentSpeed;
+
     [Header("Menu Components")]
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private CinemachineCamera _cinCam;
     [SerializeField] private CinemachineInputAxisController _inputAxisController;
-    
+    [SerializeField] private PlayerWeapons _playerWeapons;
+
+    [SerializeField] private float _acceleration;
     [SerializeField] private float _defaultSpeed;
+    [SerializeField] private float _zoomSpeed;
     [SerializeField] private float _sprintMultiplier;
     [SerializeField] private float _defaultXSensitivity = 1f;
     [SerializeField] private float _defaultYSensitivity = 1f;
@@ -22,8 +27,8 @@ public class PlayerMovement : MonoBehaviour
     
     private InputController _inputController;
 
-    private bool _sprintActive;
     private float _currentSpeed;
+    private Vector3 _velocity;
 
     [Inject]
     private void Init(InputController inputController)
@@ -40,19 +45,13 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         ApplySensitivity();
-        
-        _inputController.SprintPressed += () =>  _sprintActive = true;
-        _inputController.SprintFinished += () =>  _sprintActive = false;
-        
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     private void Update()
     {
         Move();
     }
-    
+   
     public void SetSensitivity(float xSensitivity, float ySensitivity)
     {
         _currentXSensitivity = Mathf.Clamp(xSensitivity, 0.1f, 50f);
@@ -82,23 +81,26 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         Vector2 move = _inputController.MoveDirection;
+        _currentSpeed = _defaultSpeed;
 
-        if (_sprintActive && move.y > 0)
+        if (_inputController.SprintPressed && move.y > 0)
             _currentSpeed = _defaultSpeed * _sprintMultiplier;
-        else
-            _currentSpeed = _defaultSpeed;
+        
+        if (_playerWeapons.IsInZoom)
+            _currentSpeed = _zoomSpeed;
 
         if (_characterController.isGrounded && _verticalVelocity < 0)
             _verticalVelocity = 0;
 
-        _verticalVelocity += -_gravity * Time.deltaTime;
+        _verticalVelocity += -(_gravity) * Time.deltaTime;
 
-        Vector3 movement =
-            (GetForward() * move.y + GetRight() * move.x) * _currentSpeed;
+        Vector3 movement = (GetForward() * move.y + GetRight() * move.x) * _currentSpeed;
 
         movement.y = _verticalVelocity;
 
-        _characterController.Move(movement * Time.deltaTime);
+        _velocity = Vector3.MoveTowards(_velocity, movement, _acceleration * Time.deltaTime);
+
+        _characterController.SimpleMove(_velocity);
     }
 
     private Vector3 GetForward()
