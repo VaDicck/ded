@@ -1,5 +1,6 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 public class ClosedBedState : IBedState
 {
@@ -33,6 +34,11 @@ public class ClosedBedState : IBedState
     {
         // TODO: minigame
         
-        return false;
+        return true;
+    }
+
+    public void Enter()
+    {
+        Debug.Log("Closed enter");
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 public class RawBedState : IBedState
 {
@@ -23,5 +24,10 @@ public class RawBedState : IBedState
         Performed?.Invoke();
 
         return true;
+    }
+    
+    public void Enter()
+    {
+        Debug.Log("Raw enter");
     }
 }
