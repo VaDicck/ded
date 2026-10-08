@@ -1,5 +1,6 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 public class PlowedBedState : IBedState
 {
@@ -14,7 +15,12 @@ public class PlowedBedState : IBedState
     public UniTask Interact()
     {
         // TODO: radial menu
-        
+        Performed?.Invoke();
         return UniTask.CompletedTask;
+    }
+    
+    public void Enter()
+    {
+        Debug.Log("Plowed enter");
     }
 }

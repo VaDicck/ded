@@ -1,12 +1,14 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 public class PlantedBedState : IBedState
 {
-    public bool IsInteractable { get; private set; }
+    public event Action Performed;
+
+    public bool IsInteractable => true;
     public bool IsUsable => false;
 
-    public event Action Performed;
     
     // TODO: culture
     public void SetCulture(int culture)
@@ -16,6 +18,12 @@ public class PlantedBedState : IBedState
 
     public UniTask Interact()
     {
+        Performed?.Invoke();
         return UniTask.CompletedTask;
+    }
+    
+    public void Enter()
+    {
+        Debug.Log("Planted enter");
     }
 }
