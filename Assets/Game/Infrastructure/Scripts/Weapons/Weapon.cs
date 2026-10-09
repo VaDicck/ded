@@ -33,6 +33,8 @@ public abstract class Weapon : MonoBehaviour
         
         ReleasePatron();
 
+        Debug.Log("Стрельнули");
+
         _currentCountPatron--;
             
         _lastShotTime = Time.time;
@@ -44,7 +46,6 @@ public abstract class Weapon : MonoBehaviour
         {
             _reloadCoroutine = StartCoroutine(ReloadRoutine());
         }
-        Debug.Log("Перезаряжаем");   
     }
     
     public void Equip()
