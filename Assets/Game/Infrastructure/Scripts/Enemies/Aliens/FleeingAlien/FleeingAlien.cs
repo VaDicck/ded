@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.AI;
 using Zenject;
 
 public class FleeingAlien : MonoBehaviour, IDamageable
 {
     [SerializeField] private float _health = 50f;
+    [SerializeField] private NavMeshAgent _navMeshAgent;
     private Transform _bed;
     private Transform _spawnPoint;
     
@@ -12,7 +14,7 @@ public class FleeingAlien : MonoBehaviour, IDamageable
     private void Start()
     {
         _stateMachine = new StateMachine<IFleeingAlienState>(new IdleFleeingAlienState());
-        _stateMachine.AddState<RunFleeingAlienState>(new RunFleeingAlienState(transform, 1));
+        _stateMachine.AddState<RunFleeingAlienState>(new RunFleeingAlienState(_navMeshAgent, transform, 1));
         _stateMachine.AddState<DiggingBedFleeingAlienState>(new DiggingBedFleeingAlienState());
         
         Subscribe();

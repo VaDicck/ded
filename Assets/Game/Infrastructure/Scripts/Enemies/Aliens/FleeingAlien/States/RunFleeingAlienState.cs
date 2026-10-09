@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RunFleeingAlienState : IFleeingAlienState
 { 
@@ -9,9 +10,11 @@ public class RunFleeingAlienState : IFleeingAlienState
     private Transform _transform;
     private float _speed;
     private float _stopDistance = 3f;
+    private NavMeshAgent _navMeshAgent; 
 
-    public RunFleeingAlienState(Transform transform, float speed = 8f)
+    public RunFleeingAlienState(NavMeshAgent navMeshAgent, Transform transform, float speed = 8f)
     {
+        _navMeshAgent = navMeshAgent;
         _transform = transform;
         _speed = speed;
     }
@@ -21,19 +24,25 @@ public class RunFleeingAlienState : IFleeingAlienState
         _destination  = destination;
     }
 
+    public void Enter()
+    {
+        if (_destination == null || _navMeshAgent == null)
+            return;
+        
+        _navMeshAgent.SetDestination(_destination.position);
+        _navMeshAgent.isStopped = false; 
+    }
+
     public void Tick()
     {
-        if (_destination == null || _transform == null)
-            throw new ArgumentException("No destination or transform provided");
-        
-        Vector3 direction = (_destination.position - _transform.position).normalized;
-        _transform.position += direction * _speed * Time.deltaTime;
-        
-        float distance = Vector3.Distance(_transform.position, _destination.position);
-        
-        if (distance <= _stopDistance)
+        if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= _stopDistance)
         {
-            Performed?.Invoke(); 
+            Performed?.Invoke();
         }
+    }
+
+    public void Exit()
+    {
+        _navMeshAgent.isStopped = true;
     }
 }
