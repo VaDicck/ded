@@ -1,6 +1,11 @@
+using Cysharp.Threading.Tasks;
+
 public interface IInteractable
 {
-    void Interact();
+    bool IsInteractable { get; }
+    bool IsUsable { get; }
+    
+    UniTask Interact();
 
-    bool Use(BaseTool tool) => false;
+    UniTask<bool> Use(ToolType tool) => UniTask.FromResult(false);
 }

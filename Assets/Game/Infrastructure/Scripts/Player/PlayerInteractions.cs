@@ -4,6 +4,7 @@ using Zenject;
 public class PlayerInteractions : MonoBehaviour
 { 
     [SerializeField] private float _interactionDistance;
+    [SerializeField] private PlayerTools _playerTools;
     
     private InputController _inputController;
     private IInteractable _interactable;
@@ -29,10 +30,15 @@ public class PlayerInteractions : MonoBehaviour
         Debug.Log("Interact");
         
         if (_interactable == null) return;
-        
-        // TODO: Use with tool
-        
-        _interactable.Interact();
+
+        if (_interactable.IsInteractable)
+        {
+            _interactable.Interact();
+            return;
+        }
+
+        if (_interactable.IsUsable)
+            _interactable.Use(_playerTools.Tool);
     }
         
     private void FindInteractable()

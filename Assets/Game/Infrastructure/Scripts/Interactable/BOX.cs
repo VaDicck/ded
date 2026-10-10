@@ -1,10 +1,16 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class BOX : MonoBehaviour, IInteractable
 {
-    public void Interact()
+    public bool IsInteractable => true;
+    public bool IsUsable => false;
+
+    public UniTask Interact()
     {
         Debug.Log("Interact with BOX");
+
+        return UniTask.CompletedTask;
     }
 
     public bool Use(BaseTool tool)

@@ -1,9 +1,13 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 public class ClosedBedState : IBedState
 {
     public event Action Performed;
+    
+    public bool IsInteractable => false;
+    public bool IsUsable => true;
 
     private readonly ToolType _toolType;
         
@@ -30,6 +34,11 @@ public class ClosedBedState : IBedState
     {
         // TODO: minigame
         
-        return false;
+        return true;
+    }
+
+    public void Enter()
+    {
+        Debug.Log("Closed enter");
     }
 }

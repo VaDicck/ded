@@ -3,6 +3,9 @@ using Cysharp.Threading.Tasks;
 
 public interface IBedState : IState
 {
+    bool IsInteractable { get; }
+    bool IsUsable { get; }
+
     event Action Performed;
 
     UniTask Interact() => UniTask.CompletedTask;
