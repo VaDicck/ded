@@ -78,3 +78,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayInstaller
   _fleeingAlienPrefab: {fileID: 1370262340790249564, guid: 8197f2216a8e8eb40adfd2bbc98ad888, type: 3}
+  _gameConfig: {fileID: 11400000, guid: b1b1c9899fc8daa45b1d4cc1cc24f62f, type: 2}

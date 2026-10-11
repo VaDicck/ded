@@ -12,9 +12,13 @@ public class GameplayInstaller : MonoInstaller
 
         Container.BindFactory<FleeingAlien, FleeingAlien.Factory>()
             .FromComponentInNewPrefab(_fleeingAlienPrefab)
-            .UnderTransformGroup("FleeingAliens");
+            .UnderTransformGroup("Enemies");
         
-        Container.Bind<GameConfig>().FromInstance(_gameConfig).AsSingle();
-        Container.Bind<DayCycleService>().AsSingle();
+        Container.Bind<GameConfig>().FromInstance(_gameConfig).AsSingle().NonLazy();
+        Container.Bind<DayCycleService>().AsSingle().NonLazy();
+        Container.Bind<PlayerCultures>().AsSingle().NonLazy();
+        
+        Container.Bind<DayService>().AsSingle().WithArguments(0).NonLazy();
+
     }
 }

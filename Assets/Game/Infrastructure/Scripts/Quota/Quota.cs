@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[CreateAssetMenu(fileName = "Quota", menuName = "Configs/Quotas/Quota")]
 public class Quota : ScriptableObject
 {
     [field: SerializeField] public QuotaElement Main { get; private set; } = new();
