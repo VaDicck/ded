@@ -9,11 +9,13 @@ public class PlantedBedState : IBedState
     public bool IsInteractable => true;
     public bool IsUsable => false;
 
+    private Type _cultureType;
+    private Culture _culture;
     
-    // TODO: culture
-    public void SetCulture(int culture)
+    public void SetCulture(Type cultureType, Culture culture)
     {
-        
+        _cultureType = cultureType;
+        _culture = culture;
     }
 
     public UniTask Interact()
