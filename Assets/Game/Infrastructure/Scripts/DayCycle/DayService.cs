@@ -1,14 +1,26 @@
-﻿using UnityEngine;
-using Zenject;
+﻿using System;
+using UnityEngine;
 
 public class DayService
 {
-    private int _day;
+    public event Action<int> NewDayReached;
+    public int Day { get; private set; }
+
     private DayCycleService _dayCycleService;
     
     public DayService(int startDay, DayCycleService dayCycleService)
     {
-        _day = startDay;
+        Day = startDay;
         _dayCycleService = dayCycleService;
+        _dayCycleService.NightEnded += OnDayEnded;
+    }
+
+    private void OnDayEnded()
+    {
+        Day++;
+        
+        Debug.Log($"<color=yellow> Day: {Day} reached");
+        
+        NewDayReached?.Invoke(Day);
     }
 }
