@@ -29,8 +29,8 @@ public class RunFleeingAlienState : IFleeingAlienState
         if (_destination == null || _navMeshAgent == null)
             return;
         
-        _navMeshAgent.SetDestination(_destination.position);
         _navMeshAgent.isStopped = false; 
+        _navMeshAgent.SetDestination(_destination.position);
     }
 
     public void Tick()
