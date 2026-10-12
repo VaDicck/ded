@@ -10,6 +10,11 @@ public class FleeingAlien : MonoBehaviour, IDamageable
     private Transform _spawnPoint;
     
     private StateMachine<IFleeingAlienState> _stateMachine;
+
+    public void SetPosition(Vector3 position)
+    {
+        _navMeshAgent.Warp(position);
+    }
     
     private void Start()
     {
