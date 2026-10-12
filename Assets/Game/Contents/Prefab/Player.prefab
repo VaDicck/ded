@@ -341,6 +341,7 @@ MonoBehaviour:
   _defaultSpeed: 4
   _zoomSpeed: 2
   _sprintMultiplier: 2
+  _sprintFOV: 90
   _defaultXSensitivity: 10
   _defaultYSensitivity: 10
   _gravity: 9.81

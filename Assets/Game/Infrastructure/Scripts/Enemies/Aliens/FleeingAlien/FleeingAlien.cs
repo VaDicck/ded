@@ -1,51 +1,21 @@
 using UnityEngine;
-using UnityEngine.AI;
 using Zenject;
 
-public class FleeingAlien : MonoBehaviour, IDamageable
+public class FleeingAlien : Alien<IFleeingAlienState>
 {
-    [SerializeField] private float _health = 50f;
-    [SerializeField] private NavMeshAgent _navMeshAgent;
-    private Transform _bed;
-    private Transform _spawnPoint;
-    
-    private StateMachine<IFleeingAlienState> _stateMachine;
-    
-    private void Start()
-    {
-        _stateMachine = new StateMachine<IFleeingAlienState>(new IdleFleeingAlienState());
-        _stateMachine.AddState<RunFleeingAlienState>(new RunFleeingAlienState(_navMeshAgent, transform, 1));
-        _stateMachine.AddState<DiggingBedFleeingAlienState>(new DiggingBedFleeingAlienState());
-        
-        Subscribe();
-    }
-    
-    private void Update() => _stateMachine.Tick();
-    
-    public void SetBed(Transform bed)
-    {
-        _bed = bed;
-    }
-    
-    public void SetSpawnPoint(Transform spawnPoint)
-    {
-        _spawnPoint = spawnPoint;
-    }
-    
-    public void TakeDamage(float damage)
-    {
-        _health -= damage;
-        
-        if(_health <= 0f)
-            Die();
-    }
-    
     public class Factory : PlaceholderFactory<FleeingAlien>
     {
         
     }
+
+    protected override void AddStates()
+    {
+        _stateMachine = new StateMachine<IFleeingAlienState>(new IdleFleeingAlienState());
+        _stateMachine.AddState<RunFleeingAlienState>(new RunFleeingAlienState(_navMeshAgent));
+        _stateMachine.AddState<DiggingBedFleeingAlienState>(new DiggingBedFleeingAlienState());
+    }
     
-    private void Subscribe()
+    protected override void Subscribe()
     {
         _stateMachine.GetState<IdleFleeingAlienState>().Performed 
             += () => RunTo(_bed);
@@ -64,7 +34,7 @@ public class FleeingAlien : MonoBehaviour, IDamageable
         _stateMachine.GetState<RunFleeingAlienState>().SetDestination(target);
     }
 
-    private void Die()
+    protected override void Die()
     {
         Destroy(gameObject);
     }
