@@ -29,9 +29,9 @@ public class FleeingAlien : Alien<IFleeingAlienState>
 
     private void RunTo(Transform target)
     {
-        _stateMachine.SetState<RunFleeingAlienState>();
-        
         _stateMachine.GetState<RunFleeingAlienState>().SetDestination(target);
+        
+        _stateMachine.SetState<RunFleeingAlienState>();
     }
 
     protected override void Die()

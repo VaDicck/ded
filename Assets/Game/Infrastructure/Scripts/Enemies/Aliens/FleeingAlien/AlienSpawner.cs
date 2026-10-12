@@ -27,7 +27,5 @@ public class AlienSpawner : MonoBehaviour
         
         alien.SetBed(_bed);
         alien.SetSpawnPoint(_spawnPoint);
-        
-        Debug.Log("Пришелец заспавнен!");
     }
 }

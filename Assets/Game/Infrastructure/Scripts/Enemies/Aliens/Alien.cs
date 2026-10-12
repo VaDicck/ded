@@ -28,6 +28,7 @@ public abstract class Alien<TState> : MonoBehaviour, IDamageable where TState : 
     
     public void TakeDamage(float damage)
     {
+        Debug.Log("Попали урон "+ damage);
         _health -= damage;
         
         if(_health <= 0f)

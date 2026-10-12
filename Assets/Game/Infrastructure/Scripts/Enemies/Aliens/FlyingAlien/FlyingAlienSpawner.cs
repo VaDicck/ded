@@ -7,6 +7,7 @@ public class FlyingAlienSpawner : MonoBehaviour
     
     [SerializeField] private Transform _bed; 
     [SerializeField] private Transform _spawnPoint; 
+    [SerializeField] private Transform _player; 
     
     [Inject]
     public void Init(FlyingAlien.Factory alienFactory)
@@ -26,9 +27,7 @@ public class FlyingAlienSpawner : MonoBehaviour
         alien.SetPosition(_spawnPoint.position);
         
         alien.SetBed(_bed);
-        alien.SetPlayer(_bed);
+        alien.SetPlayer(_player);
         alien.SetSpawnPoint(_spawnPoint);
-        
-        Debug.Log("Летный Пришелец заспавнен!");
     }
 }

@@ -22,7 +22,7 @@ public class FlyingAlien : Alien<IFlyingAlienState>
 
     protected override void Subscribe()
     {
-        _stateMachine.GetState<FlyToFlyingAlienState>().Performed
+        _stateMachine.GetState<IdleFlyingAlienState>().Performed
             += () => FlyTo(_bed);
         _stateMachine.GetState<FlyToFlyingAlienState>().Performed
             += _stateMachine.SetState<CirclingOverFlyingAlienState>;
@@ -34,15 +34,16 @@ public class FlyingAlien : Alien<IFlyingAlienState>
 
     protected override void AddStates()
     {
-        _stateMachine = new StateMachine<IFlyingAlienState>(new FlyToFlyingAlienState(_navMeshAgent));
+        _stateMachine = new StateMachine<IFlyingAlienState>(new IdleFlyingAlienState());
+        _stateMachine.AddState<FlyToFlyingAlienState>(new FlyToFlyingAlienState(_navMeshAgent));
         _stateMachine.AddState<CirclingOverFlyingAlienState>(new CirclingOverFlyingAlienState());
         _stateMachine.AddState<AttackFlyingAlienState>(new AttackFlyingAlienState(_navMeshAgent, _playerTransform, 15f));
     }
 
     private void FlyTo(Transform target)
     {
-        _stateMachine.SetState<FlyToFlyingAlienState>();
-                
         _stateMachine.GetState<FlyToFlyingAlienState>().SetDestination(target);
+        
+        _stateMachine.SetState<FlyToFlyingAlienState>();
     }
 }

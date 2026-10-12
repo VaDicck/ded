@@ -22,9 +22,6 @@ public class FlyToFlyingAlienState : IFlyingAlienState
 
     public void Enter()
     {
-        if (_destination == null || _navMeshAgent == null)
-            return;
-        
         _navMeshAgent.isStopped = false; 
         _navMeshAgent.SetDestination(_destination.position);
     }
@@ -32,7 +29,7 @@ public class FlyToFlyingAlienState : IFlyingAlienState
     public void Tick()
     {
         if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= _stopDistance)
-        {
+        { 
             Performed?.Invoke();
         }
     }
