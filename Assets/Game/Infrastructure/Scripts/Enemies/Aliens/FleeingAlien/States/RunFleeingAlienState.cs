@@ -7,16 +7,12 @@ public class RunFleeingAlienState : IFleeingAlienState
     public event Action Performed;
     
     private Transform _destination;
-    private Transform _transform;
-    private float _speed;
     private float _stopDistance = 3f;
     private NavMeshAgent _navMeshAgent; 
 
-    public RunFleeingAlienState(NavMeshAgent navMeshAgent, Transform transform, float speed = 8f)
+    public RunFleeingAlienState(NavMeshAgent navMeshAgent)
     {
         _navMeshAgent = navMeshAgent;
-        _transform = transform;
-        _speed = speed;
     }
     
     public void SetDestination(Transform destination)

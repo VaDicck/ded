@@ -3746,6 +3746,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 850242550806946231, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
+      propertyPath: _flyingAlienPrefab
+      value: 
+      objectReference: {fileID: 6014802101477557910, guid: 3fbf0c06fb6e9f7419ccaea2a58891d3, type: 3}
+    - target: {fileID: 850242550806946231, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
       propertyPath: _fleeingAlienPrefab
       value: 
       objectReference: {fileID: 1312142399126528184, guid: 56b50cf0fdd99c5468152f7f7de478f4, type: 3}
@@ -17772,6 +17776,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4ee89aff2142df846bb97cc334ac596c, type: 3}
   m_PrefabInstance: {fileID: 1988841881}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1990767370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1990767372}
+  - component: {fileID: 1990767373}
+  m_Layer: 0
+  m_Name: FlySpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1990767372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990767370}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.46, y: 7.15, z: 27.21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1990767373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990767370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e6fa06b98c4d99a06c8bfc99cde7eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlyingAlienSpawner
+  _bed: {fileID: 1713612800}
+  _spawnPoint: {fileID: 1990767372}
 --- !u!1 &1994257604
 GameObject:
   m_ObjectHideFlags: 0
@@ -19345,3 +19395,4 @@ SceneRoots:
   - {fileID: 949463710}
   - {fileID: 202681218}
   - {fileID: 576401499}
+  - {fileID: 1990767372}
