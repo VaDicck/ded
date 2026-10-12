@@ -4,6 +4,7 @@ using Zenject;
 public class GameplayInstaller : MonoInstaller
 {
     [SerializeField] private GameObject _fleeingAlienPrefab;
+    [SerializeField] private QuotaStringView _quotaStringViewPrefab;
     [SerializeField] private GameConfig _gameConfig;
     
     public override void InstallBindings()
@@ -13,6 +14,9 @@ public class GameplayInstaller : MonoInstaller
         Container.BindFactory<FleeingAlien, FleeingAlien.Factory>()
             .FromComponentInNewPrefab(_fleeingAlienPrefab)
             .UnderTransformGroup("Enemies");
+
+        Container.BindFactory<QuotaStringView, QuotaStringView.Factory>()
+            .FromComponentInNewPrefab(_quotaStringViewPrefab);
         
         Container.Bind<GameConfig>().FromInstance(_gameConfig).AsSingle().NonLazy();
         Container.Bind<DayCycleService>().AsSingle().NonLazy();
