@@ -5,7 +5,7 @@ public class GameplayInstaller : MonoInstaller
 {
     [SerializeField] private GameObject _fleeingAlienPrefab;
     [SerializeField] private GameObject _flyingAlienPrefab;
-    [SerializeField] private QuotaStringView _quotaStringViewPrefab;
+   // [SerializeField] private QuotaStringView _quotaStringViewPrefab;
     [SerializeField] private GameConfig _gameConfig;
     
     public override void InstallBindings()
@@ -21,8 +21,8 @@ public class GameplayInstaller : MonoInstaller
             .UnderTransformGroup("Enemies");
 
 
-        Container.BindFactory<QuotaStringView, QuotaStringView.Factory>()
-            .FromComponentInNewPrefab(_quotaStringViewPrefab);
+        /*Container.BindFactory<QuotaStringView, QuotaStringView.Factory>()
+            .FromComponentInNewPrefab(_quotaStringViewPrefab);*/
         
         Container.Bind<GameConfig>().FromInstance(_gameConfig).AsSingle().NonLazy();
         Container.Bind<DayCycleService>().AsSingle().NonLazy();
