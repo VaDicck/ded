@@ -4,6 +4,7 @@ using Zenject;
 public class GameplayInstaller : MonoInstaller
 {
     [SerializeField] private GameObject _fleeingAlienPrefab;
+    [SerializeField] private GameObject _flyingAlienPrefab;
     [SerializeField] private QuotaStringView _quotaStringViewPrefab;
     [SerializeField] private GameConfig _gameConfig;
     
@@ -14,6 +15,11 @@ public class GameplayInstaller : MonoInstaller
         Container.BindFactory<FleeingAlien, FleeingAlien.Factory>()
             .FromComponentInNewPrefab(_fleeingAlienPrefab)
             .UnderTransformGroup("Enemies");
+        
+        Container.BindFactory<FlyingAlien, FlyingAlien.Factory>()
+            .FromComponentInNewPrefab(_flyingAlienPrefab)
+            .UnderTransformGroup("Enemies");
+
 
         Container.BindFactory<QuotaStringView, QuotaStringView.Factory>()
             .FromComponentInNewPrefab(_quotaStringViewPrefab);
