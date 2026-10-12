@@ -42,7 +42,7 @@ public class Bed : MonoBehaviour, IInteractable
         {
             var culture = _stateMachine.GetState<PlowedBedState>().Culture;
             _stateMachine.SetState<PlantedBedState>();
-            _stateMachine.GetState<PlantedBedState>().SetCulture(culture);
+            _stateMachine.GetState<PlantedBedState>();
         };
         _stateMachine.GetState<PlantedBedState>().Performed += _stateMachine.SetState<RawBedState>;
     }

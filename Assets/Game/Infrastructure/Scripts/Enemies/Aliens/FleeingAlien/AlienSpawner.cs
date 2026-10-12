@@ -16,14 +16,14 @@ public class AlienSpawner : MonoBehaviour
     
     private void Start()
     {
-        InvokeRepeating(nameof(SpawnAlien), 5f, 3f); 
+        InvokeRepeating(nameof(SpawnAlien), 5f, 15f); 
     }
     
     private void SpawnAlien()
     {
         FleeingAlien alien = _alienFactory.Create();
         
-        alien.transform.position = _spawnPoint.position;
+        alien.SetPosition(_spawnPoint.position);
         
         alien.SetBed(_bed);
         alien.SetSpawnPoint(_spawnPoint);

@@ -9,12 +9,14 @@ public class PlowedBedState : IBedState
     
     public event Action Performed;
     
-    //TODO: set culture
-    public int Culture => 0;
-
+    public Culture Culture => _culture;
+    public Type CultureType => _cultureType;
+    
+    private Culture _culture;
+    private Type _cultureType;
+    
     public UniTask Interact()
     {
-        // TODO: radial menu
         Performed?.Invoke();
         return UniTask.CompletedTask;
     }
