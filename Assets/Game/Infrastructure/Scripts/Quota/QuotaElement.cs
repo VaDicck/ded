@@ -9,6 +9,8 @@ public class QuotaElement
     public event Action<CultureType, int> Added;
     public event Action Reached;
     
+    public bool IsReached { get; private set; }
+    
     [field: SerializeField] public List<SerializedPair<CultureType, int>> Expected { get; private set; } = new();
 
     public Dictionary<CultureType, int> Actual => _cultures;
@@ -54,7 +56,8 @@ public class QuotaElement
             if (Actual[pair.Key] < pair.Value)
                 return;
         }
-        
+
+        IsReached = true;
         Reached?.Invoke();
     }
 }

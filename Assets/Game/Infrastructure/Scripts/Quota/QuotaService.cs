@@ -5,7 +5,7 @@ using Object = UnityEngine.Object;
 public class QuotaService
 {
     public event Action QuotaExpired;
-    public event Action<QuotaElement, CultureType, int> CultureAmountChanged;
+    public event Action<Quota.Element, CultureType, int> CultureAmountChanged;
 
     public Quota CurrentQuota => _currentQuota;
 
@@ -29,6 +29,11 @@ public class QuotaService
         SetCurrentQuota(_quotaNumber);
     }
 
+    private void OnQuotaElementDone()
+    {
+        
+    }
+    
     private void OnNewDayReached()
     {
         _daysPassed++;
@@ -41,7 +46,14 @@ public class QuotaService
     {
         if (_currentQuota.TryGet(element, out QuotaElement quota))
         {
-            quota.Fill(cultureType, value);
+            int filledValue = quota.Fill(cultureType, value);
+
+            if (filledValue > 0)
+            {
+                CultureAmountChanged?.Invoke(element, cultureType, filledValue);
+            }
+            
+            return filledValue;
         }
 
         return 0;
