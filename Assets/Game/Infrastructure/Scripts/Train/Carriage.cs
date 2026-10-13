@@ -4,6 +4,8 @@ using Zenject;
 
 public class Carriage : MonoBehaviour, IInteractable
 {
+    [SerializeField] private CarriageMenu _carriageMenu;
+    
     private QuotaElement _quotaElement;
     private PlayerCultures _playerCultures;
 
@@ -19,8 +21,11 @@ public class Carriage : MonoBehaviour, IInteractable
     public void SetQuotaElement(QuotaElement quotaElement)
     {
         _quotaElement = quotaElement;
+        
+        _carriageMenu.SetCulture(quotaElement.Expected);
 
         _quotaElement.Reached += Complete;
+        _quotaElement.Added += _carriageMenu.UpdateCultureText;
     }
     
     public UniTask Interact()
@@ -34,14 +39,18 @@ public class Carriage : MonoBehaviour, IInteractable
     {
         foreach (var actual in _quotaElement.Actual)
         {
-            int countActualCulture = _playerCultures.Take(actual.Key, actual.Value);
+            int countExpectedCulture = 
+                _quotaElement.Expected.Find(pair => pair.Key == actual.Key).Value;
             
-            _quotaElement.Fill(actual.Key, countActualCulture);
+            int countTakeCulture = 
+                _playerCultures.Take(actual.Key, countExpectedCulture-actual.Value);
+            
+            _quotaElement.Fill(actual.Key, countTakeCulture);
         }
     }
 
     private void Complete()
     {
-        Debug.Log("Complete "+ _quotaElement.Element.ToString());
+        this.Log("Complete "+ _quotaElement.Element.ToString());
     }
 }

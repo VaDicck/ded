@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -28,12 +27,12 @@ public class Train : MonoBehaviour
 
     private void Arrive()
     {
-        Debug.Log("<color=red>Train arrived!</color>");
+        this.Log("Train arrive");
     }
 
     private void Leave()
     {
-        Debug.Log("<color=red>Train left</color>");
+        this.Log("Train Leave");
     }
     
     private void UpdateCarriage()

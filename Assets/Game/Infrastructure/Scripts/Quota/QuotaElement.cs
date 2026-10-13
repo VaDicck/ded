@@ -13,7 +13,7 @@ public class QuotaElement
     
     [field: SerializeField] public List<SerializedPair<CultureType, int>> Expected { get; private set; } = new();
 
-    public Dictionary<CultureType, int> Actual => _cultures;
+    public IReadOnlyDictionary<CultureType, int> Actual => _cultures;
     
     private readonly Dictionary<CultureType, int> _cultures;
     
@@ -33,14 +33,14 @@ public class QuotaElement
         if (Actual.ContainsKey(culture) == false)
             return 0;
         
-        Actual[culture] += value;
+        _cultures[culture] += value;
 
         int extra = 0;
 
-        if (Actual[culture] > Expected.Find(x => x.Key == culture).Value)
-            extra = Actual[culture] - Expected.Find(x => x.Key == culture).Value;
+        if (_cultures[culture] > Expected.Find(x => x.Key == culture).Value)
+            extra = _cultures[culture] - Expected.Find(x => x.Key == culture).Value;
         
-        Added?.Invoke(culture, Actual[culture]);
+        Added?.Invoke(culture, _cultures[culture]);
         DetermineReached();
 
         return value - extra;
