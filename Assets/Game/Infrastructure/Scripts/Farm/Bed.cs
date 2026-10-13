@@ -1,24 +1,32 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 public class Bed : MonoBehaviour, IInteractable
 {
-    [Header("Visual State")]
-    [SerializeField] private GameObject _closedState;
+    [Header("Visual State")] [SerializeField]
+    private GameObject _closedState;
     [SerializeField] private GameObject _rawState;
     [SerializeField] private GameObject _plowedState;
     [SerializeField] private GameObject _plantedState;
-    
+
     public IBedState CurrentState => _stateMachine.CurrentState;
-    
+
     public bool IsInteractable => _stateMachine.CurrentState.IsInteractable;
     public bool IsUsable => _stateMachine.CurrentState.IsUsable;
 
-    [Header("Tools")]
-    [SerializeField] private ToolType _unlockTool;
+    [Header("Tools")] [SerializeField] private ToolType _unlockTool;
     [SerializeField] private ToolType _plowTool;
-    
+
     private StateMachine<IBedState> _stateMachine;
+    
+    private CarrotCulture.Factory _factory; // TODO: rewrite
+    
+    [Inject]
+    private void Initialize(CarrotCulture.Factory factory)
+    {
+        _factory = factory;
+    }
 
     private void Awake()
     {
@@ -32,7 +40,7 @@ public class Bed : MonoBehaviour, IInteractable
     {
         _stateMachine = new StateMachine<IBedState>(new ClosedBedState(_unlockTool, _closedState));
         _stateMachine.AddState<RawBedState>(new RawBedState(_plowTool, _rawState));
-        _stateMachine.AddState<PlowedBedState>(new PlowedBedState(_plowedState));
+        _stateMachine.AddState<PlowedBedState>(new PlowedBedState(_plowedState, _factory));
         _stateMachine.AddState<PlantedBedState>(new PlantedBedState(_plantedState));
         
         Subscribe();
@@ -56,6 +64,10 @@ public class Bed : MonoBehaviour, IInteractable
         _stateMachine.GetState<PlowedBedState>().Performed += () =>
         {
             var culture = _stateMachine.GetState<PlowedBedState>().Culture;
+            
+            //TODO: rewrite
+            _stateMachine.GetState<PlantedBedState>().SetCulture(culture);
+            
             _stateMachine.SetState<PlantedBedState>();
             _stateMachine.GetState<PlantedBedState>();
         };
