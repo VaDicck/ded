@@ -1,5 +1,5 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
+using ModestTree;
 using UnityEngine;
 using Zenject;
 
@@ -44,15 +44,21 @@ public class Carriage : MonoBehaviour, IInteractable
 
     private void Fold()
     {
-        foreach (var actual in _quota.Actual)
+        foreach (var expected in _quota.Expected)
         {
-            int countExpectedCulture = 
-                _quota.Expected.Find(pair => pair.Key == actual.Key).Value;
+            int countTakeCulture;
             
-            int countTakeCulture = 
-                _playerCultures.Take(actual.Key, countExpectedCulture-actual.Value);
+            int countExpectedCulture = expected.Value;
             
-            _quota.Fill(actual.Key, countTakeCulture);
+            /*int countExpectedCulture = 
+                _quota.Expected.Find(pair => pair.Key == actual.Key).Value;*/
+                
+            if(_quota.Actual.TryGetValue(expected.Key, out var countActualCulture))
+                countTakeCulture = _playerCultures.Take(expected.Key, countExpectedCulture-countActualCulture);
+            else
+                countTakeCulture = _playerCultures.Take(expected.Key, countExpectedCulture);
+            
+            _quota.Fill(expected.Key, countTakeCulture);
         }
     }
 
