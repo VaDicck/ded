@@ -24,8 +24,7 @@ public class CarriageMenu : MonoBehaviour, IDisposable
 
         foreach (var expectedPair in _quotaElement.Expected)
         {
-            var quotaString = _stringFactory.Create();
-            quotaString.transform.parent = gameObject.transform;
+            var quotaString = _stringFactory.Create(transform);
             quotaString.Initialize(expectedPair.Key, expectedPair.Value, _quotaElement.Actual.GetValueOrDefault(expectedPair.Key, 0));
             _culturesStrings.Add(expectedPair.Key, quotaString);
         }
@@ -41,7 +40,8 @@ public class CarriageMenu : MonoBehaviour, IDisposable
     
     public void Dispose()
     {
-        _quotaElement.Added -= UpdateCulture;
+        if (_quotaElement != null)
+            _quotaElement.Added -= UpdateCulture;
         _quotaElement = null;
         
         foreach (var cultureString in _culturesStrings)

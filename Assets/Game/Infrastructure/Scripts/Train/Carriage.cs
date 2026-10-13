@@ -64,8 +64,11 @@ public class Carriage : MonoBehaviour, IInteractable
 
     private void OnDisable()
     {
-        _quota.Reached -= OnComplete;
-        _quota = null;
+        if (_quota != null)
+            _quota.Reached -= OnComplete;
+        
+        _quota = null;    
+        
         gameObject.SetActive(false);
         _carriageMenu.Dispose();
     }

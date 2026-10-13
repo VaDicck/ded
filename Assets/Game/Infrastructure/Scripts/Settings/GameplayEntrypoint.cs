@@ -15,7 +15,5 @@ public class GameplayEntrypoint : MonoBehaviour
     {
         _dayCycleService.StartDay();
         this.Log("Gameplay started");
-        this.LogWarning("Gameplay started");
-        this.LogError("Gameplay started");
     }
 }

@@ -25,7 +25,7 @@ public class GameplayInstaller : MonoInstaller
             .FromComponentInNewPrefab(_quotaStringViewPrefab.gameObject);
         
         Container.BindFactory<CarrotCulture, CarrotCulture.Factory>()
-            .FromScriptableObjectResource(_carrotCultureConfig);
+            .FromInstance(_carrotCultureConfig);
         
         Container.Bind<GameConfig>().FromInstance(_gameConfig).AsSingle().NonLazy();
         Container.Bind<DayCycleService>().AsSingle().NonLazy();

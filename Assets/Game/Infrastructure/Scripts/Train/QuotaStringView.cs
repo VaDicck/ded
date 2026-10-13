@@ -6,7 +6,20 @@ public class QuotaStringView : MonoBehaviour
 {
     [field: SerializeField] private TMP_Text _text;
 
-    public class Factory : PlaceholderFactory<QuotaStringView> { }
+    public class Factory : PlaceholderFactory<QuotaStringView>
+    {
+        public QuotaStringView Create(Transform parent)
+        {   
+            var obj = Create();
+            
+            obj.transform.SetParent(parent);
+            obj.transform.localScale = Vector3.one;
+            obj.transform.localPosition = Vector3.zero;
+            obj.transform.localRotation = Quaternion.identity;
+
+            return obj;
+        }
+    }
 
     private QuotaStringViewConfig _config;
     private CultureType _cultureType;
