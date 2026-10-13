@@ -5,7 +5,7 @@ public class PlayerCultures
 {
     public IReadOnlyDictionary<CultureType, int> Cultures => _foodCollection;
     
-    private readonly Dictionary<CultureType, int> _foodCollection;
+    private readonly Dictionary<CultureType, int> _foodCollection = new();
     private readonly int _foodCapacity;
     
     public PlayerCultures(GameConfig config)
@@ -27,6 +27,8 @@ public class PlayerCultures
             _foodCollection[culture.Type] = _foodCapacity;
         }
         
+        this.Log($"Added {culture.Count - extra} of type: {culture.Type}");
+        
         return culture.Count - extra;
     }
 
@@ -40,9 +42,11 @@ public class PlayerCultures
             _foodCollection[cultureType] = 0;
             return count;
         }
-
+        
         _foodCollection[cultureType] -= value;
-
+        
+        this.Log($"taken {value} of type: {cultureType}");
+        
         return value;
     }
 

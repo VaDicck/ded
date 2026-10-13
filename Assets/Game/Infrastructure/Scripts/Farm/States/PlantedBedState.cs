@@ -21,22 +21,33 @@ public class PlantedBedState : IBedState
     public void SetCulture(Culture culture)
     {
         _culture = culture;
+        _culture.Collected += OnCollected;
     }
 
     public UniTask Interact()
     {
-        Performed?.Invoke();
+        _culture.Collect();
+        
         return UniTask.CompletedTask;
     }
     
     public void Enter()
     {
         ActivateVisualState(true);
+        Debug.Log("Entered");
     }
-
+    
     public void Exit()
     {
+        if (_culture != null)
+            _culture.Collected -= OnCollected;
+        
         ActivateVisualState(false);
+    }
+
+    private void OnCollected()
+    {
+        Performed?.Invoke();
     }
     
     private void ActivateVisualState(bool isActive)

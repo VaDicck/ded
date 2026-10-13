@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7310094702089323522}
   - component: {fileID: 3748767740721969543}
   - component: {fileID: 850242550806946231}
+  - component: {fileID: 5583649073785047498}
   m_Layer: 0
   m_Name: GameplaySceneContext
   m_TagString: Untagged
@@ -80,5 +81,17 @@ MonoBehaviour:
   _fleeingAlienPrefab: {fileID: 2722075800407198374, guid: 56b50cf0fdd99c5468152f7f7de478f4, type: 3}
   _flyingAlienPrefab: {fileID: 246391356805927339, guid: 3fbf0c06fb6e9f7419ccaea2a58891d3, type: 3}
   _quotaStringViewPrefab: {fileID: 3931425453679032827, guid: 1022ae23ddf48a6488789e525f81f085, type: 3}
-  _carrotCultureConfig: {fileID: 11400000, guid: 68ef5c2c810dfa54fa49d07da0639c44, type: 2}
   _gameConfig: {fileID: 11400000, guid: b1b1c9899fc8daa45b1d4cc1cc24f62f, type: 2}
+--- !u!114 &5583649073785047498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3685624618046668789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc0dacf105f14df983bcda6146fab46e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CultureConfigsInstaller
+  _carrotConfig: {fileID: 11400000, guid: 764e608594db1a147ad130d4bc87fd03, type: 2}

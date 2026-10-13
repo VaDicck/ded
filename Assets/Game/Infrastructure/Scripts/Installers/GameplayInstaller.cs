@@ -6,7 +6,6 @@ public class GameplayInstaller : MonoInstaller
     [SerializeField] private FleeingAlien _fleeingAlienPrefab;
     [SerializeField] private FlyingAlien _flyingAlienPrefab;
     [SerializeField] private QuotaStringView _quotaStringViewPrefab;
-    [SerializeField] private CarrotCulture _carrotCultureConfig;
     [SerializeField] private GameConfig _gameConfig;
     
     public override void InstallBindings()
@@ -23,9 +22,7 @@ public class GameplayInstaller : MonoInstaller
         
         Container.BindFactory<QuotaStringView, QuotaStringView.Factory>()
             .FromComponentInNewPrefab(_quotaStringViewPrefab.gameObject);
-        
-        Container.BindFactory<CarrotCulture, CarrotCulture.Factory>()
-            .FromInstance(_carrotCultureConfig);
+
         
         Container.Bind<GameConfig>().FromInstance(_gameConfig).AsSingle().NonLazy();
         Container.Bind<DayCycleService>().AsSingle().NonLazy();
@@ -34,5 +31,7 @@ public class GameplayInstaller : MonoInstaller
         Container.Bind<DayService>().AsSingle().WithArguments(0).NonLazy();
         
         Container.Bind<QuotaService>().AsSingle().WithArguments(0, 0).NonLazy();
+
+        CultureFactoriesInstaller.Install(Container);
     }
 }
