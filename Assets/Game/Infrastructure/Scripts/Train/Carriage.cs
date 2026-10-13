@@ -59,6 +59,8 @@ public class Carriage : MonoBehaviour, IInteractable
                 countTakeCulture = _playerCultures.Take(expected.Key, countExpectedCulture);
             
             _quota.Fill(expected.Key, countTakeCulture);
+            
+            this.Log($"Quota: {_quotaElement} filled for {countTakeCulture} culture");
         }
     }
 

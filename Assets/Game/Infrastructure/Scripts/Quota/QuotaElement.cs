@@ -15,11 +15,15 @@ public class QuotaElement
 
     public IReadOnlyDictionary<CultureType, int> Actual => _cultures;
     
-    private readonly Dictionary<CultureType, int> _cultures;
+    private Dictionary<CultureType, int> _cultures;
     
     public QuotaElement(Quota.Element element)
     {
         Element = element;
+    }
+
+    public void Refresh()
+    {
         _cultures = new();
 
         foreach (var pair in Expected)
@@ -27,7 +31,7 @@ public class QuotaElement
             _cultures.TryAdd(pair.Key, 0);
         }
     }
-
+    
     public int Fill(CultureType culture, int value)
     {
         if (Actual.ContainsKey(culture) == false)
@@ -42,7 +46,9 @@ public class QuotaElement
         
         Added?.Invoke(culture, _cultures[culture]);
         DetermineReached();
-
+        
+        this.Log($"Quota {Element} added for culture {culture} with value {value}");
+        
         return value - extra;
     }
     

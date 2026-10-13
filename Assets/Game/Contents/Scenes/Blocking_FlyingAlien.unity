@@ -11506,6 +11506,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.29
       objectReference: {fileID: 0}
+    - target: {fileID: 675646410499458308, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 840112125637229977, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: PanAxis.Value
       value: 0
