@@ -15,7 +15,7 @@ public class Train : MonoBehaviour
         _dayCycleService = dayCycle;
     }
     
-    private void Awake()
+    private void Start()
     {
         _dayCycleService.DayStarted += Arrive;
         _dayCycleService.NightStarted += Leave;

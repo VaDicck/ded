@@ -1550,7 +1550,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8aaab558ee1ee8419b3bf82be2f109c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Train
-  _carriages: []
+  _carriages:
+  - {fileID: 5524326185830730557}
+  - {fileID: 1272525479}
+  - {fileID: 213232891}
 --- !u!1001 &128099413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2671,6 +2674,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8145984579321120392, guid: 74eaa7f07c1695545889f7540f58728c, type: 3}
+      propertyPath: _quotaElement
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2681,6 +2688,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7649191862675267732, guid: 74eaa7f07c1695545889f7540f58728c, type: 3}
   m_PrefabInstance: {fileID: 213232889}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &213232891 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8145984579321120392, guid: 74eaa7f07c1695545889f7540f58728c, type: 3}
+  m_PrefabInstance: {fileID: 213232889}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b88607e97f46788c56c2533ff597ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Carriage
 --- !u!1 &218337500 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 428a267eee88e544092935cd8faf2946, type: 3}
@@ -4183,11 +4201,15 @@ PrefabInstance:
     - target: {fileID: 850242550806946231, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
       propertyPath: _flyingAlienPrefab
       value: 
-      objectReference: {fileID: 6014802101477557910, guid: 3fbf0c06fb6e9f7419ccaea2a58891d3, type: 3}
+      objectReference: {fileID: 246391356805927339, guid: 3fbf0c06fb6e9f7419ccaea2a58891d3, type: 3}
     - target: {fileID: 850242550806946231, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
       propertyPath: _fleeingAlienPrefab
       value: 
-      objectReference: {fileID: 1312142399126528184, guid: 56b50cf0fdd99c5468152f7f7de478f4, type: 3}
+      objectReference: {fileID: 2722075800407198374, guid: 56b50cf0fdd99c5468152f7f7de478f4, type: 3}
+    - target: {fileID: 850242550806946231, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
+      propertyPath: _carrotCultureConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 68ef5c2c810dfa54fa49d07da0639c44, type: 2}
     - target: {fileID: 3685624618046668789, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
       propertyPath: m_Name
       value: GameplaySceneContext
@@ -14320,6 +14342,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8145984579321120392, guid: 74eaa7f07c1695545889f7540f58728c, type: 3}
+      propertyPath: _quotaElement
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14330,6 +14356,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7649191862675267732, guid: 74eaa7f07c1695545889f7540f58728c, type: 3}
   m_PrefabInstance: {fileID: 1272525477}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1272525479 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8145984579321120392, guid: 74eaa7f07c1695545889f7540f58728c, type: 3}
+  m_PrefabInstance: {fileID: 1272525477}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b88607e97f46788c56c2533ff597ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Carriage
 --- !u!1 &1290762915
 GameObject:
   m_ObjectHideFlags: 0
@@ -23412,6 +23449,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5725955433034333906, guid: 74eaa7f07c1695545889f7540f58728c, type: 3}
   m_PrefabInstance: {fileID: 5524326185830730555}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5524326185830730557 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8145984579321120392, guid: 74eaa7f07c1695545889f7540f58728c, type: 3}
+  m_PrefabInstance: {fileID: 5524326185830730555}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b88607e97f46788c56c2533ff597ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Carriage
 --- !u!33 &5993715833468475427
 MeshFilter:
   m_ObjectHideFlags: 0

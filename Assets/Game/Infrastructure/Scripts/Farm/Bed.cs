@@ -4,8 +4,8 @@ using Zenject;
 
 public class Bed : MonoBehaviour, IInteractable
 {
-    [Header("Visual State")] [SerializeField]
-    private GameObject _closedState;
+    [Header("Visual State")] 
+    [SerializeField] private GameObject _closedState;
     [SerializeField] private GameObject _rawState;
     [SerializeField] private GameObject _plowedState;
     [SerializeField] private GameObject _plantedState;
