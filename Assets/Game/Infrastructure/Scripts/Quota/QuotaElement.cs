@@ -10,6 +10,7 @@ public class QuotaElement
     public event Action Reached;
     
     public bool IsReached { get; private set; }
+    public Quota.Element Element { get; private set; }
     
     [field: SerializeField] public List<SerializedPair<CultureType, int>> Expected { get; private set; } = new();
 
@@ -17,8 +18,9 @@ public class QuotaElement
     
     private readonly Dictionary<CultureType, int> _cultures;
     
-    public QuotaElement()
+    public QuotaElement(Quota.Element element)
     {
+        Element = element;
         _cultures = new();
 
         foreach (var pair in Expected)
@@ -46,8 +48,20 @@ public class QuotaElement
     }
     
     public bool IsEmpty => Expected.Count == 0;
-    
-    public override string ToString() => Expected.ToString();
+
+    public override string ToString()
+    {
+        string res = "{";
+
+        foreach (var pair in Expected)
+        {
+            res += $"{pair.Key}: {pair.Value};";
+        }
+
+        res += "}";
+
+        return res;
+    }
 
     private void DetermineReached()
     {

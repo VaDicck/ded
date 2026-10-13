@@ -3,11 +3,11 @@
 [CreateAssetMenu(fileName = "Quota", menuName = "Configs/Quotas/Quota")]
 public class Quota : ScriptableObject
 {
-    [field: SerializeField] public QuotaElement Main { get; private set; } = new();
+    [field: SerializeField] public QuotaElement Main { get; private set; } = new(Element.Main);
     
-    [field: SerializeField] public QuotaElement Sub1 { get; private set; } = new();
+    [field: SerializeField] public QuotaElement Sub1 { get; private set; } = new(Element.Sub1);
     
-    [field: SerializeField] public QuotaElement Sub2 { get; private set; } = new();
+    [field: SerializeField] public QuotaElement Sub2 { get; private set; } = new(Element.Sub2);
 
     public enum Element
     {
@@ -35,7 +35,7 @@ public class Quota : ScriptableObject
                 break;
         }
 
-        return quota != null;
+        return quota is { IsEmpty: false };
     }
     
     public override string ToString()

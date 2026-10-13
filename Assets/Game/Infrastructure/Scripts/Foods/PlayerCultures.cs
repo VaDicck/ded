@@ -43,4 +43,12 @@ public class PlayerCultures
 
         return value;
     }
+
+    public int Count(CultureType cultureType)
+    {
+        if (_foodCollection.TryGetValue(cultureType, out var count) == false)
+            return 0;
+
+        return _foodCollection[cultureType];
+    }
 }

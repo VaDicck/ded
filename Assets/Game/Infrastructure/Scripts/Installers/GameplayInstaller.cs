@@ -29,6 +29,8 @@ public class GameplayInstaller : MonoInstaller
         Container.Bind<PlayerCultures>().AsSingle().NonLazy();
         
         Container.Bind<DayService>().AsSingle().WithArguments(0).NonLazy();
+        
+        Container.Bind<QuotaService>().AsSingle().WithArguments(0, 0).NonLazy();
 
     }
 }
