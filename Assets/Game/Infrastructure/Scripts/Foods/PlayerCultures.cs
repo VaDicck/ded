@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class PlayerCultures
 {
+    public IReadOnlyDictionary<CultureType, int> Cultures => _foodCollection;
+    
     private readonly Dictionary<CultureType, int> _foodCollection;
     private readonly int _foodCapacity;
     

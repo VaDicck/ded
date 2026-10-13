@@ -19,7 +19,7 @@ public class DayService
     {
         Day++;
         
-        Debug.Log($"<color=yellow> Day: {Day} reached");
+        this.Log($"Day: {Day} reached");
         
         NewDayReached?.Invoke(Day);
     }

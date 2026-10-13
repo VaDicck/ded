@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ea562fda9340e783e293083f62b6ff, type: 3}
   m_Name: CarrotCulture
   m_EditorClassIdentifier: Assembly-CSharp::CarrotCulture
-  <Range>k__BackingField:
-    _min: 19
-    _max: 22
-  _count: 0
+  <DropAmount>k__BackingField:
+    _min: 0
+    _max: 0

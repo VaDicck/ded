@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class Culture : ScriptableObject
 {
-    [field: SerializeField] public Range Range { get; private set; } = new();
+    [field: SerializeField] public Range DropAmount { get; private set; } = new();
     
     public abstract CultureType Type { get; }
     

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -21,18 +22,18 @@ public class Train : MonoBehaviour
         UpdateCarriage();
         
         _dayCycleService.DayStarted += Arrive;
-        _dayCycleService.NightStarted += DriveOff;
+        _dayCycleService.NightStarted += Leave;
         _quotaService.QuotaExpired += UpdateCarriage;
     }
 
     private void Arrive()
     {
-        Debug.Log("ЧУХ ЧУХ ПРИЕХАЛИ");
+        Debug.Log("<color=red>Train arrived!</color>");
     }
 
-    private void DriveOff()
+    private void Leave()
     {
-        Debug.Log("ЧУХ ЧУХ УЕХАЛИ");
+        Debug.Log("<color=red>Train left</color>");
     }
     
     private void UpdateCarriage()
@@ -43,7 +44,7 @@ public class Train : MonoBehaviour
             { Quota.Element.Sub1, 1 },
             { Quota.Element.Sub2, 2 }
         };
-    
+        
         foreach (var mapping in quotaMappings)
         {
             bool hasQuota = _quotaService.CurrentQuota.TryGet(mapping.Key, out var quota);
@@ -55,7 +56,7 @@ public class Train : MonoBehaviour
     private void OnDestroy()
     {
         _dayCycleService.DayStarted -= Arrive;
-        _dayCycleService.NightStarted -= DriveOff;
+        _dayCycleService.NightStarted -= Leave;
         _quotaService.QuotaExpired -= UpdateCarriage;
     }
 }
