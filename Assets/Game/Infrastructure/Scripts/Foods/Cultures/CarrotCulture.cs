@@ -1,10 +1,9 @@
-﻿using UnityEngine;
-using Zenject;
+﻿using Zenject;
 
-[CreateAssetMenu(fileName = "CarrotCulture", menuName = "Configs/Cultures/Carrot")]
 public class CarrotCulture : Culture
 {
-    public CarrotCulture(PlayerCultures playerCultures, DayCycleService dayCycleService) : base(playerCultures, dayCycleService) { }
+    public CarrotCulture(CultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService) 
+        : base(config,  playerCultures, dayCycleService) { }
     
     public class Factory : PlaceholderFactory<CarrotCulture> {}
     

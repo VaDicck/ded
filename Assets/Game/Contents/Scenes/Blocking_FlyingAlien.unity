@@ -4214,6 +4214,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameplaySceneContext
       objectReference: {fileID: 0}
+    - target: {fileID: 3748767740721969543, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
+      propertyPath: _monoInstallers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748767740721969543, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
+      propertyPath: '_monoInstallers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1408962928}
     - target: {fileID: 7310094702089323522, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11494,6 +11502,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 156412642475827134, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.29
+      objectReference: {fileID: 0}
     - target: {fileID: 840112125637229977, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: PanAxis.Value
       value: 0
@@ -15062,6 +15074,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 314912600}
   m_SourcePrefab: {fileID: 100100000, guid: 428a267eee88e544092935cd8faf2946, type: 3}
+--- !u!114 &1408962928 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5583649073785047498, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
+  m_PrefabInstance: {fileID: 370630203}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc0dacf105f14df983bcda6146fab46e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CultureConfigsInstaller
 --- !u!1 &1418009715 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 585220623989814957, guid: ab121064a67fda94386cf932f3fca874, type: 3}

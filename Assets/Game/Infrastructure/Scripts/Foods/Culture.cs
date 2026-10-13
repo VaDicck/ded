@@ -2,26 +2,29 @@
 using UnityEngine;
 using Random = System.Random;
 
-public abstract class Culture : ScriptableObject
+public abstract class Culture
 {
     public event Action Collected;
     
-    [field: SerializeField] public Range DropAmount { get; private set; } = new();
+    public Range DropAmount => _config.DropAmount;
+    public GameObject Prefab => _config.Prefab;
     
     public abstract CultureType Type { get; }
     public int Count => _count;
     
-    protected bool IsGrown;
+    [SerializeField] protected bool IsGrown = true;
     
     private readonly PlayerCultures _playerCultures;
     private readonly DayCycleService _dayCycleService;
+    private readonly CultureConfig _config;
+    
     private int _count;
 
-    protected Culture(PlayerCultures playerCultures, DayCycleService dayCycleService)
+    protected Culture(CultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
     {
+        _config = config;
         _playerCultures = playerCultures;
         _dayCycleService = dayCycleService;
-
         _dayCycleService.DayStarted += OnDayStarted;
     }
 
@@ -32,8 +35,12 @@ public abstract class Culture : ScriptableObject
     
     public void Collect()
     {
+        Debug.Log(IsGrown);
+        
         if (IsGrown == false)
             return;
+        
+        this.Log($"{Type} collected");
         
         Random random = new();
         
