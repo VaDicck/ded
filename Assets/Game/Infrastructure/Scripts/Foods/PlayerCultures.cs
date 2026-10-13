@@ -13,7 +13,7 @@ public class PlayerCultures
         _foodCapacity = config.FoodCapacity;
     }
 
-    public int AddFood(Culture culture)
+    public int AddCultureValue(Culture culture)
     {
         _foodCollection.TryAdd(culture.Type, 0);
 

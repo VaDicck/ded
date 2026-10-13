@@ -10,20 +10,25 @@ public class PlowedBedState : IBedState
     public event Action Performed;
     
     public Culture Culture => _culture;
-    public Type CultureType => _cultureType;
     
     private Culture _culture;
     private Type _cultureType;
     
-    private GameObject _visualState;
-
-    public PlowedBedState(GameObject visualState)
+    private readonly GameObject _visualState;
+    private readonly CarrotCulture.Factory _factory; //TODO: rewrite
+    
+    public PlowedBedState(GameObject visualState, CarrotCulture.Factory factory)
     {
         _visualState = visualState;
+        _factory = factory;
     }
     
     public UniTask Interact()
     {
+        //TODO: radial menu
+        
+        _culture = _factory.Create();
+        
         Performed?.Invoke();
         return UniTask.CompletedTask;
     }

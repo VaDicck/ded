@@ -9,7 +9,6 @@ public class PlantedBedState : IBedState
     public bool IsInteractable => true;
     public bool IsUsable => false;
 
-    private Type _cultureType;
     private Culture _culture;
     
     private GameObject _visualState;
@@ -19,9 +18,8 @@ public class PlantedBedState : IBedState
         _visualState = visualState;
     }
     
-    public void SetCulture(Type cultureType, Culture culture)
+    public void SetCulture(Culture culture)
     {
-        _cultureType = cultureType;
         _culture = culture;
     }
 
