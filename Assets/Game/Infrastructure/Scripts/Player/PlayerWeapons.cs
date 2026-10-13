@@ -9,6 +9,7 @@ public class PlayerWeapons : MonoBehaviour
     
     [SerializeField] private MonoBehaviour _weaponBehaviour;
     [SerializeField] private CinemachineCamera _cinemachineCamera;
+    [SerializeField] private Crosshair _crosshair;
     
     [Header("Zoom")]
     [SerializeField] private float _zoomFOV = 40f;
@@ -54,6 +55,8 @@ public class PlayerWeapons : MonoBehaviour
 
     private void EquipWeapon()
     {
+        _crosshair.Show();
+        
         if(_currentWeapon == _weapon)
             return;
         
@@ -65,6 +68,8 @@ public class PlayerWeapons : MonoBehaviour
     
     private void UnequipWeapon()
     {
+        _crosshair.Hide();
+        
         StopZoom();
         
         _currentWeapon?.Unequip();

@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _sprintMultiplier;
     [SerializeField] private float _defaultXSensitivity = 1f;
     [SerializeField] private float _defaultYSensitivity = 1f;
+    [SerializeField] private float _zoomXSensitivityMultiplier = 0.1f;
+    [SerializeField] private float _zoomYSensitivityMultiplier = 0.1f;
     [SerializeField] private float _gravity = 9.81f;
     
     private float _verticalVelocity;
@@ -87,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
             _currentSpeed = _defaultSpeed * _sprintMultiplier;
         
         if (_playerWeapons.IsInZoom)
-            _currentSpeed = _zoomSpeed;
+            Zoom();
 
         if (_characterController.isGrounded && _verticalVelocity < 0)
             _verticalVelocity = 0;
@@ -101,6 +103,14 @@ public class PlayerMovement : MonoBehaviour
         _velocity = Vector3.MoveTowards(_velocity, movement, _acceleration * Time.deltaTime);
 
         _characterController.SimpleMove(_velocity);
+    }
+
+    private void Zoom()
+    {
+        _currentSpeed = _zoomSpeed;
+        
+        SetSensitivity(_defaultXSensitivity*_zoomXSensitivityMultiplier,
+            _defaultYSensitivity*_zoomYSensitivityMultiplier);
     }
 
     private Vector3 GetForward()

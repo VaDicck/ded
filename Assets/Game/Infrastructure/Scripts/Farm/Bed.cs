@@ -3,22 +3,37 @@ using UnityEngine;
 
 public class Bed : MonoBehaviour, IInteractable
 {
+    [Header("Visual State")]
+    [SerializeField] private GameObject _closedState;
+    [SerializeField] private GameObject _rawState;
+    [SerializeField] private GameObject _plowedState;
+    [SerializeField] private GameObject _plantedState;
+    
     public IBedState CurrentState => _stateMachine.CurrentState;
     
     public bool IsInteractable => _stateMachine.CurrentState.IsInteractable;
     public bool IsUsable => _stateMachine.CurrentState.IsUsable;
 
+    [Header("Tools")]
     [SerializeField] private ToolType _unlockTool;
     [SerializeField] private ToolType _plowTool;
     
     private StateMachine<IBedState> _stateMachine;
+
+    private void Awake()
+    {
+        _closedState.gameObject.SetActive(false);
+        _rawState.gameObject.SetActive(false);
+        _plowedState.gameObject.SetActive(false);
+        _plantedState.gameObject.SetActive(false);
+    }
     
     private void Start()
     {
-        _stateMachine = new StateMachine<IBedState>(new ClosedBedState(_unlockTool));
-        _stateMachine.AddState<RawBedState>(new RawBedState(_plowTool));
-        _stateMachine.AddState<PlowedBedState>(new PlowedBedState());
-        _stateMachine.AddState<PlantedBedState>(new PlantedBedState());
+        _stateMachine = new StateMachine<IBedState>(new ClosedBedState(_unlockTool, _closedState));
+        _stateMachine.AddState<RawBedState>(new RawBedState(_plowTool, _rawState));
+        _stateMachine.AddState<PlowedBedState>(new PlowedBedState(_plowedState));
+        _stateMachine.AddState<PlantedBedState>(new PlantedBedState(_plantedState));
         
         Subscribe();
     }

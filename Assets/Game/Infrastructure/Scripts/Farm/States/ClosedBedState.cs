@@ -10,10 +10,13 @@ public class ClosedBedState : IBedState
     public bool IsUsable => true;
 
     private readonly ToolType _toolType;
+    
+    private GameObject _visualState;
         
-    public ClosedBedState(ToolType toolType)
+    public ClosedBedState(ToolType toolType, GameObject visualState)
     {
         _toolType = toolType;
+        _visualState =  visualState;
     }
 
     public async UniTask<bool> Use(ToolType tool)
@@ -39,6 +42,16 @@ public class ClosedBedState : IBedState
 
     public void Enter()
     {
-        Debug.Log("Closed enter");
+        ActivateVisualState(true);
+    }
+
+    public void Exit()
+    {
+        ActivateVisualState(false);
+    }
+    
+    private void ActivateVisualState(bool isActive)
+    {
+        _visualState.gameObject.SetActive(isActive);
     }
 }

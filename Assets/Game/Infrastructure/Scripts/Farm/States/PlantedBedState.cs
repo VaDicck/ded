@@ -12,6 +12,13 @@ public class PlantedBedState : IBedState
     private Type _cultureType;
     private Culture _culture;
     
+    private GameObject _visualState;
+
+    public PlantedBedState(GameObject visualState)
+    {
+        _visualState = visualState;
+    }
+    
     public void SetCulture(Type cultureType, Culture culture)
     {
         _cultureType = cultureType;
@@ -26,6 +33,16 @@ public class PlantedBedState : IBedState
     
     public void Enter()
     {
-        Debug.Log("Planted enter");
+        ActivateVisualState(true);
+    }
+
+    public void Exit()
+    {
+        ActivateVisualState(false);
+    }
+    
+    private void ActivateVisualState(bool isActive)
+    {
+        _visualState.gameObject.SetActive(isActive);
     }
 }

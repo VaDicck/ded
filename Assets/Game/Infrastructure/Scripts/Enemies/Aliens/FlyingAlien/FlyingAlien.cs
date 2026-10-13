@@ -23,18 +23,27 @@ public class FlyingAlien : Alien<IFlyingAlienState>
     protected override void Subscribe()
     {
         _stateMachine.GetState<IdleFlyingAlienState>().Performed
-            += () => FlyTo(_bed);
-        _stateMachine.GetState<FlyToFlyingAlienState>().Performed
-            += _stateMachine.SetState<CirclingOverFlyingAlienState>;
-        _stateMachine.GetState<CirclingOverFlyingAlienState>().Performed
+            += () =>
+            {
+                _stateMachine.GetState<FlyToFarmZoneState>().SetDestination(_bed);
+
+                _stateMachine.SetState<FlyToFarmZoneState>();
+            };
+        _stateMachine.GetState<FlyToFarmZoneState>().Performed
+            += _stateMachine.SetState<ChasedFlyingAlienState>;
+        
+        _stateMachine.GetState<ChasedFlyingAlienState>().Attack
             += _stateMachine.SetState<AttackFlyingAlienState>;
+
         _stateMachine.GetState<AttackFlyingAlienState>().Performed
-            += _stateMachine.SetState<CirclingOverFlyingAlienState>;
+            += _stateMachine.SetState<ChasedFlyingAlienState>;
     }
 
     protected override void AddStates()
     {
         _stateMachine = new StateMachine<IFlyingAlienState>(new IdleFlyingAlienState());
+        _stateMachine.AddState<FlyToFarmZoneState>(new FlyToFarmZoneState(_navMeshAgent));
+        _stateMachine.AddState<ChasedFlyingAlienState>(new ChasedFlyingAlienState(_navMeshAgent, _playerTransform));
         _stateMachine.AddState<FlyToFlyingAlienState>(new FlyToFlyingAlienState(_navMeshAgent));
         _stateMachine.AddState<CirclingOverFlyingAlienState>(new CirclingOverFlyingAlienState());
         _stateMachine.AddState<AttackFlyingAlienState>(new AttackFlyingAlienState(_navMeshAgent, _playerTransform, 15f));

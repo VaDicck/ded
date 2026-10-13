@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlyingAlien
   _navMeshAgent: {fileID: 3447074362510899307}
-  _health: 50
+  _health: 15
 --- !u!195 &3447074362510899307
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -67,8 +67,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 0.42
-  m_BaseOffset: 0.003
+  m_Height: 3.26
+  m_BaseOffset: 2.71
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &5130715632998334395

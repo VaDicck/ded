@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FleeingAlien
   _navMeshAgent: {fileID: 4167023340664847854}
-  _health: 50
+  _health: 30
 --- !u!195 &4167023340664847854
 NavMeshAgent:
   m_ObjectHideFlags: 0

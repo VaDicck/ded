@@ -15,6 +15,13 @@ public class PlowedBedState : IBedState
     private Culture _culture;
     private Type _cultureType;
     
+    private GameObject _visualState;
+
+    public PlowedBedState(GameObject visualState)
+    {
+        _visualState = visualState;
+    }
+    
     public UniTask Interact()
     {
         Performed?.Invoke();
@@ -23,6 +30,16 @@ public class PlowedBedState : IBedState
     
     public void Enter()
     {
-        Debug.Log("Plowed enter");
+        ActivateVisualState(true);
+    }
+
+    public void Exit()
+    {
+        ActivateVisualState(false);
+    }
+    
+    private void ActivateVisualState(bool isActive)
+    {
+        _visualState.gameObject.SetActive(isActive);
     }
 }

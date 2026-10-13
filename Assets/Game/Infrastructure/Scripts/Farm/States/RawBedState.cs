@@ -9,10 +9,13 @@ public class RawBedState : IBedState
     public event Action Performed;
     
     private ToolType _toolType;
+    
+    private GameObject _visualState;
 
-    public RawBedState(ToolType toolType)
+    public RawBedState(ToolType toolType, GameObject visualState)
     {
         _toolType = toolType;
+        _visualState = visualState;
     }
     
     public async UniTask<bool> Use(ToolType toolType)
@@ -28,6 +31,16 @@ public class RawBedState : IBedState
     
     public void Enter()
     {
-        Debug.Log("Raw enter");
+        ActivateVisualState(true);
+    }
+
+    public void Exit()
+    {
+        ActivateVisualState(false);
+    }
+    
+    private void ActivateVisualState(bool isActive)
+    {
+        _visualState.gameObject.SetActive(isActive);
     }
 }
