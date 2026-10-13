@@ -9,6 +9,8 @@ public class QuotaStringView : MonoBehaviour
     public class Factory : PlaceholderFactory<QuotaStringView> { }
 
     private QuotaStringViewConfig _config;
+    private CultureType _cultureType;
+    private int _expected;
     
     [Inject]
     private void Init(GameConfig config)
@@ -16,8 +18,15 @@ public class QuotaStringView : MonoBehaviour
         _config = config.QuotaStringView;
     }
 
-    public void Initialize(string text)
+    public void Initialize(CultureType type, int expected, int actual)
     {
-        
+        _expected = expected;
+        _cultureType = type;
+        UpdateActual(actual);
+    }
+
+    public void UpdateActual(int actual)
+    {
+        _text.text = $"{_cultureType}: {actual}/{_expected}";
     }
 }

@@ -10,52 +10,44 @@ public class Train : MonoBehaviour
     private QuotaService _quotaService;
     
     [Inject]
-    private void Init(DayCycleService _dayCycle, QuotaService quotaService)
+    private void Init(DayCycleService dayCycle)
     {
-        _dayCycleService =  _dayCycle;
-        _quotaService = quotaService;
+        _dayCycleService = dayCycle;
     }
-
+    
     private void Awake()
     {
-        UpdateCarriage();
-        
         _dayCycleService.DayStarted += Arrive;
         _dayCycleService.NightStarted += Leave;
-        _quotaService.QuotaExpired += UpdateCarriage;
     }
 
     private void Arrive()
     {
+        Show();
         this.Log("Train arrive");
     }
 
     private void Leave()
     {
+        Hide();
         this.Log("Train Leave");
     }
-    
-    private void UpdateCarriage()
+
+    private void Hide() => gameObject.SetActive(false);
+
+    private void Show()
     {
-        Dictionary<Quota.Element, int> quotaMappings = new Dictionary<Quota.Element, int>
+        gameObject.SetActive(true);
+
+        foreach (var carriage in _carriages)
         {
-            { Quota.Element.Main, 0 },
-            { Quota.Element.Sub1, 1 },
-            { Quota.Element.Sub2, 2 }
-        };
-        
-        foreach (var mapping in quotaMappings)
-        {
-            bool hasQuota = _quotaService.CurrentQuota.TryGet(mapping.Key, out var quota);
-            _carriages[mapping.Value].gameObject.SetActive(hasQuota);
-            _carriages[mapping.Value].gameObject.GetComponent<Carriage>().SetQuotaElement(quota);
+            carriage.Show();
         }
     }
-
+    
     private void OnDestroy()
     {
         _dayCycleService.DayStarted -= Arrive;
         _dayCycleService.NightStarted -= Leave;
-        _quotaService.QuotaExpired -= UpdateCarriage;
     }
 }

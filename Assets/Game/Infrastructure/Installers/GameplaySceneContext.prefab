@@ -77,5 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c3725d3febc14478457ed647cb7d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayInstaller
-  _fleeingAlienPrefab: {fileID: 1370262340790249564, guid: 8197f2216a8e8eb40adfd2bbc98ad888, type: 3}
+  _fleeingAlienPrefab: {fileID: 2722075800407198374, guid: 56b50cf0fdd99c5468152f7f7de478f4, type: 3}
+  _flyingAlienPrefab: {fileID: 246391356805927339, guid: 3fbf0c06fb6e9f7419ccaea2a58891d3, type: 3}
+  _quotaStringViewPrefab: {fileID: 3931425453679032827, guid: 1022ae23ddf48a6488789e525f81f085, type: 3}
   _gameConfig: {fileID: 11400000, guid: b1b1c9899fc8daa45b1d4cc1cc24f62f, type: 2}

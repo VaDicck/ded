@@ -1,31 +1,38 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
 public class Carriage : MonoBehaviour, IInteractable
 {
+    public bool IsUsable => false;
+    public bool IsInteractable => !_quota.IsReached;
+    
+    [SerializeField] private Quota.Element _quotaElement;
     [SerializeField] private CarriageMenu _carriageMenu;
     
-    private QuotaElement _quotaElement;
     private PlayerCultures _playerCultures;
-
-    public bool IsInteractable => !_quotaElement.IsReached;
-    public bool IsUsable => false;
+    private QuotaService _quotaService;
+    
+    private QuotaElement _quota;
     
     [Inject]
-    private void Init(PlayerCultures playerCultures)
+    private void Init(PlayerCultures playerCultures, QuotaService quotaService)
     {
         _playerCultures = playerCultures;
+        _quotaService = quotaService;
     }
-    
-    public void SetQuotaElement(QuotaElement quotaElement)
-    {
-        _quotaElement = quotaElement;
-        
-        _carriageMenu.SetCulture(quotaElement.Expected);
 
-        _quotaElement.Reached += Complete;
-        _quotaElement.Added += _carriageMenu.UpdateCultureText;
+    public void Show()
+    {
+        bool hasQuota = _quotaService.CurrentQuota.TryGet(_quotaElement, out _quota);
+
+        if (hasQuota == false)
+            return;
+
+        gameObject.SetActive(true);
+        _carriageMenu.Initialize(_quota);
+        _quota.Reached += OnComplete;
     }
     
     public UniTask Interact()
@@ -37,20 +44,29 @@ public class Carriage : MonoBehaviour, IInteractable
 
     private void Fold()
     {
-        foreach (var actual in _quotaElement.Actual)
+        foreach (var actual in _quota.Actual)
         {
             int countExpectedCulture = 
-                _quotaElement.Expected.Find(pair => pair.Key == actual.Key).Value;
+                _quota.Expected.Find(pair => pair.Key == actual.Key).Value;
             
             int countTakeCulture = 
                 _playerCultures.Take(actual.Key, countExpectedCulture-actual.Value);
             
-            _quotaElement.Fill(actual.Key, countTakeCulture);
+            _quota.Fill(actual.Key, countTakeCulture);
         }
     }
 
-    private void Complete()
+    private void OnComplete()
     {
-        this.Log("Complete "+ _quotaElement.Element.ToString());
+        // TODO: galochka idi za kassu
+        this.Log($"{_quota.Element} completed");
+    }
+
+    private void OnDisable()
+    {
+        _quota.Reached -= OnComplete;
+        _quota = null;
+        gameObject.SetActive(false);
+        _carriageMenu.Dispose();
     }
 }
