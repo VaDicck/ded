@@ -52,8 +52,6 @@ public class ChasedFlyingAlienState : IFlyingAlienState
         
         _navMeshAgent.autoBraking = false;
         _navMeshAgent.isStopped = false;
-        
-        Debug.Log("Начинаем преследование игрока");
     }
     
     public void Tick()
@@ -74,7 +72,6 @@ public class ChasedFlyingAlienState : IFlyingAlienState
     public void Exit()
     {
         _navMeshAgent.isStopped = true;
-        Debug.Log("Прекращаем преследование игрока");
     }
     
     private void UpdateTargetPosition()
@@ -173,7 +170,6 @@ public class ChasedFlyingAlienState : IFlyingAlienState
         float distanceToPlayer = Vector3.Distance(_transform.position, _playerTransform.position);
         if (distanceToPlayer > 30f)
         {
-            Debug.Log("Игрок слишком далеко, прекращаем преследование");
             Performed?.Invoke();
         }
         
@@ -183,7 +179,6 @@ public class ChasedFlyingAlienState : IFlyingAlienState
         {
             if (hit.transform != _playerTransform)
             {
-                Debug.Log("Потеряли игрока из виду");
                 Performed?.Invoke();
             }
         }
