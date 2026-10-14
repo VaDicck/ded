@@ -6,6 +6,7 @@ public class GameplayInstaller : MonoInstaller
     [SerializeField] private FleeingAlien _fleeingAlienPrefab;
     [SerializeField] private FlyingAlien _flyingAlienPrefab;
     [SerializeField] private QuotaStringView _quotaStringViewPrefab;
+    [SerializeField] private CountCultureStringView _countCultureStringViewPrefab;
     [SerializeField] private GameConfig _gameConfig;
     
     public override void InstallBindings()
@@ -22,6 +23,9 @@ public class GameplayInstaller : MonoInstaller
         
         Container.BindFactory<QuotaStringView, QuotaStringView.Factory>()
             .FromComponentInNewPrefab(_quotaStringViewPrefab.gameObject);
+        
+        Container.BindFactory<CountCultureStringView, CountCultureStringView.Factory>()
+            .FromComponentInNewPrefab(_countCultureStringViewPrefab.gameObject);
 
         
         Container.Bind<GameConfig>().FromInstance(_gameConfig).AsSingle().NonLazy();

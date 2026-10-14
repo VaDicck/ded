@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 public class PlayerCultures
 {
+    public event Action<CultureType> CultureEmpty;
+    public event Action<CultureType, int> CultureCountChanged;
+    
     public IReadOnlyDictionary<CultureType, int> Cultures => _foodCollection;
     
     private readonly Dictionary<CultureType, int> _foodCollection = new();
@@ -15,19 +18,23 @@ public class PlayerCultures
 
     public int AddCultureValue(Culture culture)
     {
-        _foodCollection.TryAdd(culture.Type, 0);
+        CultureType cultureType =culture.Type;
+        
+        _foodCollection.TryAdd(cultureType, 0);
 
-        _foodCollection[culture.Type] += culture.Count;
+        _foodCollection[cultureType] += culture.Count;
 
         int extra = 0;
 
-        if (_foodCollection[culture.Type] > _foodCapacity)
+        if (_foodCollection[cultureType] > _foodCapacity)
         {
-            extra = _foodCollection[culture.Type] - _foodCapacity;
-            _foodCollection[culture.Type] = _foodCapacity;
+            extra = _foodCollection[cultureType] - _foodCapacity;
+            _foodCollection[cultureType] = _foodCapacity;
         }
+                
+        CultureCountChanged?.Invoke(cultureType, _foodCollection[cultureType]);
         
-        this.Log($"Added {culture.Count - extra} of type: {culture.Type}");
+        this.Log($"Added {culture.Count - extra} of type: {cultureType}");
         
         return culture.Count - extra;
     }
@@ -40,10 +47,15 @@ public class PlayerCultures
         if (count < value)
         {
             _foodCollection[cultureType] = 0;
+            
+            CultureEmpty?.Invoke(cultureType);
+            
             return count;
         }
         
         _foodCollection[cultureType] -= value;
+        
+        CultureCountChanged?.Invoke(cultureType, _foodCollection[cultureType]);
         
         this.Log($"taken {value} of type: {cultureType}");
         
