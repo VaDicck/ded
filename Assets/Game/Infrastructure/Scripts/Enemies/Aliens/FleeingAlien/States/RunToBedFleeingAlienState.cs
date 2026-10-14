@@ -6,7 +6,7 @@ public class RunFleeingAlienState : IFleeingAlienState
 { 
     public event Action Performed;
     
-    private Transform _destination;
+    private Bed _bed;
     private float _stopDistance = 3f;
     private NavMeshAgent _navMeshAgent; 
 
@@ -15,15 +15,15 @@ public class RunFleeingAlienState : IFleeingAlienState
         _navMeshAgent = navMeshAgent;
     }
     
-    public void SetDestination(Transform destination)
+    public void SetBed(Bed bed)
     {
-        _destination  = destination;
+        _bed  = bed;
     }
 
     public void Enter()
     {
         _navMeshAgent.isStopped = false; 
-        _navMeshAgent.SetDestination(_destination.position);
+        _navMeshAgent.SetDestination(_bed.transform.position);
     }
 
     public void Tick()
