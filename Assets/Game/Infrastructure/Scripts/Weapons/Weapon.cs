@@ -33,8 +33,6 @@ public abstract class Weapon : MonoBehaviour
         
         ReleasePatron();
 
-        Debug.Log("Стрельнули");
-
         _currentCountPatron--;
             
         _lastShotTime = Time.time;
@@ -50,12 +48,10 @@ public abstract class Weapon : MonoBehaviour
     
     public void Equip()
     {
-        Debug.Log("Берем");   
     }
 
     public void Unequip()
     {
-        Debug.Log("Убираем"); 
     }
 
     private void ReleasePatron()

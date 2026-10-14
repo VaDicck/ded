@@ -27,8 +27,6 @@ public class PlayerInteractions : MonoBehaviour
 
     private void Interact()
     {
-        Debug.Log("Interact");
-        
         if (_interactable == null) return;
 
         if (_interactable.IsInteractable)

@@ -8,8 +8,6 @@ public class BOX : MonoBehaviour, IInteractable
 
     public UniTask Interact()
     {
-        Debug.Log("Interact with BOX");
-
         return UniTask.CompletedTask;
     }
 
