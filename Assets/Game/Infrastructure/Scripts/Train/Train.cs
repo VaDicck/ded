@@ -41,8 +41,23 @@ public class Train : MonoBehaviour
 
         foreach (var carriage in _carriages)
         {
-            carriage.Show();
+            if(carriage.Show())
+                carriage.QuotaReached += CheckQuotaReached;
         }
+    }
+
+    private void CheckQuotaReached()
+    {
+        bool AllСarriageReached = true;
+        
+        foreach (var carriage in _carriages)
+        {
+            if (!carriage.QuotaElementReached)
+                AllСarriageReached = false;
+        }
+
+        if (AllСarriageReached)
+            Hide();
     }
     
     private void OnDestroy()

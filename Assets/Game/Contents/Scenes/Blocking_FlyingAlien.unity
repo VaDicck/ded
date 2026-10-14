@@ -2566,6 +2566,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4674239496044707319, guid: 74eaa7f07c1695545889f7540f58728c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5841052074625136083, guid: 74eaa7f07c1695545889f7540f58728c, type: 3}
       propertyPath: m_fontSize
       value: 18
@@ -14295,6 +14299,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4674239496044707319, guid: 74eaa7f07c1695545889f7540f58728c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5725955433034333906, guid: 74eaa7f07c1695545889f7540f58728c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -23416,6 +23424,10 @@ PrefabInstance:
     - target: {fileID: 4674239496044707319, guid: 74eaa7f07c1695545889f7540f58728c, type: 3}
       propertyPath: m_Name
       value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674239496044707319, guid: 74eaa7f07c1695545889f7540f58728c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5841052074625136083, guid: 74eaa7f07c1695545889f7540f58728c, type: 3}
       propertyPath: m_fontSize

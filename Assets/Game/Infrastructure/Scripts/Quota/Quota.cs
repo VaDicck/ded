@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Quota", menuName = "Configs/Quotas/Quota")]
 public class Quota : ScriptableObject
@@ -16,7 +15,7 @@ public class Quota : ScriptableObject
         Sub1,
         Sub2,
     }
-
+    
     private void OnEnable()
     {
         Main.Refresh();

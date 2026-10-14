@@ -1,10 +1,14 @@
-﻿using Cysharp.Threading.Tasks;
-using ModestTree;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
 public class Carriage : MonoBehaviour, IInteractable
 {
+    public event Action QuotaReached;
+
+    public bool QuotaElementReached => _quota.IsEmpty || _quota.IsReached;
+    
     public bool IsUsable => false;
     public bool IsInteractable => !_quota.IsReached;
     
@@ -23,16 +27,18 @@ public class Carriage : MonoBehaviour, IInteractable
         _quotaService = quotaService;
     }
 
-    public void Show()
+    public bool Show()
     {
         bool hasQuota = _quotaService.CurrentQuota.TryGet(_quotaElement, out _quota);
 
         if (hasQuota == false)
-            return;
-
+            return false;
+        
         gameObject.SetActive(true);
         _carriageMenu.Initialize(_quota);
         _quota.Reached += OnComplete;
+        
+        return true;
     }
     
     public UniTask Interact()
@@ -66,8 +72,9 @@ public class Carriage : MonoBehaviour, IInteractable
 
     private void OnComplete()
     {
-        // TODO: galochka idi za kassu
         this.Log($"{_quota.Element} completed");
+        QuotaReached?.Invoke();
+        // TODO: galochka idi za kassu
     }
 
     private void OnDisable()
