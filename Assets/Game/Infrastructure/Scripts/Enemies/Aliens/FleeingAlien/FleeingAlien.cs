@@ -8,9 +8,17 @@ public class FleeingAlien : Alien<IFleeingAlienState>
     private bool _isSuccessDigging = false;
     private bool _isJumping = false;
     
+    private BedService _bedService;
+    
     public class Factory : PlaceholderFactory<FleeingAlien>
     {
         
+    }
+
+    [Inject]
+    private void Init(BedService bedService)
+    {
+        _bedService = bedService;
     }
     
     private void Update()
@@ -65,32 +73,22 @@ public class FleeingAlien : Alien<IFleeingAlienState>
 
     protected override void AddStates()
     {
-        _stateMachine = new StateMachine<IFleeingAlienState>(new IdleFleeingAlienState());
-        _stateMachine.AddState<RunFleeingAlienState>(new RunFleeingAlienState(_navMeshAgent));
+        _stateMachine = new StateMachine<IFleeingAlienState>(new IdleFleeingAlienState(_bedService));
+        _stateMachine.AddState<RunToBedFleeingAlienState>(new RunToBedFleeingAlienState(_navMeshAgent));
         _stateMachine.AddState<DiggingBedFleeingAlienState>(new DiggingBedFleeingAlienState());
     }
     
     protected override void Subscribe()
     {
+        _stateMachine.GetState<IdleFleeingAlienState>().BedSelected 
+            += (Bed bed) => _stateMachine.GetState<RunToBedFleeingAlienState>().SetBed(bed);
         _stateMachine.GetState<IdleFleeingAlienState>().Performed 
-            += () => RunTo(_bed);
-        _stateMachine.GetState<RunFleeingAlienState>().Performed 
-            +=  _stateMachine.SetState<DiggingBedFleeingAlienState>;
-        _stateMachine.GetState<DiggingBedFleeingAlienState>().Performed 
-            += () =>
-            {
-                _isSuccessDigging = true;
-                RunTo(_spawnPoint);
-            };
-        _stateMachine.GetState<RunFleeingAlienState>().Performed 
-            +=  Lose;
-    }
-
-    private void RunTo(Transform target)
-    {
-        _stateMachine.GetState<RunFleeingAlienState>().SetDestination(target);
+            += _stateMachine.SetState<RunToBedFleeingAlienState>;
         
-        _stateMachine.SetState<RunFleeingAlienState>();
+        _stateMachine.GetState<RunToBedFleeingAlienState>().Performed 
+            +=  _stateMachine.SetState<DiggingBedFleeingAlienState>;
+        
+        
     }
 
     protected override void Die()

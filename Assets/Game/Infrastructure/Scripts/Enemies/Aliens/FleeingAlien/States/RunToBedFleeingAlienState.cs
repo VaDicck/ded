@@ -1,8 +1,7 @@
 ﻿using System;
-using UnityEngine;
 using UnityEngine.AI;
 
-public class RunFleeingAlienState : IFleeingAlienState
+public class RunToBedFleeingAlienState : IFleeingAlienState
 { 
     public event Action Performed;
     
@@ -10,7 +9,7 @@ public class RunFleeingAlienState : IFleeingAlienState
     private float _stopDistance = 3f;
     private NavMeshAgent _navMeshAgent; 
 
-    public RunFleeingAlienState(NavMeshAgent navMeshAgent)
+    public RunToBedFleeingAlienState(NavMeshAgent navMeshAgent)
     {
         _navMeshAgent = navMeshAgent;
     }

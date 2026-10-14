@@ -20,6 +20,8 @@ public abstract class Culture
     
     private int _count;
 
+    private float _timerCollected = 30f;
+
     protected Culture(CultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
     {
         _config = config;
@@ -50,8 +52,15 @@ public abstract class Culture
         Collected?.Invoke();
     }
 
-    public void Hit()
+    public void Hit(float value)
     {
-        
+        this.LogWarning($"Ударил на {value} теперь : {_timerCollected}"); 
+        _timerCollected -= value;
+
+        if (_timerCollected < 0)
+        {
+            this.LogWarning($"Украли");
+            Collected?.Invoke();
+        }
     }
 }
