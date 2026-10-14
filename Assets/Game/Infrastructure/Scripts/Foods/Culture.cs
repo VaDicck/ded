@@ -49,4 +49,9 @@ public abstract class Culture
         _playerCultures.AddCultureValue(this);
         Collected?.Invoke();
     }
+
+    public void Hit()
+    {
+        
+    }
 }
