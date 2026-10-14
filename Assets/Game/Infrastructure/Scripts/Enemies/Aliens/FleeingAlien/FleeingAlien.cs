@@ -80,15 +80,22 @@ public class FleeingAlien : Alien<IFleeingAlienState>
     
     protected override void Subscribe()
     {
-        _stateMachine.GetState<IdleFleeingAlienState>().BedSelected 
-            += (Bed bed) => _stateMachine.GetState<RunToBedFleeingAlienState>().SetBed(bed);
         _stateMachine.GetState<IdleFleeingAlienState>().Performed 
-            += _stateMachine.SetState<RunToBedFleeingAlienState>;
+            += (Bed bed) =>
+            {
+                _stateMachine.GetState<RunToBedFleeingAlienState>().SetBed(bed);
+                _stateMachine.SetState<RunToBedFleeingAlienState>();
+            };
         
         _stateMachine.GetState<RunToBedFleeingAlienState>().Performed 
-            +=  _stateMachine.SetState<DiggingBedFleeingAlienState>;
-        
-        
+            += (Bed bed) =>
+            {
+                _stateMachine.GetState<DiggingBedFleeingAlienState>().SetBed(bed);
+                _stateMachine.SetState<DiggingBedFleeingAlienState>();
+            };
+
+        _stateMachine.GetState<DiggingBedFleeingAlienState>().Performed
+            += (Bed bed) => this.Log("Сломали грядочку");
     }
 
     protected override void Die()

@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class RunToBedFleeingAlienState : IFleeingAlienState
 { 
-    public event Action Performed;
+    public event Action<Bed> Performed;
     
     private Bed _bed;
     private float _stopDistance = 3f;
@@ -29,7 +29,7 @@ public class RunToBedFleeingAlienState : IFleeingAlienState
     {
         if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= _stopDistance)
         {
-            Performed?.Invoke();
+            Performed?.Invoke(_bed);
         }
     }
 

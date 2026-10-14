@@ -3,18 +3,23 @@ using UnityEngine;
 
 public class DiggingBedFleeingAlienState : IFleeingAlienState
 {
-    public event Action Performed;
+    public event Action<Bed> Performed;
+
+    private Bed _bed;
     
-    private readonly float _idleDuration = 3f;
-    private float _idleTimer = 0f;
+    public void SetBed(Bed bed)
+    {
+        _bed  = bed;
+    }
     
     public void Tick()
     {
-        _idleTimer += Time.deltaTime;
-
-        if (_idleTimer >= _idleDuration)
+        if (_bed.CurrentState is PlantedBedState)
         {
-            Performed?.Invoke();
+            PlantedBedState plantedBedState = (PlantedBedState)_bed.CurrentState;
+            
+            plantedBedState.Culture.Hit(Time.deltaTime);
         }
+        Performed?.Invoke(_bed);
     }
 }

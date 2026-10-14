@@ -4,8 +4,7 @@ using Random = System.Random;
 
 public class IdleFleeingAlienState : IFleeingAlienState
 {
-    public event Action Performed;
-    public event Action<Bed> BedSelected;
+    public event Action<Bed> Performed;
 
     private Random _random = new Random();
     
@@ -20,8 +19,7 @@ public class IdleFleeingAlienState : IFleeingAlienState
     {
         if (TrySelectRandomBed(out Bed targetBed))
         {
-            BedSelected?.Invoke(targetBed);
-            Performed?.Invoke();
+            Performed?.Invoke(targetBed);
         }
     }
 
@@ -31,10 +29,10 @@ public class IdleFleeingAlienState : IFleeingAlienState
         
         List<Bed> beds = _bedService.GetBedsByState<PlantedBedState>();
     
-        if (beds.Count < 1)
+       /*if (beds.Count < 1)
         {
             beds = _bedService.GetBedsByState<PlowedBedState>();
-        }
+        }*/
     
         if (beds.Count > 0)
         {

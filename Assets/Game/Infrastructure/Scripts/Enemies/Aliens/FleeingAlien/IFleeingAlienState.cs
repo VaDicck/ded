@@ -2,5 +2,5 @@
 
 public interface IFleeingAlienState : IState
 {
-    event Action Performed;
+    event Action<Bed> Performed;
 }
