@@ -3,10 +3,10 @@ using Zenject;
 
 public class CultureConfigsInstaller : MonoInstaller
 {
-    [SerializeField] private CultureConfig _carrotConfig;
+    [SerializeField] private CarrotCultureConfig _carrotConfig;
     
     public override void InstallBindings()
     {
-        Container.Bind<CultureConfig>().FromInstance(_carrotConfig).AsSingle();
+        Container.Bind<CarrotCultureConfig>().FromInstance(_carrotConfig).AsSingle();
     }
 }
