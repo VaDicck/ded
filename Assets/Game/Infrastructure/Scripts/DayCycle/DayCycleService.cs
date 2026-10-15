@@ -31,9 +31,9 @@ public class DayCycleService : ITickable
         DayStarted?.Invoke();
     }
     
-    //TODO rewrite
     public void StartNight()
     {
+        DayEnded?.Invoke();
         NightStarted?.Invoke();
     }
 
