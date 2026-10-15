@@ -24,10 +24,8 @@ public class FlyingAlienSpawner : MonoBehaviour
     {
         FlyingAlien alien = _alienFactory.Create();
         
-        alien.SetPosition(_spawnPoint.position);
-        
-        alien.SetBed(_bed);
-        alien.SetPlayer(_player);
         alien.SetSpawnPoint(_spawnPoint);
+        
+        alien.SetPlayer(_player);
     }
 }
