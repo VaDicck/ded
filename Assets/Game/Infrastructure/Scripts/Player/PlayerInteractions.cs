@@ -14,6 +14,7 @@ public class PlayerInteractions : MonoBehaviour
     private void Init(InputController inputController, PlayerTools playerTools)
     {
         _inputController = inputController;
+        _playerTools = playerTools;
     }
 
     private void Start()
