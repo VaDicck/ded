@@ -18,7 +18,7 @@ public class IdleFleeingAlienState : IFleeingAlienState
     
     public void Tick()
     {
-        if (TrySelectRandomBed(out Bed targetBed))
+        if (TrySelectRandomBed(out Bed targetBed) && _bedService.CanAttackBeds)
         {
             BedSelected?.Invoke(targetBed);
         }

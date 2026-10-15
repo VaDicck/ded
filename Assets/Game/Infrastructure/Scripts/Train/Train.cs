@@ -21,6 +21,13 @@ public class Train : MonoBehaviour
         _dayCycleService.NightStarted += Leave;
     }
 
+    //TODO rewrite, govno for bedservice
+    [ContextMenu("StartNight")]
+    public void StartNight()
+    {
+        _dayCycleService.StartNight();
+    }
+
     private void Arrive()
     {
         Show();

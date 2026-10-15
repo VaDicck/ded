@@ -9081,7 +9081,6 @@ MonoBehaviour:
   - {fileID: 1106250023}
   _countAliens: 20
   _durationSpawn: 5
-  _procentSaveBed: 87.3
 --- !u!1001 &834033269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21339,7 +21338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1990767372
 Transform:
   m_ObjectHideFlags: 0
@@ -21370,7 +21369,6 @@ MonoBehaviour:
   _bed: {fileID: 1512922403}
   _spawnPoint: {fileID: 1990767372}
   _player: {fileID: 1029258961}
-  _procentBed: 0
 --- !u!1 &1994257604
 GameObject:
   m_ObjectHideFlags: 0
