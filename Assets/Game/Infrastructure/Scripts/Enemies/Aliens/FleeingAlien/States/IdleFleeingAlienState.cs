@@ -4,7 +4,8 @@ using Random = System.Random;
 
 public class IdleFleeingAlienState : IFleeingAlienState
 {
-    public event Action<Bed> Performed;
+    public event Action<Bed> BedSelected;
+    public event Action BedNotSelected;
 
     private Random _random = new Random();
     
@@ -19,7 +20,11 @@ public class IdleFleeingAlienState : IFleeingAlienState
     {
         if (TrySelectRandomBed(out Bed targetBed))
         {
-            Performed?.Invoke(targetBed);
+            BedSelected?.Invoke(targetBed);
+        }
+        else
+        {
+            BedNotSelected?.Invoke();
         }
     }
 

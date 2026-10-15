@@ -76,17 +76,24 @@ public class FleeingAlien : Alien<IFleeingAlienState>
         _stateMachine = new StateMachine<IFleeingAlienState>(new IdleFleeingAlienState(_bedService));
         _stateMachine.AddState<RunToBedFleeingAlienState>(new RunToBedFleeingAlienState(_navMeshAgent));
         _stateMachine.AddState<DiggingBedFleeingAlienState>(new DiggingBedFleeingAlienState());
+        _stateMachine.AddState<RunToSpawnFleeingAlienState>(new RunToSpawnFleeingAlienState(_navMeshAgent, _spawnPoint));
     }
     
     protected override void Subscribe()
     {
-        _stateMachine.GetState<IdleFleeingAlienState>().Performed 
+        _stateMachine.GetState<IdleFleeingAlienState>().BedSelected 
             += (Bed bed) =>
             {
                 _stateMachine.GetState<RunToBedFleeingAlienState>().SetBed(bed);
                 _stateMachine.SetState<RunToBedFleeingAlienState>();
             };
-        
+
+        _stateMachine.GetState<IdleFleeingAlienState>().BedNotSelected
+            += () =>
+            {
+                _stateMachine.SetState<RunToSpawnFleeingAlienState>();
+            };
+
         _stateMachine.GetState<RunToBedFleeingAlienState>().Performed 
             += (Bed bed) =>
             {
@@ -95,7 +102,17 @@ public class FleeingAlien : Alien<IFleeingAlienState>
             };
 
         _stateMachine.GetState<DiggingBedFleeingAlienState>().Performed
-            += (Bed bed) => this.Log("Сломали грядочку");
+            += (Bed bed) =>
+            {
+                _stateMachine.SetState<IdleFleeingAlienState>();
+            };
+
+        _stateMachine.GetState<RunToSpawnFleeingAlienState>().Performed
+            += () =>
+            {
+                Die();
+            };
+
     }
 
     protected override void Die()
