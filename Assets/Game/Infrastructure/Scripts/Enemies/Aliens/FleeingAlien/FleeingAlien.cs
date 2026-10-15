@@ -8,9 +8,17 @@ public class FleeingAlien : Alien<IFleeingAlienState>
     private bool _isSuccessDigging = false;
     private bool _isJumping = false;
     
+    private BedService _bedService;
+    
     public class Factory : PlaceholderFactory<FleeingAlien>
     {
         
+    }
+
+    [Inject]
+    private void Init(BedService bedService)
+    {
+        _bedService = bedService;
     }
     
     private void Update()
@@ -65,32 +73,47 @@ public class FleeingAlien : Alien<IFleeingAlienState>
 
     protected override void AddStates()
     {
-        _stateMachine = new StateMachine<IFleeingAlienState>(new IdleFleeingAlienState());
-        _stateMachine.AddState<RunFleeingAlienState>(new RunFleeingAlienState(_navMeshAgent));
+        _stateMachine = new StateMachine<IFleeingAlienState>(new IdleFleeingAlienState(_bedService));
+        _stateMachine.AddState<RunToBedFleeingAlienState>(new RunToBedFleeingAlienState(_navMeshAgent));
         _stateMachine.AddState<DiggingBedFleeingAlienState>(new DiggingBedFleeingAlienState());
+        _stateMachine.AddState<RunToSpawnFleeingAlienState>(new RunToSpawnFleeingAlienState(_navMeshAgent, _spawnPoint));
     }
     
     protected override void Subscribe()
     {
-        _stateMachine.GetState<IdleFleeingAlienState>().Performed 
-            += () => RunTo(_bed);
-        _stateMachine.GetState<RunFleeingAlienState>().Performed 
-            +=  _stateMachine.SetState<DiggingBedFleeingAlienState>;
-        _stateMachine.GetState<DiggingBedFleeingAlienState>().Performed 
+        _stateMachine.GetState<IdleFleeingAlienState>().BedSelected 
+            += (Bed bed) =>
+            {
+                _stateMachine.GetState<RunToBedFleeingAlienState>().SetBed(bed);
+                _stateMachine.SetState<RunToBedFleeingAlienState>();
+            };
+
+        _stateMachine.GetState<IdleFleeingAlienState>().BedNotSelected
             += () =>
             {
-                _isSuccessDigging = true;
-                RunTo(_spawnPoint);
+                _stateMachine.SetState<RunToSpawnFleeingAlienState>();
             };
-        _stateMachine.GetState<RunFleeingAlienState>().Performed 
-            +=  Lose;
-    }
 
-    private void RunTo(Transform target)
-    {
-        _stateMachine.GetState<RunFleeingAlienState>().SetDestination(target);
-        
-        _stateMachine.SetState<RunFleeingAlienState>();
+        _stateMachine.GetState<RunToBedFleeingAlienState>().Performed 
+            += (Bed bed) =>
+            {
+                _stateMachine.GetState<DiggingBedFleeingAlienState>().SetBed(bed);
+                _stateMachine.SetState<DiggingBedFleeingAlienState>();
+            };
+
+        _stateMachine.GetState<DiggingBedFleeingAlienState>().Performed
+            += () =>
+            {
+                this.LogError("ЗАкончил ломать переключаем в стояние");
+                _stateMachine.SetState<IdleFleeingAlienState>();
+            };
+
+        _stateMachine.GetState<RunToSpawnFleeingAlienState>().Performed
+            += () =>
+            {
+                Die();
+            };
+
     }
 
     protected override void Die()

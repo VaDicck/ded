@@ -8,6 +8,8 @@ public class PlantedBedState : IBedState
 
     public bool IsInteractable => true;
     public bool IsUsable => false;
+    
+    public Culture Culture => _culture;
 
     private Culture _culture;
     

@@ -22,10 +22,13 @@ public class Bed : MonoBehaviour, IInteractable
     
     private CarrotCulture.Factory _factory; // TODO: rewrite
     
+    private BedService _bedService;
+    
     [Inject]
-    private void Initialize(CarrotCulture.Factory factory)
+    private void Initialize(CarrotCulture.Factory factory, BedService bedService)
     {
         _factory = factory;
+        _bedService =  bedService;
     }
 
     private void Awake()
@@ -38,6 +41,8 @@ public class Bed : MonoBehaviour, IInteractable
     
     private void Start()
     {
+        _bedService.AddBed(this);
+        
         _stateMachine = new StateMachine<IBedState>(new ClosedBedState(_unlockTool, _closedState));
         _stateMachine.AddState<RawBedState>(new RawBedState(_plowTool, _rawState));
         _stateMachine.AddState<PlowedBedState>(new PlowedBedState(_plowedState, _factory));

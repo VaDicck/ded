@@ -20,6 +20,8 @@ public abstract class Culture
     
     private int _count;
 
+    private float _timerCollected = 30f;
+
     protected Culture(CultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
     {
         _config = config;
@@ -48,5 +50,15 @@ public abstract class Culture
 
         _playerCultures.AddCultureValue(this);
         Collected?.Invoke();
+    }
+
+    public void Hit(float value)
+    {
+        _timerCollected -= value;
+
+        if (_timerCollected < 0)
+        {
+            Collected?.Invoke();
+        }
     }
 }
