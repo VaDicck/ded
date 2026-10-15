@@ -11,24 +11,15 @@ public abstract class Alien<TState> : MonoBehaviour, IDamageable where TState : 
     protected Transform _bed; 
     protected Transform _spawnPoint; 
     
-    public void SetPosition(Vector3 position)
-    {
-        _navMeshAgent.Warp(position);
-    }
-    
-    public void SetBed(Transform bed)
-    {
-        _bed = bed;
-    }
-    
     public void SetSpawnPoint(Transform spawnPoint)
     {
+        _navMeshAgent.Warp(spawnPoint.position);
         _spawnPoint = spawnPoint;
     }
     
     public void TakeDamage(float damage)
     {
-        Debug.Log("Попали урон "+ damage);
+        this.Log($"Попали, урон {damage}");
         _health -= damage;
         
         if(_health <= 0f)

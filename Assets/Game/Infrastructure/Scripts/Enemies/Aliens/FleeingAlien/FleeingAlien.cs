@@ -102,8 +102,9 @@ public class FleeingAlien : Alien<IFleeingAlienState>
             };
 
         _stateMachine.GetState<DiggingBedFleeingAlienState>().Performed
-            += (Bed bed) =>
+            += () =>
             {
+                this.LogError("ЗАкончил ломать переключаем в стояние");
                 _stateMachine.SetState<IdleFleeingAlienState>();
             };
 

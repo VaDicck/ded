@@ -54,12 +54,10 @@ public abstract class Culture
 
     public void Hit(float value)
     {
-        this.LogWarning($"Ударил на {value} теперь : {_timerCollected}"); 
         _timerCollected -= value;
 
         if (_timerCollected < 0)
         {
-            this.LogWarning($"Украли");
             Collected?.Invoke();
         }
     }
