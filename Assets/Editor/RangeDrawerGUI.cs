@@ -47,7 +47,6 @@ namespace EditorTools
     
         private void DrawFieldWithButtons(Rect position, SerializedProperty property, string label)
         {
-            float a = 0;
             float buttonWidth = 25f;
             float spacing = 5f;
         
