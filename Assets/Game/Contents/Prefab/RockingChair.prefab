@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7668921828833219924}
   - component: {fileID: 1624051872718317963}
   - component: {fileID: 6601171326958174474}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RockingChair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
