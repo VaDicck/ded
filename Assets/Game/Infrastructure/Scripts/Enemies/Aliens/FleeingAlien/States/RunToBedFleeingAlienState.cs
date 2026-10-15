@@ -27,10 +27,10 @@ public class RunToBedFleeingAlienState : IFleeingAlienState
 
     public void Tick()
     {
-        if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= _stopDistance)
-        {
+        //TODO canAttack, maybe. This class need bedService?
+        if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= _stopDistance
+                                       && _bed.CurrentState is PlantedBedState)
             Performed?.Invoke(_bed);
-        }
     }
 
     public void Exit()

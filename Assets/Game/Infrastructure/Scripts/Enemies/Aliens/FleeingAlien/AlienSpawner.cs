@@ -15,9 +15,6 @@ public class AlienSpawner : MonoBehaviour
     private int _spawnedCount = 0;
     private Coroutine _spawnCoroutine;
 
-    private int _countPlantedBed=0;
-    private int _currentCountPlantedBed=0;
-
     [Inject]
     public void Init(FleeingAlien.Factory alienFactory, BedService bedService)
     {
@@ -29,8 +26,6 @@ public class AlienSpawner : MonoBehaviour
     public void Spawn()
     {
         this.Log("Начинаем спавнить чубрикосиков");
-        _countPlantedBed = _bedService.GetBedsByState<PlantedBedState>().Count;
-        _currentCountPlantedBed = _countPlantedBed;
 
         if (_spawnCoroutine != null)
             StopCoroutine(_spawnCoroutine);
@@ -43,17 +38,15 @@ public class AlienSpawner : MonoBehaviour
     {
         while (_spawnedCount < _countAliens)
         {
+            if (!_bedService.CanAttackBeds)
+                break;
+            
+            if (_spawnedCount > _countAliens)
+                break;
+            
             SpawnAlien();
             _spawnedCount++;
-
-            if (_spawnedCount >= _countAliens)
-                break;
-
-            _currentCountPlantedBed = _bedService.GetBedsByState<PlantedBedState>().Count;
-
-            if (((float)_currentCountPlantedBed / (float)_countPlantedBed) <= _bedService.ProcentSaveBed)
-                break;
-
+            
             yield return new WaitForSeconds(_durationSpawn);
         }
 
