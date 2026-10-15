@@ -49,6 +49,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 850242550806946231}
+  - {fileID: 5583649073785047498}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -95,4 +96,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc0dacf105f14df983bcda6146fab46e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CultureConfigsInstaller
-  _carrotConfig: {fileID: 11400000, guid: 764e608594db1a147ad130d4bc87fd03, type: 2}
+  _carrotConfig: {fileID: 11400000, guid: 95f599bbc77a7d24e9f1f4282311705d, type: 2}

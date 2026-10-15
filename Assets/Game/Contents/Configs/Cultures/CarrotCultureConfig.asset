@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7daa9432f9a4337b722c04c005a609d, type: 3}
-  m_Name: CarrotConfig
-  m_EditorClassIdentifier: Assembly-CSharp::CultureConfig
+  m_Script: {fileID: 11500000, guid: df127414689b44ad981fa45d39e9e4de, type: 3}
+  m_Name: CarrotCultureConfig
+  m_EditorClassIdentifier: Assembly-CSharp::CarrotCultureConfig
   <DropAmount>k__BackingField:
     _min: 5
     _max: 7
-  <Prefab>k__BackingField: {fileID: 0}
+  <Prefab>k__BackingField: {fileID: 919132149155446097, guid: afc6851602ed4214c8ad2712afc7128e, type: 3}

@@ -2,7 +2,7 @@
 
 public class CarrotCulture : Culture
 {
-    public CarrotCulture(CultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService) 
+    public CarrotCulture(CarrotCultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService) 
         : base(config,  playerCultures, dayCycleService) { }
     
     public class Factory : PlaceholderFactory<CarrotCulture> {}
