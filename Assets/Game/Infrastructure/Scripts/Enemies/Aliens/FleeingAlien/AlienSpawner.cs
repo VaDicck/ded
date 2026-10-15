@@ -10,20 +10,27 @@ public class AlienSpawner : MonoBehaviour
     [SerializeField] private float _durationSpawn;
 
     private FleeingAlien.Factory _alienFactory;
-    private int _currentSpawn = 0;
     private BedService _bedService;
+    private DayCycleService _dayCycleService;
+    
+    private int _currentSpawn = 0;
     private int _spawnedCount = 0;
     private Coroutine _spawnCoroutine;
 
     [Inject]
-    public void Init(FleeingAlien.Factory alienFactory, BedService bedService)
+    public void Init(FleeingAlien.Factory alienFactory, BedService bedService, DayCycleService dayCycleService)
     {
         _alienFactory = alienFactory;
+        _dayCycleService =  dayCycleService;
         _bedService = bedService;
     }
 
-    [ContextMenu("Spawning")]
-    public void Spawn()
+    private void Awake()
+    {
+        _dayCycleService.NightStarted += Spawn;
+    }
+
+    private void Spawn()
     {
         this.Log("Начинаем спавнить чубрикосиков");
 
@@ -70,5 +77,11 @@ public class AlienSpawner : MonoBehaviour
         alien.SetSpawnPoint(_spawnPoints[_currentSpawn]);
 
         _currentSpawn++;
+    }
+
+    private void OnDestroy()
+    {
+        _dayCycleService.NightStarted -= Spawn;
+
     }
 }
