@@ -11329,11 +11329,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1672924567}
   m_SourcePrefab: {fileID: 100100000, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
---- !u!4 &1029258961 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8140115831517907385, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-  m_PrefabInstance: {fileID: 1029258960}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1052017393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16162,11 +16157,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aa637c2350ca3a4cbe3caf793ddbba1, type: 3}
---- !u!4 &1512922403 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8946660040297601765, guid: 2aa637c2350ca3a4cbe3caf793ddbba1, type: 3}
-  m_PrefabInstance: {fileID: 1512922401}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1522046577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21422,9 +21412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e6fa06b98c4d99a06c8bfc99cde7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlyingAlienSpawner
-  _bed: {fileID: 1512922403}
-  _spawnPoint: {fileID: 1990767372}
-  _player: {fileID: 1029258961}
 --- !u!1 &1994257604
 GameObject:
   m_ObjectHideFlags: 0

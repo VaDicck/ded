@@ -5,10 +5,6 @@ public class FlyingAlienSpawner : MonoBehaviour
 {
     private FlyingAlien.Factory _alienFactory;
     
-    [SerializeField] private Transform _bed; 
-    [SerializeField] private Transform _spawnPoint; 
-    [SerializeField] private Transform _player; 
-    
     [Inject]
     public void Init(FlyingAlien.Factory alienFactory)
     {
@@ -24,8 +20,6 @@ public class FlyingAlienSpawner : MonoBehaviour
     {
         FlyingAlien alien = _alienFactory.Create();
         
-        alien.SetSpawnPoint(_spawnPoint);
-        
-        alien.SetPlayer(_player);
+        alien.SetSpawnPoint(transform);
     }
 }
