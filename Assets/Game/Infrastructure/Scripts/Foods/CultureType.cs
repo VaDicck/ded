@@ -3,4 +3,7 @@
     Carrot,
     Potato,
     Tomato,
+    Corn,
+    Garnet,
+    Pepper
 }
