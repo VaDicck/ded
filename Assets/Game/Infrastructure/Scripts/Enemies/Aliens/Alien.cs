@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class Alien<TState> : MonoBehaviour, IDamageable where TState : IState
+public abstract class Alien<TState> : MonoBehaviour, IDamageable, IAlien where TState : IState
 { 
     [SerializeField] protected NavMeshAgent _navMeshAgent;
     [SerializeField] protected float _health = 50f;

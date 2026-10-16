@@ -20,7 +20,7 @@ public abstract class Culture
     
     private int _count;
 
-    private float _timerCollected = 30f;
+    private float _timerCollected = 6f;
 
     protected Culture(CultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
     {
