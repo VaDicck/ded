@@ -10,7 +10,7 @@ public class IdleFleeingAlienState : IFleeingAlienState
     private Random _random = new Random();
     
     private BedService _bedService;
-    
+
     public IdleFleeingAlienState(BedService bedService)
     {
         _bedService = bedService;
@@ -18,7 +18,7 @@ public class IdleFleeingAlienState : IFleeingAlienState
     
     public void Tick()
     {
-        if (TrySelectRandomBed(out Bed targetBed) && _bedService.CanAttackBeds)
+        if (_bedService.CanAttackBeds.CurrentValue && TrySelectRandomBed(out Bed targetBed))
         {
             BedSelected?.Invoke(targetBed);
         }
@@ -33,12 +33,7 @@ public class IdleFleeingAlienState : IFleeingAlienState
         targetBed = null;
         
         List<Bed> beds = _bedService.GetBedsByState<PlantedBedState>();
-    
-       /*if (beds.Count < 1)
-        {
-            beds = _bedService.GetBedsByState<PlowedBedState>();
-        }*/
-    
+        
         if (beds.Count > 0)
         {
             targetBed = beds[_random.Next(beds.Count)];

@@ -66,7 +66,8 @@ public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : IAlien
     
     protected virtual bool CanSpawn()
     {
-        return _bedService.CanAttackBeds && _spawnedCount < _countAliens && _canSpawn;
+        return _bedService.CanAttackBeds.CurrentValue
+               && _spawnedCount < _countAliens && _canSpawn;
     }
     
     protected virtual void SpawnAlien()

@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using R3;
 
 public class DiggingBedFleeingAlienState : IFleeingAlienState
 {
@@ -11,6 +12,8 @@ public class DiggingBedFleeingAlienState : IFleeingAlienState
     public DiggingBedFleeingAlienState(BedService bedService)
     {
         _bedService = bedService;
+
+        _bedService.CanAttackBeds.Subscribe(OnCanAttackChanged);
     }
     
     public void SetBed(Bed bed)
@@ -20,20 +23,21 @@ public class DiggingBedFleeingAlienState : IFleeingAlienState
     
     public void Tick()
     {
-        if (_bedService.CanAttackBeds)
+        if (_bed.CurrentState is PlantedBedState)
         {
-            if (_bed.CurrentState is PlantedBedState)
-            {
-                PlantedBedState plantedBedState = (PlantedBedState)_bed.CurrentState;
+            PlantedBedState plantedBedState = (PlantedBedState)_bed.CurrentState;
 
-                plantedBedState.Culture.Hit(Time.deltaTime);
+            plantedBedState.Culture.Hit(Time.deltaTime);
                 
-                return;
-            }
-            
-            Performed?.Invoke();
+            return;
         }
-        
+            
         Performed?.Invoke();
+    }
+
+    private void OnCanAttackChanged(bool CanAttack)
+    {
+        if(!CanAttack)
+            Performed?.Invoke();
     }
 }
