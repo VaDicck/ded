@@ -11272,7 +11272,7 @@ PrefabInstance:
     - target: {fileID: 3461452245047153355, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: _playerTools
       value: 
-      objectReference: {fileID: 1672924567}
+      objectReference: {fileID: 0}
     - target: {fileID: 8140115831517907385, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.02
@@ -11324,10 +11324,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1146625480943203812, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1672924567}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
 --- !u!1001 &1052017393
 PrefabInstance:
@@ -17828,23 +17825,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b33b821aee97ece4fba56e6e68f0e13f, type: 3}
   m_PrefabInstance: {fileID: 33873702}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1672924561 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1146625480943203812, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-  m_PrefabInstance: {fileID: 1029258960}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1672924567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1672924561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d49baadd48474b43ad32fb0e04782a6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1679493903 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7271449666460269675, guid: ab121064a67fda94386cf932f3fca874, type: 3}
@@ -21412,6 +21392,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e6fa06b98c4d99a06c8bfc99cde7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlyingAlienSpawner
+  _spawnPoints: []
+  _countAliens: 0
+  _durationSpawn: 0
 --- !u!1 &1994257604
 GameObject:
   m_ObjectHideFlags: 0

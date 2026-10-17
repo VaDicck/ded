@@ -13,9 +13,24 @@ public class GameplayEntrypoint : MonoBehaviour
         _playerTools = playerTools;
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            this.Log("Берем лейку");
+            _playerTools.Take(ToolType.Bailer);
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            this.Log("Берем лопату");
+            _playerTools.Take(ToolType.Shovel);
+        }
+    }
+
     private void Start()
     {
         _playerTools.Add(ToolType.Shovel);
+        _playerTools.Add(ToolType.Bailer);
         _playerTools.Take(ToolType.Shovel);
         _dayCycleService.StartDay();
         this.Log("Gameplay started");
