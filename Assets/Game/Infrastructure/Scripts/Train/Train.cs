@@ -5,6 +5,7 @@ using Zenject;
 public class Train : MonoBehaviour
 {
     [SerializeField] private List<Carriage> _carriages;
+    [SerializeField] private Animator _animator;
     
     private DayCycleService _dayCycleService;
     private QuotaService _quotaService;
@@ -21,14 +22,23 @@ public class Train : MonoBehaviour
         _dayCycleService.NightStarted += Leave;
     }
 
+    [ContextMenu("Train Arrive")]
     private void Arrive()
     {
         Show();
         this.Log("Train arrive");
     }
 
+    [ContextMenu("Train Leave")]
     private void Leave()
     {
+        _animator.SetBool("Leave", true);
+        this.Log("Train Leave");
+    }
+
+    private void AnimationLeaveEnd()
+    {
+        _animator.SetBool("Leave", false);
         Hide();
         this.Log("Train Leave");
     }
