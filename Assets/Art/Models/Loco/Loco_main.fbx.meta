@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Loco_Emmisive
+    second: {fileID: 2100000, guid: 7a7c18bcf8e81f144b64b13b705e2289, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Loco_trim
     second: {fileID: 2100000, guid: c6f2f449dff40e24aa884f78089fe3dd, type: 2}
   - first:
