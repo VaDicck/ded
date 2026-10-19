@@ -7,21 +7,32 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Transform _respawnPlayer;
     [SerializeField] private Button _stuckButton;
     
-    private PlayerMovement _playerMovement;
+    private PlayerReturner _playerReturner;
     private InputController _inputController;
     
+    private bool _isPaused = false;
+    
     [Inject]
-    private void Init(InputController inputController, PlayerMovement playerMovement)
+    private void Init(InputController inputController, PlayerReturner playerReturner)
     {
         _inputController = inputController;
-        _playerMovement = playerMovement;
+        _playerReturner = playerReturner;
     }
 
     private void Start()
     {
         _inputController.BackPressed += () =>
         {
-            this.Log("НАЖАЛИ");
+            if (_isPaused)
+            {
+                Hide();
+                _inputController.SwitchToGameplay();
+            }
+            else
+            {
+                Show();
+                _inputController.SwitchToUi();
+            }
         };
             
         _stuckButton.onClick.AddListener(OnStuckButtonClicked);
@@ -31,17 +42,23 @@ public class PauseMenu : MonoBehaviour
 
     private void Hide()
     {
+        Time.timeScale = 1;
+        
+        _isPaused = false;
         gameObject.SetActive(false);
     }
     
     private void Show()
     {
+        Time.timeScale = 0;
+        
+        _isPaused = true;
         gameObject.SetActive(true);
     }
     
     private void OnStuckButtonClicked()
     {
-        _playerMovement.transform.position = _respawnPlayer.position;
+        _playerReturner.Return();
     }
 
     private void OnDestroy()

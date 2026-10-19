@@ -9,6 +9,7 @@ public class GameplayInstaller : MonoInstaller
     [SerializeField] private QuotaStringView _quotaStringViewPrefab;
     [SerializeField] private CountCultureStringView _countCultureStringViewPrefab;
     [SerializeField] private GameConfig _gameConfig;
+    [SerializeField] private Transform _safePlayerTransform;
 
     public override void InstallBindings()
     {
@@ -36,6 +37,7 @@ public class GameplayInstaller : MonoInstaller
         Container.Bind<DayService>().AsSingle().WithArguments(0).NonLazy();
         Container.Bind<QuotaService>().AsSingle().WithArguments(0, 0).NonLazy();
         Container.Bind<PlayerTools>().AsSingle().NonLazy();
+        Container.Bind<PlayerReturner>().AsSingle().WithArguments(_safePlayerTransform.position).NonLazy();
 
         CultureFactoriesInstaller.Install(Container);
     }

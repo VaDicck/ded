@@ -4101,6 +4101,10 @@ PrefabInstance:
       propertyPath: _carrotCultureConfig
       value: 
       objectReference: {fileID: 11400000, guid: 68ef5c2c810dfa54fa49d07da0639c44, type: 2}
+    - target: {fileID: 850242550806946231, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
+      propertyPath: _safePlayerTransform
+      value: 
+      objectReference: {fileID: 1367703700}
     - target: {fileID: 3685624618046668789, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
       propertyPath: m_Name
       value: GameplaySceneContext
