@@ -9,6 +9,7 @@ public class InputController
     public event Action ReloadPressed;
     public event Action InteractPressed;
     public event Action BackPressed;
+    public event Action RadialMenuPressed;
     public event Action NextWeapon;
     public event Action RemoveWeapon;
     

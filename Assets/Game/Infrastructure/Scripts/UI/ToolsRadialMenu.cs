@@ -1,13 +1,16 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 public class ToolsRadialMenu : MonoBehaviour
 {
-    [SerializeField] private List<Image> _elements;
+    [SerializeField] private List<SerializedPair<ToolsRadialMenuElement, int>> _elementsWithWeights;
     
     private InputController _inputController;
+    private SerializedPair<ToolsRadialMenuElement, int> _selectedElement;
+    private List<ElementRange> _elementRanges;
+    private bool _isInitialized;
     
     [Inject]
     private void Initialize(InputController inputController)
@@ -18,19 +21,106 @@ public class ToolsRadialMenu : MonoBehaviour
     private void Start()
     {
         _inputController.SwitchToUi();
+        InitializeElementRanges();
+        PositionElements();
+        _isInitialized = true;
     }
     
     private void Update()
     {
+        if (!_isInitialized) return;
+        
         Vector2 direction = _inputController.MousePosition - new Vector2(transform.position.x, transform.position.y);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         
-        angle = (angle + 90 + 360) % 360; 
+        angle = (angle + 90 + 360) % 360;
+
+        _selectedElement = GetElementByAngle(angle);
         
-        int element = (int) (angle / (360f / _elements.Count));
-        print($"{angle} {element}");
+
+        foreach (var element in _elementsWithWeights)
+        {
+            element.Key.Deselect();
+        }
         
-        _elements.ForEach(x => x.transform.localScale = Vector3.one);
-        _elements[element].transform.localScale = Vector3.one * 1.5f;
+        if (_selectedElement != null)
+        {
+            _selectedElement.Key.Select();
+        }
+    }
+    
+    private void InitializeElementRanges()
+    {
+        _elementRanges = new List<ElementRange>();
+        float currentStartAngle = 0f;
+        
+        int totalWeight = _elementsWithWeights.Sum(x => x.Value);
+        
+        foreach (var element in _elementsWithWeights)
+        {
+            float elementAngle = (360f * element.Value) / totalWeight;
+            
+            _elementRanges.Add(new ElementRange
+            {
+                ElementIndex = _elementsWithWeights.IndexOf(element),
+                StartAngle = currentStartAngle,
+                EndAngle = currentStartAngle + elementAngle
+            });
+            
+            currentStartAngle += elementAngle;
+        }
+    }
+    
+    private SerializedPair<ToolsRadialMenuElement, int> GetElementByAngle(float angle)
+    {
+        for (int i = 0; i < _elementRanges.Count; i++)
+        {
+            if (angle >= _elementRanges[i].StartAngle && angle < _elementRanges[i].EndAngle)
+            {
+                return _elementsWithWeights[_elementRanges[i].ElementIndex];
+            }
+        }
+        
+        return null;
+    }
+    
+    private void PositionElements()
+    {
+        float radius = GetComponent<RectTransform>().rect.width / 2f;
+        
+        for (int i = 0; i < _elementRanges.Count; i++)
+        {
+            var range = _elementRanges[i];
+            var element = _elementsWithWeights[range.ElementIndex].Key;
+
+            float centerAngle = range.StartAngle + (range.EndAngle - range.StartAngle) / 2f;
+            float angleRad = centerAngle * Mathf.Deg2Rad;
+
+            Vector3 position = new Vector3(
+                Mathf.Cos(angleRad) * radius,
+                Mathf.Sin(angleRad) * radius,
+                0
+            );
+            
+            element.transform.localPosition = position;
+
+            element.transform.localRotation = Quaternion.Euler(0, 0, centerAngle - 90);
+        }
+    }
+    
+    private void SelectCurrentTool()
+    {
+        if (_selectedElement != null)
+        {
+            _selectedElement.Key.ApplyTool();
+            gameObject.SetActive(false);
+        }
+    }
+
+    private class ElementRange
+    {
+        public int ElementIndex;
+        public float StartAngle;
+        public float EndAngle;
     }
 }
