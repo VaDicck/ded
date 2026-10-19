@@ -60,6 +60,7 @@ public class InputController
         _playerInputActions.Player.Interact.performed += _ => InteractPressed?.Invoke();
         _playerInputActions.Player.NextWeapon.performed += _ => NextWeapon?.Invoke();
         _playerInputActions.Player.RemoveWeapon.performed += _ => RemoveWeapon?.Invoke();
+        _playerInputActions.Player.Escape.performed += _ => BackPressed?.Invoke();
         _playerInputActions.UI.Back.performed += _ => BackPressed?.Invoke();
     }
 }
