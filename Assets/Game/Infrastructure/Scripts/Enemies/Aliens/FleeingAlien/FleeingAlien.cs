@@ -81,6 +81,7 @@ public class FleeingAlien : Alien<IFleeingAlienState>
         _stateMachine.GetState<IdleFleeingAlienState>().BedSelected 
             += (Bed bed) =>
             {
+                _animator.SetTrigger("Run");
                 _stateMachine.GetState<RunToBedFleeingAlienState>().SetBed(bed);
                 _stateMachine.SetState<RunToBedFleeingAlienState>();
             };
@@ -88,12 +89,14 @@ public class FleeingAlien : Alien<IFleeingAlienState>
         _stateMachine.GetState<IdleFleeingAlienState>().BedNotSelected
             += () =>
             {
+                _animator.SetTrigger("Run");
                 _stateMachine.SetState<RunToSpawnFleeingAlienState>();
             };
 
         _stateMachine.GetState<RunToBedFleeingAlienState>().Performed 
             += (Bed bed) =>
             {
+                _animator.SetTrigger("Digging");
                 _stateMachine.GetState<DiggingBedFleeingAlienState>().SetBed(bed);
                 _stateMachine.SetState<DiggingBedFleeingAlienState>();
             };
@@ -107,6 +110,7 @@ public class FleeingAlien : Alien<IFleeingAlienState>
         _stateMachine.GetState<RunToSpawnFleeingAlienState>().Performed
             += () =>
             {
+                _animator.SetTrigger("Run");
                 Die();
             };
 
