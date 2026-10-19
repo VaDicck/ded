@@ -6,6 +6,7 @@ public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] private int _maxCountPatron = 2;
     [SerializeField] private float _fireRate = 1f;
+    [SerializeField] protected Animator _animator;
     private int _currentCountPatron;
     private float _lastShotTime;
     
@@ -48,10 +49,12 @@ public abstract class Weapon : MonoBehaviour
     
     public void Equip()
     {
+        Show();
     }
 
     public void Unequip()
     {
+        Hide();
     }
 
     private void ReleasePatron()
@@ -66,6 +69,10 @@ public abstract class Weapon : MonoBehaviour
             }
         }
     }
+
+    protected abstract void Hide();
+    
+    protected abstract void Show();
     
     protected abstract List<RaycastHit> RaycastTarget();
 
