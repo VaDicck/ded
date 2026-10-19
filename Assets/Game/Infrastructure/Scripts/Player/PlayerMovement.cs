@@ -33,9 +33,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _velocity;
 
     [Inject]
-    private void Init(InputController inputController)
+    private void Init(InputController inputController, PlayerReturner returner)
     {
         _inputController = inputController;
+        returner.ReturnOnSafe += ReturnOnSafe;
     }
     
     private void Awake()
@@ -103,6 +104,19 @@ public class PlayerMovement : MonoBehaviour
         _velocity = Vector3.MoveTowards(_velocity, movement, _acceleration * Time.deltaTime);
 
         _characterController.SimpleMove(_velocity);
+    }
+
+    private void ReturnOnSafe(Vector3 position)
+    {
+        _characterController.enabled = false;
+
+        transform.position = position;
+        
+        _verticalVelocity = 0;
+        _velocity = Vector3.zero;
+        _currentSpeed = 0;
+        
+        _characterController.enabled = true;
     }
 
     private void Zoom()
