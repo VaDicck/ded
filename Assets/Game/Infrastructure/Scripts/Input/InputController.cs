@@ -9,7 +9,7 @@ public class InputController
     public event Action ReloadPressed;
     public event Action InteractPressed;
     public event Action BackPressed;
-    public event Action RadialMenuPressed;
+    public event Action RadialMenuCanceled;
     public event Action NextWeapon;
     public event Action RemoveWeapon;
     
@@ -58,9 +58,11 @@ public class InputController
         _playerInputActions.Player.Zoom.canceled += _ => ZoomFinished?.Invoke();
         _playerInputActions.Player.Reload.performed += _ => ReloadPressed?.Invoke();
         _playerInputActions.Player.Interact.performed += _ => InteractPressed?.Invoke();
-        _playerInputActions.Player.NextWeapon.performed += _ => NextWeapon?.Invoke();
+        _playerInputActions.Player.OpenRadialMenu.performed += _ => NextWeapon?.Invoke();
         _playerInputActions.Player.RemoveWeapon.performed += _ => RemoveWeapon?.Invoke();
         _playerInputActions.Player.Escape.performed += _ => BackPressed?.Invoke();
+        
         _playerInputActions.UI.Back.performed += _ => BackPressed?.Invoke();
+        _playerInputActions.UI.RadialMenu.canceled += _ => RadialMenuCanceled?.Invoke();
     }
 }

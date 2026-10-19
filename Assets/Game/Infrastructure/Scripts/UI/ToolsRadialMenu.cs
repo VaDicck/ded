@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5,12 +6,11 @@ using Zenject;
 
 public class ToolsRadialMenu : MonoBehaviour
 {
-    [SerializeField] private List<SerializedPair<ToolsRadialMenuElement, int>> _elementsWithWeights;
+    [SerializeField] private List<SerializedPair<ToolsRadialMenuElement, float>> _elementsWithWeights;
     
     private InputController _inputController;
-    private SerializedPair<ToolsRadialMenuElement, int> _selectedElement;
+    private SerializedPair<ToolsRadialMenuElement, float> _selectedElement;
     private List<ElementRange> _elementRanges;
-    private bool _isInitialized;
     
     [Inject]
     private void Initialize(InputController inputController)
@@ -23,13 +23,12 @@ public class ToolsRadialMenu : MonoBehaviour
         _inputController.SwitchToUi();
         InitializeElementRanges();
         PositionElements();
-        _isInitialized = true;
+
+        _inputController.RadialMenuCanceled += SelectCurrentTool;
     }
     
     private void Update()
     {
-        if (!_isInitialized) return;
-        
         Vector2 direction = _inputController.MousePosition - new Vector2(transform.position.x, transform.position.y);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         
@@ -54,7 +53,7 @@ public class ToolsRadialMenu : MonoBehaviour
         _elementRanges = new List<ElementRange>();
         float currentStartAngle = 0f;
         
-        int totalWeight = _elementsWithWeights.Sum(x => x.Value);
+        float totalWeight = _elementsWithWeights.Sum(x => x.Value);
         
         foreach (var element in _elementsWithWeights)
         {
@@ -71,7 +70,7 @@ public class ToolsRadialMenu : MonoBehaviour
         }
     }
     
-    private SerializedPair<ToolsRadialMenuElement, int> GetElementByAngle(float angle)
+    private SerializedPair<ToolsRadialMenuElement, float> GetElementByAngle(float angle)
     {
         for (int i = 0; i < _elementRanges.Count; i++)
         {
@@ -122,5 +121,10 @@ public class ToolsRadialMenu : MonoBehaviour
         public int ElementIndex;
         public float StartAngle;
         public float EndAngle;
+    }
+
+    private void OnDestroy()
+    {
+        _inputController.RadialMenuCanceled -= SelectCurrentTool;
     }
 }
