@@ -86,7 +86,11 @@ public class PlayerWeapons : MonoBehaviour
     
     private void Shot()
     {
-        _currentWeapon?.Shoot();
+        if(_currentWeapon == null)
+            return;
+        
+        if(_currentWeapon.Shoot())
+            _animatorHand.SetTrigger("Fire");
     }
 
     private void UpdateZoom()
@@ -112,6 +116,7 @@ public class PlayerWeapons : MonoBehaviour
 
     private void Reload()
     {
+        _animatorHand.SetTrigger("Reload");
         _currentWeapon?.Reload();
     }
 

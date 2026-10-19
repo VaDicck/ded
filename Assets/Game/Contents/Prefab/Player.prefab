@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d425e7e7ac84f469a5d346bff40c0b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapons
-  _weaponBehaviour: {fileID: 0}
+  _weaponBehaviour: {fileID: 22034075125404106}
   _cinemachineCamera: {fileID: 2488406409111001338}
   _crosshair: {fileID: 0}
   _animatorHand: {fileID: 8931445173760385191}
@@ -534,8 +534,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dbad3e2616c7dd4586ad5a3eab9d1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun
-  _maxCountPatron: 2
-  _fireRate: 1
+  _maxCountPatron: 6
+  _fireRate: 1.6
   _animator: {fileID: 7882358799632654895}
   _reloadTime: 2
   _pelletDamage: 12
