@@ -7250,17 +7250,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 794db74189421a94f93870834e773eaa, type: 3}
   m_PrefabInstance: {fileID: 1465477117}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &655034346 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 22034075125404106, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-  m_PrefabInstance: {fileID: 1029258960}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dbad3e2616c7dd4586ad5a3eab9d1d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Shotgun
 --- !u!1001 &672772368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11475,18 +11464,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 22034075125404106, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      propertyPath: _fireRate
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 22034075125404106, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      propertyPath: _maxCountPatron
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 675646410499458308, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1146625480943203812, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: m_Name
       value: Player
@@ -11495,14 +11472,6 @@ PrefabInstance:
       propertyPath: _crosshair
       value: 
       objectReference: {fileID: 280935576}
-    - target: {fileID: 2918627911804522192, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      propertyPath: _weaponBehaviour
-      value: 
-      objectReference: {fileID: 655034346}
-    - target: {fileID: 3515129778242511599, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8140115831517907385, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.015776

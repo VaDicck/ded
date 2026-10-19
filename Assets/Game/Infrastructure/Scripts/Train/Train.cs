@@ -6,16 +6,16 @@ public class Train : MonoBehaviour
 {
     [SerializeField] private List<Carriage> _carriages;
     [SerializeField] private Animator _animator;
-    
+
     private DayCycleService _dayCycleService;
     private QuotaService _quotaService;
-    
+
     [Inject]
     private void Init(DayCycleService dayCycle)
     {
         _dayCycleService = dayCycle;
     }
-    
+
     private void Awake()
     {
         _dayCycleService.DayStarted += Arrive;
@@ -32,19 +32,22 @@ public class Train : MonoBehaviour
     [ContextMenu("Train Leave")]
     private void Leave()
     {
-        _animator.SetBool("Leave", true);
+        _animator.SetTrigger("Leave");
+        
+        _animator.SetTrigger("Moving");
         this.Log("Train Leave");
     }
 
-    private void AnimationLeaveEnd()
+    private void Arrived()
     {
-        _animator.SetBool("Leave", false);
-        Hide();
-        this.Log("Train Leave");
+        _animator.SetTrigger("NotMoving");
     }
 
-    private void Hide() => gameObject.SetActive(false);
-
+    private void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+    
     private void Show()
     {
         gameObject.SetActive(true);
