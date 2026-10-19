@@ -188,7 +188,6 @@ MonoBehaviour:
   _weaponBehaviour: {fileID: 2228817970919938731}
   _cinemachineCamera: {fileID: 2488406409111001338}
   _crosshair: {fileID: 0}
-  _animatorHand: {fileID: 8931445173760385191}
   _zoomFOV: 40
   _zoomSpeed: 10
 --- !u!114 &2228817970919938731
@@ -206,6 +205,7 @@ MonoBehaviour:
   _maxCountPatron: 6
   _fireRate: 1.6
   _animator: {fileID: 7882358799632654895}
+  _animatorHand: {fileID: 8931445173760385191}
   _reloadTime: 2
   _pelletDamage: 12
   _pelletCount: 8
