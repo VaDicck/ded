@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &772288263158885988
 Transform:
   m_ObjectHideFlags: 0
@@ -526,6 +526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Loco_Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 86238a1b1c5076d44b0f309e585201d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -817,6 +821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Loco_Platform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 86238a1b1c5076d44b0f309e585201d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -959,6 +967,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 86238a1b1c5076d44b0f309e585201d2, type: 3}
       propertyPath: m_Name
       value: Loco_Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 86238a1b1c5076d44b0f309e585201d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
