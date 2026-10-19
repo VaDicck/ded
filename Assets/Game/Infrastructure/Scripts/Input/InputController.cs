@@ -15,6 +15,8 @@ public class InputController
     public Vector2 MoveDirection => _playerInputActions.Player.Move.ReadValue<Vector2>();
     public bool SprintPressed => _playerInputActions.Player.Sprint.IsInProgress();
     
+    public Vector2 MousePosition => _playerInputActions.UI.MousePosition.ReadValue<Vector2>();
+    
     private PlayerInputActions _playerInputActions;
     
     public InputController()
