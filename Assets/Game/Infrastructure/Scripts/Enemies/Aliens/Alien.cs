@@ -5,6 +5,7 @@ public abstract class Alien<TState> : MonoBehaviour, IDamageable, IAlien where T
 { 
     [SerializeField] protected NavMeshAgent _navMeshAgent;
     [SerializeField] protected float _health = 50f;
+    [SerializeField] protected Animator _animator;
     
     protected StateMachine<TState> _stateMachine;
     

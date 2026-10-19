@@ -9,7 +9,10 @@ public class DayCycleService : ITickable
     public event Action NightStarted;
     public event Action NightEnded;
 
+    public bool IsDay => _isDay;
+
     private readonly float _dayLength;
+    private readonly float _nightLength;
 
     private float _time;
     private bool _isDay;
