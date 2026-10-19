@@ -5,14 +5,14 @@ using Random = System.Random;
 public abstract class Culture
 {
     public event Action Collected;
-    
+
     public Range DropAmount => _config.DropAmount;
-    public GameObject Prefab => _config.Prefab;
+    public CultureConfig CultureConfig => _config;
+    public bool IsGrown { get; protected set; }
     
     public abstract CultureType Type { get; }
     public int Count => _count;
     
-    [SerializeField] protected bool IsGrown = true;
     
     private readonly PlayerCultures _playerCultures;
     private readonly DayCycleService _dayCycleService;
@@ -20,7 +20,9 @@ public abstract class Culture
     
     private int _count;
 
-    private float _timerCollected = 30f;
+    private float _timerCollected = 6f;
+
+    private bool _isPoured = false;
 
     protected Culture(CultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
     {
@@ -32,13 +34,27 @@ public abstract class Culture
 
     protected virtual void OnDayStarted()
     {
+        if (!_isPoured)
+            return;
+
         IsGrown = true;
     }
     
+    public void UseTool(ToolType toolType)
+    {
+        switch (toolType)
+        {
+            case ToolType.Bailer:
+                _isPoured = true;
+                break;
+        }
+    }
+
     public void Collect()
     {
-        Debug.Log(IsGrown);
-        
+        if (_isPoured == false)
+            return;
+
         if (IsGrown == false)
             return;
         

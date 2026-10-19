@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f21c114fcd4c5459be1ddf8d967c71, type: 3}
+  m_Name: TomatoCultureConfig
+  m_EditorClassIdentifier: Assembly-CSharp::TomatoCultureConfig
+  <DropAmount>k__BackingField:
+    _min: 5
+    _max: 6
+  <Step1Prefab>k__BackingField: {fileID: 919132149155446097, guid: 9ba6cf6ae7cf58c44bb3acf992d1c78d, type: 3}
+  <Step2Prefab>k__BackingField: {fileID: 919132149155446097, guid: d598007daa4080943866049b7e875369, type: 3}
+  <Step3Prefab>k__BackingField: {fileID: 919132149155446097, guid: c7ea8502c6fcfee458ff54a509a7e016, type: 3}

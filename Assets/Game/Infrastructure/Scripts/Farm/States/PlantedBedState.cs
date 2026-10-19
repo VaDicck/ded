@@ -1,19 +1,21 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class PlantedBedState : IBedState
 {
     public event Action Performed;
 
-    public bool IsInteractable => true;
-    public bool IsUsable => false;
+    public bool IsInteractable => _culture.IsGrown;
+    public bool IsUsable => _culture.IsGrown == false;
     
     public Culture Culture => _culture;
 
     private Culture _culture;
     
     private GameObject _visualState;
+    private GameObject _prefab;
 
     public PlantedBedState(GameObject visualState)
     {
@@ -24,6 +26,8 @@ public class PlantedBedState : IBedState
     {
         _culture = culture;
         _culture.Collected += OnCollected;
+        _prefab = Object.Instantiate(_culture.CultureConfig.Step1Prefab, _visualState.transform);
+        this.Log("hhvmb");
     }
 
     public UniTask Interact()
@@ -43,7 +47,9 @@ public class PlantedBedState : IBedState
     {
         if (_culture != null)
             _culture.Collected -= OnCollected;
-        
+
+        Object.Destroy(_prefab);
+
         ActivateVisualState(false);
     }
 

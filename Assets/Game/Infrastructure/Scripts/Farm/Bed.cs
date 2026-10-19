@@ -1,9 +1,12 @@
+using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
 public class Bed : MonoBehaviour, IInteractable
 {
+    public event Action UpdatePlantedStateBeds;
+    
     [Header("Visual State")] 
     [SerializeField] private GameObject _closedState;
     [SerializeField] private GameObject _rawState;
@@ -74,8 +77,15 @@ public class Bed : MonoBehaviour, IInteractable
             _stateMachine.GetState<PlantedBedState>().SetCulture(culture);
             
             _stateMachine.SetState<PlantedBedState>();
-            _stateMachine.GetState<PlantedBedState>();
+            
+            UpdatePlantedStateBeds?.Invoke();
         };
-        _stateMachine.GetState<PlantedBedState>().Performed += _stateMachine.SetState<RawBedState>;
+        
+        _stateMachine.GetState<PlantedBedState>().Performed += () =>
+        {
+            _stateMachine.SetState<RawBedState>();
+            
+            UpdatePlantedStateBeds?.Invoke();
+        };
     }
 }

@@ -15,4 +15,6 @@ MonoBehaviour:
   <DropAmount>k__BackingField:
     _min: 5
     _max: 7
-  <Prefab>k__BackingField: {fileID: 919132149155446097, guid: afc6851602ed4214c8ad2712afc7128e, type: 3}
+  <Step1Prefab>k__BackingField: {fileID: 919132149155446097, guid: 2c80dd154d416c74ca824239beaab702, type: 3}
+  <Step2Prefab>k__BackingField: {fileID: 919132149155446097, guid: e957a1de864ba524badb041ade21fc5f, type: 3}
+  <Step3Prefab>k__BackingField: {fileID: 919132149155446097, guid: 52071af7d556df54a9821fb23f7c339f, type: 3}

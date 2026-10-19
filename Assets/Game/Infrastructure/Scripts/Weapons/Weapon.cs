@@ -6,6 +6,7 @@ public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] private int _maxCountPatron = 2;
     [SerializeField] private float _fireRate = 1f;
+    [SerializeField] protected Animator _animator;
     private int _currentCountPatron;
     private float _lastShotTime;
     
@@ -20,38 +21,45 @@ public abstract class Weapon : MonoBehaviour
         _lastShotTime = Time.time;
     }
     
-    public void Shoot()
+    public bool Shoot()
     {
         if (_currentCountPatron < 1)
         {
             Reload();
-            return;
+            return false;
         }
 
-        if (!(Time.time - _lastShotTime >= 1 / _fireRate)) 
-            return;
+        if (!(Time.time - _lastShotTime >= _fireRate)) 
+            return false;
+        
+        _animator.SetTrigger("Shot");
         
         ReleasePatron();
 
         _currentCountPatron--;
             
         _lastShotTime = Time.time;
+        
+        return true;
     }
     
     public void Reload()
     {
         if(_reloadCoroutine == null)
         {
+            _animator.SetTrigger("Reload");
             _reloadCoroutine = StartCoroutine(ReloadRoutine());
         }
     }
     
     public void Equip()
     {
+        Show();
     }
 
     public void Unequip()
     {
+        Hide();
     }
 
     private void ReleasePatron()
@@ -66,6 +74,10 @@ public abstract class Weapon : MonoBehaviour
             }
         }
     }
+
+    protected abstract void Hide();
+    
+    protected abstract void Show();
     
     protected abstract List<RaycastHit> RaycastTarget();
 

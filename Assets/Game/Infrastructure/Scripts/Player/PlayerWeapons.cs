@@ -10,6 +10,7 @@ public class PlayerWeapons : MonoBehaviour
     [SerializeField] private MonoBehaviour _weaponBehaviour;
     [SerializeField] private CinemachineCamera _cinemachineCamera;
     [SerializeField] private Crosshair _crosshair;
+    [SerializeField] private Animator _animatorHand;
     
     [Header("Zoom")]
     [SerializeField] private float _zoomFOV = 40f;
@@ -40,12 +41,14 @@ public class PlayerWeapons : MonoBehaviour
     
     private void Start()
     {
-        _inputController.ShootPressed += Shoot;
+        _inputController.ShootPressed += Shot;
         _inputController.ZoomStarted += StartZoom;
         _inputController.ZoomFinished += StopZoom;
         _inputController.ReloadPressed += Reload;
         _inputController.NextWeapon += EquipWeapon;
         _inputController.RemoveWeapon += UnequipWeapon;
+
+        HideHand();
     }
     
     private void Update()
@@ -56,12 +59,15 @@ public class PlayerWeapons : MonoBehaviour
     private void EquipWeapon()
     {
         _crosshair.Show();
-        
-        if(_currentWeapon == _weapon)
-            return;
-        
-        _currentWeapon?.Unequip();
 
+        if (_currentWeapon == _weapon)
+        {
+            this.LogWarning("Have current weapon");
+            return;
+        }
+
+        ShowHand();
+        
         _currentWeapon = _weapon;
         _currentWeapon.Equip();
     }
@@ -70,15 +76,21 @@ public class PlayerWeapons : MonoBehaviour
     {
         _crosshair.Hide();
         
+        HideHand();
+        
         StopZoom();
         
         _currentWeapon?.Unequip();
         _currentWeapon = null;
     }
     
-    private void Shoot()
+    private void Shot()
     {
-        _currentWeapon?.Shoot();
+        if(_currentWeapon == null)
+            return;
+        
+        if(_currentWeapon.Shoot())
+            _animatorHand.SetTrigger("Fire");
     }
 
     private void UpdateZoom()
@@ -104,6 +116,17 @@ public class PlayerWeapons : MonoBehaviour
 
     private void Reload()
     {
+        _animatorHand.SetTrigger("Reload");
         _currentWeapon?.Reload();
-    } 
+    }
+
+    private void HideHand()
+    {
+        _animatorHand.gameObject.SetActive(false);
+    }    
+    
+    private void ShowHand()
+    {
+        _animatorHand.gameObject.SetActive(true);
+    }
 }

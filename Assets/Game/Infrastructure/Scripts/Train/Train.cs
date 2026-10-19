@@ -5,36 +5,49 @@ using Zenject;
 public class Train : MonoBehaviour
 {
     [SerializeField] private List<Carriage> _carriages;
-    
+    [SerializeField] private Animator _animator;
+
     private DayCycleService _dayCycleService;
     private QuotaService _quotaService;
-    
+
     [Inject]
     private void Init(DayCycleService dayCycle)
     {
         _dayCycleService = dayCycle;
     }
-    
+
     private void Awake()
     {
         _dayCycleService.DayStarted += Arrive;
         _dayCycleService.NightStarted += Leave;
     }
 
+    [ContextMenu("Train Arrive")]
     private void Arrive()
     {
         Show();
         this.Log("Train arrive");
     }
 
+    [ContextMenu("Train Leave")]
     private void Leave()
     {
-        Hide();
+        _animator.SetTrigger("Leave");
+        
+        _animator.SetTrigger("Moving");
         this.Log("Train Leave");
     }
 
-    private void Hide() => gameObject.SetActive(false);
+    private void Arrived()
+    {
+        _animator.SetTrigger("NotMoving");
+    }
 
+    private void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+    
     private void Show()
     {
         gameObject.SetActive(true);

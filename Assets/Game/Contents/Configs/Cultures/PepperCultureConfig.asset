@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b63a0879781d154f9a9e280906bf923, type: 3}
+  m_Name: PepperCultureConfig
+  m_EditorClassIdentifier: Assembly-CSharp::PepperCultureConfig
+  <DropAmount>k__BackingField:
+    _min: 6
+    _max: 6
+  <Step1Prefab>k__BackingField: {fileID: 919132149155446097, guid: 3f47a851abb1b354c9c2fa2d060c1cc4, type: 3}
+  <Step2Prefab>k__BackingField: {fileID: 919132149155446097, guid: b654b5533ea9ddb4aafc8dca61e42077, type: 3}
+  <Step3Prefab>k__BackingField: {fileID: 919132149155446097, guid: e0945e7d07ff2774b8e78e36d46a36e0, type: 3}

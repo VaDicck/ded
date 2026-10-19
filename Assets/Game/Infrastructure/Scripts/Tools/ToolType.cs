@@ -3,4 +3,5 @@
     Shovel,
     Axe,
     Pickaxe,
+    Bailer
 }

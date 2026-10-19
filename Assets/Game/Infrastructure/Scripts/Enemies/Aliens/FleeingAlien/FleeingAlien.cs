@@ -71,7 +71,7 @@ public class FleeingAlien : Alien<IFleeingAlienState>
     protected override void AddStates()
     {
         _stateMachine = new StateMachine<IFleeingAlienState>(new IdleFleeingAlienState(_bedService));
-        _stateMachine.AddState<RunToBedFleeingAlienState>(new RunToBedFleeingAlienState(_navMeshAgent));
+        _stateMachine.AddState<RunToBedFleeingAlienState>(new RunToBedFleeingAlienState(_navMeshAgent, _bedService));
         _stateMachine.AddState<DiggingBedFleeingAlienState>(new DiggingBedFleeingAlienState(_bedService));
         _stateMachine.AddState<RunToSpawnFleeingAlienState>(new RunToSpawnFleeingAlienState(_navMeshAgent, _spawnPoint));
     }

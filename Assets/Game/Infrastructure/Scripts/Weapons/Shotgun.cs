@@ -9,6 +9,17 @@ public class Shotgun : Weapon
     [SerializeField] private float _spreadAngle = 10f;
     [SerializeField] private float _effectiveRange = 15f;
 
+    protected override void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
+    protected override void Show()
+    {
+        this.Log("Showing Shotgun");
+        gameObject.SetActive(true);
+    }
+
     protected override List<RaycastHit> RaycastTarget()
     {
         List<RaycastHit> hits = new List<RaycastHit>();
