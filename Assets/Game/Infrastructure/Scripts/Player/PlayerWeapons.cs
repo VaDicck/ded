@@ -10,11 +10,20 @@ public class PlayerWeapons : MonoBehaviour
     
     [SerializeField] private MonoBehaviour _weaponBehaviour;
     [SerializeField] private CinemachineCamera _cinemachineCamera;
+    [SerializeField] private CinemachinePanTilt _panTilt;
     [SerializeField] private Crosshair _crosshair;
     
     [Header("Zoom")]
     [SerializeField] private float _zoomFOV = 40f;
     [SerializeField] private float _zoomSpeed = 10f;
+    
+    [Header("Recoil")]
+    [SerializeField] private float _recoilForce = 1f;
+    [SerializeField] private float _recoilReturnSpeed = 5f;
+
+    private float _recoilCurrent;
+    private float _recoilTarget;
+    
     private float _normalFOV;
     private float _currentFOV;
     
@@ -53,7 +62,10 @@ public class PlayerWeapons : MonoBehaviour
     
     private void Update()
     {
+        if (_currentWeapon == null) return;
+        
         UpdateZoom();
+        UpdateRecoil();
     }
 
     private void OnToolChanged(ToolType? toolType)
@@ -68,6 +80,22 @@ public class PlayerWeapons : MonoBehaviour
             if (_currentWeapon != null)
                 UnequipWeapon();
         }
+    }
+    
+    private void UpdateRecoil()
+    {
+        _recoilCurrent = Mathf.Lerp(_recoilCurrent, _recoilTarget, Time.deltaTime * 20f);
+
+        _recoilTarget = Mathf.Lerp(_recoilTarget, 0f, Time.deltaTime * _recoilReturnSpeed);
+
+        ApplyRecoil();
+    }
+    
+    private void ApplyRecoil() 
+    {
+        var tilt = _panTilt.TiltAxis;
+        tilt.Value -= _recoilCurrent;
+        _panTilt.TiltAxis = tilt;
     }
     
     private void EquipWeapon()
@@ -96,7 +124,15 @@ public class PlayerWeapons : MonoBehaviour
     
     private void Shot()
     {
-        _currentWeapon?.Shoot();
+        if (_currentWeapon?.Shoot() == true)
+        {
+            AddRecoil();
+        }
+    }
+    
+    private void AddRecoil()
+    {
+        _recoilTarget += _recoilForce;
     }
 
     private void UpdateZoom()
