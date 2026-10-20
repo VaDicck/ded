@@ -5899,7 +5899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &497948149
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11591,6 +11591,10 @@ PrefabInstance:
     - target: {fileID: 1146625480943203812, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2228817970919938731, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _reloadTimeOnePistol
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2918627911804522192, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: _crosshair
