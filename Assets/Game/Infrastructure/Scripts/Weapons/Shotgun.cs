@@ -70,7 +70,7 @@ public class Shotgun : Weapon
     protected override IEnumerator ReloadRoutine()
     {
         yield return new WaitForSeconds(1f);
-        while (_currentCountPatron < _maxCountPatron)
+        while (_currentCountPatron.CurrentValue < _maxCountPatron)
         {
             _animator.SetTrigger("AddPatron");
             _animatorHand.SetTrigger("AddPatron");
@@ -78,7 +78,7 @@ public class Shotgun : Weapon
             yield return new WaitForSeconds(_reloadTimeOnePistol);
             
             if (_isReloading)
-                _currentCountPatron++;
+                _currentCountPatron.Value++;
         }
         
         _reloadCoroutine = null;

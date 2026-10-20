@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using R3;
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
+    public int MaxCountPatron => _maxCountPatron; 
+    public ReadOnlyReactiveProperty<int> CurrentCountPatron => _currentCountPatron;
+    
     [SerializeField] protected int _maxCountPatron = 6;
     [SerializeField] private float _fireRate = 1f;
     [SerializeField] protected Animator _animator;
     [SerializeField] protected Animator _animatorHand;
-    protected int _currentCountPatron;
+    protected ReactiveProperty<int> _currentCountPatron = new(0);
     private float _lastShotTime;
     
     protected Coroutine _reloadCoroutine;
@@ -16,13 +20,13 @@ public abstract class Weapon : MonoBehaviour
 
     private void Start()
     {
-        _currentCountPatron = _maxCountPatron;
+        _currentCountPatron.Value = _maxCountPatron;
         _lastShotTime = Time.time;
     }
     
     public bool Shoot()
     {
-        if (_currentCountPatron < 1)
+        if (_currentCountPatron.CurrentValue < 1)
         {
             Reload();
             return false;
@@ -41,7 +45,7 @@ public abstract class Weapon : MonoBehaviour
         
         ReleasePatron();
 
-        _currentCountPatron--;
+        _currentCountPatron.Value--;
             
         _lastShotTime = Time.time;
         
