@@ -1,11 +1,12 @@
-﻿using Unity.Cinemachine;
+﻿using R3;
+using Unity.Cinemachine;
 using UnityEngine;
 using Zenject;
 
 public class PlayerWeapons : MonoBehaviour
 {
     public Weapon CurrentWeapon => _currentWeapon;
-    public bool IsInZoom => _isZooming;
+    public ReadOnlyReactiveProperty<bool> IsZooming => _isZooming;
     
     [SerializeField] private MonoBehaviour _weaponBehaviour;
     [SerializeField] private CinemachineCamera _cinemachineCamera;
@@ -23,7 +24,7 @@ public class PlayerWeapons : MonoBehaviour
     private Weapon _weapon;
     private Weapon _currentWeapon;
     
-    private bool _isZooming;
+    private readonly ReactiveProperty<bool> _isZooming = new(false);
 
     [Inject]
     private void Init(InputController inputController, PlayerTools playerTools)
@@ -109,13 +110,13 @@ public class PlayerWeapons : MonoBehaviour
     {
         if (_currentWeapon == null) return;
         
-        _isZooming = true;
+        _isZooming.Value = true;
         _currentFOV = _zoomFOV;
     }
     
     private void StopZoom()
     {
-        _isZooming = false;
+        _isZooming.Value = false;
         _currentFOV = _normalFOV;
     }
 
