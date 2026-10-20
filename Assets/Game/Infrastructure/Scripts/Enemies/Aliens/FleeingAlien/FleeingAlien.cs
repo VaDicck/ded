@@ -47,15 +47,22 @@ public class FleeingAlien : Alien<IFleeingAlienState>
         while (elapsed < duration)
         {
             float t = elapsed / duration;
-            
+    
             float curveT = Mathf.Sin(t * Mathf.PI); 
-            
+    
             Vector3 currentPos = Vector3.Lerp(startPos, endPos, t);
-            
             currentPos.y += curveT * jumpHeight;
-            
+    
             transform.position = currentPos;
-            
+
+            Vector3 direction = (endPos - startPos).normalized;
+
+            if (direction != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+            }
+
             elapsed += Time.deltaTime;
             yield return null;
         }
