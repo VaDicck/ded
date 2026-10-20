@@ -21,23 +21,24 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
-        _inputController.BackPressed += () =>
-        {
-            if (_isPaused)
-            {
-                Hide();
-                _inputController.SwitchToGameplay();
-            }
-            else
-            {
-                Show();
-                _inputController.SwitchToUi();
-            }
-        };
-            
+        _inputController.BackPressed += OnEscClicked;
         _stuckButton.onClick.AddListener(OnStuckButtonClicked);
 
         Hide();
+    }
+
+    private void OnEscClicked()
+    {
+        if (_isPaused)
+        {
+            Hide();
+            _inputController.SwitchToGameplay();
+        }
+        else
+        {
+            Show();
+            _inputController.SwitchToUi();
+        }
     }
 
     private void Hide()

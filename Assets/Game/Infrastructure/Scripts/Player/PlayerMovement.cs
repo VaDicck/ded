@@ -115,10 +115,6 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position = position;
         
-        _verticalVelocity = 0;
-        _velocity = Vector3.zero;
-        _currentSpeed = 0;
-        
         _characterController.enabled = true;
     }
 
