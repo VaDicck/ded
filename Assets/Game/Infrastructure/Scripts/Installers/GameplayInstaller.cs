@@ -38,6 +38,7 @@ public class GameplayInstaller : MonoInstaller
         Container.Bind<QuotaService>().AsSingle().WithArguments(0, 0).NonLazy();
         Container.Bind<PlayerTools>().AsSingle().NonLazy();
         Container.Bind<PlayerReturner>().AsSingle().WithArguments(_safePlayerTransform.position).NonLazy();
+        Container.Bind<CulturesSelection>().AsSingle().NonLazy();
 
         CultureFactoriesInstaller.Install(Container);
     }

@@ -63,13 +63,13 @@ public class QuotaService
     {
         if (_gameConfig.Quotas.Quotas.Count < quotaNumber)
         {
-            Debug.LogError($"Quota for day {quotaNumber} not found");
+            this.LogError($"Quota for day {quotaNumber} not found");
             _currentQuota = null;
             return;
         }
         
         _currentQuota = Object.Instantiate(_gameConfig.Quotas.Quotas[quotaNumber]);
         
-        Debug.Log($"Quota \"{quotaNumber}\": {_currentQuota}");
+        this.Log($"Quota \"{quotaNumber}\": {_currentQuota}");
     }
 }
