@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,9 @@ public class Shotgun : Weapon
     [SerializeField] private float _spreadAngle = 10f;
     [SerializeField] private float _effectiveRange = 15f;
     [SerializeField] private GameObject _shotgun;
+    
+    [Header("Reload")]
+    [SerializeField] private float _reloadTimeOnePistol = 4f;
 
     protected override void Hide()
     {
@@ -20,6 +24,8 @@ public class Shotgun : Weapon
     {
         _animatorHand.gameObject.SetActive(true);
         _shotgun.SetActive(true);
+        _animator.SetFloat("ReloadPistolSpeed", _reloadTimeOnePistol);
+        _animatorHand.SetFloat("ReloadPistolSpeed", _reloadTimeOnePistol);
     }
 
     protected override List<RaycastHit> RaycastTarget()
@@ -59,5 +65,26 @@ public class Shotgun : Weapon
         float damageMultiplier = distanceFactor * distanceFactor;
         
         return _pelletDamage * damageMultiplier;
+    }
+
+    protected override IEnumerator ReloadRoutine()
+    {
+        yield return new WaitForSeconds(1f);
+        while (_currentCountPatron.CurrentValue < _maxCountPatron)
+        {
+            _animator.SetTrigger("AddPatron");
+            _animatorHand.SetTrigger("AddPatron");
+            
+            yield return new WaitForSeconds(_reloadTimeOnePistol);
+            
+            if (_isReloading)
+                _currentCountPatron.Value++;
+        }
+        
+        _reloadCoroutine = null;
+        _isReloading = false;
+        
+        _animator.SetTrigger("EndReload");
+        _animatorHand.SetTrigger("EndReload");
     }
 }

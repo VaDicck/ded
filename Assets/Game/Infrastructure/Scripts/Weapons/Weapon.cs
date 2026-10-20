@@ -1,30 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using R3;
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] private int _maxCountPatron = 2;
+    public int MaxCountPatron => _maxCountPatron; 
+    public ReadOnlyReactiveProperty<int> CurrentCountPatron => _currentCountPatron;
+    
+    [SerializeField] protected int _maxCountPatron = 6;
     [SerializeField] private float _fireRate = 1f;
     [SerializeField] protected Animator _animator;
     [SerializeField] protected Animator _animatorHand;
-    private int _currentCountPatron;
+    protected ReactiveProperty<int> _currentCountPatron = new(0);
     private float _lastShotTime;
     
-    [Header("Reload")]
-    [SerializeField] private float _reloadTime;
-    
-    private Coroutine _reloadCoroutine;
+    protected Coroutine _reloadCoroutine;
+    protected bool _isReloading = false;
 
     private void Start()
     {
-        _currentCountPatron = _maxCountPatron;
+        _currentCountPatron.Value = _maxCountPatron;
         _lastShotTime = Time.time;
     }
     
     public bool Shoot()
     {
-        if (_currentCountPatron < 1)
+        if (_currentCountPatron.CurrentValue < 1)
         {
             Reload();
             return false;
@@ -33,12 +35,17 @@ public abstract class Weapon : MonoBehaviour
         if (!(Time.time - _lastShotTime >= _fireRate)) 
             return false;
         
+        if (_isReloading)
+        {
+            CancelReload();
+        }
+        
         _animator.SetTrigger("Shot");
         _animatorHand.SetTrigger("Shot");
         
         ReleasePatron();
 
-        _currentCountPatron--;
+        _currentCountPatron.Value--;
             
         _lastShotTime = Time.time;
         
@@ -49,10 +56,22 @@ public abstract class Weapon : MonoBehaviour
     {
         if(_reloadCoroutine == null)
         {
+            _isReloading = true;
             _animator.SetTrigger("StartReload");
             _animatorHand.SetTrigger("StartReload");
             _reloadCoroutine = StartCoroutine(ReloadRoutine());
         }
+    }
+    
+    public void CancelReload()
+    {
+        if (_reloadCoroutine != null)
+        {
+            StopCoroutine(_reloadCoroutine);
+            _reloadCoroutine = null;
+        }
+        
+        _isReloading = false;
     }
     
     public void Equip()
@@ -62,6 +81,7 @@ public abstract class Weapon : MonoBehaviour
 
     public void Unequip()
     {
+        CancelReload();
         Hide();
     }
 
@@ -85,13 +105,6 @@ public abstract class Weapon : MonoBehaviour
     protected abstract List<RaycastHit> RaycastTarget();
 
     protected abstract float damageCalculation(float distance);
-        
-    private IEnumerator ReloadRoutine()
-    {
-        yield return new WaitForSeconds(_reloadTime);
-        
-        _currentCountPatron =_maxCountPatron;
-        
-        _reloadCoroutine = null;
-    }
+
+    protected abstract IEnumerator ReloadRoutine();
 }
