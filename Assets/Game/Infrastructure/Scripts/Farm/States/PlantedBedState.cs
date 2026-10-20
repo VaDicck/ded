@@ -65,6 +65,7 @@ public class PlantedBedState : IBedState
         Object.Destroy(_prefab);
 
         ActivateVisualState(false);
+        _pouredVisuals.SetActive(false);
     }
 
     private void OnCollected()
