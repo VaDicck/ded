@@ -1,4 +1,5 @@
 ﻿using System;
+using R3;
 using UnityEngine;
 using Random = System.Random;
 
@@ -8,11 +9,12 @@ public abstract class Culture
 
     public Range DropAmount => _config.DropAmount;
     public CultureConfig CultureConfig => _config;
-    public bool IsGrown { get; protected set; }
+    public ReadOnlyReactiveProperty<bool> IsGrown => _isGrown;
     
     public abstract CultureType Type { get; }
     public int Count => _count;
     
+    protected readonly ReactiveProperty<bool> _isGrown = new ReactiveProperty<bool>(false);
     
     private readonly PlayerCultures _playerCultures;
     private readonly DayCycleService _dayCycleService;
@@ -37,7 +39,7 @@ public abstract class Culture
         if (!_isPoured)
             return;
 
-        IsGrown = true;
+        _isGrown.Value = true;
     }
     
     public void UseTool(ToolType toolType)
@@ -55,7 +57,7 @@ public abstract class Culture
         if (_isPoured == false)
             return;
 
-        if (IsGrown == false)
+        if (_isGrown.Value == false)
             return;
         
         this.Log($"{Type} collected");

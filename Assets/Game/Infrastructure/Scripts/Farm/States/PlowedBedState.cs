@@ -15,26 +15,39 @@ public class PlowedBedState : IBedState
     private Type _cultureType;
     
     private readonly GameObject _visualState;
-    private readonly CarrotCulture.Factory _factory; //TODO: rewrite
+    private CulturesSelection _culturesSelection;
     
-    public PlowedBedState(GameObject visualState, CarrotCulture.Factory factory)
+    public PlowedBedState(GameObject visualState, CulturesSelection culturesSelection)
     {
         _visualState = visualState;
-        _factory = factory;
+        _culturesSelection = culturesSelection;
     }
     
-    public UniTask Interact()
+    public async UniTask Interact()
     {
-        //TODO: radial menu
+        _culturesSelection.Show();
+
+        _culturesSelection.Selected += OnCultureChanged;
         
-        _culture = _factory.Create();
+        await UniTask.WhenAny(
+            UniTask.WaitUntilValueChanged(this, c => _culture),
+            UniTask.WaitUntilCanceled(_culturesSelection.CancellationToken)
+        );
         
-        Performed?.Invoke();
-        return UniTask.CompletedTask;
+        _culturesSelection.Selected -= OnCultureChanged;
+        
+        if (_culture != null)
+            Performed?.Invoke();
+    }
+
+    private void OnCultureChanged(Culture culture)
+    {
+        _culture = culture;
     }
     
     public void Enter()
     {
+        _culture = null;
         ActivateVisualState(true);
     }
 
