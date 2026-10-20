@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
-public abstract class AlienBase :  MonoBehaviour, IDamageable, IAlien
+public abstract class AlienBase :  MonoBehaviour, IDamageable
 {
     public event Action<AlienBase> Death;
     

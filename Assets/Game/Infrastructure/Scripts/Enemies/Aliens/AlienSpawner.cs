@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : IAlien
+public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : AlienBase
 {
     [SerializeField] protected List<Transform> _spawnPoints;
     [SerializeField] protected int _countAliens;
