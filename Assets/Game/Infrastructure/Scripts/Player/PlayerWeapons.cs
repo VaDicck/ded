@@ -47,7 +47,6 @@ public class PlayerWeapons : MonoBehaviour
         _inputController.ZoomStarted += StartZoom;
         _inputController.ZoomFinished += StopZoom;
         _inputController.ReloadPressed += Reload;
-        _inputController.RemoveWeapon += UnequipWeapon;
 
         _playerTools.ToolChanged += OnToolChanged;
         

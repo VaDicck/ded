@@ -8,16 +8,18 @@ public class Shotgun : Weapon
     [SerializeField] private int _pelletCount = 8;
     [SerializeField] private float _spreadAngle = 10f;
     [SerializeField] private float _effectiveRange = 15f;
+    [SerializeField] private GameObject _shotgun;
 
     protected override void Hide()
     {
-        gameObject.SetActive(false);
+        _animatorHand.gameObject.SetActive(false);
+        _shotgun.SetActive(false);
     }
 
     protected override void Show()
     {
-        this.Log("Showing Shotgun");
-        gameObject.SetActive(true);
+        _animatorHand.gameObject.SetActive(true);
+        _shotgun.SetActive(true);
     }
 
     protected override List<RaycastHit> RaycastTarget()
