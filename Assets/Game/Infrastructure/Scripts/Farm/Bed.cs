@@ -13,12 +13,16 @@ public class Bed : MonoBehaviour, IInteractable
     [SerializeField] private GameObject _plowedState;
     [SerializeField] private GameObject _plantedState;
 
+    [Header("Planted State")] 
+    [SerializeField] private GameObject _poured;
+
     public IBedState CurrentState => _stateMachine.CurrentState;
 
     public bool IsInteractable => _stateMachine.CurrentState.IsInteractable;
     public bool IsUsable => _stateMachine.CurrentState.IsUsable;
 
-    [Header("Tools")] [SerializeField] private ToolType _unlockTool;
+    [Header("Tools")] 
+    [SerializeField] private ToolType _unlockTool;
     [SerializeField] private ToolType _plowTool;
 
     private StateMachine<IBedState> _stateMachine;
@@ -48,7 +52,7 @@ public class Bed : MonoBehaviour, IInteractable
         _stateMachine = new StateMachine<IBedState>(new ClosedBedState(_unlockTool, _closedState));
         _stateMachine.AddState<RawBedState>(new RawBedState(_plowTool, _rawState));
         _stateMachine.AddState<PlowedBedState>(new PlowedBedState(_plowedState, _culturesSelection));
-        _stateMachine.AddState<PlantedBedState>(new PlantedBedState(_plantedState));
+        _stateMachine.AddState<PlantedBedState>(new PlantedBedState(_plantedState, _poured));
         
         Subscribe();
     }

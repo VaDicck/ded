@@ -79,11 +79,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c3725d3febc14478457ed647cb7d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayInstaller
-  _fleeingAlienPrefab: {fileID: 2722075800407198374, guid: 56b50cf0fdd99c5468152f7f7de478f4, type: 3}
+  _fleeingAlienPrefab: {fileID: 5463526947494390661, guid: e7fa4b3749dd3964db82073afa7a134f, type: 3}
   _flyingAlienPrefab: {fileID: 246391356805927339, guid: 3fbf0c06fb6e9f7419ccaea2a58891d3, type: 3}
   _quotaStringViewPrefab: {fileID: 3931425453679032827, guid: 1022ae23ddf48a6488789e525f81f085, type: 3}
   _countCultureStringViewPrefab: {fileID: 7930984237246999819, guid: b5bc8502a1ad8234c911d67d5a8987f5, type: 3}
   _gameConfig: {fileID: 11400000, guid: b1b1c9899fc8daa45b1d4cc1cc24f62f, type: 2}
+  _safePlayerTransform: {fileID: 0}
 --- !u!114 &5583649073785047498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,3 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CultureConfigsInstaller
   _carrotConfig: {fileID: 11400000, guid: 95f599bbc77a7d24e9f1f4282311705d, type: 2}
+  _tomatoConfig: {fileID: 11400000, guid: 023a22c5f429ae249bc4b49ffb4b3c7e, type: 2}
+  _cornConfig: {fileID: 11400000, guid: 8db5e1f133b471947ada7a6741b5be49, type: 2}
+  _pepperConfig: {fileID: 11400000, guid: 34876cfd2123388459cee88c80da9b1b, type: 2}

@@ -16,17 +16,20 @@ public class PlantedBedState : IBedState
     private Culture _culture;
     
     private GameObject _visualState;
+    private GameObject _pouredVisuals;
     private GameObject _prefab;
 
-    public PlantedBedState(GameObject visualState)
+    public PlantedBedState(GameObject visualState, GameObject pouredVisuals)
     {
         _visualState = visualState;
+        _pouredVisuals = pouredVisuals;
     }
     
     public void SetCulture(Culture culture)
     {
         _culture = culture;
         _culture.Collected += OnCollected;
+        _culture.IsPoured.Subscribe(OnPoredChanged);
         _culture.IsGrown.Subscribe(v =>
         {
             if (v) this.Log($"{_culture.Type} was grown");
@@ -39,6 +42,11 @@ public class PlantedBedState : IBedState
         _culture.Collect();
         
         return UniTask.CompletedTask;
+    }
+
+    public UniTask<bool> Use(ToolType toolType)
+    {
+        return UniTask.FromResult(_culture.UseTool(toolType));
     }
     
     public void Enter()
@@ -62,6 +70,11 @@ public class PlantedBedState : IBedState
     private void OnCollected()
     {
         Performed?.Invoke();
+    }
+
+    private void OnPoredChanged(bool value)
+    {
+        _pouredVisuals.SetActive(value);
     }
     
     private void ActivateVisualState(bool isActive)

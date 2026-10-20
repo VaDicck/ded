@@ -10,11 +10,12 @@ public abstract class Culture
     public Range DropAmount => _config.DropAmount;
     public CultureConfig CultureConfig => _config;
     public ReadOnlyReactiveProperty<bool> IsGrown => _isGrown;
+    public ReadOnlyReactiveProperty<bool> IsPoured => _isPoured;
     
     public abstract CultureType Type { get; }
     public int Count => _count;
     
-    protected readonly ReactiveProperty<bool> _isGrown = new ReactiveProperty<bool>(false);
+    private  readonly ReactiveProperty<bool> _isGrown = new(false);
     
     private readonly PlayerCultures _playerCultures;
     private readonly DayCycleService _dayCycleService;
@@ -24,7 +25,7 @@ public abstract class Culture
 
     private float _timerCollected = 6f;
 
-    private bool _isPoured = false;
+    private ReactiveProperty<bool> _isPoured = new(false);
 
     protected Culture(CultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
     {
@@ -36,25 +37,27 @@ public abstract class Culture
 
     protected virtual void OnDayStarted()
     {
-        if (!_isPoured)
+        if (!_isPoured.Value)
             return;
 
         _isGrown.Value = true;
     }
     
-    public void UseTool(ToolType toolType)
+    public bool UseTool(ToolType toolType)
     {
         switch (toolType)
         {
             case ToolType.Bailer:
-                _isPoured = true;
-                break;
+                _isPoured.Value = true;
+                return true;
         }
+
+        return false;
     }
 
     public void Collect()
     {
-        if (_isPoured == false)
+        if (_isPoured.Value == false)
             return;
 
         if (_isGrown.Value == false)

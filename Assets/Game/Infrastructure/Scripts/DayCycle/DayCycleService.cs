@@ -51,7 +51,6 @@ public class DayCycleService : ITickable
             return;
 
         _time += Time.deltaTime;
-
         if (_time >= _dayLength)
         {
             _isDay = false;
