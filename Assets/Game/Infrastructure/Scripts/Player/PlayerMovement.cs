@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Unity.Cinemachine;
 using Zenject;
+using R3;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -43,11 +44,13 @@ public class PlayerMovement : MonoBehaviour
     {
         _currentXSensitivity = _defaultXSensitivity;
         _currentYSensitivity = _defaultYSensitivity;
+        _currentSpeed = _defaultSpeed;
     }
 
     private void Start()
     {
         ApplySensitivity();
+        _playerWeapons.IsZooming.Subscribe(Zoom);
     }
 
     private void Update()
@@ -83,21 +86,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
+        float currentSpeed = _currentSpeed;
         Vector2 move = _inputController.MoveDirection;
-        _currentSpeed = _defaultSpeed;
 
         if (_inputController.SprintPressed && move.y > 0)
-            _currentSpeed = _defaultSpeed * _sprintMultiplier;
-        
-        if (_playerWeapons.IsInZoom)
-            Zoom();
+            currentSpeed *= _sprintMultiplier;
 
         if (_characterController.isGrounded && _verticalVelocity < 0)
             _verticalVelocity = 0;
 
         _verticalVelocity += -(_gravity) * Time.deltaTime;
 
-        Vector3 movement = (GetForward() * move.y + GetRight() * move.x) * _currentSpeed;
+        Vector3 movement = (GetForward() * move.y + GetRight() * move.x) * currentSpeed;
 
         movement.y = _verticalVelocity;
 
@@ -119,12 +119,20 @@ public class PlayerMovement : MonoBehaviour
         _characterController.enabled = true;
     }
 
-    private void Zoom()
+    private void Zoom(bool IsZoom)
     {
-        _currentSpeed = _zoomSpeed;
+        if (IsZoom)
+        {
+            _currentSpeed = _zoomSpeed;
         
-        SetSensitivity(_defaultXSensitivity*_zoomXSensitivityMultiplier,
-            _defaultYSensitivity*_zoomYSensitivityMultiplier);
+            SetSensitivity(_defaultXSensitivity*_zoomXSensitivityMultiplier,
+                _defaultYSensitivity*_zoomYSensitivityMultiplier);
+        }
+        else
+        {
+            _currentSpeed = _defaultSpeed;
+            ResetSensitivity();
+        }
     }
 
     private Vector3 GetForward()
