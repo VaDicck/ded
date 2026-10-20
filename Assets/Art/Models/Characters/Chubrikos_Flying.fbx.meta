@@ -3,7 +3,12 @@ guid: 640476cc493423f46ab34018e2a483ea
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chubrikos
+    second: {fileID: 2100000, guid: ffc9b27ec0449bc46a4f7af7f197ba2a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
