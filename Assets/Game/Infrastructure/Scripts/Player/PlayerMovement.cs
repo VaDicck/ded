@@ -38,6 +38,9 @@ public class PlayerMovement : MonoBehaviour
     {
         _inputController = inputController;
         returner.ReturnOnSafe += ReturnOnSafe;
+        
+        _inputController.OpenRadialMenu += () => _inputAxisController.enabled = false;
+        _inputController.RadialMenuCanceled += () => _inputAxisController.enabled = true;
     }
     
     private void Awake()
