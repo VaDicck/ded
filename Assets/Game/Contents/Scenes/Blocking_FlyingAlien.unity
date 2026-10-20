@@ -3306,17 +3306,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.75, z: 1.2}
   m_Center: {x: 0, y: 0.375, z: 0}
---- !u!114 &253156829 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8964648624758744826, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-  m_PrefabInstance: {fileID: 1820728443}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12dd9b136af14e29be0da3c3368a2572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ToolsRadialMenuElement
 --- !u!1 &254115016 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 69008c4de50c07d4483aff708551f356, type: 3}
@@ -3714,17 +3703,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b33b821aee97ece4fba56e6e68f0e13f, type: 3}
   m_PrefabInstance: {fileID: 715437940}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &320993717 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5298586829913828310, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-  m_PrefabInstance: {fileID: 1820728443}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12dd9b136af14e29be0da3c3368a2572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ToolsRadialMenuElement
 --- !u!1001 &328985792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6286,17 +6264,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0010024, y: 0.14, z: 1.2014374}
   m_Center: {x: -0.00073406094, y: 0.07, z: -0.00071868295}
---- !u!114 &545752451 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4186815687716612981, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-  m_PrefabInstance: {fileID: 1820728443}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12dd9b136af14e29be0da3c3368a2572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ToolsRadialMenuElement
 --- !u!1001 &550960781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7071,17 +7038,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 676763101}
   m_Mesh: {fileID: 4078999814494485419, guid: 71dac4da756fb61449780054a941f7d8, type: 3}
---- !u!114 &678146774 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4139744529715912429, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-  m_PrefabInstance: {fileID: 1820728443}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12dd9b136af14e29be0da3c3368a2572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ToolsRadialMenuElement
 --- !u!1001 &681818454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11628,6 +11584,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 675646410499458308, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1146625480943203812, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: m_Name
       value: Player
@@ -11636,6 +11596,10 @@ PrefabInstance:
       propertyPath: _crosshair
       value: 
       objectReference: {fileID: 1599562343}
+    - target: {fileID: 2918627911804522192, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _animatorHand
+      value: 
+      objectReference: {fileID: 1364729718}
     - target: {fileID: 8140115831517907385, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.284
@@ -14689,6 +14653,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dbf685b349105e3478eb0515eebfdf30, type: 3}
   m_PrefabInstance: {fileID: 1601125424}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1364729718 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8931445173760385191, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+  m_PrefabInstance: {fileID: 1029258960}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1365205666 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 62e1e58e1811e3441b8a60552a4b85aa, type: 3}
@@ -16820,17 +16789,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525699350}
   m_Mesh: {fileID: 7259386384482727663, guid: 2e736d2f1ac716f4391a5ca43a5f2b48, type: 3}
---- !u!114 &1525836469 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3502238940752336911, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-  m_PrefabInstance: {fileID: 1820728443}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12dd9b136af14e29be0da3c3368a2572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ToolsRadialMenuElement
 --- !u!1 &1536068594 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4504409719310791647, guid: 391e5a4e89eb8944e9384cfbed03eee0, type: 3}
@@ -19886,58 +19844,6 @@ PrefabInstance:
       propertyPath: _canvas
       value: 
       objectReference: {fileID: 480267260}
-    - target: {fileID: 2951837317994604991, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-      propertyPath: _deselectedMagnitude
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2951837317994604991, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-      propertyPath: _elementsWithWeights.Array.data[0].<Key>k__BackingField
-      value: 
-      objectReference: {fileID: 545752451}
-    - target: {fileID: 2951837317994604991, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-      propertyPath: _elementsWithWeights.Array.data[1].<Key>k__BackingField
-      value: 
-      objectReference: {fileID: 1525836469}
-    - target: {fileID: 2951837317994604991, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-      propertyPath: _elementsWithWeights.Array.data[2].<Key>k__BackingField
-      value: 
-      objectReference: {fileID: 678146774}
-    - target: {fileID: 2951837317994604991, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-      propertyPath: _elementsWithWeights.Array.data[3].<Key>k__BackingField
-      value: 
-      objectReference: {fileID: 320993717}
-    - target: {fileID: 2951837317994604991, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-      propertyPath: _elementsWithWeights.Array.data[4].<Key>k__BackingField
-      value: 
-      objectReference: {fileID: 253156829}
-    - target: {fileID: 2951837317994604991, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-      propertyPath: _elementsWithWeights.Array.data[0].<Value>k__BackingField
-      value: 62.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2951837317994604991, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-      propertyPath: _elementsWithWeights.Array.data[1].<Value>k__BackingField
-      value: 62.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2951837317994604991, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-      propertyPath: _elementsWithWeights.Array.data[2].<Value>k__BackingField
-      value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 3502238940752336911, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-      propertyPath: _toolType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4139744529715912429, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-      propertyPath: _toolType
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5298586829913828310, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-      propertyPath: _toolType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6250048027169570288, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7073037760309354902, guid: 0737492ad791543498b8e22d050354e0, type: 3}
       propertyPath: m_Name
       value: ToolsRadialMenu
@@ -20025,10 +19931,6 @@ PrefabInstance:
     - target: {fileID: 7447315393387719063, guid: 0737492ad791543498b8e22d050354e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8964648624758744826, guid: 0737492ad791543498b8e22d050354e0, type: 3}
-      propertyPath: _toolType
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

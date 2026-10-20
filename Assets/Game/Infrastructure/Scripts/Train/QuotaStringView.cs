@@ -13,7 +13,7 @@ public class QuotaStringView : MonoBehaviour
             var obj = Create();
             
             obj.transform.SetParent(parent);
-            obj.transform.localScale = Vector3.one;
+            obj.transform.localScale = Vector3.one * 3;
             obj.transform.localPosition = Vector3.zero;
             obj.transform.localRotation = Quaternion.identity;
 
@@ -41,5 +41,6 @@ public class QuotaStringView : MonoBehaviour
     public void UpdateActual(int actual)
     {
         _text.text = $"{_cultureType}: {actual}/{_expected}";
+        _text.color = Color.red;
     }
 }
