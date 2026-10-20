@@ -15,8 +15,8 @@ public class PlantedBedState : IBedState
 
     private Culture _culture;
     
-    private GameObject _visualState;
-    private GameObject _pouredVisuals;
+    private readonly GameObject _visualState;
+    private readonly GameObject _pouredVisuals;
     private GameObject _prefab;
 
     public PlantedBedState(GameObject visualState, GameObject pouredVisuals)

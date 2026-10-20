@@ -14671,6 +14671,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CulturesRadialMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 3377592756033763841, guid: e0bf39777640a0741a04bfe683f2c4c3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7859109045862130497, guid: e0bf39777640a0741a04bfe683f2c4c3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
