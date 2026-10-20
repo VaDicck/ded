@@ -407,6 +407,54 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""RadialMenu"",
+            ""id"": ""1b62a423-8c6a-4a38-91ec-bd5ebd74cdff"",
+            ""actions"": [
+                {
+                    ""name"": ""OpenRadialMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""4925ef7b-cb63-4084-9449-137b3fb0c4b9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""ba5adeee-3f46-4c7a-b35c-f100781c4f19"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5af94ceb-429c-4803-a2d6-2225e2914952"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenRadialMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cda61785-fcd2-4ec1-80db-8eec3fb8e6bc"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -428,12 +476,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_UI_Back = m_UI.FindAction("Back", throwIfNotFound: true);
         m_UI_MousePosition = m_UI.FindAction("MousePosition", throwIfNotFound: true);
         m_UI_RadialMenu = m_UI.FindAction("RadialMenu", throwIfNotFound: true);
+        // RadialMenu
+        m_RadialMenu = asset.FindActionMap("RadialMenu", throwIfNotFound: true);
+        m_RadialMenu_OpenRadialMenu = m_RadialMenu.FindAction("OpenRadialMenu", throwIfNotFound: true);
+        m_RadialMenu_MousePosition = m_RadialMenu.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, PlayerInputActions.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, PlayerInputActions.UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_RadialMenu.enabled, "This will cause a leak and performance issues, PlayerInputActions.RadialMenu.Disable() has not been called.");
     }
 
     /// <summary>
@@ -818,6 +871,113 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="UIActions" /> instance referencing this action map.
     /// </summary>
     public UIActions @UI => new UIActions(this);
+
+    // RadialMenu
+    private readonly InputActionMap m_RadialMenu;
+    private List<IRadialMenuActions> m_RadialMenuActionsCallbackInterfaces = new List<IRadialMenuActions>();
+    private readonly InputAction m_RadialMenu_OpenRadialMenu;
+    private readonly InputAction m_RadialMenu_MousePosition;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "RadialMenu".
+    /// </summary>
+    public struct RadialMenuActions
+    {
+        private @PlayerInputActions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public RadialMenuActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "RadialMenu/OpenRadialMenu".
+        /// </summary>
+        public InputAction @OpenRadialMenu => m_Wrapper.m_RadialMenu_OpenRadialMenu;
+        /// <summary>
+        /// Provides access to the underlying input action "RadialMenu/MousePosition".
+        /// </summary>
+        public InputAction @MousePosition => m_Wrapper.m_RadialMenu_MousePosition;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_RadialMenu; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="RadialMenuActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(RadialMenuActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="RadialMenuActions" />
+        public void AddCallbacks(IRadialMenuActions instance)
+        {
+            if (instance == null || m_Wrapper.m_RadialMenuActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_RadialMenuActionsCallbackInterfaces.Add(instance);
+            @OpenRadialMenu.started += instance.OnOpenRadialMenu;
+            @OpenRadialMenu.performed += instance.OnOpenRadialMenu;
+            @OpenRadialMenu.canceled += instance.OnOpenRadialMenu;
+            @MousePosition.started += instance.OnMousePosition;
+            @MousePosition.performed += instance.OnMousePosition;
+            @MousePosition.canceled += instance.OnMousePosition;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="RadialMenuActions" />
+        private void UnregisterCallbacks(IRadialMenuActions instance)
+        {
+            @OpenRadialMenu.started -= instance.OnOpenRadialMenu;
+            @OpenRadialMenu.performed -= instance.OnOpenRadialMenu;
+            @OpenRadialMenu.canceled -= instance.OnOpenRadialMenu;
+            @MousePosition.started -= instance.OnMousePosition;
+            @MousePosition.performed -= instance.OnMousePosition;
+            @MousePosition.canceled -= instance.OnMousePosition;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="RadialMenuActions.UnregisterCallbacks(IRadialMenuActions)" />.
+        /// </summary>
+        /// <seealso cref="RadialMenuActions.UnregisterCallbacks(IRadialMenuActions)" />
+        public void RemoveCallbacks(IRadialMenuActions instance)
+        {
+            if (m_Wrapper.m_RadialMenuActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="RadialMenuActions.AddCallbacks(IRadialMenuActions)" />
+        /// <seealso cref="RadialMenuActions.RemoveCallbacks(IRadialMenuActions)" />
+        /// <seealso cref="RadialMenuActions.UnregisterCallbacks(IRadialMenuActions)" />
+        public void SetCallbacks(IRadialMenuActions instance)
+        {
+            foreach (var item in m_Wrapper.m_RadialMenuActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_RadialMenuActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="RadialMenuActions" /> instance referencing this action map.
+    /// </summary>
+    public RadialMenuActions @RadialMenu => new RadialMenuActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
     /// </summary>
@@ -924,5 +1084,27 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRadialMenu(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "RadialMenu" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="RadialMenuActions.AddCallbacks(IRadialMenuActions)" />
+    /// <seealso cref="RadialMenuActions.RemoveCallbacks(IRadialMenuActions)" />
+    public interface IRadialMenuActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "OpenRadialMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpenRadialMenu(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MousePosition" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }

@@ -12,11 +12,12 @@ public class PlayerTools
     
     public bool Take(ToolType toolType)
     {
-        if (_tools.Contains(toolType) == false)
+        if (_tools.Contains((ToolType) toolType) == false)
             return false;
         
         _currentTool = toolType;
         ToolChanged?.Invoke(_currentTool);
+        this.Log($"Tool changed to: {_currentTool}");
         return true;
     }
 

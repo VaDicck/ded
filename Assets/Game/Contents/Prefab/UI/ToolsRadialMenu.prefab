@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ToolsRadialMenuElement
   _icon: {fileID: 1761044730714366324}
-  _toolType: 0
+  _toolType: 4
   _selectedSprite: {fileID: 21300000, guid: ec9401452dad0d74e8ef3ba4d1275ba5, type: 3}
   _normalSprite: {fileID: 21300000, guid: 4ac33c9a73de44a40baa1dca97a64a8c, type: 3}
 --- !u!1 &5105794714916039505
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ToolsRadialMenuElement
   _icon: {fileID: 3314606047189228340}
-  _toolType: 0
+  _toolType: 1
   _selectedSprite: {fileID: 21300000, guid: 7671d4e461c75554bb33701e65c2dcd8, type: 3}
   _normalSprite: {fileID: 21300000, guid: 9be3534dffebbd640bf75a9c7a6d52be, type: 3}
 --- !u!1 &6250048027169570288
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ToolsRadialMenuElement
   _icon: {fileID: 6030150150815235713}
-  _toolType: 0
+  _toolType: 3
   _selectedSprite: {fileID: 21300000, guid: 9601b4ac68efdb242803acf4788fa00b, type: 3}
   _normalSprite: {fileID: 21300000, guid: 1c3e4f25ecdb3fd4f833f3bc066b19f7, type: 3}
 --- !u!1 &7073037760309354902
@@ -424,7 +424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7447315393387719063
 RectTransform:
   m_ObjectHideFlags: 0
@@ -458,16 +458,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _elementsWithWeights:
-  - <Key>k__BackingField: {fileID: 8964648624758744826}
+  - <Key>k__BackingField: {fileID: 4186815687716612981}
     <Value>k__BackingField: 62.5
-  - <Key>k__BackingField: {fileID: 5298586829913828310}
+  - <Key>k__BackingField: {fileID: 3502238940752336911}
     <Value>k__BackingField: 62.5
   - <Key>k__BackingField: {fileID: 4139744529715912429}
     <Value>k__BackingField: 110
-  - <Key>k__BackingField: {fileID: 3502238940752336911}
+  - <Key>k__BackingField: {fileID: 5298586829913828310}
     <Value>k__BackingField: 62.5
-  - <Key>k__BackingField: {fileID: 4186815687716612981}
+  - <Key>k__BackingField: {fileID: 8964648624758744826}
     <Value>k__BackingField: 62.5
+  _canvas: {fileID: 0}
+  _deselectedMagnitude: 100
 --- !u!1 &8149379838735851679
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +559,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ToolsRadialMenuElement
   _icon: {fileID: 2416220830399696294}
-  _toolType: 0
+  _toolType: 2
   _selectedSprite: {fileID: 21300000, guid: 38a3dc31772e2c54fb2f894163fd7126, type: 3}
   _normalSprite: {fileID: 21300000, guid: d8e4043618e817a479ca16dc69e354dd, type: 3}

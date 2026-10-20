@@ -19,6 +19,7 @@ public class PlayerWeapons : MonoBehaviour
     private float _currentFOV;
     
     private InputController _inputController;
+    private PlayerTools _playerTools;
     
     private Weapon _weapon;
     private Weapon _currentWeapon;
@@ -26,9 +27,10 @@ public class PlayerWeapons : MonoBehaviour
     private bool _isZooming;
 
     [Inject]
-    private void Init(InputController inputController)
+    private void Init(InputController inputController, PlayerTools playerTools)
     {
         _inputController = inputController;
+        _playerTools = playerTools;
     }
     
     private void Awake()
@@ -45,9 +47,10 @@ public class PlayerWeapons : MonoBehaviour
         _inputController.ZoomStarted += StartZoom;
         _inputController.ZoomFinished += StopZoom;
         _inputController.ReloadPressed += Reload;
-        _inputController.NextWeapon += EquipWeapon;
         _inputController.RemoveWeapon += UnequipWeapon;
 
+        _playerTools.ToolChanged += OnToolChanged;
+        
         HideHand();
     }
     
@@ -56,6 +59,20 @@ public class PlayerWeapons : MonoBehaviour
         UpdateZoom();
     }
 
+    private void OnToolChanged(ToolType? toolType)
+    {
+        if (toolType == ToolType.Shotgun)
+        {
+            if (_currentWeapon == null)
+                EquipWeapon();
+        }
+        else
+        {
+            if (_currentWeapon != null)
+                UnequipWeapon();
+        }
+    }
+    
     private void EquipWeapon()
     {
         _crosshair.Show();

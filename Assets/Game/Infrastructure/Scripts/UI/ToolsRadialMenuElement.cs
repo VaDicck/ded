@@ -35,6 +35,11 @@ public class ToolsRadialMenuElement : MonoBehaviour
     
     public void ApplyTool()
     {
-        _playerTools.Take(_toolType);
+        if (_playerTools.Tool == _toolType)
+            _playerTools.PutOff();
+        else
+        {
+            _playerTools.Take(_toolType);
+        }
     }
 }

@@ -3,5 +3,6 @@
     Shovel,
     Axe,
     Pickaxe,
-    Bailer
+    Bailer,
+    Shotgun,
 }

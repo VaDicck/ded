@@ -10,13 +10,13 @@ public class InputController
     public event Action InteractPressed;
     public event Action BackPressed;
     public event Action RadialMenuCanceled;
-    public event Action NextWeapon;
+    public event Action OpenRadialMenu;
     public event Action RemoveWeapon;
     
     public Vector2 MoveDirection => _playerInputActions.Player.Move.ReadValue<Vector2>();
     public bool SprintPressed => _playerInputActions.Player.Sprint.IsInProgress();
     
-    public Vector2 MousePosition => _playerInputActions.UI.MousePosition.ReadValue<Vector2>();
+    public Vector2 RadialMenuMousePosition => _playerInputActions.RadialMenu.MousePosition.ReadValue<Vector2>();
     
     private PlayerInputActions _playerInputActions;
     
@@ -32,17 +32,32 @@ public class InputController
     public void SwitchToUi()
     {
         _playerInputActions.Player.Disable();
+        _playerInputActions.RadialMenu.Disable();
         _playerInputActions.UI.Enable();
-
 
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+    }
+
+    private void OnOpenRadialMenu()
+    {
+        OpenRadialMenu?.Invoke();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void OnCloseRadialMenu()
+    {
+        RadialMenuCanceled?.Invoke();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void SwitchToGameplay()
     {
         _playerInputActions.UI.Disable();
         _playerInputActions.Player.Enable();
+        _playerInputActions.RadialMenu.Enable();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -58,11 +73,12 @@ public class InputController
         _playerInputActions.Player.Zoom.canceled += _ => ZoomFinished?.Invoke();
         _playerInputActions.Player.Reload.performed += _ => ReloadPressed?.Invoke();
         _playerInputActions.Player.Interact.performed += _ => InteractPressed?.Invoke();
-        _playerInputActions.Player.OpenRadialMenu.performed += _ => NextWeapon?.Invoke();
         _playerInputActions.Player.RemoveWeapon.performed += _ => RemoveWeapon?.Invoke();
         _playerInputActions.Player.Escape.performed += _ => BackPressed?.Invoke();
         
         _playerInputActions.UI.Back.performed += _ => BackPressed?.Invoke();
-        _playerInputActions.UI.RadialMenu.canceled += _ => RadialMenuCanceled?.Invoke();
+        
+        _playerInputActions.RadialMenu.OpenRadialMenu.started += _ => OnOpenRadialMenu();
+        _playerInputActions.RadialMenu.OpenRadialMenu.canceled += _ => OnCloseRadialMenu();
     }
 }

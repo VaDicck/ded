@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,6 +6,8 @@ using Zenject;
 public class ToolsRadialMenu : MonoBehaviour
 {
     [SerializeField] private List<SerializedPair<ToolsRadialMenuElement, float>> _elementsWithWeights;
+    [SerializeField] private Canvas _canvas;
+    [SerializeField] private float _deselectedMagnitude;
     
     private InputController _inputController;
     private SerializedPair<ToolsRadialMenuElement, float> _selectedElement;
@@ -16,35 +17,59 @@ public class ToolsRadialMenu : MonoBehaviour
     private void Initialize(InputController inputController)
     {
         _inputController = inputController;
+        _inputController.OpenRadialMenu += Show;
+        _inputController.RadialMenuCanceled += Hide;
     }
-
+    
     private void Start()
     {
-        _inputController.SwitchToUi();
         InitializeElementRanges();
-        PositionElements();
+    }
 
-        _inputController.RadialMenuCanceled += SelectCurrentTool;
+    private void Show()
+    {
+        gameObject.SetActive(true);
+        Time.timeScale = 0.2f;
     }
     
     private void Update()
     {
-        Vector2 direction = _inputController.MousePosition - new Vector2(transform.position.x, transform.position.y);
+        Vector2 direction = _inputController.RadialMenuMousePosition - new Vector2(transform.position.x, transform.position.y);
+        
+        float pixelDistance = GetPixelDistance(direction);
+        
+        if (pixelDistance < _deselectedMagnitude)
+        {
+            ClearSelection();
+            _selectedElement = null;
+            return;
+        }
+        
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         
-        angle = (angle + 90 + 360) % 360;
-
+        angle = (angle + 90 - 180 + 360) % 360;
+        
         _selectedElement = GetElementByAngle(angle);
         
 
-        foreach (var element in _elementsWithWeights)
-        {
-            element.Key.Deselect();
-        }
+        ClearSelection();
         
         if (_selectedElement != null)
         {
             _selectedElement.Key.Select();
+        }
+    }
+    
+    private float GetPixelDistance(Vector2 direction)
+    {
+        return direction.magnitude / _canvas.scaleFactor;
+    }
+    
+    private void ClearSelection()
+    {
+        foreach (var element in _elementsWithWeights)
+        {
+            element.Key.Deselect();
         }
     }
     
@@ -83,37 +108,14 @@ public class ToolsRadialMenu : MonoBehaviour
         return null;
     }
     
-    private void PositionElements()
-    {
-        float radius = GetComponent<RectTransform>().rect.width / 2f;
-        
-        for (int i = 0; i < _elementRanges.Count; i++)
-        {
-            var range = _elementRanges[i];
-            var element = _elementsWithWeights[range.ElementIndex].Key;
-
-            float centerAngle = range.StartAngle + (range.EndAngle - range.StartAngle) / 2f;
-            float angleRad = centerAngle * Mathf.Deg2Rad;
-
-            Vector3 position = new Vector3(
-                Mathf.Cos(angleRad) * radius,
-                Mathf.Sin(angleRad) * radius,
-                0
-            );
-            
-            element.transform.localPosition = position;
-
-            element.transform.localRotation = Quaternion.Euler(0, 0, centerAngle - 90);
-        }
-    }
-    
-    private void SelectCurrentTool()
+    private void Hide()
     {
         if (_selectedElement != null)
         {
             _selectedElement.Key.ApplyTool();
-            gameObject.SetActive(false);
         }
+        Time.timeScale = 1f;
+        gameObject.SetActive(false);
     }
 
     private class ElementRange
@@ -125,6 +127,6 @@ public class ToolsRadialMenu : MonoBehaviour
 
     private void OnDestroy()
     {
-        _inputController.RadialMenuCanceled -= SelectCurrentTool;
+        _inputController.RadialMenuCanceled -= Hide;
     }
 }

@@ -321,6 +321,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "RadialMenu",
+            "id": "1b62a423-8c6a-4a38-91ec-bd5ebd74cdff",
+            "actions": [
+                {
+                    "name": "OpenRadialMenu",
+                    "type": "Button",
+                    "id": "4925ef7b-cb63-4084-9449-137b3fb0c4b9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "ba5adeee-3f46-4c7a-b35c-f100781c4f19",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5af94ceb-429c-4803-a2d6-2225e2914952",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenRadialMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cda61785-fcd2-4ec1-80db-8eec3fb8e6bc",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
