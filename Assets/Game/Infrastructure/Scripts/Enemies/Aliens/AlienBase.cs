@@ -39,10 +39,14 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
 
         if (_health <= 0f)
         {
-            Death?.Invoke(this);
             Die();
         }
     }
     
     protected abstract void Die();
+
+    private void OnDestroy()
+    {
+        Death?.Invoke(this);
+    }
 }
