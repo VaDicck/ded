@@ -9471,7 +9471,7 @@ MonoBehaviour:
   - {fileID: 767710627}
   - {fileID: 2101838825}
   - {fileID: 1106250023}
-  _countAliens: 20
+  _countAliens: 4
   _durationSpawn: 5
 --- !u!1001 &834033269
 PrefabInstance:

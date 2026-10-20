@@ -4,10 +4,11 @@ using Zenject;
 
 public class SleepingBed : MonoBehaviour, IInteractable
 {
-    public bool IsInteractable => !_dayCycleService.IsDay;
+    public bool IsInteractable => !_dayCycleService.IsDay && _alienService.AliensEmpty;
     public bool IsUsable => false;
     
     private DayCycleService _dayCycleService;
+    private AlienService _alienService;
         
     public UniTask Interact()
     {
@@ -17,8 +18,9 @@ public class SleepingBed : MonoBehaviour, IInteractable
     }
 
     [Inject]
-    private void Init(DayCycleService dayCycleService)
+    private void Init(DayCycleService dayCycleService, AlienService alienService)
     {
         _dayCycleService = dayCycleService;
+        _alienService = alienService;
     }
 }

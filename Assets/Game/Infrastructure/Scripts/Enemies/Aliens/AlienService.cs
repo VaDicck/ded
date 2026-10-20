@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 public class AlienService
 {
+    public bool AliensEmpty => _aliens.Count == 0;
     public HashSet<AlienBase> Aliens => _aliens;
 
     private HashSet<AlienBase> _aliens  = new HashSet<AlienBase>();

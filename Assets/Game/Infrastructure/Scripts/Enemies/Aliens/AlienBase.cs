@@ -35,7 +35,6 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     
     public void TakeDamage(float damage)
     {
-        this.Log($"Попали, урон {damage}");
         _health -= damage;
 
         if (_health <= 0f)

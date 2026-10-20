@@ -29,6 +29,7 @@ public class DayCycleService : ITickable
 
     public void StartDay()
     {
+        this.LogWarning("START DAY");
         _time = 0;
         _isDay = true;
         DayStarted?.Invoke();
@@ -36,6 +37,7 @@ public class DayCycleService : ITickable
     
     public void StartNight()
     {
+        this.LogError("START NIGHT");
         DayEnded?.Invoke();
         NightStarted?.Invoke();
     }
