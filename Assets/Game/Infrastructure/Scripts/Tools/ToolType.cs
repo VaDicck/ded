@@ -5,4 +5,6 @@
     Pickaxe,
     Bailer,
     Shotgun,
+    Pitchfork,
+    Rake
 }

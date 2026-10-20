@@ -10,7 +10,6 @@ public class PlayerWeapons : MonoBehaviour
     [SerializeField] private MonoBehaviour _weaponBehaviour;
     [SerializeField] private CinemachineCamera _cinemachineCamera;
     [SerializeField] private Crosshair _crosshair;
-    [SerializeField] private Animator _animatorHand;
     
     [Header("Zoom")]
     [SerializeField] private float _zoomFOV = 40f;
@@ -49,8 +48,6 @@ public class PlayerWeapons : MonoBehaviour
         _inputController.ReloadPressed += Reload;
 
         _playerTools.ToolChanged += OnToolChanged;
-        
-        HideHand();
     }
     
     private void Update()
@@ -81,8 +78,6 @@ public class PlayerWeapons : MonoBehaviour
             this.LogWarning("Have current weapon");
             return;
         }
-
-        ShowHand();
         
         _currentWeapon = _weapon;
         _currentWeapon.Equip();
@@ -92,8 +87,6 @@ public class PlayerWeapons : MonoBehaviour
     {
         _crosshair.Hide();
         
-        HideHand();
-        
         StopZoom();
         
         _currentWeapon?.Unequip();
@@ -102,11 +95,7 @@ public class PlayerWeapons : MonoBehaviour
     
     private void Shot()
     {
-        if(_currentWeapon == null)
-            return;
-        
-        if(_currentWeapon.Shoot())
-            _animatorHand.SetTrigger("Fire");
+        _currentWeapon?.Shoot();
     }
 
     private void UpdateZoom()
@@ -132,17 +121,6 @@ public class PlayerWeapons : MonoBehaviour
 
     private void Reload()
     {
-        _animatorHand.SetTrigger("Reload");
         _currentWeapon?.Reload();
-    }
-
-    private void HideHand()
-    {
-        _animatorHand.gameObject.SetActive(false);
-    }    
-    
-    private void ShowHand()
-    {
-        _animatorHand.gameObject.SetActive(true);
     }
 }
