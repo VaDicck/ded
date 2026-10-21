@@ -191,8 +191,11 @@ MonoBehaviour:
   _crosshair: {fileID: 0}
   _zoomFOV: 40
   _zoomSpeed: 10
-  _recoilForce: 0.6
-  _recoilReturnSpeed: 8
+  _recoilForce: 10
+  _recoilReturnSpeed: 5
+  _recoilRecoverySpeed: 20
+  _recoilSnappiness: 15
+  _maxRecoil: 20
 --- !u!114 &2228817970919938731
 MonoBehaviour:
   m_ObjectHideFlags: 0

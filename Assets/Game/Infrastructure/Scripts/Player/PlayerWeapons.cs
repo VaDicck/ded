@@ -18,8 +18,14 @@ public class PlayerWeapons : MonoBehaviour
     [SerializeField] private float _zoomSpeed = 10f;
     
     [Header("Recoil")]
-    [SerializeField] private float _recoilForce = 1f;
+    [SerializeField] private float _recoilForce = 2f;
     [SerializeField] private float _recoilReturnSpeed = 5f;
+    [SerializeField] private float _recoilRecoverySpeed = 2f;
+    [SerializeField] private float _recoilSnappiness = 35f;   
+    [SerializeField] private float _maxRecoil = 20f;
+    
+    private float _playerInputY;
+    private float _baseTilt;
 
     private float _recoilCurrent;
     private float _recoilTarget;
@@ -65,6 +71,9 @@ public class PlayerWeapons : MonoBehaviour
         if (_currentWeapon == null) return;
         
         UpdateZoom();
+        
+        _playerInputY = _panTilt.TiltAxis.Value + _recoilCurrent;
+        
         UpdateRecoil();
     }
 
@@ -84,9 +93,9 @@ public class PlayerWeapons : MonoBehaviour
     
     private void UpdateRecoil()
     {
-        _recoilCurrent = Mathf.Lerp(_recoilCurrent, _recoilTarget, Time.deltaTime * 20f);
+        _recoilCurrent = Mathf.Lerp(_recoilCurrent, _recoilTarget, Time.deltaTime * _recoilSnappiness);
 
-        _recoilTarget = Mathf.Lerp(_recoilTarget, 0f, Time.deltaTime * _recoilReturnSpeed);
+        _recoilTarget = Mathf.MoveTowards(_recoilTarget, 0f, Time.deltaTime * _recoilRecoverySpeed);
 
         ApplyRecoil();
     }
@@ -94,7 +103,9 @@ public class PlayerWeapons : MonoBehaviour
     private void ApplyRecoil() 
     {
         var tilt = _panTilt.TiltAxis;
-        tilt.Value -= _recoilCurrent;
+
+        tilt.Value = _playerInputY - _recoilCurrent;
+
         _panTilt.TiltAxis = tilt;
     }
     
@@ -133,6 +144,7 @@ public class PlayerWeapons : MonoBehaviour
     private void AddRecoil()
     {
         _recoilTarget += _recoilForce;
+        _recoilTarget = Mathf.Clamp(_recoilTarget, 0f, _maxRecoil);
     }
 
     private void UpdateZoom()
