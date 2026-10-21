@@ -19,6 +19,9 @@ public class PlantedBedState : IBedState
     private readonly GameObject _pouredVisuals;
     private GameObject _prefab;
 
+    private IDisposable _pouredReaction;
+    private IDisposable _grownReaction;
+
     public PlantedBedState(GameObject visualState, GameObject pouredVisuals)
     {
         _visualState = visualState;
@@ -29,8 +32,8 @@ public class PlantedBedState : IBedState
     {
         _culture = culture;
         _culture.Collected += OnCollected;
-        _culture.IsPoured.Subscribe(OnPoredChanged);
-        _culture.IsGrown.Subscribe(OnGrownChanged);
+        _pouredReaction = _culture.IsPoured.Subscribe(OnPoredChanged);
+        _grownReaction = _culture.IsGrown.Subscribe(OnGrownChanged);
         _prefab = Object.Instantiate(_culture.CultureConfig.Step1Prefab, _visualState.transform);
     }
 
@@ -58,12 +61,16 @@ public class PlantedBedState : IBedState
         {
             _culture.Collected -= OnCollected;
             _culture.IsGrown.Dispose();
+            _culture.Dispose();
         }
 
         Object.Destroy(_prefab);
 
         ActivateVisualState(false);
         _pouredVisuals.SetActive(false);
+        
+        _pouredReaction.Dispose();
+        _grownReaction.Dispose();
     }
 
     private void OnCollected()

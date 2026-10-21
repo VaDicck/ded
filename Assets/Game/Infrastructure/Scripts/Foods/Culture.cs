@@ -3,7 +3,7 @@ using R3;
 using UnityEngine;
 using Random = System.Random;
 
-public abstract class Culture
+public abstract class Culture: IDisposable
 {
     public event Action Collected;
 
@@ -81,5 +81,10 @@ public abstract class Culture
         {
             Collected?.Invoke();
         }
+    }
+
+    public void Dispose()
+    {
+        _dayCycleService.DayStarted -= OnDayStarted;
     }
 }
