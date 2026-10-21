@@ -26,7 +26,7 @@ public class CarriageMenu : MonoBehaviour, IDisposable
         {
             var quotaString = _stringFactory.Create(transform);
             quotaString.Initialize(expectedPair.Key, expectedPair.Value, _quotaElement.Actual.GetValueOrDefault(expectedPair.Key, 0));
-            _culturesStrings.Add(expectedPair.Key, quotaString);
+            _culturesStrings.TryAdd(expectedPair.Key, quotaString);
         }
     }
 
