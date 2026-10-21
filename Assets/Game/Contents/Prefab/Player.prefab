@@ -470,10 +470,8 @@ MonoBehaviour:
   _defaultSpeed: 4
   _zoomSpeed: 2
   _sprintMultiplier: 2
-  _defaultXSensitivity: 10
-  _defaultYSensitivity: 10
-  _zoomXSensitivityMultiplier: 0.1
-  _zoomYSensitivityMultiplier: 0.1
+  _zoomXSensitivityMultiplier: 0.6
+  _zoomYSensitivityMultiplier: 0.6
   _gravity: 9.81
 --- !u!143 &6301002893765602297
 CharacterController:

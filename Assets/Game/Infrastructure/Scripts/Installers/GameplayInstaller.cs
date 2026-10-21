@@ -37,7 +37,6 @@ public class GameplayInstaller : MonoInstaller
         Container.Bind<DayService>().AsSingle().WithArguments(0).NonLazy();
         Container.Bind<QuotaService>().AsSingle().WithArguments(0, 0).NonLazy();
         Container.Bind<PlayerTools>().AsSingle().NonLazy();
-        Container.Bind<PlayerMovement>().AsSingle().NonLazy(); //TODO for sensitivity, maybe sensitivity at inputController
         Container.Bind<PlayerReturner>().AsSingle().WithArguments(_safePlayerTransform.position).NonLazy();
         Container.Bind<CulturesSelection>().AsSingle().NonLazy();
 
