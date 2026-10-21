@@ -13,9 +13,7 @@ public class InteractableView : MonoBehaviour
     
     private void Update()
     {
-        _interactableImage.sprite = _crosshair;
-        
-        print(_playerInteractions.UsableTool);
+        _interactableImage.sprite = null;
         
         if (_playerInteractions.IsInteractableFound)
             _interactableImage.sprite = _handInteractableSprite;

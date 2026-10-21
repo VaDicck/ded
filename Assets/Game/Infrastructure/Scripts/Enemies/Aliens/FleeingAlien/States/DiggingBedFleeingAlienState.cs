@@ -19,21 +19,40 @@ public class DiggingBedFleeingAlienState : IFleeingAlienState
     public void SetBed(Bed bed)
     {
         _bed  = bed;
+        
+        if (IsPlantedBed(_bed.CurrentState, out PlantedBedState plantedBedState))
+            plantedBedState.Culture.StartHitting();
+    }
+
+    public void StopHitting()
+    {
+        if (IsPlantedBed(_bed.CurrentState, out PlantedBedState plantedBedState))
+            plantedBedState.Culture.StopHitting();
     }
     
     public void Tick()
     {
-        if (_bed.CurrentState is PlantedBedState)
+        if (IsPlantedBed(_bed.CurrentState, out PlantedBedState plantedBedState))
         {
-            PlantedBedState plantedBedState = (PlantedBedState)_bed.CurrentState;
-
             plantedBedState.Culture.Hit(Time.deltaTime);
-                
             return;
         }
-            
+    
         Performed?.Invoke();
     }
+
+    private bool IsPlantedBed(IBedState bedState, out PlantedBedState plantedBedState)
+    {
+        if (bedState is PlantedBedState)
+        {
+            plantedBedState = (PlantedBedState)bedState;
+            return true;
+        }
+
+        plantedBedState = null;
+        return false;
+    }
+    
 
     private void OnCanAttackChanged(bool CanAttack)
     {

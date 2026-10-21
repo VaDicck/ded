@@ -86,7 +86,7 @@ public class FleeingAlien : Alien<IFleeingAlienState>
     protected override void Subscribe()
     {
         _stateMachine.GetState<IdleFleeingAlienState>().BedSelected 
-            += (Bed bed) =>
+            += bed =>
             {
                 _animator.SetTrigger("Run");
                 _stateMachine.GetState<RunToBedFleeingAlienState>().SetBed(bed);
@@ -101,7 +101,7 @@ public class FleeingAlien : Alien<IFleeingAlienState>
             };
 
         _stateMachine.GetState<RunToBedFleeingAlienState>().Performed 
-            += (Bed bed) =>
+            += bed =>
             {
                 _animator.SetTrigger("Digging");
                 _stateMachine.GetState<DiggingBedFleeingAlienState>().SetBed(bed);
@@ -125,6 +125,9 @@ public class FleeingAlien : Alien<IFleeingAlienState>
 
     protected override void Die()
     {
+        if(_stateMachine.CurrentState is DiggingBedFleeingAlienState)
+            _stateMachine.GetState<DiggingBedFleeingAlienState>().StopHitting();
+        
         Destroy(gameObject);
     }
 

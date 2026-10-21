@@ -19,7 +19,7 @@ MonoBehaviour:
       x: 251
       y: 294
       width: 487
-      height: 1812
+      height: 1577
     contents:
     - model: {fileID: 8926484042661614985}
       id: 0
@@ -222,8 +222,8 @@ MonoBehaviour:
   - link: []
   blendMode: 1
   cullMode: 0
-  zWriteMode: 0
-  zTestMode: 0
+  zWriteMode: 1
+  zTestMode: 7
   useAlphaClipping: 0
   generateMotionVector: 0
   excludeFromTUAndAA: 0
@@ -1216,7 +1216,7 @@ MonoBehaviour:
   m_OutputSlots: []
   m_Disabled: 0
   m_ActivationSlot: {fileID: 8926484042661614993}
-  mode: 0
+  mode: 1
   axes: 4
   faceRay: 1
 --- !u!114 &8926484042661614993

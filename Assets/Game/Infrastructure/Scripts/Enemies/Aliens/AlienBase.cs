@@ -15,6 +15,8 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     protected Transform _spawnPoint;
     
     private AlienService _alienService;
+    
+    private bool _isDead;
 
     [Inject]
     private void Init(AlienService alienService)
@@ -25,6 +27,7 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     private void Awake()
     {
         _alienService.AddAlien(this);
+        _isDead = false;
     }
     
     public void SetSpawnPoint(Transform spawnPoint)
@@ -37,8 +40,9 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     {
         _health -= damage;
 
-        if (_health <= 0f)
+        if (_health <= 0f && !_isDead)
         {
+            _isDead = true;
             Die();
         }
     }
