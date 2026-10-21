@@ -24,6 +24,9 @@ public class PlayerWeapons : MonoBehaviour
     [SerializeField] private float _recoilSnappiness = 35f;   
     [SerializeField] private float _maxRecoil = 20f;
     
+    [Header("SFX")]
+    [SerializeField] private GameObject _vfxFire;
+    
     private float _playerInputY;
     private float _baseTilt;
 
@@ -127,6 +130,8 @@ public class PlayerWeapons : MonoBehaviour
     {
         _crosshair.Hide();
         
+        _vfxFire.SetActive(false); //TODO govno2.0
+        
         StopZoom();
         
         _currentWeapon?.Unequip();
@@ -137,6 +142,8 @@ public class PlayerWeapons : MonoBehaviour
     {
         if (_currentWeapon?.Shoot() == true)
         {
+            _vfxFire.SetActive(false);//TODO GOVNO
+            _vfxFire.SetActive(true);
             AddRecoil();
         }
     }

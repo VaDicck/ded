@@ -196,6 +196,7 @@ MonoBehaviour:
   _recoilRecoverySpeed: 30
   _recoilSnappiness: 25
   _maxRecoil: 20
+  _vfxFire: {fileID: 833508487997849898}
 --- !u!114 &2228817970919938731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7392454937346818974
 Transform:
   m_ObjectHideFlags: 0
