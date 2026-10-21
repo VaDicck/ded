@@ -41,7 +41,10 @@ public class CulturesHolderView : MonoBehaviour
 
     private void DeleteCulture(CultureType culture)
     {
-        Destroy(_cultures[culture].gameObject);
+        if (_cultures.TryGetValue(culture, out var a))
+        {
+            Destroy(a.gameObject);
+        }
         
         _cultures.Remove(culture);
     }

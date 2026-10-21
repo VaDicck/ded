@@ -19,6 +19,9 @@ public class PlantedBedState : IBedState
     private readonly GameObject _pouredVisuals;
     private GameObject _prefab;
 
+    private IDisposable _pouredReaction;
+    private IDisposable _grownReaction;
+
     public PlantedBedState(GameObject visualState, GameObject pouredVisuals)
     {
         _visualState = visualState;
@@ -29,11 +32,8 @@ public class PlantedBedState : IBedState
     {
         _culture = culture;
         _culture.Collected += OnCollected;
-        _culture.IsPoured.Subscribe(OnPoredChanged);
-        _culture.IsGrown.Subscribe(v =>
-        {
-            if (v) this.Log($"{_culture.Type} was grown");
-        });
+        _pouredReaction = _culture.IsPoured.Subscribe(OnPoredChanged);
+        _grownReaction = _culture.IsGrown.Subscribe(OnGrownChanged);
         _prefab = Object.Instantiate(_culture.CultureConfig.Step1Prefab, _visualState.transform);
     }
 
@@ -60,12 +60,17 @@ public class PlantedBedState : IBedState
         if (_culture != null)
         {
             _culture.Collected -= OnCollected;
+            _culture.IsGrown.Dispose();
+            _culture.Dispose();
         }
 
         Object.Destroy(_prefab);
 
         ActivateVisualState(false);
         _pouredVisuals.SetActive(false);
+        
+        _pouredReaction.Dispose();
+        _grownReaction.Dispose();
     }
 
     private void OnCollected()
@@ -76,6 +81,22 @@ public class PlantedBedState : IBedState
     private void OnPoredChanged(bool value)
     {
         _pouredVisuals.SetActive(value);
+        if (value)
+        {
+            Object.Destroy(_prefab);
+            _prefab = Object.Instantiate(_culture.CultureConfig.Step2Prefab, _visualState.transform);
+            this.Log($"{_culture.Type} was poured");
+        }
+    }
+    
+    private void OnGrownChanged(bool value)
+    {
+        if (value)
+        {
+            Object.Destroy(_prefab);
+            _prefab = Object.Instantiate(_culture.CultureConfig.Step3Prefab, _visualState.transform);
+            this.Log($"{_culture.Type} was grown");
+        }
     }
     
     private void ActivateVisualState(bool isActive)
