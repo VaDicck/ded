@@ -209,9 +209,9 @@ MonoBehaviour:
   _fireRate: 1.6
   _animator: {fileID: 7882358799632654895}
   _animatorHand: {fileID: 8931445173760385191}
-  _pelletDamage: 12
+  _pelletDamage: 15
   _pelletCount: 8
-  _spreadAngle: 19
+  _spreadAngle: 12
   _effectiveRange: 25
   _shotgun: {fileID: 3515129778242511599}
   _reloadTimeOnePistol: 2
