@@ -1,6 +1,7 @@
 ﻿using System;
 using R3;
 using UnityEngine;
+using Zenject;
 using Random = System.Random;
 
 public abstract class Culture: IDisposable
@@ -23,7 +24,9 @@ public abstract class Culture: IDisposable
     
     private int _count;
 
-    private float _timerCollected = 6f;
+    protected float _timerCollected = 6f;
+    private float _currentTimerCollected;
+    private int _countEnemyHitting = 0;
 
     private ReactiveProperty<bool> _isPoured = new(false);
 
@@ -33,6 +36,8 @@ public abstract class Culture: IDisposable
         _playerCultures = playerCultures;
         _dayCycleService = dayCycleService;
         _dayCycleService.DayStarted += OnDayStarted;
+
+        _currentTimerCollected = _timerCollected;
     }
 
     protected virtual void OnDayStarted()
@@ -73,13 +78,28 @@ public abstract class Culture: IDisposable
         Collected?.Invoke();
     }
 
+    public void StartHitting()
+    {
+        _countEnemyHitting++;
+    }
+    
     public void Hit(float value)
     {
-        _timerCollected -= value;
+        _currentTimerCollected -= value;
 
-        if (_timerCollected < 0)
+        if (_currentTimerCollected < 0)
         {
             Collected?.Invoke();
+            _countEnemyHitting = 0;
+        }
+    }
+    
+    public void StopHitting()
+    {
+        _countEnemyHitting--;
+        if (_countEnemyHitting == 0)
+        {
+            _currentTimerCollected = _timerCollected;
         }
     }
 
