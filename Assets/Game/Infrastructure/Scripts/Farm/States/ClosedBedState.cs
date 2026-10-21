@@ -8,6 +8,7 @@ public class ClosedBedState : IBedState
     
     public bool IsInteractable => false;
     public bool IsUsable => true;
+    public ToolType UseTool => _toolType;
 
     private readonly ToolType _toolType;
     

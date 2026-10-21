@@ -5,6 +5,7 @@ public interface IBedState : IState
 {
     bool IsInteractable { get; }
     bool IsUsable { get; }
+    ToolType UseTool => ToolType.None;
 
     event Action Performed;
 

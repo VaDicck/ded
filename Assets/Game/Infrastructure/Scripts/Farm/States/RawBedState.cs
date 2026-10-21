@@ -6,6 +6,8 @@ public class RawBedState : IBedState
 {
     public bool IsInteractable => false;
     public bool IsUsable => true;
+    public ToolType UseTool => _toolType;
+    
     public event Action Performed;
     
     private ToolType _toolType;

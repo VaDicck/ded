@@ -20,6 +20,8 @@ public class Bed : MonoBehaviour, IInteractable
 
     public bool IsInteractable => _stateMachine.CurrentState.IsInteractable && _dayCicleService.IsDay;
     public bool IsUsable => _stateMachine.CurrentState.IsUsable && _dayCicleService.IsDay;
+    public ToolType UseTool => _stateMachine.CurrentState.UseTool;
+    
 
     [Header("Tools")] 
     [SerializeField] private ToolType _unlockTool;

@@ -10,7 +10,19 @@ public class PlantedBedState : IBedState
 
     public bool IsInteractable => _culture.IsGrown.CurrentValue;
     public bool IsUsable => _culture.IsGrown.CurrentValue == false;
-    
+    public ToolType UseTool
+    {
+        get {
+            if (_culture == null)
+                return ToolType.None;
+            
+            else if (_culture.IsPoured.CurrentValue == false)
+                return ToolType.Bailer;
+            
+            return ToolType.None;
+        }
+    }
+
     public Culture Culture => _culture;
 
     private Culture _culture;

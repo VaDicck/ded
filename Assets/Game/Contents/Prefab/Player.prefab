@@ -188,7 +188,6 @@ MonoBehaviour:
   _weaponBehaviour: {fileID: 2228817970919938731}
   _cinemachineCamera: {fileID: 2488406409111001338}
   _panTilt: {fileID: 840112125637229977}
-  _crosshair: {fileID: 0}
   _zoomFOV: 40
   _zoomSpeed: 10
   _recoilForce: 7
@@ -517,22 +516,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _animator: {fileID: 8931445173760385191}
   _toolTriggerNames:
-  - <Key>k__BackingField: 3
+  - <Key>k__BackingField: 4
     <Value>k__BackingField: TakeBailer
-  - <Key>k__BackingField: 5
-    <Value>k__BackingField: TakePitchfork
   - <Key>k__BackingField: 6
+    <Value>k__BackingField: TakePitchfork
+  - <Key>k__BackingField: 7
     <Value>k__BackingField: TakeRake
-  - <Key>k__BackingField: 2
+  - <Key>k__BackingField: 3
     <Value>k__BackingField: TakePickaxe
   _tools:
-  - <Key>k__BackingField: 3
+  - <Key>k__BackingField: 4
     <Value>k__BackingField: {fileID: 176537791708615803}
-  - <Key>k__BackingField: 2
+  - <Key>k__BackingField: 3
     <Value>k__BackingField: {fileID: 368692392636118121}
-  - <Key>k__BackingField: 5
-    <Value>k__BackingField: {fileID: 3830806690551710770}
   - <Key>k__BackingField: 6
+    <Value>k__BackingField: {fileID: 3830806690551710770}
+  - <Key>k__BackingField: 7
     <Value>k__BackingField: {fileID: 8582886784518620002}
   _idleTriggerName: Idle_Without_Gun
 --- !u!1001 &405615359720929365
