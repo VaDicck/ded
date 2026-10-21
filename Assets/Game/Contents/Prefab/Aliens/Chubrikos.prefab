@@ -73,6 +73,7 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 1894188396959641881}
   _health: 30
   _animator: {fileID: 772952679108185679}
+  _sfxSplashAlien: {fileID: 3990862495863414018, guid: 1d3cc85384e970b4d94144cb276af7c6, type: 3}
 --- !u!195 &1894188396959641881
 NavMeshAgent:
   m_ObjectHideFlags: 0

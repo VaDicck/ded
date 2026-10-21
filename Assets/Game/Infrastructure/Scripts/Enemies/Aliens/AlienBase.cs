@@ -11,6 +11,8 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     [SerializeField] protected float _health = 50f;
     [SerializeField] protected Animator _animator;
     
+    [SerializeField] private GameObject _sfxSplashAlien;
+    
     protected Transform _bed; 
     protected Transform _spawnPoint;
     
@@ -36,14 +38,26 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
         _spawnPoint = spawnPoint;
     }
     
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, Vector3 hitPoint)
     {
+        if(_isDead) return;
+        
         _health -= damage;
 
-        if (_health <= 0f && !_isDead)
+        SpawnSfx(hitPoint);
+
+        if (_health > 0f) return;
+        
+        _isDead = true;
+        Die();
+    }
+
+    private void SpawnSfx(Vector3 spawnPoint)
+    {
+        if (_sfxSplashAlien != null)
         {
-            _isDead = true;
-            Die();
+            GameObject effect = Instantiate(_sfxSplashAlien, spawnPoint, Quaternion.identity);
+            effect.transform.SetParent(transform);
         }
     }
     

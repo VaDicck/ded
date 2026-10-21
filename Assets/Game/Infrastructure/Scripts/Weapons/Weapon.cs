@@ -93,7 +93,7 @@ public abstract class Weapon : MonoBehaviour
         {
             if (hit.transform.TryGetComponent<IDamageable>(out var damageableObject))
             {
-                damageableObject.TakeDamage(damageCalculation(hit.distance));
+                damageableObject.TakeDamage(damageCalculation(hit.distance), hit.point);
             }
         }
     }
