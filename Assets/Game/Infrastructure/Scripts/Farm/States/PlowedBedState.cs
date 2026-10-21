@@ -6,13 +6,12 @@ public class PlowedBedState : IBedState
 {
     public bool IsInteractable => true;
     public bool IsUsable => false;
-    
+
     public event Action Performed;
     
     public Culture Culture => _culture;
     
     private Culture _culture;
-    private Type _cultureType;
     
     private readonly GameObject _visualState;
     private CulturesSelection _culturesSelection;

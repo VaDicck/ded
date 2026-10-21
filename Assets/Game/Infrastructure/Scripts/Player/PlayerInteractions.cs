@@ -1,8 +1,12 @@
+using System;
 using UnityEngine;
 using Zenject;
 
 public class PlayerInteractions : MonoBehaviour
 { 
+    public ToolType UsableTool { get; private set; }
+    public bool IsInteractableFound { get; private set; }
+    
     [SerializeField] private float _interactionDistance;
     
     private InputController _inputController;
@@ -43,12 +47,21 @@ public class PlayerInteractions : MonoBehaviour
         
     private void FindInteractable()
     {
+        UsableTool = ToolType.None;
+        IsInteractableFound = false;
+        
         if (Physics.Raycast(new Ray(transform.position, transform.forward),
                 out var hit, _interactionDistance, LayerMask.GetMask("Interactable")))
         {
             if (hit.transform.TryGetComponent<IInteractable>(out var interactable))
             {
                 _interactable = interactable;
+
+                if (_interactable.IsUsable)
+                    UsableTool = _interactable.UseTool;
+                else if (_interactable.IsInteractable)
+                    IsInteractableFound = true;
+
             }
             else
             {

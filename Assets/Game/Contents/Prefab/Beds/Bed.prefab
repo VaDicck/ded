@@ -216,8 +216,8 @@ MonoBehaviour:
   _plowedState: {fileID: 690506000599480813}
   _plantedState: {fileID: 4207040019692243169}
   _poured: {fileID: 3773772060610241586}
-  _unlockTool: 0
-  _plowTool: 0
+  _unlockTool: 3
+  _plowTool: 6
 --- !u!65 &1956918124305824084
 BoxCollider:
   m_ObjectHideFlags: 0
