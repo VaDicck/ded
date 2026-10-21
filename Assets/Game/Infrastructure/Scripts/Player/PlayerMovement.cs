@@ -61,6 +61,13 @@ public class PlayerMovement : MonoBehaviour
         Move();
     }
    
+    public void SetDefaultSensitivity(float xSensitivity, float ySensitivity)
+    {
+        _defaultXSensitivity = xSensitivity;
+        _defaultYSensitivity = ySensitivity;
+        ApplySensitivity();
+    }
+
     public void SetSensitivity(float xSensitivity, float ySensitivity)
     {
         _currentXSensitivity = Mathf.Clamp(xSensitivity, 0.1f, 50f);
