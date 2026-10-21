@@ -24,8 +24,8 @@ public class InputController
     
     private PlayerInputActions _playerInputActions;
     
-    private ReactiveProperty<float> _xSensitivity = new(1f);
-    private ReactiveProperty<float> _ySensitivity = new(1f);
+    private ReactiveProperty<float> _xSensitivity = new(4f);
+    private ReactiveProperty<float> _ySensitivity = new(4f);
     
     public InputController()
     {
