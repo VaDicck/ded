@@ -26,6 +26,6 @@ public class CountPatron : MonoBehaviour
     
     private void UpdateCurrentPatron(int CurrentCountPatron)
     {
-        _countText.text = $"Parton {CurrentCountPatron}/{_shotgun.MaxCountPatron}";
+        _countText.text = $"Patron {CurrentCountPatron}/{_shotgun.MaxCountPatron}";
     }
 }
