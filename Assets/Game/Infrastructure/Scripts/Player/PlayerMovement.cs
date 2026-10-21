@@ -17,14 +17,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _defaultSpeed;
     [SerializeField] private float _zoomSpeed;
     [SerializeField] private float _sprintMultiplier;
-    [SerializeField] private float _defaultXSensitivity = 1f;
-    [SerializeField] private float _defaultYSensitivity = 1f;
-    [SerializeField] private float _zoomXSensitivityMultiplier = 0.1f;
-    [SerializeField] private float _zoomYSensitivityMultiplier = 0.1f;
+    [SerializeField] private float _zoomXSensitivityMultiplier = 0.6f;
+    [SerializeField] private float _zoomYSensitivityMultiplier = 0.6f;
     [SerializeField] private float _gravity = 9.81f;
     
     private float _verticalVelocity;
 
+    private float _defaultXSensitivity;
+    private float _defaultYSensitivity;
     private float _currentXSensitivity;
     private float _currentYSensitivity;
     
@@ -41,10 +41,15 @@ public class PlayerMovement : MonoBehaviour
         
         _inputController.OpenRadialMenu += () => _inputAxisController.enabled = false;
         _inputController.RadialMenuCanceled += () => _inputAxisController.enabled = true;
+        inputController.XSensitivity.Subscribe(SetDefaultXSensitivity);
+        inputController.YSensitivity.Subscribe(SetDefaultYSensitivity);
     }
     
     private void Awake()
     {
+        _defaultXSensitivity = _inputController.XSensitivity.CurrentValue;
+        _defaultYSensitivity = _inputController.YSensitivity.CurrentValue;
+            
         _currentXSensitivity = _defaultXSensitivity;
         _currentYSensitivity = _defaultYSensitivity;
         _currentSpeed = _defaultSpeed;
@@ -61,6 +66,20 @@ public class PlayerMovement : MonoBehaviour
         Move();
     }
    
+    public void SetDefaultXSensitivity(float xSensitivity)
+    {
+        _defaultXSensitivity = xSensitivity;
+        _currentXSensitivity = _defaultXSensitivity;
+        ApplySensitivity();
+    }  
+    
+    public void SetDefaultYSensitivity(float ySensitivity)
+    {
+        _defaultYSensitivity = ySensitivity;
+        _currentYSensitivity = _defaultYSensitivity;
+        ApplySensitivity();
+    }
+
     public void SetSensitivity(float xSensitivity, float ySensitivity)
     {
         _currentXSensitivity = Mathf.Clamp(xSensitivity, 0.1f, 50f);

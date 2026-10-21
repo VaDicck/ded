@@ -38,6 +38,7 @@ public class DayCycleService : ITickable
     public void StartNight()
     {
         this.LogError("START NIGHT");
+        _isDay = false;
         DayEnded?.Invoke();
         NightStarted?.Invoke();
     }
@@ -55,9 +56,7 @@ public class DayCycleService : ITickable
         _time += Time.deltaTime;
         if (_time >= _dayLength)
         {
-            _isDay = false;
-            DayEnded?.Invoke();
-            NightStarted?.Invoke();
+            StartNight();
         }
     }
 

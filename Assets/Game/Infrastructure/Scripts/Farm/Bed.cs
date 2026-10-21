@@ -18,8 +18,8 @@ public class Bed : MonoBehaviour, IInteractable
 
     public IBedState CurrentState => _stateMachine.CurrentState;
 
-    public bool IsInteractable => _stateMachine.CurrentState.IsInteractable;
-    public bool IsUsable => _stateMachine.CurrentState.IsUsable;
+    public bool IsInteractable => _stateMachine.CurrentState.IsInteractable && _dayCicleService.IsDay;
+    public bool IsUsable => _stateMachine.CurrentState.IsUsable && _dayCicleService.IsDay;
 
     [Header("Tools")] 
     [SerializeField] private ToolType _unlockTool;
@@ -29,12 +29,14 @@ public class Bed : MonoBehaviour, IInteractable
     
     private BedService _bedService;
     private CulturesSelection _culturesSelection; 
+    private DayCycleService _dayCicleService; 
     
     [Inject]
-    private void Initialize(BedService bedService, CulturesSelection culturesSelection)
+    private void Initialize(BedService bedService, CulturesSelection culturesSelection, DayCycleService dayCycleService)
     {
         _bedService =  bedService;
         _culturesSelection = culturesSelection;
+        _dayCicleService = dayCycleService;
     }
 
     private void Awake()

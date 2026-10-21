@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using R3;
 
 public class InputController
 {
@@ -13,12 +14,18 @@ public class InputController
     public event Action RadialMenuCanceled;
     public event Action OpenRadialMenu;
     
+    public ReadOnlyReactiveProperty<float> XSensitivity => _xSensitivity;
+    public ReadOnlyReactiveProperty<float> YSensitivity => _ySensitivity;
+    
     public Vector2 MoveDirection => _playerInputActions.Player.Move.ReadValue<Vector2>();
     public bool SprintPressed => _playerInputActions.Player.Sprint.IsInProgress();
     
     public Vector2 RadialMenuMousePosition => _playerInputActions.RadialMenu.MousePosition.ReadValue<Vector2>();
     
     private PlayerInputActions _playerInputActions;
+    
+    private ReactiveProperty<float> _xSensitivity = new(1f);
+    private ReactiveProperty<float> _ySensitivity = new(1f);
     
     public InputController()
     {
@@ -27,6 +34,12 @@ public class InputController
         _playerInputActions.Enable();
         Subscribe();
         SwitchToGameplay();
+    }
+
+    public void SetSensitivity(float xSensitivity, float ySensitivity)
+    {
+        _xSensitivity.Value = xSensitivity;
+        _ySensitivity.Value = ySensitivity;
     }
 
     public void SwitchToUi()
