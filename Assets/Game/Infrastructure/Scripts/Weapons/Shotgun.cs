@@ -16,13 +16,12 @@ public class Shotgun : Weapon
 
     protected override void Hide()
     {
-        _animatorHand.gameObject.SetActive(false);
         _shotgun.SetActive(false);
     }
 
     protected override void Show()
     {
-        _animatorHand.gameObject.SetActive(true);
+        _animatorHand.SetTrigger("EquipShotgun");
         _shotgun.SetActive(true);
         _animator.SetFloat("ReloadPistolSpeed", _reloadTimeOnePistol);
         _animatorHand.SetFloat("ReloadPistolSpeed", _reloadTimeOnePistol);
