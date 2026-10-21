@@ -11544,10 +11544,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 833508487997849898, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1146625480943203812, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2918627911804522192, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _vfxFire
+      value: 
+      objectReference: {fileID: 2139265751}
     - target: {fileID: 2918627911804522192, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: _crosshair
       value: 
@@ -24093,6 +24101,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CountPatron
   _countText: {fileID: 1092691256}
   _shotgun: {fileID: 189656090}
+--- !u!1 &2139265751 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 833508487997849898, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+  m_PrefabInstance: {fileID: 1029258960}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &538903587918073256
 MeshRenderer:
   m_ObjectHideFlags: 0
