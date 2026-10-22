@@ -4,6 +4,7 @@ using Zenject;
 
 public class Train : MonoBehaviour
 {
+    
     [SerializeField] private List<Carriage> _carriages;
     [SerializeField] private Animator _animator;
 
@@ -33,9 +34,6 @@ public class Train : MonoBehaviour
     [ContextMenu("Train Leave")]
     private void Leave()
     {
-        if(!_isReached)
-            return;
-        
         _animator.SetTrigger("Leave");
         
         _animator.SetTrigger("Moving");

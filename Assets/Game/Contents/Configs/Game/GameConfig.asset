@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2f53aacf0040478ebeb71d4f200492, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: Assembly-CSharp::GameConfig
-  <DayLength>k__BackingField: 30
+  <DayLength>k__BackingField: 600
   <FoodCapacity>k__BackingField: 200
-  <QuotaExpireDays>k__BackingField: 0
+  <QuotaExpireDays>k__BackingField: 3
   <Quotas>k__BackingField: {fileID: 11400000, guid: 60261e4471e9ae14b966be9eaa299267, type: 2}
   <QuotaStringView>k__BackingField: {fileID: 0}

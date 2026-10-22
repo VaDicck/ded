@@ -64,7 +64,7 @@ public class Carriage : MonoBehaviour, IInteractable
             else
                 countTakeCulture = _playerCultures.Take(expected.Key, countExpectedCulture);
             
-            _quota.Fill(expected.Key, countTakeCulture);
+            _quotaService.AddCulture(_quotaElement, expected.Key, countTakeCulture);
             
             this.Log($"Quota: {_quotaElement} filled for {countTakeCulture} culture");
         }
@@ -83,6 +83,8 @@ public class Carriage : MonoBehaviour, IInteractable
             _quota.Reached -= OnComplete;
         
         _quota = null;    
+        
+        print("AS:DA:SLDK:LA");
         
         gameObject.SetActive(false);
         _carriageMenu.Dispose();

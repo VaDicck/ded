@@ -6,6 +6,12 @@ using Zenject;
 public class Bed : MonoBehaviour, IInteractable
 {
     public event Action UpdatePlantedStateBeds;
+    public event Action Unlocked;
+    public event Action Plowed;
+    public event Action Planted;
+    public event Action Watered;
+    public event Action Grown;
+    public event Action Collected;
     
     [Header("Visual State")] 
     [SerializeField] private GameObject _closedState;
@@ -36,7 +42,7 @@ public class Bed : MonoBehaviour, IInteractable
     [Inject]
     private void Initialize(BedService bedService, CulturesSelection culturesSelection, DayCycleService dayCycleService)
     {
-        _bedService =  bedService;
+        _bedService = bedService;
         _culturesSelection = culturesSelection;
         _dayCicleService = dayCycleService;
     }
@@ -74,6 +80,13 @@ public class Bed : MonoBehaviour, IInteractable
 
     private void Subscribe()
     {
+        _stateMachine.GetState<ClosedBedState>().Performed += () => Unlocked?.Invoke();
+        _stateMachine.GetState<RawBedState>().Performed += () => Plowed?.Invoke();
+        _stateMachine.GetState<PlowedBedState>().Performed += () => Planted?.Invoke();
+        _stateMachine.GetState<PlantedBedState>().Watered += () => Watered?.Invoke();
+        _stateMachine.GetState<PlantedBedState>().Grown += () => Grown?.Invoke();
+        _stateMachine.GetState<PlantedBedState>().Collected += () => Collected?.Invoke();
+        
         _stateMachine.GetState<ClosedBedState>().Performed += _stateMachine.SetState<RawBedState>;
         _stateMachine.GetState<RawBedState>().Performed +=  _stateMachine.SetState<PlowedBedState>;
         _stateMachine.GetState<PlowedBedState>().Performed += () =>
