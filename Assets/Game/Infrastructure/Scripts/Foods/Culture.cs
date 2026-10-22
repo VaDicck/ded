@@ -24,7 +24,7 @@ public abstract class Culture: IDisposable
     
     private int _count;
 
-    protected float _timerCollected = 6f;
+    protected float _timerCollected = 10f;
     private float _currentTimerCollected;
     private int _countEnemyHitting = 0;
 
