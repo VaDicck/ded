@@ -4,13 +4,10 @@ using Zenject;
 
 public class Train : MonoBehaviour
 {
-    
     [SerializeField] private List<Carriage> _carriages;
     [SerializeField] private Animator _animator;
 
     private DayCycleService _dayCycleService;
-
-    private bool _isReached = false;
 
     [Inject]
     private void Init(DayCycleService dayCycle)
@@ -27,6 +24,7 @@ public class Train : MonoBehaviour
     [ContextMenu("Train Arrive")]
     private void Arrive()
     {
+        Hide();
         Show();
         this.Log("Train arrive");
     }
@@ -74,7 +72,6 @@ public class Train : MonoBehaviour
         if (AllСarriageReached)
         {
             Leave();
-            _isReached = true;
         }
     }
     
