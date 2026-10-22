@@ -7,6 +7,9 @@ using Object = UnityEngine.Object;
 public class PlantedBedState : IBedState
 {
     public event Action Performed;
+    public event Action Watered;
+    public event Action Grown;
+    public event Action Collected;
 
     public bool IsInteractable => _culture.IsGrown.CurrentValue;
     public bool IsUsable => _culture.IsGrown.CurrentValue == false;
@@ -88,6 +91,7 @@ public class PlantedBedState : IBedState
     private void OnCollected()
     {
         Performed?.Invoke();
+        Collected?.Invoke();
     }
 
     private void OnPoredChanged(bool value)
@@ -98,6 +102,7 @@ public class PlantedBedState : IBedState
             Object.Destroy(_prefab);
             _prefab = Object.Instantiate(_culture.CultureConfig.Step2Prefab, _visualState.transform);
             this.Log($"{_culture.Type} was poured");
+            Watered?.Invoke();
         }
     }
     
@@ -108,6 +113,7 @@ public class PlantedBedState : IBedState
             Object.Destroy(_prefab);
             _prefab = Object.Instantiate(_culture.CultureConfig.Step3Prefab, _visualState.transform);
             this.Log($"{_culture.Type} was grown");
+            Grown?.Invoke();
         }
     }
     

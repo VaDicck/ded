@@ -5,6 +5,7 @@ using Object = UnityEngine.Object;
 public class QuotaService
 {
     public event Action QuotaExpired;
+    public event Action QuotaReached;
     public event Action<Quota.Element, CultureType, int> CultureAmountChanged;
 
     public Quota CurrentQuota => _currentQuota;
@@ -31,7 +32,10 @@ public class QuotaService
 
     private void OnQuotaElementDone()
     {
-        
+        if((CurrentQuota.Main.IsEmpty || CurrentQuota.Main.IsReached)
+           && (CurrentQuota.Sub1.IsEmpty || CurrentQuota.Sub1.IsReached)
+           && (CurrentQuota.Sub2.IsEmpty ||  CurrentQuota.Sub2.IsReached))
+            QuotaReached?.Invoke();
     }
     
     private void OnNewDayReached()
@@ -52,6 +56,9 @@ public class QuotaService
             {
                 CultureAmountChanged?.Invoke(element, cultureType, filledValue);
             }
+
+            if (CurrentQuota.Main.IsReached && CurrentQuota.Sub1.IsReached && CurrentQuota.Sub2.IsReached)
+                QuotaReached?.Invoke();
             
             return filledValue;
         }
@@ -69,6 +76,10 @@ public class QuotaService
         }
         
         _currentQuota = Object.Instantiate(_gameConfig.Quotas.Quotas[quotaNumber]);
+        
+        _currentQuota.Main.Reached += OnQuotaElementDone;
+        _currentQuota.Sub1.Reached += OnQuotaElementDone;
+        _currentQuota.Sub2.Reached += OnQuotaElementDone;
         
         this.Log($"Quota \"{quotaNumber}\": {_currentQuota}");
     }
