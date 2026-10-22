@@ -138,8 +138,6 @@ MonoBehaviour:
       Input:
         InputAction: {fileID: -493091155414541446, guid: 399c786594975c4419cc9fe17654106c, type: 3}
         Gain: 1
-        LegacyInput: 
-        LegacyGain: 1
         CancelDeltaTime: 0
       InputValue: 0
       Driver:
@@ -151,15 +149,13 @@ MonoBehaviour:
       Input:
         InputAction: {fileID: -493091155414541446, guid: 399c786594975c4419cc9fe17654106c, type: 3}
         Gain: -1
-        LegacyInput: 
-        LegacyGain: 1
         CancelDeltaTime: 0
       InputValue: -0
       Driver:
         AccelTime: 0
         DecelTime: 0
   PlayerIndex: -1
-  AutoEnableInputs: 0
+  AutoEnableInputs: 1
 --- !u!114 &3461452245047153355
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -32,6 +32,7 @@ public class InputController
         _playerInputActions = new PlayerInputActions();
         
         _playerInputActions.Enable();
+        this.Log("Input actions enabled");
         Subscribe();
         SwitchToGameplay();
     }
