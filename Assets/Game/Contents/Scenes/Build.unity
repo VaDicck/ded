@@ -3059,19 +3059,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4032372661675503197, guid: 23d61a64c73b0ef459bd697a9e79d2cf, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.62468463
+      value: 0.49453592
       objectReference: {fileID: 0}
     - target: {fileID: 4032372661675503197, guid: 23d61a64c73b0ef459bd697a9e79d2cf, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.044739727
       objectReference: {fileID: 0}
     - target: {fileID: 4032372661675503197, guid: 23d61a64c73b0ef459bd697a9e79d2cf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7808772
+      value: -0.86447453
       objectReference: {fileID: 0}
     - target: {fileID: 4032372661675503197, guid: 23d61a64c73b0ef459bd697a9e79d2cf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.078207366
       objectReference: {fileID: 0}
     - target: {fileID: 4032372661675503197, guid: 23d61a64c73b0ef459bd697a9e79d2cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9950,7 +9950,7 @@ MonoBehaviour:
   - {fileID: 2101838825}
   - {fileID: 1106250023}
   _countAliens: 4
-  _durationSpawn: 5
+  _durationSpawn: 0
 --- !u!1 &832585958
 GameObject:
   m_ObjectHideFlags: 0
