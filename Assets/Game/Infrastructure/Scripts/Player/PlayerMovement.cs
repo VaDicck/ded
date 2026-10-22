@@ -20,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _sprintMultiplier;
     [SerializeField] private float _zoomXSensitivityMultiplier = 0.6f;
     [SerializeField] private float _zoomYSensitivityMultiplier = 0.6f;
-    [SerializeField] private float _gravity = 9.81f;
     
     private float _verticalVelocity;
 
@@ -115,17 +114,10 @@ public class PlayerMovement : MonoBehaviour
         if (_inputController.SprintPressed && move.y > 0)
             currentSpeed *= _sprintMultiplier;
 
-        if (_characterController.isGrounded && _verticalVelocity < 0)
-            _verticalVelocity = 0;
-
-        _verticalVelocity += -(_gravity) * Time.deltaTime;
-
         Vector3 movement = (GetForward() * move.y + GetRight() * move.x) * currentSpeed;
 
-        movement.y = _verticalVelocity;
-
+        _velocity.y = 0;
         _velocity = Vector3.MoveTowards(_velocity, movement, _acceleration * Time.deltaTime);
-
         _characterController.SimpleMove(_velocity);
     }
 
