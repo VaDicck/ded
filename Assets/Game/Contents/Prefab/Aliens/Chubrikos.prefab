@@ -74,6 +74,8 @@ MonoBehaviour:
   _health: 30
   _animator: {fileID: 772952679108185679}
   _sfxSplashAlien: {fileID: 3990862495863414018, guid: 1d3cc85384e970b4d94144cb276af7c6, type: 3}
+  _brokenPartsPrefab: {fileID: 2990539635324416111, guid: 5861cb4234e467149a220e5ed4a84cb5, type: 3}
+  _alienModel: {fileID: 5625720435512658912}
 --- !u!195 &1894188396959641881
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -280,5 +282,10 @@ PrefabInstance:
 --- !u!4 &4997098115444183386 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1aea41ee19b1dbf43921940a0e750f6c, type: 3}
+  m_PrefabInstance: {fileID: 4815468678356039345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5625720435512658912 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1aea41ee19b1dbf43921940a0e750f6c, type: 3}
   m_PrefabInstance: {fileID: 4815468678356039345}
   m_PrefabAsset: {fileID: 0}

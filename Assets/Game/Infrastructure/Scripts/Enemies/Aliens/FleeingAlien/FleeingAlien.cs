@@ -5,6 +5,9 @@ using Zenject;
 
 public class FleeingAlien : Alien<IFleeingAlienState>
 {
+    [SerializeField] private GameObject _brokenPartsPrefab;
+    [SerializeField] private GameObject _alienModel;
+    
     private bool _isSuccessDigging = false;
     private bool _isJumping = false;
     
@@ -125,17 +128,19 @@ public class FleeingAlien : Alien<IFleeingAlienState>
 
     protected override void Die()
     {
-        if(_stateMachine.CurrentState is DiggingBedFleeingAlienState)
-            _stateMachine.GetState<DiggingBedFleeingAlienState>().StopHitting();
+        if (_stateMachine.CurrentState is DiggingBedFleeingAlienState diggingState)
+            diggingState.StopHitting();
+
+        _alienModel.SetActive(false);
+        
+        GameObject parts = Instantiate(_brokenPartsPrefab, transform.position, transform.rotation);
+
+        if (parts.TryGetComponent(out AlienBroken alienBroken))
+        {
+            alienBroken.Destroyed += () => Destroy(gameObject);
+            return;
+        }
         
         Destroy(gameObject);
-    }
-
-    private void Lose()
-    {
-        if (_isSuccessDigging)
-        {
-            Destroy(gameObject);
-        }
     }
 }
