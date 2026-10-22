@@ -19,6 +19,7 @@ public class RunToSpawnFleeingAlienState : IFleeingAlienState
 
     public void Enter()
     {
+        _navMeshAgent.updateRotation = true;
         _navMeshAgent.isStopped = false;
         _navMeshAgent.SetDestination(_spawnPoint.position);
     }

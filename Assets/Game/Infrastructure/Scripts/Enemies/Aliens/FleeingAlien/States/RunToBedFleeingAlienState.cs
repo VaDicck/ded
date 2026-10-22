@@ -8,7 +8,7 @@ public class RunToBedFleeingAlienState : IFleeingAlienState
     public event Action RunSpawn;
     
     private Bed _bed;
-    private float _stopDistance = 3f;
+    private float _stopDistance = 1.5f;
     private NavMeshAgent _navMeshAgent; 
     
     private BedService _bedService;
@@ -28,13 +28,13 @@ public class RunToBedFleeingAlienState : IFleeingAlienState
 
     public void Enter()
     {
+        _navMeshAgent.updateRotation = true;
         _navMeshAgent.isStopped = false; 
         _navMeshAgent.SetDestination(_bed.transform.position);
     }
 
     public void Tick()
     {
-        //TODO надо бежать к другой грядке
         if (!_navMeshAgent.pathPending
             && _navMeshAgent.remainingDistance <= _stopDistance
             && _bed.CurrentState is PlantedBedState)

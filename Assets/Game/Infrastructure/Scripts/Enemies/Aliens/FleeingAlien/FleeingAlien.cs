@@ -106,6 +106,11 @@ public class FleeingAlien : Alien<IFleeingAlienState>
         _stateMachine.GetState<RunToBedFleeingAlienState>().Performed 
             += bed =>
             {
+                _navMeshAgent.isStopped = true;
+                _navMeshAgent.updateRotation = false;
+                
+                StartCoroutine(FaceTarget(bed.transform.position));
+                
                 _animator.SetTrigger("Digging");
                 _stateMachine.GetState<DiggingBedFleeingAlienState>().SetBed(bed);
                 _stateMachine.SetState<DiggingBedFleeingAlienState>();
@@ -124,6 +129,27 @@ public class FleeingAlien : Alien<IFleeingAlienState>
                 Die();
             };
 
+    }
+    
+    private IEnumerator FaceTarget(Vector3 destination)
+    {
+        Vector3 lookPos = destination - transform.position;
+        lookPos.y = 0; // Чтобы не наклонялся
+    
+        if (lookPos != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(lookPos);
+            float time = 0;
+        
+            // Поворачиваемся плавно в течение 0.3 секунд
+            while (time < 0.3f)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, time / 0.3f);
+                time += Time.deltaTime;
+                yield return null;
+            }
+            transform.rotation = targetRotation;
+        }
     }
 
     protected override void Die()
