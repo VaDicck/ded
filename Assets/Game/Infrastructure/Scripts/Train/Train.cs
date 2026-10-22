@@ -9,6 +9,8 @@ public class Train : MonoBehaviour
 
     private DayCycleService _dayCycleService;
 
+    private bool _left = true;
+    
     [Inject]
     private void Init(DayCycleService dayCycle)
     {
@@ -24,6 +26,10 @@ public class Train : MonoBehaviour
     [ContextMenu("Train Arrive")]
     private void Arrive()
     {
+        if (_left == false)
+            return;
+        
+        _left = false;
         Hide();
         Show();
         this.Log("Train arrive");
@@ -32,6 +38,11 @@ public class Train : MonoBehaviour
     [ContextMenu("Train Leave")]
     private void Leave()
     {
+        if (_left)
+            return;
+        
+        _left = true;
+        
         _animator.SetTrigger("Leave");
         
         _animator.SetTrigger("Moving");
