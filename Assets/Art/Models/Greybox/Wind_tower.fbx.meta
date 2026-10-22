@@ -3,7 +3,12 @@ guid: 2e736d2f1ac716f4391a5ca43a5f2b48
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BGR_Ambar
+    second: {fileID: 2100000, guid: 9d24db7de9f80474ca1836e0c52e3ccd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
