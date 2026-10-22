@@ -3,7 +3,17 @@ guid: ab121064a67fda94386cf932f3fca874
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House_Trim
+    second: {fileID: 2100000, guid: 16549ef0f366c1d4d827b8345e01851a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Loco_Trim
+    second: {fileID: 2100000, guid: c6f2f449dff40e24aa884f78089fe3dd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
