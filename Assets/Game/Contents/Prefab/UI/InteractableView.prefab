@@ -127,13 +127,13 @@ MonoBehaviour:
   _playerInteractions: {fileID: 0}
   _interactableImage: {fileID: 2193934511982733639}
   _crosshair: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  _handInteractableSprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  _handInteractableSprite: {fileID: 21300000, guid: 452d58413e338d54b963a025877f6741, type: 3}
   _toolSprites:
   - <Key>k__BackingField: 3
-    <Value>k__BackingField: {fileID: 21300000, guid: ff97921dffe981d44b05f2bedbffbd47, type: 3}
+    <Value>k__BackingField: {fileID: 21300000, guid: 9f0748d082716b74bb7bdd65248f04d1, type: 3}
   - <Key>k__BackingField: 4
-    <Value>k__BackingField: {fileID: 21300000, guid: 576f0b4800928e241b8e6905b1492a53, type: 3}
+    <Value>k__BackingField: {fileID: 21300000, guid: b036d986764534b4dbd4c9f20047e19c, type: 3}
   - <Key>k__BackingField: 6
-    <Value>k__BackingField: {fileID: 21300000, guid: 9115c6bd92a0b3343bff8f35a90956cf, type: 3}
+    <Value>k__BackingField: {fileID: 21300000, guid: 9111eb6bb0039bf42be5eaadc2529c2b, type: 3}
   - <Key>k__BackingField: 7
-    <Value>k__BackingField: {fileID: 21300000, guid: a78a907515e65a04ca72fc66dfb6dd01, type: 3}
+    <Value>k__BackingField: {fileID: 21300000, guid: df13f038cf2c89340948229aacad968d, type: 3}
