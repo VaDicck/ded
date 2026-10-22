@@ -8,7 +8,8 @@ public class Train : MonoBehaviour
     [SerializeField] private Animator _animator;
 
     private DayCycleService _dayCycleService;
-    private QuotaService _quotaService;
+
+    private bool _isReached = false;
 
     [Inject]
     private void Init(DayCycleService dayCycle)
@@ -32,6 +33,9 @@ public class Train : MonoBehaviour
     [ContextMenu("Train Leave")]
     private void Leave()
     {
+        if(!_isReached)
+            return;
+        
         _animator.SetTrigger("Leave");
         
         _animator.SetTrigger("Moving");
@@ -70,7 +74,10 @@ public class Train : MonoBehaviour
         }
 
         if (AllСarriageReached)
+        {
             Leave();
+            _isReached = true;
+        }
     }
     
     private void OnDestroy()
