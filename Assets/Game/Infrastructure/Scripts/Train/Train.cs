@@ -70,7 +70,7 @@ public class Train : MonoBehaviour
         }
 
         if (AllСarriageReached)
-            Hide();
+            Leave();
     }
     
     private void OnDestroy()

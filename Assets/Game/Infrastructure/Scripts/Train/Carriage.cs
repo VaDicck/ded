@@ -79,9 +79,11 @@ public class Carriage : MonoBehaviour, IInteractable
 
     private void OnDisable()
     {
+        this.LogError("Disable in Train");
         if (_quota != null)
             _quota.Reached -= OnComplete;
         
+        this.LogError("quota has null");
         _quota = null;    
         
         gameObject.SetActive(false);
