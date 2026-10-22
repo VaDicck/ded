@@ -29,12 +29,6 @@ public class AlienBroken : MonoBehaviour
         {
             rb.AddExplosionForce(_explosionForce, explosionPos, _explosionRadius, _upwardsModifier, ForceMode.Impulse);
 
-            Vector3 fromCenter = rb.transform.position - explosionPos;
-            if (fromCenter.sqrMagnitude > 0.001f)
-            {
-                rb.AddForce(fromCenter.normalized * Random.Range(_outwardForceMin, _outwardForceMax), ForceMode.Impulse);
-            }
-
             rb.AddTorque(Random.onUnitSphere * Random.Range(_torqueMin, _torqueMax), ForceMode.Impulse);
         }
 

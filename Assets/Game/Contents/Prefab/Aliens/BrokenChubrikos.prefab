@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlienBroken
   _explosionForce: 1100
-  _explosionRadius: 3.5
+  _explosionRadius: 1.5
   _upwardsModifier: 5
   _centerHeight: 3
   _outwardForceMin: 300
