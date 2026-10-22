@@ -45,16 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a719b3c1ca864f24198924580aed9038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlienBroken
-  _explosionForce: 1200
-  _explosionRadius: 3.2
-  _upwardsModifier: 0.8
+  _explosionForce: 1100
+  _explosionRadius: 1.5
+  _upwardsModifier: 5
   _centerHeight: 3
-  _outwardForceMin: 280
-  _outwardForceMax: 520
-  _torqueMin: 90
-  _torqueMax: 280
+  _outwardForceMin: 300
+  _outwardForceMax: 600
+  _torqueMin: 130
+  _torqueMax: 310
   _timeLife: 5
-  _rigidbodies: []
+  _rigidbodies:
+  - {fileID: 9129378488684930237}
+  - {fileID: 7562437571355685745}
+  - {fileID: 4210857140435250750}
+  - {fileID: 2768275870473091387}
+  - {fileID: 9132503909077566620}
+  - {fileID: 2545943265448409113}
+  - {fileID: 2606510968763569239}
+  - {fileID: 549112045433864164}
 --- !u!1001 &2746796540108257218
 PrefabInstance:
   m_ObjectHideFlags: 0

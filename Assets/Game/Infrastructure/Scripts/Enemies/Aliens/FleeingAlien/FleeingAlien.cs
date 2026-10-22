@@ -131,15 +131,15 @@ public class FleeingAlien : Alien<IFleeingAlienState>
         if (_stateMachine.CurrentState is DiggingBedFleeingAlienState diggingState)
             diggingState.StopHitting();
 
-        _alienModel.SetActive(false);
+        //_alienModel.SetActive(false);
         
         GameObject parts = Instantiate(_brokenPartsPrefab, transform.position, transform.rotation);
 
-        if (parts.TryGetComponent(out AlienBroken alienBroken))
+        /*if (parts.TryGetComponent(out AlienBroken alienBroken))
         {
             alienBroken.Destroyed += () => Destroy(gameObject);
             return;
-        }
+        }*/
         
         Destroy(gameObject);
     }
