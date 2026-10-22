@@ -6,6 +6,7 @@ using R3;
 public class PlayerMovement : MonoBehaviour
 {
     public float Speed => _currentSpeed;
+    public Vector3 Velocity => _characterController.velocity;
 
     [Header("Menu Components")]
     [SerializeField] private CharacterController _characterController;

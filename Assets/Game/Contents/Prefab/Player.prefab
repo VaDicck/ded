@@ -210,8 +210,8 @@ MonoBehaviour:
   _animatorHand: {fileID: 8931445173760385191}
   _pelletDamage: 13
   _pelletCount: 13
-  _spreadAngle: 9
-  _effectiveRange: 15
+  _spreadAngle: 6
+  _effectiveRange: 20
   _shotgun: {fileID: 3515129778242511599}
   _reloadTimeOnePistol: 2
 --- !u!1 &833508487997849898
