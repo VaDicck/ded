@@ -136,40 +136,16 @@ public class HintsView : MonoBehaviour
         {
             _text.text = _waitNight;
             Watered = null;
-            _dayCycleService.NightStarted += async () =>
-            {
-                _text.text = _protectPlants;
-                await UniTask.WaitUntil(() => _alienService.AliensEmpty);
-                _text.text = _goToBed;
+            _dayCycleService.NightStarted += OnNightStarted;
 
-                _dayCycleService.DayStarted += () =>
-                {
-                    _text.text = _getPlants;
-
-                    foreach (var bed in _beds)
-                    {
-                        bed.Collected += () =>
-                        {
-                            _plantsCollected++;
-                            if (_plantsCollected == 3)
-                                Collected?.Invoke();
-                        };
-                    }
-                };
-            };
         };
 
         Collected += () =>
         {
             Collected = null;
             _text.text = _goToQuota;
-            _quotaService.CultureAmountChanged += (element, type, count) =>
-            {
-                _text.text = _cycleThis;
-            };
+            _quotaService.CultureAmountChanged += OnQuotaProgressed;
         };
-
-        
 
         _quotaService.QuotaReached += () =>
         {
@@ -178,6 +154,39 @@ public class HintsView : MonoBehaviour
         };
     }
 
+    private async void OnNightStarted()
+    {
+        _dayCycleService.NightStarted -= OnNightStarted;
+        _text.text = _protectPlants;
+        await UniTask.WaitUntil(() => _alienService.AliensEmpty);
+        _text.text = _goToBed;
+
+        _dayCycleService.DayStarted += OnDayStarted;
+        
+    }
+
+    private void OnDayStarted()
+    {
+        _dayCycleService.DayStarted -= OnDayStarted;
+        _text.text = _getPlants;
+
+        foreach (var bed in _beds)
+        {
+            bed.Collected += () =>
+            {
+                _plantsCollected++;
+                if (_plantsCollected == 3)
+                    Collected?.Invoke();
+            };
+        }
+    }
+
+    private void OnQuotaProgressed(Quota.Element element, CultureType type, int count)
+    {
+        _quotaService.CultureAmountChanged -= OnQuotaProgressed;
+        _text.text = _cycleThis;
+    }
+    
     private void Start()
     {
         _text.text = _unlockBeds;
