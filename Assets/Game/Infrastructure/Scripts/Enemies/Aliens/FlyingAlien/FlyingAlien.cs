@@ -5,10 +5,7 @@ public class FlyingAlien : Alien<IFlyingAlienState>
 {
     private Transform _playerTransform;
 
-    public class Factory : PlaceholderFactory<FlyingAlien>
-    {
-
-    }
+    public class Factory : PlaceholderFactory<FlyingAlien> { }
 
     public void SetPlayer(Transform playerTransform)
     {
