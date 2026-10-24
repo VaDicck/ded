@@ -13,9 +13,9 @@ NavMeshProjectSettings:
     cost: 2
   - name: FarmZone
     cost: 1
-  - name: 
+  - name: Garden
     cost: 1
-  - name: 
+  - name: OutsideGarden
     cost: 1
   - name: 
     cost: 1
