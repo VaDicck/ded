@@ -2,13 +2,15 @@ using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
-public class Chicken<TState> : MonoBehaviour where TState : IChickenState
+public class Chicken : MonoBehaviour
 {
     [Header("NavMesh Settings")]
     [SerializeField] private NavMeshAgent _navMeshAgent;
-    [SerializeField] private float wanderRadius = 15f;
-    [SerializeField] private float peckProbability = 0.25f;
-    [SerializeField] private float peckCheckInterval = 4f;
+    [SerializeField] private float _wanderRadius = 15f;
+    [SerializeField] private float _peckProbability = 0.25f;
+    [SerializeField] private float _peckCheckInterval = 4f;
+    
+    [SerializeField] private Transform _spawnPoint;
 
     private StateMachine<IChickenState> _stateMachine;
 
@@ -22,47 +24,55 @@ public class Chicken<TState> : MonoBehaviour where TState : IChickenState
         _dayCycleService = dayCycleService;
     }
 
-    private void Awake()
-    {
-        _navMeshAgent.speed = 1.8f;
-        _navMeshAgent.angularSpeed = 300f;
-        _navMeshAgent.acceleration = 8f;
-        _navMeshAgent.stoppingDistance = 0.5f;
-        _navMeshAgent.radius = 0.3f;
-        _navMeshAgent.height = 0.6f;
-    }
-
     private void Start()
     {
+        SetSpawnPoint(_spawnPoint);
+        
         AddStates();
         Subscribe();
 
-        _nextPeckCheckTime = Time.time + peckCheckInterval;
+        _nextPeckCheckTime = Time.time + _peckCheckInterval;
     }
 
     private void Update()
     {
         _stateMachine.Tick();
 
-        // Периодическая проверка на клевание
+        PeckCheck();
+    }
+
+    private void PeckCheck()
+    {
         if (Time.time >= _nextPeckCheckTime && _stateMachine.CurrentState is WanderChickenState)
         {
-            if (Random.value < peckProbability)
+            if (Random.value < _peckProbability)
             {
                 _stateMachine.SetState<PeckChickenState>();
             }
-            _nextPeckCheckTime = Time.time + peckCheckInterval;
+            _nextPeckCheckTime = Time.time + _peckCheckInterval;
         }
     }
-
-    protected void AddStates()
+    
+    private void SetSpawnPoint(Transform spawnPoint)
     {
-        _stateMachine = new StateMachine<IChickenState>(new WanderChickenState(transform, _navMeshAgent, wanderRadius));
+        _navMeshAgent.Warp(spawnPoint.position);
+        _spawnPoint = spawnPoint;
+    }
+
+    private void AddStates()
+    {
+        _stateMachine = new StateMachine<IChickenState>(new IdleChickenState());
+        _stateMachine.AddState(new WanderChickenState(transform, _navMeshAgent, _wanderRadius));
         _stateMachine.AddState(new PeckChickenState(_navMeshAgent));
     }
 
-    protected void Subscribe()
+    private void Subscribe()
     {
+        _stateMachine.GetState<IdleChickenState>().Performed += () =>
+        {
+            _stateMachine.SetState<WanderChickenState>();
+        };
+        
         _stateMachine.GetState<PeckChickenState>().Performed += () =>
         {
             _stateMachine.SetState<WanderChickenState>();

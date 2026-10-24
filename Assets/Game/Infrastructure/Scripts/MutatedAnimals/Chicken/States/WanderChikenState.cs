@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class WanderChickenState : IChickenState
 {
@@ -24,15 +26,11 @@ public class WanderChickenState : IChickenState
         SetRandomDestination();
     }
 
-    public void Exit()
-    {
-        _agent.isStopped = true;
-    }
-
     public void Tick()
     {
-        if (_agent.remainingDistance <= _agent.stoppingDistance + 0.1f)
+        if (_agent.remainingDistance <= _agent.stoppingDistance)
         {
+            //TODO idle state
             if (Time.time >= _nextWanderTime)
             {
                 SetRandomDestination();
@@ -40,6 +38,7 @@ public class WanderChickenState : IChickenState
         }
     }
 
+    //TODO проходит насквозь дырки
     private void SetRandomDestination()
     {
         Vector3 randomDirection = Random.insideUnitSphere * _wanderRadius;

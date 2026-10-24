@@ -20,7 +20,7 @@ public class PeckChickenState : IChickenState
         _agent.isStopped = true;
         _peckEndTime = Time.time + _peckDuration;
 
-        Debug.Log("Курица начала клевать");
+        this.Log("РљР›Р®Р•Рў");
     }
 
     public void Exit()
