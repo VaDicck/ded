@@ -26,6 +26,9 @@ public class Chicken : MonoBehaviour
 
     private void Start()
     {
+        _dayCycleService.DayStarted += Show;
+        _dayCycleService.DayEnded += Hide;
+        
         SetSpawnPoint(_spawnPoint);
         
         AddStates();
@@ -39,6 +42,19 @@ public class Chicken : MonoBehaviour
         _stateMachine.Tick();
 
         PeckCheck();
+    }
+
+    private void Show()
+    {
+        //TODO KUKAREKU
+        gameObject.SetActive(true);
+        
+        SetSpawnPoint(_spawnPoint);
+    }
+
+    private void Hide()
+    {
+        gameObject.SetActive(false);
     }
 
     private void PeckCheck()
@@ -77,5 +93,11 @@ public class Chicken : MonoBehaviour
         {
             _stateMachine.SetState<WanderChickenState>();
         };
+    }
+
+    private void OnDestroy()
+    { 
+        _dayCycleService.DayEnded -= Show;
+        _dayCycleService.DayEnded -= Hide;
     }
 }
