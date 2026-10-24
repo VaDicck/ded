@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chicken
   _navMeshAgent: {fileID: 2073535685903565543}
-  wanderRadius: 15
-  peckProbability: 0.25
-  peckCheckInterval: 4
+  _wanderRadius: 15
+  _peckProbability: 0.25
+  _peckCheckInterval: 4
   _spawnPoint: {fileID: 0}
 --- !u!195 &2073535685903565543
 NavMeshAgent:
@@ -71,7 +71,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 1.02
   m_BaseOffset: 0.48
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 16
   m_ObstacleAvoidanceType: 4
 --- !u!1 &7577594417678170759
 GameObject:
