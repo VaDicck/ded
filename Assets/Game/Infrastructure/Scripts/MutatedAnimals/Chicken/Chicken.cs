@@ -1,7 +1,16 @@
-using UnityEngine;
+using Cysharp.Threading.Tasks;
 
-public class Chicken : ChickenBase
+public class Chicken : ChickenBase, IInteractable
 {
+    public bool IsInteractable { get; }
+    
+    public bool IsUsable { get; }
+    
+    public UniTask Interact()
+    {
+        throw new System.NotImplementedException();
+    }
+    
     protected override void OnDayStart()
     {
         //TODO KUKAREKU
