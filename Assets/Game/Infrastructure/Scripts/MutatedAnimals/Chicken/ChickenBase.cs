@@ -14,7 +14,7 @@ public abstract class ChickenBase : MonoBehaviour
 
     protected StateMachine<IChickenState> _stateMachine;
 
-    private DayCycleService _dayCycleService;
+    protected DayCycleService _dayCycleService;
 
     private float _nextPeckCheckTime;
 
@@ -24,35 +24,40 @@ public abstract class ChickenBase : MonoBehaviour
         _dayCycleService = dayCycleService;
     }
 
+    public void WarpTo(Vector3 position)
+    {
+        _navMeshAgent.Warp(position);
+    }
+    
+    public void SetSpawnPoint(Transform spawnPoint)
+    {
+        _spawnPoint = spawnPoint;
+    }
+
     private void Start()
     {
         _dayCycleService.DayStarted += OnDayStart;
         _dayCycleService.DayEnded += OnDayEnd;
-        
-        WarpToSpawnPoint();
 
+        WarpToSpawnPoint();
+        
         AddStates();
         
         Subscribe();
 
         _nextPeckCheckTime = Time.time + _peckCheckInterval;
     }
-
-    protected virtual void Update()
+    
+    protected void WarpToSpawnPoint()
     {
-        _stateMachine.Tick();
-
-        if (_dayCycleService.IsDay)
-        {
-            PeckCheck();
-        }
+        _navMeshAgent.Warp(_spawnPoint.position);
     }
 
     protected abstract void OnDayStart();
 
     protected abstract void OnDayEnd();
 
-    private void PeckCheck()
+    protected void PeckCheck()
     {
         if (Time.time >= _nextPeckCheckTime && _stateMachine.CurrentState is WanderChickenState)
         {
@@ -64,23 +69,23 @@ public abstract class ChickenBase : MonoBehaviour
         }
     }
     
-    protected void WarpToSpawnPoint()
+    protected void OnIdlePerformed()
     {
-        _navMeshAgent.Warp(_spawnPoint.position);
+        _stateMachine.SetState<WanderChickenState>();
     }
-    
-    protected virtual void AddStates()
+
+    protected void OnPeckPerformed()
     {
-        _stateMachine = new StateMachine<IChickenState>(new IdleChickenState());
-        _stateMachine.AddState(new WanderChickenState(transform, _navMeshAgent, _wanderRadius));
-        _stateMachine.AddState(new PeckChickenState(_navMeshAgent));
+        _stateMachine.SetState<WanderChickenState>();
     }
+
+    protected abstract void AddStates();
 
     protected abstract void Subscribe();
 
     private void OnDestroy()
     { 
-        _dayCycleService.DayEnded -= OnDayStart;
+        _dayCycleService.DayStarted -= OnDayStart;
         _dayCycleService.DayEnded -= OnDayEnd;
     }
 }

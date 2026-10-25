@@ -1,14 +1,49 @@
 using Cysharp.Threading.Tasks;
+using UnityEngine;
+using Zenject;
 
 public class Chicken : ChickenBase, IInteractable
 {
-    public bool IsInteractable { get; }
+    public class Factory : PlaceholderFactory<Chicken> { }
     
-    public bool IsUsable { get; }
+    public bool IsInteractable => false;
+
+    public bool IsUsable => true;
+    
+    private bool _isMutated;
+    
+    [Inject] private MutatedChicken.Factory _mutatedChickenFactory;
     
     public UniTask Interact()
     {
-        throw new System.NotImplementedException();
+        return UniTask.CompletedTask;
+    }
+
+    public UniTask<bool> Use(ToolType tool)
+    {
+        if (tool != ToolType.Mutagen)
+            return UniTask.FromResult(false);
+
+        UseMutagen();
+        
+        return UniTask.FromResult(true);
+    }
+    
+    protected void Update()
+    {
+        _stateMachine.Tick();
+        
+        if (!_dayCycleService.IsDay ||  _isMutated)
+            return;
+        
+        PeckCheck();
+    }
+    
+    protected override void AddStates()
+    {
+        _stateMachine = new StateMachine<IChickenState>(new IdleChickenState());
+        _stateMachine.AddState(new WanderChickenState(transform, _navMeshAgent, _wanderRadius));
+        _stateMachine.AddState(new PeckChickenState(_navMeshAgent));
     }
     
     protected override void OnDayStart()
@@ -21,19 +56,44 @@ public class Chicken : ChickenBase, IInteractable
 
     protected override void OnDayEnd()
     {
+        if (_isMutated)
+        {
+            MutatedChicken mutatedChicken = _mutatedChickenFactory.Create();
+            
+            mutatedChicken.SetSpawnPoint(transform);
+            
+            mutatedChicken.WarpTo(transform.position);
+            
+            Destroy(gameObject);
+            
+            return;
+        }
+
         gameObject.SetActive(false);
     }
 
     protected override void Subscribe()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed += () =>
-        {
-            _stateMachine.SetState<WanderChickenState>();
-        };
+        _stateMachine.GetState<IdleChickenState>().Performed += OnIdlePerformed;
+
+        _stateMachine.GetState<PeckChickenState>().Performed += OnPeckPerformed;
+    }
+
+    private void Unsubscribe()
+    {
+        _stateMachine.GetState<IdleChickenState>().Performed -= OnIdlePerformed;
+
+        _stateMachine.GetState<PeckChickenState>().Performed -= OnPeckPerformed;
+    }
+
+    [ContextMenu("Use Mutagen")]
+    private void UseMutagen()
+    {
+        //TODO take mutagen
+        _isMutated = true;
         
-        _stateMachine.GetState<PeckChickenState>().Performed += () =>
-        {
-            _stateMachine.SetState<WanderChickenState>();
-        };
+        _navMeshAgent.isStopped = true;
+
+        Unsubscribe();
     }
 }

@@ -9,23 +9,16 @@ public class MutatedChicken : ChickenBase
     [SerializeField] private float _attackInterval = 1.2f;
     [SerializeField] private float _attackRange = 2.5f;
 
-    private AlienService _alienService;
-
-    private bool _isNight = false;
     private float _nextHuntCheckTime;
 
     private const float _huntCheckInterval = 1.5f;
 
-    [Inject]
-    private void Init(AlienService alienService)
-    {
-        _alienService = alienService;
-    }
+    [Inject] private AlienService _alienService;
+    
+    public class Factory : PlaceholderFactory<MutatedChicken> { }
 
     protected override void OnDayStart()
     {
-        _isNight = false;
-
         UnsubscribeOnNight();
         SubscribeOnDay();
 
@@ -34,8 +27,6 @@ public class MutatedChicken : ChickenBase
 
     protected override void OnDayEnd()
     {
-        _isNight = true;
-
         UnsubscribeOnDay();
         SubscribeOnNight();
 
@@ -44,8 +35,10 @@ public class MutatedChicken : ChickenBase
 
     protected override void AddStates()
     {
-        base.AddStates();
-
+        _stateMachine = new StateMachine<IChickenState>(new IdleChickenState());
+        _stateMachine.AddState(new WanderChickenState(transform, _navMeshAgent, _wanderRadius));
+        _stateMachine.AddState(new PeckChickenState(_navMeshAgent));
+        
         _stateMachine.AddState(new HuntFleeingAlienState());
         _stateMachine.AddState(new ChaseFleeingAlienState());
     }
@@ -79,24 +72,16 @@ public class MutatedChicken : ChickenBase
         SubscribeOnNight();
     }
 
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
+        _stateMachine.Tick();
 
-        if (_isNight)
+        if (!_dayCycleService.IsDay)
         {
-
+            return;
         }
-    }
-
-    private void OnIdlePerformed()
-    {
-        _stateMachine.SetState<WanderChickenState>();
-    }
-
-    private void OnPeckPerformed()
-    {
-        _stateMachine.SetState<WanderChickenState>();
+        
+        PeckCheck();
     }
 
     private bool HasAnyFleeingAlienInGarden()

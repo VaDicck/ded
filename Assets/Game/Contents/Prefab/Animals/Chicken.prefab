@@ -73,6 +73,7 @@ MonoBehaviour:
   _peckProbability: 0.25
   _peckCheckInterval: 4
   _spawnPoint: {fileID: 0}
+  _mutatedChickenPrefab: {fileID: 5041962793416522696, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
 --- !u!1 &7577594417678170759
 GameObject:
   m_ObjectHideFlags: 0
