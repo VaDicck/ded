@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f700d1eaadc484e857fc785de81dfd5, type: 3}
-  m_Name: Quota
+  m_Name: Quota_2
   m_EditorClassIdentifier: Assembly-CSharp::Quota
   <Main>k__BackingField:
     <Expected>k__BackingField:
-    - <Key>k__BackingField: 0
-      <Value>k__BackingField: 10
+    - <Key>k__BackingField: 2
+      <Value>k__BackingField: 5
   <Sub1>k__BackingField:
-    <Expected>k__BackingField:
-    - <Key>k__BackingField: 0
-      <Value>k__BackingField: 4
+    <Expected>k__BackingField: []
   <Sub2>k__BackingField:
     <Expected>k__BackingField: []
