@@ -1,14 +1,29 @@
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 public class Chicken : ChickenBase, IInteractable
 {
-    public bool IsInteractable { get; }
+    [SerializeField] GameObject _mutatedChickenPrefab;
     
-    public bool IsUsable { get; }
+    public bool IsInteractable => false;
+
+    public bool IsUsable => true;
+    
+    private bool _isMutated = false;
     
     public UniTask Interact()
     {
-        throw new System.NotImplementedException();
+        return UniTask.CompletedTask;
+    }
+
+    public UniTask<bool> Use(ToolType tool)
+    {
+        if (tool != ToolType.Mutagen)
+            return UniTask.FromResult(false);
+        
+        //TODO take mutagen
+        _isMutated = true;
+        return UniTask.FromResult(true);
     }
     
     protected override void OnDayStart()
@@ -21,6 +36,22 @@ public class Chicken : ChickenBase, IInteractable
 
     protected override void OnDayEnd()
     {
+        if (_isMutated)
+        {
+            GameObject mutatedChickenGameObject = Instantiate(
+                _mutatedChickenPrefab, 
+                transform.position, 
+                transform.rotation);
+            
+            MutatedChicken mutatedChicken = mutatedChickenGameObject.GetComponent<MutatedChicken>();
+
+            mutatedChicken.WarpToSpawnPoint();
+            
+            Destroy(gameObject);
+            
+            return;
+        }
+
         gameObject.SetActive(false);
     }
 

@@ -64,7 +64,7 @@ public abstract class ChickenBase : MonoBehaviour
         }
     }
     
-    protected void WarpToSpawnPoint()
+    public void WarpToSpawnPoint()
     {
         _navMeshAgent.Warp(_spawnPoint.position);
     }
