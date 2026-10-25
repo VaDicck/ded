@@ -38,7 +38,7 @@ public abstract class ChickenBase : MonoBehaviour
         _nextPeckCheckTime = Time.time + _peckCheckInterval;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         _stateMachine.Tick();
 
