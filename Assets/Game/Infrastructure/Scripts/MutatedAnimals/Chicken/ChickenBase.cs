@@ -69,7 +69,12 @@ public abstract class ChickenBase : MonoBehaviour
         _navMeshAgent.Warp(_spawnPoint.position);
     }
     
-    protected abstract void AddStates();
+    protected virtual void AddStates()
+    {
+        _stateMachine = new StateMachine<IChickenState>(new IdleChickenState());
+        _stateMachine.AddState(new WanderChickenState(transform, _navMeshAgent, _wanderRadius));
+        _stateMachine.AddState(new PeckChickenState(_navMeshAgent));
+    }
 
     protected abstract void Subscribe();
 

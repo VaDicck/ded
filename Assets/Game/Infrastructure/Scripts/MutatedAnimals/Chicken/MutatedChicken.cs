@@ -26,67 +26,77 @@ public class MutatedChicken : ChickenBase
     {
         _isNight = false;
 
-        if (_stateMachine.CurrentState is HuntFleeingAlienState)
-        {
-            _stateMachine.SetState<WanderChickenState>();
-        }
-        else
-        {
-            _stateMachine.SetState<IdleChickenState>();
-        }
+        UnsubscribeOnNight();
+        SubscribeOnDay();
+
+        _stateMachine.SetState<IdleChickenState>();
     }
 
     protected override void OnDayEnd()
     {
         _isNight = true;
 
+        UnsubscribeOnDay();
+        SubscribeOnNight();
+
         _stateMachine.SetState<HuntFleeingAlienState>();
     }
 
     protected override void AddStates()
     {
-        _stateMachine = new StateMachine<IChickenState>(new IdleChickenState());
-        _stateMachine.AddState(new WanderChickenState(transform, _navMeshAgent, _wanderRadius));
-        _stateMachine.AddState(new PeckChickenState(_navMeshAgent));
-        _stateMachine.AddState(new HuntFleeingAlienState(
-            _navMeshAgent,
-            transform,
-            _alienService,
-            _attackDamage,
-            _attackInterval,
-            _attackRange
-        ));
+        base.AddStates();
+
+        _stateMachine.AddState(new HuntFleeingAlienState());
+        _stateMachine.AddState(new ChaseFleeingAlienState());
+    }
+
+    private void SubscribeOnDay()
+    {
+        _stateMachine.GetState<IdleChickenState>().Performed += OnIdlePerformed;
+
+        _stateMachine.GetState<PeckChickenState>().Performed += OnPeckPerformed;
+    }
+
+    private void UnsubscribeOnDay()
+    {
+        _stateMachine.GetState<IdleChickenState>().Performed -= OnIdlePerformed;
+
+        _stateMachine.GetState<PeckChickenState>().Performed -= OnPeckPerformed;
+    }
+
+    private void SubscribeOnNight()
+    {
+
+    }
+
+    private void UnsubscribeOnNight()
+    {
+
     }
 
     protected override void Subscribe()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed += () =>
-            _stateMachine.SetState<WanderChickenState>();
-
-        _stateMachine.GetState<PeckChickenState>().Performed += () =>
-            _stateMachine.SetState<WanderChickenState>();
-
-        _stateMachine.GetState<HuntFleeingAlienState>().Performed += () =>
-            _stateMachine.SetState<WanderChickenState>();
+        SubscribeOnNight();
     }
 
     protected override void Update()
     {
         base.Update();
 
-        if (_isNight && Time.time >= _nextHuntCheckTime)
+        if (_isNight)
         {
-            if (HasAnyFleeingAlienInGarden() && _stateMachine.CurrentState is not HuntFleeingAlienState)
-            {
-                _stateMachine.SetState<HuntFleeingAlienState>();
-            }
-            else if (!HasAnyFleeingAlienInGarden() && _stateMachine.CurrentState is HuntFleeingAlienState)
-            {
-                _stateMachine.SetState<WanderChickenState>();
-            }
 
-            _nextHuntCheckTime = Time.time + _huntCheckInterval;
         }
+    }
+
+    private void OnIdlePerformed()
+    {
+        _stateMachine.SetState<WanderChickenState>();
+    }
+
+    private void OnPeckPerformed()
+    {
+        _stateMachine.SetState<WanderChickenState>();
     }
 
     private bool HasAnyFleeingAlienInGarden()
