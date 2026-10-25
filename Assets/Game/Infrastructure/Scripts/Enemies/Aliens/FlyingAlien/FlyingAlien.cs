@@ -3,6 +3,8 @@ using Zenject;
 
 public class FlyingAlien : Alien<IFlyingAlienState>
 {
+    public override AlienType Type => AlienType.Flying;
+
     private Transform _playerTransform;
 
     public class Factory : PlaceholderFactory<FlyingAlien> { }

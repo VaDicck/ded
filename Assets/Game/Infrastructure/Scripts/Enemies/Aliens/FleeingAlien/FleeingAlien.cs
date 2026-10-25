@@ -7,12 +7,13 @@ public class FleeingAlien : Alien<IFleeingAlienState>
 {
     [SerializeField] private GameObject _brokenPartsPrefab;
     [SerializeField] private GameObject _alienModel;
-    
-    private bool _isSuccessDigging = false;
+
+    public override AlienType Type => AlienType.Fleeing;
+
     private bool _isJumping = false;
     
     private BedService _bedService;
-    
+
     public class Factory : PlaceholderFactory<FleeingAlien> { }
 
     [Inject]

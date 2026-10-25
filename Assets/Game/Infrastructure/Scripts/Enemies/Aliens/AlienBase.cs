@@ -7,6 +7,8 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
 {
     public event Action<AlienBase> Death;
     
+    public abstract AlienType Type { get; }
+
     [SerializeField] protected NavMeshAgent _navMeshAgent;
     [SerializeField] protected float _health = 50f;
     [SerializeField] protected Animator _animator;
