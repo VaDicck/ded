@@ -4,30 +4,46 @@ using Object = UnityEngine.Object;
 
 public class QuotaService
 {
-    public event Action QuotaExpired;
     public event Action QuotaReached;
     public event Action<Quota.Element, CultureType, int> CultureAmountChanged;
 
     public Quota CurrentQuota => _currentQuota;
 
     private readonly DayService _dayService;
-    private readonly GameConfig _gameConfig;
 
     private Quota _currentQuota;
-    private int _quotaNumber;
-    private int _daysPassed;
     
-    public QuotaService(int quotaNumber, int daysPassed, DayService dayService, GameConfig config)
+    private PlayerIngredients _playerIngredients;
+    
+    private GameConfig _gameConfig;
+    private int _currentQuotaNumber;
+
+    public QuotaService(int quotaNumber, PlayerIngredients playerIngredients, GameConfig config)
     {
-        _quotaNumber = quotaNumber;
-        _daysPassed = daysPassed;
-        
-        _dayService = dayService;
+        _currentQuotaNumber = quotaNumber;
+        _playerIngredients = playerIngredients;
         _gameConfig = config;
 
-        _dayService.NewDayReached += _ => OnNewDayReached();
+        SetCurrentQuota(_currentQuotaNumber);
+        QuotaReached += OnQuotaReached;
+    }
+
+    private void OnQuotaReached()
+    {
+        ApplyReward();
+        SetCurrentQuota(++_currentQuotaNumber);
+    }
+
+    private void ApplyReward()
+    {
+        if (_currentQuota.Main.IsEmpty == false)
+            _currentQuota.Main.ApplyReward(_playerIngredients);
         
-        SetCurrentQuota(_quotaNumber);
+        if (_currentQuota.Sub1.IsEmpty == false)
+            _currentQuota.Sub1.ApplyReward(_playerIngredients);
+        
+        if (_currentQuota.Sub2.IsEmpty == false)
+            _currentQuota.Sub2.ApplyReward(_playerIngredients);
     }
 
     private void OnQuotaElementDone()
@@ -36,14 +52,6 @@ public class QuotaService
            && (CurrentQuota.Sub1.IsEmpty || CurrentQuota.Sub1.IsReached)
            && (CurrentQuota.Sub2.IsEmpty ||  CurrentQuota.Sub2.IsReached))
             QuotaReached?.Invoke();
-    }
-    
-    private void OnNewDayReached()
-    {
-        _daysPassed++;
-
-        if (_daysPassed >= _gameConfig.QuotaExpireDays)
-            QuotaExpired?.Invoke();
     }
 
     public int AddCulture(Quota.Element element, CultureType cultureType, int value)
@@ -57,9 +65,6 @@ public class QuotaService
                 CultureAmountChanged?.Invoke(element, cultureType, filledValue);
             }
 
-            if (CurrentQuota.Main.IsReached && CurrentQuota.Sub1.IsReached && CurrentQuota.Sub2.IsReached)
-                QuotaReached?.Invoke();
-            
             return filledValue;
         }
 
@@ -68,7 +73,7 @@ public class QuotaService
 
     private void SetCurrentQuota(int quotaNumber)
     {
-        if (_gameConfig.Quotas.Quotas.Count < quotaNumber)
+        if (_gameConfig.Quotas.Quotas.Count < quotaNumber + 1)
         {
             this.LogError($"Quota for day {quotaNumber} not found");
             _currentQuota = null;

@@ -149,7 +149,6 @@ public class HintsView : MonoBehaviour
 
         _quotaService.QuotaReached += () =>
         {
-            print("Quota reached");
             _text.text = _congrats;
         };
     }
