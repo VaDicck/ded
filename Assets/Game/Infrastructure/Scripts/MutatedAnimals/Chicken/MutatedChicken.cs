@@ -14,11 +14,21 @@ public class MutatedChicken : ChickenBase
 
     protected override void AddStates()
     {
-        throw new System.NotImplementedException();
+        _stateMachine = new StateMachine<IChickenState>(new IdleChickenState());
+        _stateMachine.AddState(new WanderChickenState(transform, _navMeshAgent, _wanderRadius));
+        _stateMachine.AddState(new PeckChickenState(_navMeshAgent));
     }
 
     protected override void Subscribe()
     {
-        throw new System.NotImplementedException();
+        _stateMachine.GetState<IdleChickenState>().Performed += () =>
+        {
+            _stateMachine.SetState<WanderChickenState>();
+        };
+
+        _stateMachine.GetState<PeckChickenState>().Performed += () =>
+        {
+            _stateMachine.SetState<WanderChickenState>();
+        };
     }
 }

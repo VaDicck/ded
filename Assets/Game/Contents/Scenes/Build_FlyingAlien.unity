@@ -15918,6 +15918,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0000001, y: 0.75, z: 1.2000002}
   m_Center: {x: 0, y: 0.375, z: 0}
+--- !u!1 &1625446216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1625446217}
+  m_Layer: 0
+  m_Name: MutatedChickenSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1625446217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625446216}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.45, y: 3.289, z: 28.237}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1634080671 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dbf685b349105e3478eb0515eebfdf30, type: 3}
@@ -16539,6 +16570,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1ea0bbde09c0494283675ae1729ed2a, type: 3}
+--- !u!1001 &1673124471
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -7911512899527169979, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
+      propertyPath: _spawnPoint
+      value: 
+      objectReference: {fileID: 2008652361}
+    - target: {fileID: 1484368339204371032, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.16491
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484368339204371032, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484368339204371032, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 21.94752
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484368339204371032, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484368339204371032, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484368339204371032, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484368339204371032, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484368339204371032, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484368339204371032, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484368339204371032, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041962793416522696, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
+      propertyPath: m_Name
+      value: MutatedChicken
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
 --- !u!1 &1673523427
 GameObject:
   m_ObjectHideFlags: 0
@@ -21952,6 +22044,8 @@ SceneRoots:
   - {fileID: 1279356781}
   - {fileID: 832585959}
   - {fileID: 982218812}
+  - {fileID: 1673124471}
   - {fileID: 2008652361}
+  - {fileID: 1625446217}
   - {fileID: 901085823}
   - {fileID: 7636800238835073388}
