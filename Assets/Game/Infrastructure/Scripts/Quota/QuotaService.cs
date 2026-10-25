@@ -12,22 +12,38 @@ public class QuotaService
     private readonly DayService _dayService;
 
     private Quota _currentQuota;
+    
+    private PlayerIngredients _playerIngredients;
+    
     private GameConfig _gameConfig;
     private int _currentQuotaNumber;
-    
-    public QuotaService(int quotaNumber, GameConfig config)
+
+    public QuotaService(int quotaNumber, PlayerIngredients playerIngredients, GameConfig config)
     {
-        _gameConfig = config;
         _currentQuotaNumber = quotaNumber;
-        
+        _playerIngredients = playerIngredients;
+        _gameConfig = config;
+
         SetCurrentQuota(_currentQuotaNumber);
         QuotaReached += OnQuotaReached;
     }
 
     private void OnQuotaReached()
     {
-        _currentQuotaNumber++;
-        SetCurrentQuota(_currentQuotaNumber);
+        ApplyReward();
+        SetCurrentQuota(++_currentQuotaNumber);
+    }
+
+    private void ApplyReward()
+    {
+        if (_currentQuota.Main.IsEmpty == false)
+            _currentQuota.Main.ApplyReward(_playerIngredients);
+        
+        if (_currentQuota.Sub1.IsEmpty == false)
+            _currentQuota.Sub1.ApplyReward(_playerIngredients);
+        
+        if (_currentQuota.Sub2.IsEmpty == false)
+            _currentQuota.Sub2.ApplyReward(_playerIngredients);
     }
 
     private void OnQuotaElementDone()

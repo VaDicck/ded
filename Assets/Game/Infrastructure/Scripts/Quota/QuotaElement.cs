@@ -12,7 +12,8 @@ public class QuotaElement
     public Quota.Element Element { get; private set; }
     
     [field: SerializeField] public List<SerializedPair<CultureType, int>> Expected { get; private set; } = new();
-
+    [field: SerializeField] public QuotaReward Reward { get; private set; } = new();
+    
     public IReadOnlyDictionary<CultureType, int> Actual => _cultures;
     
     private Dictionary<CultureType, int> _cultures;
@@ -29,6 +30,14 @@ public class QuotaElement
         foreach (var pair in Expected)
         {
             _cultures.TryAdd(pair.Key, 0);
+        }
+    }
+
+    public void ApplyReward(PlayerIngredients playerIngredients)
+    {
+        foreach (var ingredient in Reward.Ingredients)
+        {
+            playerIngredients.Add(ingredient.Key, ingredient.Value);
         }
     }
     
