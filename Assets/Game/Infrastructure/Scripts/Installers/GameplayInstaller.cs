@@ -34,13 +34,18 @@ public class GameplayInstaller : MonoInstaller
         Container.Bind<BedService>().AsSingle().NonLazy();
         Container.Bind<AlienService>().AsSingle().NonLazy();
         Container.Bind<PlayerCultures>().AsSingle().NonLazy();
-        Container.Bind<PlayerIngredients>().AsSingle().NonLazy();
+        Container.Bind<PlayerResources>().AsSingle().NonLazy();
         Container.Bind<DayService>().AsSingle().WithArguments(0).NonLazy();
         Container.Bind<QuotaService>().AsSingle().WithArguments(0).NonLazy();
         Container.Bind<PlayerTools>().AsSingle().NonLazy();
         Container.Bind<PlayerReturner>().AsSingle().WithArguments(_safePlayerTransform.position).NonLazy();
         Container.Bind<CulturesSelection>().AsSingle().NonLazy();
 
+        foreach (var product in _gameConfig.CraftingTable.Products)
+        {
+            Container.Inject(product);
+        }
+        
         CultureFactoriesInstaller.Install(Container);
     }
 }

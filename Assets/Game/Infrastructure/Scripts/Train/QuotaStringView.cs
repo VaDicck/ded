@@ -20,17 +20,10 @@ public class QuotaStringView : MonoBehaviour
             return obj;
         }
     }
-
-    private QuotaStringViewConfig _config;
+    
     private CultureType _cultureType;
     private int _expected;
     
-    [Inject]
-    private void Init(GameConfig config)
-    {
-        _config = config.QuotaStringView;
-    }
-
     public void Initialize(CultureType type, int expected, int actual)
     {
         _expected = expected;

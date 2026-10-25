@@ -5,5 +5,5 @@ using UnityEngine;
 [Serializable]
 public class QuotaReward
 {
-    [field: SerializeField] public List<SerializedPair<IngredientType, int>> Ingredients { get; private set; } = new();
+    [field: SerializeField] public List<SerializedPair<ResourceType, int>> Ingredients { get; private set; } = new();
 }

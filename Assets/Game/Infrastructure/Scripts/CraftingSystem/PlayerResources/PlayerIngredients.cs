@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class PlayerIngredients
+public class PlayerResources
 {
-    public event Action<IngredientType> IngredientsEmpty;
-    public event Action<IngredientType, int> IngredientChanged;
+    public event Action<ResourceType> IngredientsEmpty;
+    public event Action<ResourceType, int> IngredientChanged;
     
-    public IReadOnlyDictionary<IngredientType, int> Ingredients => _ingredients;
+    public IReadOnlyDictionary<ResourceType, int> Ingredients => _ingredients;
     
-    private readonly Dictionary<IngredientType, int> _ingredients = new();
+    private readonly Dictionary<ResourceType, int> _ingredients = new();
 
-    public void Add(IngredientType ingredient, int amount)
+    public void Add(ResourceType ingredient, int amount)
     {
         if (!_ingredients.TryAdd(ingredient, amount))
         {
@@ -20,7 +20,7 @@ public class PlayerIngredients
         this.Log($"Ingredient {ingredient} has been added in the amount of {amount}");
     }
 
-    public int Remove(IngredientType ingredient, int amount)
+    public int Remove(ResourceType ingredient, int amount)
     {
         if (_ingredients.TryGetValue(ingredient, out var count) == false)
             return 0;
@@ -45,7 +45,7 @@ public class PlayerIngredients
         return amount;
     }
 
-    public int CountOf(IngredientType ingredient)
+    public int CountOf(ResourceType ingredient)
     {
         return _ingredients.GetValueOrDefault(ingredient, 0);
     }

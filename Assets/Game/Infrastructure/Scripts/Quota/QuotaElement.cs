@@ -33,7 +33,7 @@ public class QuotaElement
         }
     }
 
-    public void ApplyReward(PlayerIngredients playerIngredients)
+    public void ApplyReward(PlayerResources playerIngredients)
     {
         foreach (var ingredient in Reward.Ingredients)
         {

@@ -13,12 +13,12 @@ public class QuotaService
 
     private Quota _currentQuota;
     
-    private PlayerIngredients _playerIngredients;
+    private PlayerResources _playerIngredients;
     
     private GameConfig _gameConfig;
     private int _currentQuotaNumber;
 
-    public QuotaService(int quotaNumber, PlayerIngredients playerIngredients, GameConfig config)
+    public QuotaService(int quotaNumber, PlayerResources playerIngredients, GameConfig config)
     {
         _currentQuotaNumber = quotaNumber;
         _playerIngredients = playerIngredients;

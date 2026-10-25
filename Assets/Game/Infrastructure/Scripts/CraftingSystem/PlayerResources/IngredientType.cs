@@ -1,4 +1,4 @@
-﻿public enum IngredientType
+﻿public enum ResourceType
 {
     Metal,
     Scrap,
