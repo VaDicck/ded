@@ -85,7 +85,7 @@ public abstract class ChickenBase : MonoBehaviour
 
     private void OnDestroy()
     { 
-        _dayCycleService.DayEnded -= OnDayStart;
+        _dayCycleService.DayStarted -= OnDayStart;
         _dayCycleService.DayEnded -= OnDayEnd;
     }
 }
