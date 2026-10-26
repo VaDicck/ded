@@ -1,7 +1,5 @@
 ﻿using System;
 using R3;
-using UnityEngine;
-using Zenject;
 using Random = System.Random;
 
 public abstract class Culture: IDisposable
