@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using Zenject;
 
 [CreateAssetMenu(fileName = "ResourceCraftIngredient", menuName = "CraftingSystem/Ingredient/Resource")]
 public class ResourceCraftIngredient : TypedCraftIngredient<ResourceType>
 {
     private PlayerResources _playerResources;
     
+    [Inject]
     public void Initialize(PlayerResources playerResources)
     {
         _playerResources = playerResources;

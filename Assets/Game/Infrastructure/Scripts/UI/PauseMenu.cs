@@ -23,7 +23,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
-        _inputController.BackPressed += OnEscClicked;
+        _inputController.PausePressed += Show;
         _stuckButton.onClick.AddListener(OnStuckButtonClicked);
         _continueButton.onClick.AddListener(Hide);
         _exitButton.onClick.AddListener(OnExitButtonClicked);
@@ -31,16 +31,9 @@ public class PauseMenu : MonoBehaviour
         Hide();
     }
 
-    private void OnEscClicked()
-    {
-        if (_isPaused)
-            Hide();
-        else
-            Show();
-    }
-
     private void Hide()
     {
+        _inputController.BackPressed -= Hide;
         Time.timeScale = 1;
         
         _isPaused = false;
@@ -51,6 +44,7 @@ public class PauseMenu : MonoBehaviour
     
     private void Show()
     {
+        _inputController.BackPressed += Hide;
         Time.timeScale = 0;
         
         _isPaused = true;
@@ -74,6 +68,6 @@ public class PauseMenu : MonoBehaviour
     {
         _stuckButton.onClick.RemoveListener(OnStuckButtonClicked);
         _continueButton.onClick.RemoveListener(Hide);
-        _inputController.BackPressed -= OnEscClicked;
+        _inputController.PausePressed += Show;
     }
 }

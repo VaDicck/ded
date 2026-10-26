@@ -11,6 +11,7 @@ public class InputController
     public event Action InteractPressed;
     public event Action InteractStopped;
     public event Action BackPressed;
+    public event Action PausePressed;
     public event Action RadialMenuCanceled;
     public event Action OpenRadialMenu;
     
@@ -88,7 +89,7 @@ public class InputController
         _playerInputActions.Player.Reload.performed += _ => ReloadPressed?.Invoke();
         _playerInputActions.Player.Interact.performed += _ => InteractPressed?.Invoke();
         _playerInputActions.Player.Interact.canceled += _ => InteractStopped?.Invoke(); 
-        _playerInputActions.Player.Escape.performed += _ => BackPressed?.Invoke();
+        _playerInputActions.Player.Escape.performed += _ => PausePressed?.Invoke();
         
         _playerInputActions.UI.Back.performed += _ => BackPressed?.Invoke();
         

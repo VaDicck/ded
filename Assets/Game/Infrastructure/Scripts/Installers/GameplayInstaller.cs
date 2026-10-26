@@ -44,10 +44,17 @@ public class GameplayInstaller : MonoInstaller
         Container.Bind<PlayerTools>().AsSingle().NonLazy();
         Container.Bind<PlayerReturner>().AsSingle().WithArguments(_safePlayerTransform.position).NonLazy();
         Container.Bind<CulturesSelection>().AsSingle().NonLazy();
-
+        
+        Container.Bind<CraftTableService>().AsSingle().NonLazy();
+        
         foreach (var product in _gameConfig.CraftingTable.Products)
         {
             Container.Inject(product);
+
+            foreach (var ingredient in product.Ingredients)
+            {
+                Container.Inject(ingredient.Key);
+            }
         }
         
         CultureFactoriesInstaller.Install(Container);
