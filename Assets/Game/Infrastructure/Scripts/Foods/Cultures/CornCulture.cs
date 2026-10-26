@@ -1,6 +1,6 @@
 using Zenject;
 
-public class CornCulture : Culture
+public class CornCulture : MutatedCulture
 {
     public CornCulture(CornCultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
         : base(config, playerCultures, dayCycleService) { }
@@ -8,4 +8,11 @@ public class CornCulture : Culture
     public class Factory : PlaceholderFactory<CornCulture> { }
 
     public override CultureType Type => CultureType.Corn;
+    
+    [Inject] private MutatedCorn.Factory _mutatedCornFactory;
+    
+    protected override void OnUseMutagen()
+    {
+        _mutatedCornFactory.Create();
+    }
 }

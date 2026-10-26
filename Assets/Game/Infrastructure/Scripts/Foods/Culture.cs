@@ -27,7 +27,7 @@ public abstract class Culture: IDisposable
     private float _currentTimerCollected;
     private int _countEnemyHitting = 0;
 
-    private ReactiveProperty<bool> _isPoured = new(false);
+    protected ReactiveProperty<bool> _isPoured = new(false);
 
     protected Culture(CultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
     {
@@ -47,7 +47,7 @@ public abstract class Culture: IDisposable
         _isGrown.Value = true;
     }
     
-    public bool UseTool(ToolType toolType)
+    public virtual bool UseTool(ToolType toolType)
     {
         switch (toolType)
         {
