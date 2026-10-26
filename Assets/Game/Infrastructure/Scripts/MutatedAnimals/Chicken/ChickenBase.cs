@@ -1,3 +1,4 @@
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
@@ -9,6 +10,8 @@ public abstract class ChickenBase : MonoBehaviour
     [SerializeField] protected float _wanderRadius = 15f;
     [SerializeField] private float _peckProbability = 0.25f;
     [SerializeField] private float _peckCheckInterval = 4f;
+    
+    [SerializeField] protected Animator _animator;
     
     [SerializeField] private Transform _spawnPoint;
 
@@ -63,6 +66,7 @@ public abstract class ChickenBase : MonoBehaviour
         {
             if (Random.value < _peckProbability)
             {
+                _animator.SetTrigger("Idle");
                 _stateMachine.SetState<PeckChickenState>();
             }
             _nextPeckCheckTime = Time.time + _peckCheckInterval;
@@ -71,11 +75,13 @@ public abstract class ChickenBase : MonoBehaviour
     
     protected void OnIdlePerformed()
     {
+        _animator.SetTrigger("Walk");
         _stateMachine.SetState<WanderChickenState>();
     }
 
     protected void OnPeckPerformed()
     {
+        _animator.SetTrigger("Walk");
         _stateMachine.SetState<WanderChickenState>();
     }
 

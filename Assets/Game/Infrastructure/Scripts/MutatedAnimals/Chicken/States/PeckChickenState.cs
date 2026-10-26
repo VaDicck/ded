@@ -7,7 +7,7 @@ public class PeckChickenState : IChickenState
     public event Action Performed;
 
     private readonly NavMeshAgent _agent;
-    private readonly float _peckDuration = 1.8f;
+    private readonly float _peckDuration = 4f;
     private float _peckEndTime;
 
     public PeckChickenState(NavMeshAgent agent)

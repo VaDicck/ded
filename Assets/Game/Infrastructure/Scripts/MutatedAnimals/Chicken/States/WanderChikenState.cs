@@ -34,11 +34,13 @@ public class WanderChickenState : IChickenState
     {
         if (_agent.remainingDistance <= _agent.stoppingDistance)
         {
-            //TODO idle state
+            /*//TODO idle state
             if (Time.time >= _nextWanderTime)
             {
                 SetRandomDestination();
-            }
+            }*/
+            
+            SetRandomDestination();
         }
     }
 
@@ -51,12 +53,12 @@ public class WanderChickenState : IChickenState
         {
             _agent.SetDestination(hit.position);
         }
-        else
+        /*else
         {
             _nextWanderTime = Time.time + 0.3f;
             return;
         }
 
-        _nextWanderTime = Time.time + Random.Range(_minWanderTime, _maxWanderTime);
+        _nextWanderTime = Time.time + Random.Range(_minWanderTime, _maxWanderTime);*/
     }
 }
