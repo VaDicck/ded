@@ -15,6 +15,7 @@ public abstract class Culture: IDisposable
     
     public abstract CultureType Type { get; }
     public int Count => _count;
+    public bool IsMutable => _config.IsMutable;
     
     private  readonly ReactiveProperty<bool> _isGrown = new(false);
     

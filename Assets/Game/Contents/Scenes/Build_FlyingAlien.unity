@@ -21558,6 +21558,18 @@ PrefabInstance:
       propertyPath: _playerInteractions
       value: 
       objectReference: {fileID: 914531414}
+    - target: {fileID: 2635109819847704802, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
+      propertyPath: _toolSprites.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635109819847704802, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
+      propertyPath: _toolSprites.Array.data[4].<Key>k__BackingField
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635109819847704802, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
+      propertyPath: _toolSprites.Array.data[4].<Value>k__BackingField
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c7a69bbea844db4aa341119c6193396, type: 3}
     - target: {fileID: 3439707817462247916, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
