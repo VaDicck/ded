@@ -8,7 +8,7 @@ public class Bed : MonoBehaviour, IInteractable
     public event Action UpdatePlantedStateBeds;
     public event Action Unlocked;
     public event Action Plowed;
-    public event Action Planted;
+    public event Action Planted; 
     public event Action Watered;
     public event Action Grown;
     public event Action Collected;

@@ -1,10 +1,12 @@
 ﻿using System;
 using R3;
-using Random = System.Random;
+using UnityEngine;
 
 public abstract class Culture: IDisposable
 {
     public event Action Collected;
+    public event Action<bool> Watered;
+    public event Action Grown;
 
     public Range DropAmount => _config.DropAmount;
     public CultureConfig CultureConfig => _config;
@@ -14,19 +16,23 @@ public abstract class Culture: IDisposable
     public abstract CultureType Type { get; }
     public int Count => _count;
     
-    private  readonly ReactiveProperty<bool> _isGrown = new(false);
+    protected readonly ReactiveProperty<bool> _isGrown = new(false);
     
-    private readonly PlayerCultures _playerCultures;
+    protected readonly PlayerCultures _playerCultures;
     private readonly DayCycleService _dayCycleService;
-    private readonly CultureConfig _config;
+    protected readonly CultureConfig _config;
     
-    private int _count;
+    protected int _count;
 
     protected float _timerCollected = 10f;
     private float _currentTimerCollected;
     private int _countEnemyHitting = 0;
     
     protected ReactiveProperty<bool> _isPoured = new(false);
+    
+    
+    protected Transform _bedTransform;
+    
 
     protected Culture(CultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
     {
@@ -38,43 +44,24 @@ public abstract class Culture: IDisposable
         _currentTimerCollected = _timerCollected;
     }
 
-    protected virtual void OnDayStarted()
+    public void SetBedTransform(Transform bedTransform)
     {
-        if (!_isPoured.Value)
-            return;
-
-        _isGrown.Value = true;
+        _bedTransform = bedTransform;
+        OnSetTransform();
     }
     
-    public virtual bool UseTool(ToolType toolType)
-    {
-        switch (toolType)
-        {
-            case ToolType.Bailer:
-                _isPoured.Value = true;
-                return true;
-        }
+    //TODO hz
+    protected abstract void OnSetTransform();
+    
+    public abstract ToolType UseTool();
+    
+    public abstract bool UseTool(ToolType toolType);
+    
+    public abstract bool IsInteract();
 
-        return false;
-    }
+    public abstract bool IsUsable();
 
-    public void Collect()
-    {
-        if (_isPoured.Value == false)
-            return;
-
-        if (_isGrown.Value == false)
-            return;
-        
-        this.Log($"{Type} collected");
-        
-        Random random = new();
-        
-        _count = random.Next(DropAmount.Min, DropAmount.Max);
-
-        _playerCultures.AddCultureValue(this);
-        Collected?.Invoke();
-    }
+    public abstract void Interact();
 
     public void StartHitting()
     {
@@ -100,7 +87,19 @@ public abstract class Culture: IDisposable
             _currentTimerCollected = _timerCollected;
         }
     }
+    
+    protected virtual void OnDayStarted()
+    {
+        if (!_isPoured.Value)
+            return;
 
+        _isGrown.Value = true;
+    }
+    
+    protected void RaiseCollected() =>  Collected?.Invoke();
+    protected void RaiseWatered(bool value) =>  Watered?.Invoke(value);
+    protected void RaiseGrown() =>  Grown?.Invoke();
+    
     public void Dispose()
     {
         _dayCycleService.DayStarted -= OnDayStarted;

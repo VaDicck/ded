@@ -11,34 +11,23 @@ public class PlantedBedState : IBedState
     public event Action Grown;
     public event Action Collected;
 
-    public bool IsInteractable => _culture.IsGrown.CurrentValue;
-    public bool IsUsable => _culture.IsGrown.CurrentValue == false;
+    public bool IsInteractable => _culture.IsInteract();
+    public bool IsUsable => _culture.IsUsable();
     public ToolType UseTool
     {
         get {
             if (_culture == null)
                 return ToolType.None;
-            
-            else if (_culture.IsPoured.CurrentValue == false)
-                return ToolType.Bailer;
-            
-            else if(_culture is MutatedCulture && _culture.IsPoured.CurrentValue)
-                return ToolType.Mutagen;
-            
-            return ToolType.None;
+
+            return _culture.UseTool();
         }
     }
 
     public Culture Culture => _culture;
-
     private Culture _culture;
     
     private readonly GameObject _visualState;
     private readonly GameObject _pouredVisuals;
-    private GameObject _prefab;
-
-    private IDisposable _pouredReaction;
-    private IDisposable _grownReaction;
 
     public PlantedBedState(GameObject visualState, GameObject pouredVisuals)
     {
@@ -50,14 +39,15 @@ public class PlantedBedState : IBedState
     {
         _culture = culture;
         _culture.Collected += OnCollected;
-        _pouredReaction = _culture.IsPoured.Subscribe(OnPoredChanged);
-        _grownReaction = _culture.IsGrown.Subscribe(OnGrownChanged);
-        _prefab = Object.Instantiate(_culture.CultureConfig.Step1Prefab, _visualState.transform);
+        _culture.Watered += OnPoured;
+        _culture.Grown += OnGrown;
+        
+        _culture.SetBedTransform(_visualState.transform);
     }
 
     public UniTask Interact()
     {
-        _culture.Collect();
+        _culture.Interact();
         
         return UniTask.CompletedTask;
     }
@@ -78,17 +68,14 @@ public class PlantedBedState : IBedState
         if (_culture != null)
         {
             _culture.Collected -= OnCollected;
+            _culture.Watered -= OnPoured;
+            _culture.Grown -= OnGrown;
             _culture.IsGrown.Dispose();
             _culture.Dispose();
         }
 
-        Object.Destroy(_prefab);
-
         ActivateVisualState(false);
         _pouredVisuals.SetActive(false);
-        
-        _pouredReaction.Dispose();
-        _grownReaction.Dispose();
     }
 
     private void OnCollected()
@@ -96,28 +83,16 @@ public class PlantedBedState : IBedState
         Performed?.Invoke();
         Collected?.Invoke();
     }
-
-    private void OnPoredChanged(bool value)
+    
+    private void OnPoured(bool value)
     {
+        Watered?.Invoke();
         _pouredVisuals.SetActive(value);
-        if (value)
-        {
-            Object.Destroy(_prefab);
-            _prefab = Object.Instantiate(_culture.CultureConfig.Step2Prefab, _visualState.transform);
-            this.Log($"{_culture.Type} was poured");
-            Watered?.Invoke();
-        }
     }
     
-    private void OnGrownChanged(bool value)
+    private void OnGrown()
     {
-        if (value)
-        {
-            Object.Destroy(_prefab);
-            _prefab = Object.Instantiate(_culture.CultureConfig.Step3Prefab, _visualState.transform);
-            this.Log($"{_culture.Type} was grown");
-            Grown?.Invoke();
-        }
+        Grown?.Invoke();
     }
     
     private void ActivateVisualState(bool isActive)

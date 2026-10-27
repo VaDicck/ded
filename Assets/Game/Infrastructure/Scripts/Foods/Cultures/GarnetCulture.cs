@@ -1,6 +1,6 @@
 using Zenject;
 
-public class GarnetCulture : Culture
+public class GarnetCulture : SimpleCulture
 {
     public GarnetCulture(GarnetCultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
         : base(config, playerCultures, dayCycleService) { }

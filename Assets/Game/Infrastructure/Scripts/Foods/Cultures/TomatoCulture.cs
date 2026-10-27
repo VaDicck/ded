@@ -1,6 +1,6 @@
 using Zenject;
 
-public class TomatoCulture : Culture
+public class TomatoCulture : SimpleCulture
 {
     public TomatoCulture(TomatoCultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
         : base(config, playerCultures, dayCycleService) { }
