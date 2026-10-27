@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 6449076004381707763}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -472,7 +472,6 @@ MonoBehaviour:
   _sprintMultiplier: 2
   _zoomXSensitivityMultiplier: 0.6
   _zoomYSensitivityMultiplier: 0.6
-  _gravity: 55
 --- !u!143 &6301002893765602297
 CharacterController:
   m_ObjectHideFlags: 0
