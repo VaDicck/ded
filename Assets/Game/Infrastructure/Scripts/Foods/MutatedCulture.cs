@@ -1,11 +1,14 @@
+using UnityEditor;
 using UnityEngine;
 using Zenject;
 
 public abstract class MutatedCulture<TFactory, TMutated> : Culture 
     where TFactory : PlaceholderFactory<TMutated>
-    where TMutated : class
+    where TMutated : MutatedFood
 {
     [Inject] private TFactory _factory;
+    
+    protected MutatedFood _mutatedFood;
     
     protected MutatedCulture(CultureConfig config, PlayerCultures playerCultures,
         DayCycleService dayCycleService, Transform bedTransform)
@@ -37,9 +40,16 @@ public abstract class MutatedCulture<TFactory, TMutated> : Culture
     {
         return false;
     }
-    
+
+    protected override void DigOut()
+    {
+        _mutatedFood.Die();
+    }
+
     protected override void OnSetTransform()
     {
-        _factory.Create();
+        _mutatedFood = _factory.Create();
+        
+        _mutatedFood.PlaceOnBed(_bedTransform);
     }
 }

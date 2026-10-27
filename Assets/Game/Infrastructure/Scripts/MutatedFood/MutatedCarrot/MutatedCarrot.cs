@@ -1,7 +1,6 @@
-using UnityEngine;
 using Zenject;
 
-public class MutatedCarrot : MonoBehaviour
+public class MutatedCarrot : MutatedFood
 {
     public class Factory : PlaceholderFactory<MutatedCarrot> { }
 }

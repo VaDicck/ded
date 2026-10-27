@@ -77,6 +77,7 @@ public abstract class Culture: IDisposable
 
         if (_currentTimerCollected < 0)
         {
+            DigOut();
             RaiseCollected();
             _countEnemyHitting = 0;
         }
@@ -98,6 +99,8 @@ public abstract class Culture: IDisposable
 
         _isGrown.Value = true;
     }
+
+    protected virtual void DigOut() { }
     
     protected void RaiseCollected() =>  Collected?.Invoke();
     protected void RaiseWatered(bool value) =>  Watered?.Invoke(value);
