@@ -1,7 +1,13 @@
+using UnityEngine;
+
 public abstract class MutatedCulture : Culture
 {
-    protected MutatedCulture(CultureConfig config, PlayerCultures playerCultures, 
-        DayCycleService dayCycleService) : base(config, playerCultures, dayCycleService){ }
+    protected MutatedCulture(CultureConfig config, PlayerCultures playerCultures,
+        DayCycleService dayCycleService, Transform bedTransform)
+        : base(config, playerCultures, dayCycleService)
+    {
+        _bedTransform = bedTransform;
+    }
     
     public override bool IsInteract()
     {
@@ -26,11 +32,4 @@ public abstract class MutatedCulture : Culture
     {
         return false;
     }
-
-    protected override void OnSetTransform()
-    {
-        
-    }
-
-    protected abstract void OnUseMutagen();
 }

@@ -1,15 +1,20 @@
 using Random = System.Random;
 using System;
 using R3;
+using Zenject;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 public abstract class SimpleCulture : Culture
 {
+    public Range DropAmount => _config.DropAmount;
+    
     private IDisposable _pouredReaction;
     private IDisposable _grownReaction;
     
     private GameObject _prefab;
+    
+    [Inject] protected DiContainer _diContainer;
     
     public SimpleCulture(CultureConfig config, PlayerCultures playerCultures,
         DayCycleService dayCycleService) : base(config, playerCultures, dayCycleService)
@@ -56,6 +61,10 @@ public abstract class SimpleCulture : Culture
             case ToolType.Bailer:
                 _isPoured.Value = true;
                 return true;
+            
+            case ToolType.Mutagen:
+                UseMutagen();
+                return true;
         }
 
         return false;
@@ -98,4 +107,13 @@ public abstract class SimpleCulture : Culture
         this.Log($"{Type} was grown");
         RaiseGrown();
     }
+
+    private void UseMutagen()
+    {
+        //TODO take mutagen in player
+        
+        CreateMutatedCulture();
+    }
+
+    protected virtual void CreateMutatedCulture() { }
 }

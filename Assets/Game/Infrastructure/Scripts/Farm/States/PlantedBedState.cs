@@ -1,8 +1,6 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
-using R3;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 public class PlantedBedState : IBedState
 {
@@ -38,6 +36,7 @@ public class PlantedBedState : IBedState
     public void SetCulture(Culture culture)
     {
         _culture = culture;
+        _culture.SetPlantedBedState(this);
         _culture.Collected += OnCollected;
         _culture.Watered += OnPoured;
         _culture.Grown += OnGrown;

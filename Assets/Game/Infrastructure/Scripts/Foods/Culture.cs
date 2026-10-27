@@ -7,8 +7,7 @@ public abstract class Culture: IDisposable
     public event Action Collected;
     public event Action<bool> Watered;
     public event Action Grown;
-
-    public Range DropAmount => _config.DropAmount;
+    
     public CultureConfig CultureConfig => _config;
     public ReadOnlyReactiveProperty<bool> IsGrown => _isGrown;
     public ReadOnlyReactiveProperty<bool> IsPoured => _isPoured;
@@ -19,7 +18,7 @@ public abstract class Culture: IDisposable
     protected readonly ReactiveProperty<bool> _isGrown = new(false);
     
     protected readonly PlayerCultures _playerCultures;
-    private readonly DayCycleService _dayCycleService;
+    protected readonly DayCycleService _dayCycleService;
     protected readonly CultureConfig _config;
     
     protected int _count;
@@ -32,6 +31,8 @@ public abstract class Culture: IDisposable
     
     
     protected Transform _bedTransform;
+    
+    protected PlantedBedState _plantedBedState;
     
 
     protected Culture(CultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
@@ -49,6 +50,8 @@ public abstract class Culture: IDisposable
         _bedTransform = bedTransform;
         OnSetTransform();
     }
+    
+    public void SetPlantedBedState(PlantedBedState plantedBedState) => _plantedBedState = plantedBedState;
     
     //TODO hz
     protected abstract void OnSetTransform();
@@ -74,7 +77,7 @@ public abstract class Culture: IDisposable
 
         if (_currentTimerCollected < 0)
         {
-            Collected?.Invoke();
+            RaiseCollected();
             _countEnemyHitting = 0;
         }
     }
