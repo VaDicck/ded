@@ -89,7 +89,6 @@ public abstract class SimpleCulture : Culture
         Object.Destroy(_prefab);
         _prefab = Object.Instantiate(CultureConfig.Step2Prefab, _bedTransform);
         this.Log($"{Type} was poured");
-        RaiseWatered(true);
     }
     
     private void OnGrownChanged(bool value)

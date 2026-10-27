@@ -7,4 +7,15 @@ public class MutatedCornCulture : MutatedCulture<MutatedCorn.Factory, MutatedCor
         : base(config, playerCultures, dayCycleService, bedTransform) { }
 
     public override CultureType Type => CultureType.MutatedCorn;
+    
+    protected override void OnDayEnded()
+    {
+        
+    }
+
+    protected override void OnNightEnded()
+    {
+        this.Log("Кончилась ночь выключаем воду");
+        _isPoured.Value = false;
+    }
 }

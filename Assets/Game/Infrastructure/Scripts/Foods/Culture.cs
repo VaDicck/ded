@@ -37,6 +37,9 @@ public abstract class Culture: IDisposable
 
     protected Culture(CultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
     {
+        //TODO UNSIBSCRIBE
+        IsPoured.Subscribe(RaiseWatered);
+        
         _config = config;
         _playerCultures = playerCultures;
         _dayCycleService = dayCycleService;
@@ -53,7 +56,6 @@ public abstract class Culture: IDisposable
     
     public void SetPlantedBedState(PlantedBedState plantedBedState) => _plantedBedState = plantedBedState;
     
-    //TODO hz
     protected abstract void OnSetTransform();
     
     public abstract ToolType UseTool();

@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using Zenject;
 
@@ -16,6 +15,9 @@ public abstract class MutatedCulture<TFactory, TMutated> : Culture
     {
         _timerDigOut = _config.HealthMutated;
         _bedTransform = bedTransform;
+        
+        _dayCycleService.DayEnded += OnDayEnded;
+        _dayCycleService.NightEnded += OnNightEnded;
     }
     
     public override bool IsInteract()
@@ -25,7 +27,7 @@ public abstract class MutatedCulture<TFactory, TMutated> : Culture
     
     public override bool IsUsable()
     {
-        return false;
+        return !IsPoured.CurrentValue;
     }
     
     public override void Interact()
@@ -34,13 +36,26 @@ public abstract class MutatedCulture<TFactory, TMutated> : Culture
     
     public override ToolType UseTool()
     {
+        if (!_isPoured.Value)
+            return ToolType.Bailer;
+        
         return ToolType.None;
     }
     
     public override bool UseTool(ToolType toolType)
     {
+        switch (toolType)
+        {
+            case ToolType.Bailer:
+                _isPoured.Value = true;
+                return true;
+        }
+
         return false;
     }
+
+    protected abstract void OnDayEnded();
+    protected abstract void OnNightEnded();
 
     protected override void DigOut()
     {
