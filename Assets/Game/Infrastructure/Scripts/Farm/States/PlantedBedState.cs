@@ -22,7 +22,7 @@ public class PlantedBedState : IBedState
             else if (_culture.IsPoured.CurrentValue == false)
                 return ToolType.Bailer;
             
-            else if(_culture.IsMutable && _culture.IsPoured.CurrentValue)
+            else if(_culture is MutatedCulture && _culture.IsPoured.CurrentValue)
                 return ToolType.Mutagen;
             
             return ToolType.None;

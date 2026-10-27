@@ -13,7 +13,6 @@ public abstract class Culture: IDisposable
     
     public abstract CultureType Type { get; }
     public int Count => _count;
-    public bool IsMutable => _config.IsMutable;
     
     private  readonly ReactiveProperty<bool> _isGrown = new(false);
     
@@ -26,7 +25,7 @@ public abstract class Culture: IDisposable
     protected float _timerCollected = 10f;
     private float _currentTimerCollected;
     private int _countEnemyHitting = 0;
-
+    
     protected ReactiveProperty<bool> _isPoured = new(false);
 
     protected Culture(CultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
