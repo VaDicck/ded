@@ -61,10 +61,6 @@ public abstract class SimpleCulture : Culture
             case ToolType.Bailer:
                 _isPoured.Value = true;
                 return true;
-            
-            case ToolType.Mutagen:
-                UseMutagen();
-                return true;
         }
 
         return false;
@@ -74,9 +70,6 @@ public abstract class SimpleCulture : Culture
     {
         if (!_isPoured.Value)
             return ToolType.Bailer;
-
-        if (_config.IsMutable)
-            return ToolType.Mutagen;
         
         return ToolType.None;
     }
@@ -107,13 +100,4 @@ public abstract class SimpleCulture : Culture
         this.Log($"{Type} was grown");
         RaiseGrown();
     }
-
-    private void UseMutagen()
-    {
-        //TODO take mutagen in player
-        
-        CreateMutatedCulture();
-    }
-
-    protected virtual void CreateMutatedCulture() { }
 }
