@@ -347,6 +347,7 @@ GameObject:
   - component: {fileID: 8769369652283036733}
   - component: {fileID: 6301002893765602297}
   - component: {fileID: 6449076004381707763}
+  - component: {fileID: 658639547130487766}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -442,7 +443,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -529,6 +530,18 @@ MonoBehaviour:
   - <Key>k__BackingField: 7
     <Value>k__BackingField: {fileID: 8582886784518620002}
   _idleTriggerName: Idle_Without_Gun
+--- !u!114 &658639547130487766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146625480943203812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b90980092f1af146a80d9eae1f9586c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
 --- !u!1001 &405615359720929365
 PrefabInstance:
   m_ObjectHideFlags: 0

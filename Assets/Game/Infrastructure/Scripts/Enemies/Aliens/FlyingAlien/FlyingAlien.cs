@@ -15,7 +15,7 @@ public class FlyingAlien : Alien<IFlyingAlienState>
 
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private Transform _projectileSpawnPoint;
-    [SerializeField] private float _fireRate = 1.2f;
+    [SerializeField] private float _fireRate = 3f;
     [SerializeField] private float _projectileSpeed = 30f;
 
     public event Action PlayerDetected;
@@ -33,7 +33,8 @@ public class FlyingAlien : Alien<IFlyingAlienState>
             new WanderFlyingAlienState(_navMeshAgent));
 
         _stateMachine.AddState<AttackFlyingAlienState>(
-            new AttackFlyingAlienState(_navMeshAgent , _projectilePrefab, _projectileSpawnPoint, _fireRate, _projectileSpeed));
+            new AttackFlyingAlienState(_navMeshAgent , _projectilePrefab, 
+                _projectileSpawnPoint, _animator, _fireRate, _projectileSpeed));
     }
 
     protected override void Subscribe()

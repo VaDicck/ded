@@ -87,8 +87,8 @@ MonoBehaviour:
   _brokenPartsPrefab: {fileID: 2990539635324416111, guid: 5861cb4234e467149a220e5ed4a84cb5, type: 3}
   _projectilePrefab: {fileID: 7404608359833101551, guid: a3cc1030f82f15b42aab1189bc2394d1, type: 3}
   _projectileSpawnPoint: {fileID: 6219793101788205381}
-  _fireRate: 1.5
-  _projectileSpeed: 30
+  _fireRate: 3
+  _projectileSpeed: 5
 --- !u!195 &3447074362510899307
 NavMeshAgent:
   m_ObjectHideFlags: 0

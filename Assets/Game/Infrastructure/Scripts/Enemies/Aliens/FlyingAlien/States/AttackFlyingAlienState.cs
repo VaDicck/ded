@@ -15,10 +15,14 @@ public class AttackFlyingAlienState : IFlyingAlienState
 
     private Transform _player;
     private float _nextFireTime;
+    
+    private Animator _animator;
 
     public AttackFlyingAlienState(NavMeshAgent navMeshAgent, GameObject projectilePrefab, 
-                                  Transform projectileSpawnPoint, float fireRate, float projectileSpeed)
+                                  Transform projectileSpawnPoint, Animator animator,
+                                  float fireRate, float projectileSpeed)
     {
+        _animator = animator;
         _navMeshAgent = navMeshAgent;
         _projectilePrefab = projectilePrefab;
         _projectileSpawnPoint = projectileSpawnPoint;
@@ -53,7 +57,7 @@ public class AttackFlyingAlienState : IFlyingAlienState
         if (Time.time >= _nextFireTime)
         {
             Shoot();
-            _nextFireTime = Time.time + (1f / _fireRate);
+            _nextFireTime = Time.time + _fireRate;
         }
     }
 
@@ -65,11 +69,13 @@ public class AttackFlyingAlienState : IFlyingAlienState
         Vector3 dir = (_player.position - spawnPos).normalized;
         Quaternion rot = Quaternion.LookRotation(dir);
 
-        GameObject projectile = Object.Instantiate(_projectilePrefab, spawnPos, rot);
+        _animator.SetTrigger("Attack");
+        
+        GameObject projectileGO = Object.Instantiate(_projectilePrefab, spawnPos, rot);
 
-        if (projectile.TryGetComponent<Rigidbody>(out Rigidbody rb))
+        if (projectileGO.TryGetComponent<Projectile>(out Projectile projectile))
         {
-            rb.linearVelocity = dir * _projectileSpeed;
+            projectile.Launch(dir, _projectileSpeed);
         }
     }
 }
