@@ -49,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlyingAlien
   _navMeshAgent: {fileID: 3447074362510899307}
   _health: 15
+  _animator: {fileID: 5851132168838371431}
+  _sfxSplashAlien: {fileID: 3990862495863414018, guid: 1d3cc85384e970b4d94144cb276af7c6, type: 3}
 --- !u!195 &3447074362510899307
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -58,7 +60,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6014802101477557910}
   m_Enabled: 1
   m_AgentTypeID: -334000983
-  m_Radius: 0.19
+  m_Radius: 0.45
   m_Speed: 5
   m_Acceleration: 7.98
   avoidancePriority: 50
@@ -67,8 +69,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 3.26
-  m_BaseOffset: 2.71
+  m_Height: 1.05
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &5130715632998334395
@@ -90,10 +92,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.23
-  m_Height: 0.64
+  m_Radius: 0.53
+  m_Height: 1.24
   m_Direction: 1
-  m_Center: {x: 0, y: 0.21, z: 0}
+  m_Center: {x: 0, y: 4.99, z: 0}
 --- !u!1001 &25315280317605366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,7 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 640476cc493423f46ab34018e2a483ea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 4.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 640476cc493423f46ab34018e2a483ea, type: 3}
       propertyPath: m_LocalPosition.z
@@ -146,6 +148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chubrikos_Flying
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 640476cc493423f46ab34018e2a483ea, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e8404bbcf750bda4bb02b865d21401ef, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -154,5 +160,10 @@ PrefabInstance:
 --- !u!4 &563875057097835037 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 640476cc493423f46ab34018e2a483ea, type: 3}
+  m_PrefabInstance: {fileID: 25315280317605366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5851132168838371431 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 640476cc493423f46ab34018e2a483ea, type: 3}
   m_PrefabInstance: {fileID: 25315280317605366}
   m_PrefabAsset: {fileID: 0}
