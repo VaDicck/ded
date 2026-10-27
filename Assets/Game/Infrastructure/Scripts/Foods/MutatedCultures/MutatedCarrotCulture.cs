@@ -6,5 +6,5 @@ public class MutatedCarrotCulture : MutatedCulture<MutatedCarrot.Factory, Mutate
         DayCycleService dayCycleService, Transform bedTransform)
         : base(config, playerCultures, dayCycleService, bedTransform) { }
 
-    public override CultureType Type => CultureType.Carrot;
+    public override CultureType Type => CultureType.MutatedCarrot;
 }

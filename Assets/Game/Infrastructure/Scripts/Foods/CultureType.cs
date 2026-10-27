@@ -5,5 +5,7 @@
     Tomato,
     Corn,
     Garnet,
-    Pepper
+    Pepper,
+    MutatedCarrot,
+    MutatedCorn
 }

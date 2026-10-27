@@ -35,12 +35,22 @@ public class PlantedBedState : IBedState
     
     public void SetCulture(Culture culture)
     {
+        if (_culture == culture) return;
+        
+        if (_culture != null)
+        {
+            _culture.Collected -= OnCollected;    
+            _culture.Watered -= OnPoured;
+            _culture.Grown -= OnGrown;
+
+            _culture.Dispose();              
+        }
+        
         _culture = culture;
         _culture.SetPlantedBedState(this);
         _culture.Collected += OnCollected;
         _culture.Watered += OnPoured;
         _culture.Grown += OnGrown;
-        
         _culture.SetBedTransform(_visualState.transform);
     }
 

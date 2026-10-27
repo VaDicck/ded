@@ -1,3 +1,4 @@
+using Object = UnityEngine.Object;
 
 public abstract class MutableSimpleCulture<TMutatedCulture> : SimpleCulture 
     where  TMutatedCulture : Culture
@@ -41,6 +42,8 @@ public abstract class MutableSimpleCulture<TMutatedCulture> : SimpleCulture
         TMutatedCulture mutated = _diContainer.Instantiate<TMutatedCulture>(
             new object[] { _config, _playerCultures, _dayCycleService, _bedTransform });
 
+        Object.Destroy(_prefab);
+        
         _plantedBedState.SetCulture(mutated);
     }
 }

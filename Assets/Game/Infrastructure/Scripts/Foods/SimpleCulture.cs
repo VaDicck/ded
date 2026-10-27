@@ -12,7 +12,7 @@ public abstract class SimpleCulture : Culture
     private IDisposable _pouredReaction;
     private IDisposable _grownReaction;
     
-    private GameObject _prefab;
+    protected GameObject _prefab;
     
     [Inject] protected DiContainer _diContainer;
     
