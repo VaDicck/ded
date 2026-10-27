@@ -29,11 +29,9 @@ public abstract class MutatedCulture<TFactory, TMutated> : Culture
     {
         return !IsPoured.CurrentValue;
     }
-    
-    public override void Interact()
-    {
-    }
-    
+
+    public override void Interact() { }
+
     public override ToolType UseTool()
     {
         if (!_isPoured.Value)
