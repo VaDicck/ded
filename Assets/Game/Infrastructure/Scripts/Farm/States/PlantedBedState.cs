@@ -60,6 +60,7 @@ public class PlantedBedState : IBedState
     public void Enter()
     {
         ActivateVisualState(true);
+        _pouredVisuals.SetActive(false);
         this.Log($"Entered with culture {_culture}");
     }
     
