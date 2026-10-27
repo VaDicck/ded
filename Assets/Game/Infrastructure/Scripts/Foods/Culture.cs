@@ -23,7 +23,7 @@ public abstract class Culture: IDisposable
     
     protected int _count;
 
-    protected float _timerCollected = 10f;
+    protected float _timerDigOut = 10f;
     private float _currentTimerCollected;
     private int _countEnemyHitting = 0;
     
@@ -42,7 +42,7 @@ public abstract class Culture: IDisposable
         _dayCycleService = dayCycleService;
         _dayCycleService.DayStarted += OnDayStarted;
 
-        _currentTimerCollected = _timerCollected;
+        _currentTimerCollected = _timerDigOut;
     }
 
     public void SetBedTransform(Transform bedTransform)
@@ -68,6 +68,10 @@ public abstract class Culture: IDisposable
 
     public void StartHitting()
     {
+        if (_countEnemyHitting == 0)
+        {
+            _currentTimerCollected = _timerDigOut;
+        }
         _countEnemyHitting++;
     }
     
@@ -88,7 +92,7 @@ public abstract class Culture: IDisposable
         _countEnemyHitting--;
         if (_countEnemyHitting == 0)
         {
-            _currentTimerCollected = _timerCollected;
+            _currentTimerCollected = _timerDigOut;
         }
     }
     

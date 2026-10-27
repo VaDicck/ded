@@ -19,6 +19,7 @@ public abstract class SimpleCulture : Culture
     public SimpleCulture(CultureConfig config, PlayerCultures playerCultures,
         DayCycleService dayCycleService) : base(config, playerCultures, dayCycleService)
     {
+        _timerDigOut = _config.Health;
     }
 
     public override bool IsInteract()

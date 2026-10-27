@@ -14,6 +14,7 @@ public abstract class MutatedCulture<TFactory, TMutated> : Culture
         DayCycleService dayCycleService, Transform bedTransform)
         : base(config, playerCultures, dayCycleService)
     {
+        _timerDigOut = _config.HealthMutated;
         _bedTransform = bedTransform;
     }
     
