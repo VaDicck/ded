@@ -8,9 +8,9 @@ public class Chicken : ChickenBase, IInteractable
     
     public bool IsInteractable => false;
 
-    public bool IsUsable => true;
+    public bool IsUsable => !_isMutated;
     
-    private bool _isMutated;
+    private bool _isMutated = false;
     
     [Inject] private MutatedChicken.Factory _mutatedChickenFactory;
     
@@ -25,7 +25,6 @@ public class Chicken : ChickenBase, IInteractable
             return UniTask.FromResult(false);
 
         UseMutagen();
-        
         return UniTask.FromResult(true);
     }
     
@@ -91,7 +90,7 @@ public class Chicken : ChickenBase, IInteractable
     {
         //TODO take mutagen
         _isMutated = true;
-        
+        this.Log("use mutagen");
         _navMeshAgent.isStopped = true;
 
         Unsubscribe();

@@ -4,6 +4,9 @@ using Zenject;
 
 public class FlyingAlien : Alien<IFlyingAlienState>
 {
+    public event Action PlayerDetected;
+    public event Action PlayerLost;
+
     [SerializeField] private GameObject _brokenPartsPrefab;
 
     public override AlienType Type => AlienType.Flying;
@@ -17,9 +20,6 @@ public class FlyingAlien : Alien<IFlyingAlienState>
     [SerializeField] private Transform _projectileSpawnPoint;
     [SerializeField] private float _fireRate = 3f;
     [SerializeField] private float _projectileSpeed = 30f;
-
-    public event Action PlayerDetected;
-    public event Action PlayerLost;
 
     public class Factory : PlaceholderFactory<FlyingAlien> { }
 

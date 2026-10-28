@@ -3,7 +3,6 @@ using UnityEngine.AI;
 public class HuntFleeingAlienState : IChickenState
 {
     private NavMeshAgent _agent;
-    private AlienService _alienService;
     
     public void Enter()
     {
@@ -12,10 +11,6 @@ public class HuntFleeingAlienState : IChickenState
     
     public void Tick()
     {
-        if(_alienService.AliensEmpty)
-            return;
-        
-        
     }
     
     public void Exit()

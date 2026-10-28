@@ -1,9 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
 public class MutatedChicken : ChickenBase
 {
+    public event Action AlienDetected;
+    public event Action AlienLost;
+
     [Header("Night attack")]
     [SerializeField] private float _attackDamage = 20f;
     [SerializeField] private float _attackInterval = 1.2f;
@@ -13,8 +17,9 @@ public class MutatedChicken : ChickenBase
 
     private const float _huntCheckInterval = 1.5f;
 
-    [Inject] private AlienService _alienService;
-    
+    private bool _alienInRange;
+    private Transform _alienTransform;
+
     public class Factory : PlaceholderFactory<MutatedChicken> { }
 
     protected override void OnDayStart()
@@ -59,12 +64,16 @@ public class MutatedChicken : ChickenBase
 
     private void SubscribeOnNight()
     {
+        _stateMachine.GetState<IdleChickenState>().Performed += OnIdlePerformed;
 
+        _stateMachine.GetState<PeckChickenState>().Performed += OnPeckPerformed;
     }
 
     private void UnsubscribeOnNight()
     {
+        _stateMachine.GetState<IdleChickenState>().Performed -= OnIdlePerformed;
 
+        _stateMachine.GetState<PeckChickenState>().Performed -= OnPeckPerformed;
     }
 
     protected override void Subscribe()
@@ -84,16 +93,26 @@ public class MutatedChicken : ChickenBase
         PeckCheck();
     }
 
-    private bool HasAnyFleeingAlienInGarden()
+    private void OnTriggerEnter(Collider other)
     {
-        if (_alienService.AliensEmpty) return false;
-
-        foreach (var alien in _alienService.Aliens)
+        if (other.CompareTag("EnemyOnGround") && !_alienInRange)
         {
-            if (alien.Type == AlienType.Fleeing && IsInGarden(alien.transform.position))
-                return true;
+            this.LogError("Detected Alien");
+            _alienInRange = true;
+            _alienTransform = other.transform;
+            AlienDetected?.Invoke();
         }
-        return false;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("EnemyOnGround") && _alienInRange)
+        {
+            this.LogError("Undetected Alien");
+            _alienInRange = false;
+            _alienTransform = null;
+            AlienLost?.Invoke();
+        }
     }
 
     private bool IsInGarden(Vector3 position)

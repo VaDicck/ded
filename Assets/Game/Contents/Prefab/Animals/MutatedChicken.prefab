@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 1484368339204371032}
   - component: {fileID: -7911512899527169979}
   - component: {fileID: -2734820537299717358}
+  - component: {fileID: 5745612419704087601}
   m_Layer: 0
   m_Name: MutatedChicken
   m_TagString: Untagged
@@ -109,6 +110,27 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 16
   m_ObstacleAvoidanceType: 4
+--- !u!135 &5745612419704087601
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5041962793416522696}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 4.28
+  m_Center: {x: 0, y: 0.77, z: 0}
 --- !u!1001 &4019949147396925122
 PrefabInstance:
   m_ObjectHideFlags: 0
