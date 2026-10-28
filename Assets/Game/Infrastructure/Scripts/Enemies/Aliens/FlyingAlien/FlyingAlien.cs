@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using Zenject;
+using R3;
 
 public class FlyingAlien : Alien<IFlyingAlienState>
 {
@@ -22,8 +23,10 @@ public class FlyingAlien : Alien<IFlyingAlienState>
     
     private int _playerLayer;
 
-    public class Factory : PlaceholderFactory<FlyingAlien> { }
+    private bool _flySpawn;
 
+    public class Factory : PlaceholderFactory<FlyingAlien> { }
+    
     protected override void AddStates()
     {
         _playerLayer = LayerMask.NameToLayer("Player");
@@ -37,6 +40,12 @@ public class FlyingAlien : Alien<IFlyingAlienState>
         _stateMachine.AddState<AttackFlyingAlienState>(
             new AttackFlyingAlienState(_navMeshAgent , _projectilePrefab, 
                 _projectileSpawnPoint, _animator, _fireRate, _projectileSpeed));
+        
+        _stateMachine.AddState<FlyToSpawnFlyingAlienState>(
+            new FlyToSpawnFlyingAlienState(_spawnPoint, _navMeshAgent));
+        
+        //TODO maybe in alienBase?
+        _bedService.CanAttackBeds.Subscribe(FlyToSpawn);
     }
 
     protected override void Subscribe()
@@ -67,22 +76,39 @@ public class FlyingAlien : Alien<IFlyingAlienState>
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == _playerLayer && !_playerInRange)
-        {
-            _playerInRange = true;
-            _playerTransform = other.transform;
-            PlayerDetected?.Invoke();
-        }
+        if(_flySpawn) return;
+
+        if (other.gameObject.layer != _playerLayer || _playerInRange) return;
+        
+        _playerInRange = true;
+        _playerTransform = other.transform;
+        PlayerDetected?.Invoke();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == _playerLayer && _playerInRange)
+        if(_flySpawn) return;
+
+        if (other.gameObject.layer != _playerLayer || !_playerInRange) return;
+        
+        _playerInRange = false;
+        _playerTransform = null;
+        PlayerLost?.Invoke();
+    }
+
+    private void FlyToSpawn(bool value)
+    {
+        if (value) return;
+        
+        _animator.SetTrigger("Fly");
+        _stateMachine.SetState<FlyToSpawnFlyingAlienState>();
+        
+        _flySpawn = true;
+            
+        _stateMachine.GetState<FlyToPointFlyingAlienState>().Performed += () =>
         {
-            _playerInRange = false;
-            _playerTransform = null;
-            PlayerLost?.Invoke();
-        }
+            Destroy(gameObject);
+        };
     }
 
     protected override void Die()
