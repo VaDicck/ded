@@ -6,7 +6,7 @@ public class HuntFleeingAlienState : IChickenState
     
     public void Enter()
     {
-        _agent.isStopped = true;
+        //_agent.isStopped = true;
     }
     
     public void Tick()
@@ -15,6 +15,6 @@ public class HuntFleeingAlienState : IChickenState
     
     public void Exit()
     {
-        _agent.isStopped = false;
+        //_agent.isStopped = false;
     }
 }
