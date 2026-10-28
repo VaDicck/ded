@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -7911512899527169979}
   - component: {fileID: -2734820537299717358}
   - component: {fileID: 5745612419704087601}
+  - component: {fileID: 6864753992705600884}
   m_Layer: 0
   m_Name: MutatedChicken
   m_TagString: Untagged
@@ -51,7 +52,7 @@ MonoBehaviour:
   _wanderRadius: 15
   _peckProbability: 0.25
   _peckCheckInterval: 4
-  _animator: {fileID: 6989046210066079652}
+  _animator: {fileID: 6864753992705600884}
   _spawnPoint: {fileID: 0}
   _attackDamage: 20
   _attackInterval: 1.2
@@ -99,6 +100,28 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 4.28
   m_Center: {x: 0, y: 0.77, z: 0}
+--- !u!95 &6864753992705600884
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5041962793416522696}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 8c1709f30b21d9c4cbcc2ce943e437dd, type: 3}
+  m_Controller: {fileID: 9100000, guid: da33b0af1851f45489afaf0ca27dcd1f, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8410373693755169633
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +210,8 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: da33b0af1851f45489afaf0ca27dcd1f, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: 8c1709f30b21d9c4cbcc2ce943e437dd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -195,10 +219,5 @@ PrefabInstance:
 --- !u!4 &3899616634854868446 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8c1709f30b21d9c4cbcc2ce943e437dd, type: 3}
-  m_PrefabInstance: {fileID: 3572623162246423093}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &6989046210066079652 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 8c1709f30b21d9c4cbcc2ce943e437dd, type: 3}
   m_PrefabInstance: {fileID: 3572623162246423093}
   m_PrefabAsset: {fileID: 0}

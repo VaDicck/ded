@@ -3250,6 +3250,10 @@ PrefabInstance:
       propertyPath: _spawnPoint
       value: 
       objectReference: {fileID: 2008652361}
+    - target: {fileID: -7911512899527169979, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
+      propertyPath: _peckProbability
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1484368339204371032, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.37648
@@ -9038,7 +9042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319182832601296571, guid: f77737eccd91e8a49b97615b62397fc2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4085056541824134896, guid: f77737eccd91e8a49b97615b62397fc2, type: 3}
       propertyPath: _spawnPoint
@@ -9088,6 +9092,10 @@ PrefabInstance:
       propertyPath: _spawnPoint
       value: 
       objectReference: {fileID: 2008652361}
+    - target: {fileID: 8960305140955613952, guid: f77737eccd91e8a49b97615b62397fc2, type: 3}
+      propertyPath: _peckProbability
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4085056541824134896, guid: f77737eccd91e8a49b97615b62397fc2, type: 3}
     m_RemovedGameObjects: []

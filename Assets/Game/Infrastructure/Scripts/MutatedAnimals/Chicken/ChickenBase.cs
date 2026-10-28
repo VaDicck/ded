@@ -66,7 +66,7 @@ public abstract class ChickenBase : MonoBehaviour
         {
             if (Random.value < _peckProbability)
             {
-                _animator.SetTrigger("Idle");
+                _animator.SetTrigger("Peck");
                 _stateMachine.SetState<PeckChickenState>();
             }
             _nextPeckCheckTime = Time.time + _peckCheckInterval;

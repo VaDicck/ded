@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2073535685903565543}
   - component: {fileID: 8960305140955613952}
   - component: {fileID: 6972517237347878933}
+  - component: {fileID: 4242192897686957000}
   m_Layer: 3
   m_Name: Chicken
   m_TagString: Untagged
@@ -73,7 +74,7 @@ MonoBehaviour:
   _wanderRadius: 15
   _peckProbability: 0.5
   _peckCheckInterval: 4
-  _animator: {fileID: 529889973472216835}
+  _animator: {fileID: 4242192897686957000}
   _spawnPoint: {fileID: 0}
 --- !u!136 &6972517237347878933
 CapsuleCollider:
@@ -98,6 +99,28 @@ CapsuleCollider:
   m_Height: 1.4
   m_Direction: 1
   m_Center: {x: 0, y: 0.59, z: 0.04}
+--- !u!95 &4242192897686957000
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319182832601296571}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 141753cc39b0ce740aa7f861be5ef3cb, type: 3}
+  m_Controller: {fileID: 9100000, guid: 32575141b92263a4eb6f295ea2067717, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7976042860043654823
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,16 +209,12 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 32575141b92263a4eb6f295ea2067717, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: 141753cc39b0ce740aa7f861be5ef3cb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 141753cc39b0ce740aa7f861be5ef3cb, type: 3}
---- !u!95 &529889973472216835 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 141753cc39b0ce740aa7f861be5ef3cb, type: 3}
-  m_PrefabInstance: {fileID: 6210492157449140882}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5889196256808902009 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 141753cc39b0ce740aa7f861be5ef3cb, type: 3}
