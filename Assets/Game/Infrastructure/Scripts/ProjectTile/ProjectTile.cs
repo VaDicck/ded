@@ -22,13 +22,13 @@ public class Projectile : MonoBehaviour
         _damage = damage;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.layer == _layerTarget)
+        if (collider.gameObject.layer == _layerTarget)
         {
-            if (collision.gameObject.TryGetComponent<IDamageable>(out var damageable))
+            if (collider.gameObject.TryGetComponent<IDamageable>(out var damageable))
             {
-                Vector3 hitPoint = collision.contacts[0].point;
+                Vector3 hitPoint = Vector3.one;
                 damageable.TakeDamage(_damage, hitPoint);
             }
         }
