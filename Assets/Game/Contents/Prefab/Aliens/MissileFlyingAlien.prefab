@@ -166,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   _lifetime: 5
   _rb: {fileID: 5177686184014092540}
+  _layerName: Player
 --- !u!135 &5444852761118205329
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -63,8 +63,6 @@ public class AttackFlyingAlienState : IFlyingAlienState
 
     private void Shoot()
     {
-        if (_projectilePrefab == null || _projectileSpawnPoint == null || _player == null) return;
-
         Vector3 spawnPos = _projectileSpawnPoint.position;
         Vector3 dir = (_player.position - spawnPos).normalized;
         Quaternion rot = Quaternion.LookRotation(dir);

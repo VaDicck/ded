@@ -9776,6 +9776,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 658639547130487766, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _delayOverlay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1146625480943203812, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: m_Name
       value: Player
