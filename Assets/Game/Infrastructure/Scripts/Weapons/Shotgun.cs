@@ -39,7 +39,7 @@ public class Shotgun : Weapon
             
             Ray ray = new Ray(transform.position, direction);
             
-            if (Physics.Raycast(ray, out var hit, LayerMask.GetMask("Damageable")))
+            if (Physics.Raycast(ray, out var hit, Mathf.Infinity, LayerMask.GetMask("Damageable")))
             {
                 hits.Add(hit);
             }
