@@ -75,8 +75,7 @@ public class AttackFlyingAlienState : IFlyingAlienState
 
         if (projectileGO.TryGetComponent<Projectile>(out Projectile projectile))
         {
-            this.LogError("Launch!");
-            projectile.Launch(dir, _projectileSpeed);
+            projectile.Launch(dir, _projectileSpeed, 0);
         }
     }
 }
