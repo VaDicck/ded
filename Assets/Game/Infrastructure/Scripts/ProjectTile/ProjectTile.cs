@@ -5,9 +5,13 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float _lifetime = 5f; 
 
     [SerializeField] private Rigidbody _rb;
+    
+    private int _playerLayer;
 
     private void Awake()
     {
+        _playerLayer = LayerMask.NameToLayer("Player");
+        
         Destroy(gameObject, _lifetime);
     }
     
@@ -18,7 +22,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.layer == _playerLayer)
         {
             if (collision.gameObject.TryGetComponent<IDamageable>(out var damageable))
             {

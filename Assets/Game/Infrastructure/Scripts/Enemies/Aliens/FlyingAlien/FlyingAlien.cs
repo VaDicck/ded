@@ -8,6 +8,10 @@ public class FlyingAlien : Alien<IFlyingAlienState>
     public event Action PlayerLost;
 
     [SerializeField] private GameObject _brokenPartsPrefab;
+    [SerializeField] private GameObject _projectilePrefab;
+    [SerializeField] private Transform _projectileSpawnPoint;
+    [SerializeField] private float _fireRate = 3f;
+    [SerializeField] private float _projectileSpeed = 3f;
 
     public override AlienType Type => AlienType.Flying;
 
@@ -15,16 +19,14 @@ public class FlyingAlien : Alien<IFlyingAlienState>
 
     private bool _playerInRange;
     private Transform _playerTransform;
-
-    [SerializeField] private GameObject _projectilePrefab;
-    [SerializeField] private Transform _projectileSpawnPoint;
-    [SerializeField] private float _fireRate = 3f;
-    [SerializeField] private float _projectileSpeed = 30f;
+    
+    private int _playerLayer;
 
     public class Factory : PlaceholderFactory<FlyingAlien> { }
 
     protected override void AddStates()
     {
+        _playerLayer = LayerMask.NameToLayer("Player");
         _animator.SetTrigger("Fly");
         _stateMachine = new StateMachine<IFlyingAlienState>(
             new FlyToPointFlyingAlienState(_bedService, _navMeshAgent));
@@ -65,7 +67,7 @@ public class FlyingAlien : Alien<IFlyingAlienState>
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !_playerInRange)
+        if (other.gameObject.layer == _playerLayer && !_playerInRange)
         {
             _playerInRange = true;
             _playerTransform = other.transform;
@@ -75,7 +77,7 @@ public class FlyingAlien : Alien<IFlyingAlienState>
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && _playerInRange)
+        if (other.gameObject.layer == _playerLayer && _playerInRange)
         {
             _playerInRange = false;
             _playerTransform = null;

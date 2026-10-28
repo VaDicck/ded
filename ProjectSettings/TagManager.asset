@@ -16,9 +16,9 @@ TagManager:
   - FPS
   - NavMeshVolume
   - NotFlying
-  - 
-  - 
-  - 
+  - Player
+  - Enemies
+  - EnemyBullet
   - 
   - 
   - 

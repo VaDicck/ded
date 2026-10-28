@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1228167429131695983}
   - component: {fileID: 12583344666672983}
   - component: {fileID: 8624277250202412514}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 5177686184014092540}
   - component: {fileID: 2551138505738450707}
   - component: {fileID: 5444852761118205329}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MissileFlyingAlien
   m_TagString: Untagged
   m_Icon: {fileID: 0}
