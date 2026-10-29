@@ -3299,8 +3299,12 @@ PrefabInstance:
       value: MutatedChicken
       objectReference: {fileID: 0}
     - target: {fileID: 5041962793416522696, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
-      propertyPath: m_IsActive
+      propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041962793416522696, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9042,7 +9046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319182832601296571, guid: f77737eccd91e8a49b97615b62397fc2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4085056541824134896, guid: f77737eccd91e8a49b97615b62397fc2, type: 3}
       propertyPath: _spawnPoint

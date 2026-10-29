@@ -12,7 +12,6 @@ public class Projectile : MonoBehaviour
     private void Awake()
     {
         _layerTarget = LayerMask.NameToLayer(_layerName);
-        
         Destroy(gameObject, _lifetime);
     }
     
@@ -24,6 +23,9 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
+        if(collider.isTrigger)
+            return;
+            
         if (collider.gameObject.layer == _layerTarget)
         {
             if (collider.gameObject.TryGetComponent<IDamageable>(out var damageable))
