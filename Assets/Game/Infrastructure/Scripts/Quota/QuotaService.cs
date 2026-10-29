@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Zenject;
 using Object = UnityEngine.Object;
 
 public class QuotaService
@@ -17,9 +18,13 @@ public class QuotaService
     
     private GameConfig _gameConfig;
     private int _currentQuotaNumber;
+    
+    private DiContainer _container;
 
-    public QuotaService(int quotaNumber, PlayerResources playerIngredients, GameConfig config)
+    public QuotaService(int quotaNumber, PlayerResources playerIngredients, GameConfig config, DiContainer container)
     {
+        _container = container;
+        
         _currentQuotaNumber = quotaNumber;
         _playerIngredients = playerIngredients;
         _gameConfig = config;
@@ -81,6 +86,7 @@ public class QuotaService
         }
         
         _currentQuota = Object.Instantiate(_gameConfig.Quotas.Quotas[quotaNumber]);
+        _currentQuota.Initialize(_container);
         
         _currentQuota.Main.Reached += OnQuotaElementDone;
         _currentQuota.Sub1.Reached += OnQuotaElementDone;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 [Serializable]
 public class QuotaElement
@@ -23,6 +24,11 @@ public class QuotaElement
         Element = element;
     }
 
+    public void Initialize(DiContainer container)
+    {
+        Reward.Initialize(container);
+    }
+    
     public void Refresh()
     {
         _cultures = new();
@@ -35,6 +41,8 @@ public class QuotaElement
 
     public void ApplyReward(PlayerResources playerIngredients)
     {
+        Reward.GetReward();
+        
         foreach (var ingredient in Reward.Ingredients)
         {
             playerIngredients.Add(ingredient.Key, ingredient.Value);

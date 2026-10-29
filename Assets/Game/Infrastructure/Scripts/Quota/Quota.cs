@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Zenject;
 
 [CreateAssetMenu(fileName = "Quota", menuName = "Configs/Quotas/Quota")]
 public class Quota : ScriptableObject
@@ -14,6 +15,13 @@ public class Quota : ScriptableObject
         Main,
         Sub1,
         Sub2,
+    }
+
+    public void Initialize(DiContainer container)
+    {
+        Main.Initialize(container);
+        Sub1.Initialize(container);
+        Sub2.Initialize(container);
     }
     
     private void OnEnable()
