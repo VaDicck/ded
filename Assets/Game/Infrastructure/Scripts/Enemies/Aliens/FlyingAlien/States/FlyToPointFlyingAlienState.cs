@@ -12,7 +12,6 @@ public class FlyToPointFlyingAlienState : IFlyingAlienState
     private readonly NavMeshAgent _navMeshAgent;
     private readonly float _stopDistance = 1.5f;
     
-
     public FlyToPointFlyingAlienState(BedService bedService, NavMeshAgent navMeshAgent)
     {
         _bedService = bedService;

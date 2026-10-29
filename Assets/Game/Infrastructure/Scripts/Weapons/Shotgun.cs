@@ -14,6 +14,9 @@ public class Shotgun : Weapon
     [Header("Reload")]
     [SerializeField] private float _reloadTimeOnePistol = 4f;
 
+    private int _damageLayer;
+    private int _enemyLayer;
+
     protected override void Hide()
     {
         _shotgun.SetActive(false);
@@ -21,6 +24,9 @@ public class Shotgun : Weapon
 
     protected override void Show()
     {
+        _damageLayer = LayerMask.GetMask("Damageable");
+        _enemyLayer = LayerMask.GetMask("Enemies");
+
         _animatorHand.SetTrigger("EquipShotgun");
         _shotgun.SetActive(true);
         _animator.SetFloat("ReloadPistolSpeed", _reloadTimeOnePistol);
@@ -39,9 +45,14 @@ public class Shotgun : Weapon
             
             Ray ray = new Ray(transform.position, direction);
             
-            if (Physics.Raycast(ray, out var hit, LayerMask.GetMask("Damageable")))
+            if (Physics.Raycast(ray, out var hit1, Mathf.Infinity, _damageLayer))
             {
-                hits.Add(hit);
+                hits.Add(hit1);
+            }
+
+            if (Physics.Raycast(ray, out var hit2, Mathf.Infinity, _enemyLayer, QueryTriggerInteraction.Ignore))
+            {
+                hits.Add(hit2);
             }
         }
         

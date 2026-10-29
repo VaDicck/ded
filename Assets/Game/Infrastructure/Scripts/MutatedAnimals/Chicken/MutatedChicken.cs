@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
@@ -7,6 +8,8 @@ public class MutatedChicken : ChickenBase
 {
     public event Action AlienDetected;
     public event Action AlienLost;
+
+    public List<AlienBase> Aliens => _aliens;
 
     [Header("Night attack")]
     [SerializeField] private float _attackDamage = 20f;
@@ -17,10 +20,16 @@ public class MutatedChicken : ChickenBase
 
     private const float _huntCheckInterval = 1.5f;
 
-    private bool _alienInRange;
-    private Transform _alienTransform;
+    private List<AlienBase> _aliens = new List<AlienBase>();
+
+    private int _alienLayer;
 
     public class Factory : PlaceholderFactory<MutatedChicken> { }
+
+    private void Awake()
+    {
+        _alienLayer = LayerMask.NameToLayer("Enemies");
+    }
 
     protected override void OnDayStart()
     {
@@ -45,35 +54,40 @@ public class MutatedChicken : ChickenBase
         _stateMachine.AddState(new PeckChickenState(_navMeshAgent));
         
         _stateMachine.AddState(new HuntFleeingAlienState());
-        _stateMachine.AddState(new ChaseFleeingAlienState());
+        _stateMachine.AddState(new ChaseFleeingAlienState(
+    this,
+    _navMeshAgent,
+    _attackRange,
+    _attackDamage,
+    _attackInterval, _animator));
     }
 
     private void SubscribeOnDay()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed += OnIdlePerformed;
+        _stateMachine.GetState<IdleChickenState>().Performed += Walk;
 
-        _stateMachine.GetState<PeckChickenState>().Performed += OnPeckPerformed;
+        _stateMachine.GetState<PeckChickenState>().Performed += Walk;
     }
 
     private void UnsubscribeOnDay()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed -= OnIdlePerformed;
+        _stateMachine.GetState<IdleChickenState>().Performed -= Walk;
 
-        _stateMachine.GetState<PeckChickenState>().Performed -= OnPeckPerformed;
+        _stateMachine.GetState<PeckChickenState>().Performed -= Walk;
     }
 
     private void SubscribeOnNight()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed += OnIdlePerformed;
+        _stateMachine.GetState<IdleChickenState>().Performed += Walk;
 
-        _stateMachine.GetState<PeckChickenState>().Performed += OnPeckPerformed;
+        _stateMachine.GetState<PeckChickenState>().Performed += Walk;
     }
 
     private void UnsubscribeOnNight()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed -= OnIdlePerformed;
+        _stateMachine.GetState<IdleChickenState>().Performed -= Walk;
 
-        _stateMachine.GetState<PeckChickenState>().Performed -= OnPeckPerformed;
+        _stateMachine.GetState<PeckChickenState>().Performed -= Walk;
     }
 
     protected override void Subscribe()
@@ -95,24 +109,39 @@ public class MutatedChicken : ChickenBase
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("EnemyOnGround") && !_alienInRange)
+        if (other.gameObject.layer == _alienLayer)
         {
-            this.LogError("Detected Alien");
-            _alienInRange = true;
-            _alienTransform = other.transform;
+            if (!other.gameObject.TryGetComponent<AlienBase>(out var alien))
+                return;
+
+            _stateMachine.SetState<ChaseFleeingAlienState>();
+            _aliens.Add(alien);
+            this.LogError($"Detected Alien {_aliens.Count}");
+            alien.Death += RemoveAlien;
             AlienDetected?.Invoke();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("EnemyOnGround") && _alienInRange)
+        if (other.gameObject.layer == _alienLayer)
         {
-            this.LogError("Undetected Alien");
-            _alienInRange = false;
-            _alienTransform = null;
-            AlienLost?.Invoke();
+            if (!other.gameObject.TryGetComponent<AlienBase>(out var alien))
+                return;
+
+            RemoveAlien(alien);
         }
+    }
+
+    private void RemoveAlien(AlienBase alienBase)
+    {
+        this.LogError($"RemoveAlien, count {_aliens.Count}");
+        _aliens.Remove(alienBase);
+        AlienLost?.Invoke();
+
+        if (_aliens.Count != 0) return;
+
+        Walk();
     }
 
     private bool IsInGarden(Vector3 position)
