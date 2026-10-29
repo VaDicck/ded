@@ -73,13 +73,7 @@ public abstract class ChickenBase : MonoBehaviour
         }
     }
     
-    protected void OnIdlePerformed()
-    {
-        _animator.SetTrigger("Walk");
-        _stateMachine.SetState<WanderChickenState>();
-    }
-
-    protected void OnPeckPerformed()
+    protected void Walk()
     {
         _animator.SetTrigger("Walk");
         _stateMachine.SetState<WanderChickenState>();

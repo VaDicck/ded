@@ -9,6 +9,8 @@ public class MutatedChicken : ChickenBase
     public event Action AlienDetected;
     public event Action AlienLost;
 
+    public List<AlienBase> Aliens => _aliens;
+
     [Header("Night attack")]
     [SerializeField] private float _attackDamage = 20f;
     [SerializeField] private float _attackInterval = 1.2f;
@@ -52,35 +54,40 @@ public class MutatedChicken : ChickenBase
         _stateMachine.AddState(new PeckChickenState(_navMeshAgent));
         
         _stateMachine.AddState(new HuntFleeingAlienState());
-        _stateMachine.AddState(new ChaseFleeingAlienState());
+        _stateMachine.AddState(new ChaseFleeingAlienState(
+    this,
+    _navMeshAgent,
+    _attackRange,
+    _attackDamage,
+    _attackInterval, _animator));
     }
 
     private void SubscribeOnDay()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed += OnIdlePerformed;
+        _stateMachine.GetState<IdleChickenState>().Performed += Walk;
 
-        _stateMachine.GetState<PeckChickenState>().Performed += OnPeckPerformed;
+        _stateMachine.GetState<PeckChickenState>().Performed += Walk;
     }
 
     private void UnsubscribeOnDay()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed -= OnIdlePerformed;
+        _stateMachine.GetState<IdleChickenState>().Performed -= Walk;
 
-        _stateMachine.GetState<PeckChickenState>().Performed -= OnPeckPerformed;
+        _stateMachine.GetState<PeckChickenState>().Performed -= Walk;
     }
 
     private void SubscribeOnNight()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed += OnIdlePerformed;
+        _stateMachine.GetState<IdleChickenState>().Performed += Walk;
 
-        _stateMachine.GetState<PeckChickenState>().Performed += OnPeckPerformed;
+        _stateMachine.GetState<PeckChickenState>().Performed += Walk;
     }
 
     private void UnsubscribeOnNight()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed -= OnIdlePerformed;
+        _stateMachine.GetState<IdleChickenState>().Performed -= Walk;
 
-        _stateMachine.GetState<PeckChickenState>().Performed -= OnPeckPerformed;
+        _stateMachine.GetState<PeckChickenState>().Performed -= Walk;
     }
 
     protected override void Subscribe()
@@ -107,6 +114,7 @@ public class MutatedChicken : ChickenBase
             if (!other.gameObject.TryGetComponent<AlienBase>(out var alien))
                 return;
 
+            _stateMachine.SetState<ChaseFleeingAlienState>();
             _aliens.Add(alien);
             this.LogError($"Detected Alien {_aliens.Count}");
             alien.Death += RemoveAlien;
@@ -127,9 +135,13 @@ public class MutatedChicken : ChickenBase
 
     private void RemoveAlien(AlienBase alienBase)
     {
+        this.LogError($"RemoveAlien, count {_aliens.Count}");
         _aliens.Remove(alienBase);
         AlienLost?.Invoke();
-        this.LogError($"RemoveAlien, count {_aliens.Count}");
+
+        if (_aliens.Count != 0) return;
+
+        Walk();
     }
 
     private bool IsInGarden(Vector3 position)

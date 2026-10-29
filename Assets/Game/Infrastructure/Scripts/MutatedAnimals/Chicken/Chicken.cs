@@ -73,16 +73,16 @@ public class Chicken : ChickenBase, IInteractable
 
     protected override void Subscribe()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed += OnIdlePerformed;
+        _stateMachine.GetState<IdleChickenState>().Performed += Walk;
 
-        _stateMachine.GetState<PeckChickenState>().Performed += OnPeckPerformed;
+        _stateMachine.GetState<PeckChickenState>().Performed += Walk;
     }
 
     private void Unsubscribe()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed -= OnIdlePerformed;
+        _stateMachine.GetState<IdleChickenState>().Performed -= Walk;
 
-        _stateMachine.GetState<PeckChickenState>().Performed -= OnPeckPerformed;
+        _stateMachine.GetState<PeckChickenState>().Performed -= Walk;
     }
 
     [ContextMenu("Use Mutagen")]
