@@ -10,4 +10,5 @@ public class GameConfig : ScriptableObject
     [field: SerializeField] public CraftingTableConfig CraftingTable { get; private set; }
     [field: SerializeField] public List<CultureType> UnlockedCultures { get; private set; } = new();
     [field: SerializeField] public List<SerializedPair<ToolType, Sprite>> ToolSprites { get; private set; } = new();
+    [field: SerializeField] public List<SerializedPair<ToolType, string>> ToolNames { get; private set; } = new();
 }

@@ -8,6 +8,7 @@ public class ToolsRadialMenu : MonoBehaviour
     [SerializeField] private List<SerializedPair<ToolsRadialMenuElement, float>> _elementsWithWeights;
     [SerializeField] private Canvas _canvas;
     [SerializeField] private float _deselectedMagnitude;
+    [SerializeField] private GameObject _toolText;
     
     private InputController _inputController;
     private SerializedPair<ToolsRadialMenuElement, float> _selectedElement;
@@ -82,6 +83,8 @@ public class ToolsRadialMenu : MonoBehaviour
         if (_selectedElement != null)
         {
             _selectedElement.Key.Select();
+            if (_selectedElement.Key.SetToolText())
+                _toolText.SetActive(true);
         }
     }
     
@@ -92,6 +95,7 @@ public class ToolsRadialMenu : MonoBehaviour
     
     private void ClearSelection()
     {
+        _toolText.SetActive(false);
         foreach (var element in _elementsWithWeights)
         {
             element.Key.Deselect();

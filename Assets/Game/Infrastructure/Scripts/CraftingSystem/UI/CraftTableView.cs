@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 public class CraftTableView : MonoBehaviour
 {
     [SerializeField] private CraftTableProductListView _craftTableProductListView;
     [SerializeField] private CraftTableCraftView _craftTableCraftView;
+    [SerializeField] private Button _backButton;
 
     private CraftTableService _service;
     private InputController _inputController;
@@ -21,7 +23,9 @@ public class CraftTableView : MonoBehaviour
     private void Show()
     {
         _inputController.BackPressed += Hide;
+        _backButton.onClick.AddListener(Hide);
         _inputController.SwitchToUi();
+        Time.timeScale = 0;
         gameObject.SetActive(true);
         _craftTableProductListView.Show();
     }
@@ -29,9 +33,11 @@ public class CraftTableView : MonoBehaviour
     private void Hide()
     {
         _inputController.BackPressed -= Hide;
+        _backButton.onClick.RemoveListener(Hide);
         _inputController.SwitchToGameplay();
         _craftTableProductListView.Hide();
         _craftTableCraftView.Hide();
+        Time.timeScale = 1;
         gameObject.SetActive(false);
     }
     

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -13,9 +14,13 @@ public class ToolsRadialMenuElement : MonoBehaviour
     [SerializeField] private float _secondsToSwitch;
     
     [SerializeField] private List<ToolType> _tools;
+
+    [SerializeField] private TMP_Text _toolName;
+    [SerializeField] private TMP_Text _toolCounts;
     
     private PlayerTools _playerTools;
     private List<SerializedPair<ToolType, Sprite>> _toolSprites;
+    private List<SerializedPair<ToolType, string>> _toolNames;
     
     private int _currentTool;
     private float _lastSwitchTime;
@@ -25,6 +30,7 @@ public class ToolsRadialMenuElement : MonoBehaviour
     {
         _playerTools = playerTools;
         _toolSprites = config.ToolSprites;
+        _toolNames = config.ToolNames;
     }
     
     private void Awake()
@@ -121,6 +127,34 @@ public class ToolsRadialMenuElement : MonoBehaviour
     public void Deselect()
     {
         _icon.sprite = _normalSprite;
+    }
+
+    public bool SetToolText()
+    {
+        if (_tools.Count == 0)
+            return false;
+        
+        _toolName.text = _toolNames.Find(x => x.Key == _tools[_currentTool]).Value;
+        int count = 0;
+        int current = 0;
+
+        foreach (var tool in _tools)
+        {
+            if (_playerTools.Contains(tool))
+                count++;
+
+            if (tool == _tools[_currentTool])
+            {
+                current =  count;
+            }
+        }
+
+        if (count <= 1)
+            _toolCounts.text = "";
+        else
+            _toolCounts.text =$"{current}/{count}";
+
+        return true;
     }
     
     public void ApplyTool()

@@ -9075,6 +9075,14 @@ PrefabInstance:
       propertyPath: '_beds.Array.data[8]'
       value: 
       objectReference: {fileID: 1101953713}
+    - target: {fileID: 6961096738775454956, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000810563820807584, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8741006873807916741, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
