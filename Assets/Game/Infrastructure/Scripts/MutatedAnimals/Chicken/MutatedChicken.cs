@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
@@ -17,10 +18,16 @@ public class MutatedChicken : ChickenBase
 
     private const float _huntCheckInterval = 1.5f;
 
-    private bool _alienInRange;
-    private Transform _alienTransform;
+    private List<AlienBase> _aliens = new List<AlienBase>();
+
+    private int _alienLayer;
 
     public class Factory : PlaceholderFactory<MutatedChicken> { }
+
+    private void Awake()
+    {
+        _alienLayer = LayerMask.NameToLayer("Enemies");
+    }
 
     protected override void OnDayStart()
     {
@@ -95,24 +102,34 @@ public class MutatedChicken : ChickenBase
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("EnemyOnGround") && !_alienInRange)
+        if (other.gameObject.layer == _alienLayer)
         {
-            this.LogError("Detected Alien");
-            _alienInRange = true;
-            _alienTransform = other.transform;
+            if (!other.gameObject.TryGetComponent<AlienBase>(out var alien))
+                return;
+
+            _aliens.Add(alien);
+            this.LogError($"Detected Alien {_aliens.Count}");
+            alien.Death += RemoveAlien;
             AlienDetected?.Invoke();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("EnemyOnGround") && _alienInRange)
+        if (other.gameObject.layer == _alienLayer)
         {
-            this.LogError("Undetected Alien");
-            _alienInRange = false;
-            _alienTransform = null;
-            AlienLost?.Invoke();
+            if (!other.gameObject.TryGetComponent<AlienBase>(out var alien))
+                return;
+
+            RemoveAlien(alien);
         }
+    }
+
+    private void RemoveAlien(AlienBase alienBase)
+    {
+        _aliens.Remove(alienBase);
+        AlienLost?.Invoke();
+        this.LogError($"RemoveAlien, count {_aliens.Count}");
     }
 
     private bool IsInGarden(Vector3 position)

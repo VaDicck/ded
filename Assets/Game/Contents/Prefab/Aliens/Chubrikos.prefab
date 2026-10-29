@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 5463526947494390661}
   - component: {fileID: 1894188396959641881}
   - component: {fileID: 3774149738629321997}
-  m_Layer: 6
+  - component: {fileID: 1946211089845375040}
+  m_Layer: 11
   m_Name: Chubrikos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +50,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: af4ea0a10c2119d4da2945ad45efc5b5, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -113,7 +114,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -121,6 +122,31 @@ CapsuleCollider:
   m_Height: 0.91
   m_Direction: 1
   m_Center: {x: 0, y: 0.36, z: 0}
+--- !u!143 &1946211089845375040
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724716924210646740}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 0.91
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.33, z: 0}
 --- !u!1001 &4815468678356039345
 PrefabInstance:
   m_ObjectHideFlags: 0
