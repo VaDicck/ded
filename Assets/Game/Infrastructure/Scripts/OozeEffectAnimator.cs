@@ -6,6 +6,7 @@ public class OozeEffectAnimator : MonoBehaviour
     [SerializeField] private string _flowProperty = "_Flow"; 
 
     [SerializeField] private MeshRenderer _meshRenderer;
+    [SerializeField] private Material _material;
 
     [SerializeField] private float _animationDuration = 1f;
 
@@ -14,7 +15,8 @@ public class OozeEffectAnimator : MonoBehaviour
 
     private void Awake()
     {
-        _materialInstance = _meshRenderer.material;
+        _materialInstance = new Material(_material);
+        _meshRenderer.material = _materialInstance;
     }
 
     private void OnEnable()
