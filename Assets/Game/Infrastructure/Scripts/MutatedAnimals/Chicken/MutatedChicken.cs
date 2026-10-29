@@ -59,35 +59,35 @@ public class MutatedChicken : ChickenBase
     _navMeshAgent,
     _attackRange,
     _attackDamage,
-    _attackInterval));
+    _attackInterval, _animator));
     }
 
     private void SubscribeOnDay()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed += OnIdlePerformed;
+        _stateMachine.GetState<IdleChickenState>().Performed += Walk;
 
-        _stateMachine.GetState<PeckChickenState>().Performed += OnPeckPerformed;
+        _stateMachine.GetState<PeckChickenState>().Performed += Walk;
     }
 
     private void UnsubscribeOnDay()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed -= OnIdlePerformed;
+        _stateMachine.GetState<IdleChickenState>().Performed -= Walk;
 
-        _stateMachine.GetState<PeckChickenState>().Performed -= OnPeckPerformed;
+        _stateMachine.GetState<PeckChickenState>().Performed -= Walk;
     }
 
     private void SubscribeOnNight()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed += OnIdlePerformed;
+        _stateMachine.GetState<IdleChickenState>().Performed += Walk;
 
-        _stateMachine.GetState<PeckChickenState>().Performed += OnPeckPerformed;
+        _stateMachine.GetState<PeckChickenState>().Performed += Walk;
     }
 
     private void UnsubscribeOnNight()
     {
-        _stateMachine.GetState<IdleChickenState>().Performed -= OnIdlePerformed;
+        _stateMachine.GetState<IdleChickenState>().Performed -= Walk;
 
-        _stateMachine.GetState<PeckChickenState>().Performed -= OnPeckPerformed;
+        _stateMachine.GetState<PeckChickenState>().Performed -= Walk;
     }
 
     protected override void Subscribe()
@@ -135,9 +135,13 @@ public class MutatedChicken : ChickenBase
 
     private void RemoveAlien(AlienBase alienBase)
     {
+        this.LogError($"RemoveAlien, count {_aliens.Count}");
         _aliens.Remove(alienBase);
         AlienLost?.Invoke();
-        this.LogError($"RemoveAlien, count {_aliens.Count}");
+
+        if (_aliens.Count != 0) return;
+
+        Walk();
     }
 
     private bool IsInGarden(Vector3 position)

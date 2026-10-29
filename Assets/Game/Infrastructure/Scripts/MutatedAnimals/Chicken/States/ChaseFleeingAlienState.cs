@@ -11,15 +11,19 @@ public class ChaseFleeingAlienState : IChickenState
 
     private float _nextAttackTime;
     private AlienBase _target;                      
+    private Animator _animator;
+
+    private int _countAttack = 0;
 
     public ChaseFleeingAlienState(MutatedChicken chicken, NavMeshAgent agent,
-                                  float attackRange, float attackDamage, float attackInterval)
+                                  float attackRange, float attackDamage, float attackInterval, Animator animator)
     {
         _chicken = chicken;
         _agent = agent;
         _attackRange = attackRange;
         _attackDamage = attackDamage;
         _attackInterval = attackInterval;
+        _animator = animator;
     }
 
     public void Enter()
@@ -41,6 +45,7 @@ public class ChaseFleeingAlienState : IChickenState
             if (_target == null) return;
         }
 
+        _animator.SetTrigger("Walk");
         _agent.SetDestination(_target.transform.position);
 
         float distance = Vector3.Distance(_chicken.transform.position, _target.transform.position);
@@ -80,6 +85,12 @@ public class ChaseFleeingAlienState : IChickenState
     {
         if (_target == null) return;
 
+        _countAttack++;
+        if(_countAttack == 3)
+        {
+
+        }
+        _animator.SetTrigger("FistAttack");
         _target.TakeDamage(_attackDamage, Vector3.back); 
     }
 }
