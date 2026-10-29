@@ -1,3 +1,4 @@
+using Zenject;
 using Object = UnityEngine.Object;
 
 public abstract class MutableSimpleCulture<TMutatedCulture> : SimpleCulture 
@@ -6,6 +7,14 @@ public abstract class MutableSimpleCulture<TMutatedCulture> : SimpleCulture
     protected MutableSimpleCulture(CultureConfig config, PlayerCultures playerCultures
         , DayCycleService dayCycleService) : base(config, playerCultures, dayCycleService) { }
 
+    private PlayerMutagens _playerMutagens;
+    
+    [Inject]
+    private void Initialize(PlayerMutagens playerMutagens)
+    {
+        _playerMutagens = playerMutagens;
+    }
+    
     public override bool UseTool(ToolType toolType)
     {
         switch (toolType)
@@ -32,9 +41,8 @@ public abstract class MutableSimpleCulture<TMutatedCulture> : SimpleCulture
     
     private void UseMutagen()
     {
-        //TODO take mutagen in player
-        
-        CreateMutatedCulture();
+        if (_playerMutagens.Use())
+            CreateMutatedCulture();
     }
 
     private void CreateMutatedCulture()

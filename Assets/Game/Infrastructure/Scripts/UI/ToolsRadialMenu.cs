@@ -8,17 +8,20 @@ public class ToolsRadialMenu : MonoBehaviour
     [SerializeField] private List<SerializedPair<ToolsRadialMenuElement, float>> _elementsWithWeights;
     [SerializeField] private Canvas _canvas;
     [SerializeField] private float _deselectedMagnitude;
+    [SerializeField] private GameObject _toolText;
     
     private InputController _inputController;
     private SerializedPair<ToolsRadialMenuElement, float> _selectedElement;
     private List<ElementRange> _elementRanges;
-    
+
     [Inject]
     private void Initialize(InputController inputController)
     {
         _inputController = inputController;
         _inputController.OpenRadialMenu += Show;
         _inputController.RadialMenuCanceled += Hide;
+        _inputController.RadialMenuWheelDown += ShowNextElement;
+        _inputController.RadialMenuWheelUp += ShowPrevElement;
     }
     
     private void Start()
@@ -30,6 +33,29 @@ public class ToolsRadialMenu : MonoBehaviour
     {
         gameObject.SetActive(true);
         Time.timeScale = 0.2f;
+
+        _selectedElement = null;
+        
+        foreach (var pair in _elementsWithWeights)
+        {
+            pair.Key.Show();
+        }
+    }
+    
+    public void ShowNextElement()
+    {
+        if (_selectedElement == null)
+            return;
+        
+        _selectedElement.Key.SwitchNext();
+    }
+    
+    public void ShowPrevElement()
+    {
+        if (_selectedElement == null)
+            return;
+        
+        _selectedElement.Key.SwitchPrevious();
     }
     
     private void Update()
@@ -57,6 +83,8 @@ public class ToolsRadialMenu : MonoBehaviour
         if (_selectedElement != null)
         {
             _selectedElement.Key.Select();
+            if (_selectedElement.Key.SetToolText())
+                _toolText.SetActive(true);
         }
     }
     
@@ -67,6 +95,7 @@ public class ToolsRadialMenu : MonoBehaviour
     
     private void ClearSelection()
     {
+        _toolText.SetActive(false);
         foreach (var element in _elementsWithWeights)
         {
             element.Key.Deselect();
@@ -116,6 +145,7 @@ public class ToolsRadialMenu : MonoBehaviour
         }
         Time.timeScale = 1f;
         gameObject.SetActive(false);
+        _selectedElement = null;
     }
 
     private class ElementRange
@@ -127,6 +157,9 @@ public class ToolsRadialMenu : MonoBehaviour
 
     private void OnDestroy()
     {
+        _inputController.OpenRadialMenu -= Show;
         _inputController.RadialMenuCanceled -= Hide;
+        _inputController.RadialMenuWheelDown -= ShowNextElement;
+        _inputController.RadialMenuWheelUp -= ShowPrevElement;
     }
 }

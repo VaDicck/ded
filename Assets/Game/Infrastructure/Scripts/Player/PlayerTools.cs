@@ -9,6 +9,19 @@ public class PlayerTools
     
     private ToolType? _currentTool;
     private readonly List<ToolType> _tools = new();
+
+    private PlayerMutagens _playerMutagens;
+    
+    public PlayerTools(PlayerMutagens playerMutagens)
+    {
+        _playerMutagens = playerMutagens;
+
+        _playerMutagens.Used += count =>
+        {
+            if (count == 0)
+                PutOff();
+        };
+    }
     
     public bool Take(ToolType toolType)
     {
@@ -21,9 +34,15 @@ public class PlayerTools
         return true;
     }
 
+    public bool Contains(ToolType toolType)
+    {
+        return _tools.Contains(toolType);
+    }
+
     public void PutOff()
     {
         _currentTool = null;
+        this.Log($"Tool put off");
         ToolChanged?.Invoke(_currentTool);
     }
 
