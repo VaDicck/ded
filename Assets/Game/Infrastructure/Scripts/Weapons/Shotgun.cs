@@ -50,7 +50,7 @@ public class Shotgun : Weapon
                 hits.Add(hit1);
             }
 
-            if (Physics.Raycast(ray, out var hit2, Mathf.Infinity, _enemyLayer))
+            if (Physics.Raycast(ray, out var hit2, Mathf.Infinity, _enemyLayer, QueryTriggerInteraction.Ignore))
             {
                 hits.Add(hit2);
             }

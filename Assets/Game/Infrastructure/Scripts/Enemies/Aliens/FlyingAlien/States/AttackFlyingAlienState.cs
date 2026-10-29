@@ -12,6 +12,9 @@ public class AttackFlyingAlienState : IFlyingAlienState
     private readonly Transform _projectileSpawnPoint;
     private readonly float _fireRate;
     private readonly float _projectileSpeed;
+    
+    private readonly float _shotDelay = 0.79f;
+    private float _shotScheduledTime = -1f;
 
     private Transform _player;
     private float _nextFireTime;
@@ -39,7 +42,6 @@ public class AttackFlyingAlienState : IFlyingAlienState
     {
         _navMeshAgent.isStopped = true;
         _navMeshAgent.updateRotation = false;
-        _nextFireTime = Time.time;
     }
 
     public void Tick()
@@ -54,10 +56,17 @@ public class AttackFlyingAlienState : IFlyingAlienState
                 _navMeshAgent.transform.rotation, targetRotation, Time.deltaTime * 8f);
         }
 
-        if (Time.time >= _nextFireTime)
+        if (Time.time >= _nextFireTime && _shotScheduledTime < 0)
+        {
+            _animator.SetTrigger("Attack");        
+            _shotScheduledTime = Time.time + _shotDelay;   
+            _nextFireTime = Time.time + _fireRate;        
+        }
+
+        if (_shotScheduledTime > 0 && Time.time >= _shotScheduledTime)
         {
             Shoot();
-            _nextFireTime = Time.time + _fireRate;
+            _shotScheduledTime = -1f;         
         }
     }
 
@@ -65,10 +74,8 @@ public class AttackFlyingAlienState : IFlyingAlienState
     {
         Vector3 spawnPos = _projectileSpawnPoint.position;
         Vector3 dir = (_player.position - spawnPos).normalized;
-        Quaternion rot = Quaternion.LookRotation(dir);
+        Quaternion rot = Quaternion.LookRotation(dir) * Quaternion.Euler(0, -90, 0);
 
-        _animator.SetTrigger("Attack");
-        
         GameObject projectileGO = Object.Instantiate(_projectilePrefab, spawnPos, rot);
 
         if (projectileGO.TryGetComponent<Projectile>(out Projectile projectile))
