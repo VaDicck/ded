@@ -19,6 +19,8 @@ public class ChaseFleeingAlienState : IChickenState
 
     private bool _isMoving;
 
+    private int _testCount;
+
     public ChaseFleeingAlienState(MutatedChicken chicken, NavMeshAgent agent,
                                   float attackRange, float attackDamage, float attackInterval, Animator animator)
     {
@@ -113,16 +115,29 @@ public class ChaseFleeingAlienState : IChickenState
     private void Attack()
     {
         if (_target == null) return;
-
-        if (_chicken.Aliens.Count > 2)
+        
+        if(_testCount == 3)
+            _testCount = 0;
+        if(_testCount == 0)
+            _animator.SetTrigger("FistAttack");
+        if(_testCount == 1)
+            _animator.SetTrigger("BeakAttack");
+        if(_testCount == 2)
+            _animator.SetTrigger("JumpAttack");
+        /*if (_chicken.Aliens.Count > 2)
         {
             _animator.SetTrigger("JumpAttack");
-            foreach (var alien in _chicken.Aliens)
-                alien.TakeDamage(_attackDamage, Vector3.back); 
         }
-            
-            
-        _animator.SetTrigger("FistAttack");
+
+
+        _animator.SetTrigger("FistAttack");*/
         _target.TakeDamage(_attackDamage, Vector3.back); 
+        _testCount++;
+    }
+
+    public void AttackEnd(float numberAttack)
+    {
+        this.LogError($"number {numberAttack}");
+        _target?.TakeDamage(_attackDamage, Vector3.back); 
     }
 }

@@ -58,6 +58,7 @@ MonoBehaviour:
   _attackDamage: 20
   _attackInterval: 1.2
   _attackRange: 2.5
+  _nightSpeed: 5
 --- !u!195 &-2734820537299717358
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -99,7 +100,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 6.1
+  m_Radius: 16.23
   m_Center: {x: 0, y: 0.77, z: 0}
 --- !u!95 &6864753992705600884
 Animator:
