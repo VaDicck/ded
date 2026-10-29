@@ -5,12 +5,14 @@ public class GameplayEntrypoint : MonoBehaviour
 {
     private DayCycleService _dayCycleService;
     private PlayerTools _playerTools;
+    private PlayerMutagens _playerMutagens;
     
     [Inject]
-    private void Initialize(DayCycleService dayCycleService, PlayerTools playerTools)
+    private void Initialize(DayCycleService dayCycleService, PlayerTools playerTools, PlayerMutagens playerMutagens)
     {
         _dayCycleService = dayCycleService;
         _playerTools = playerTools;
+        _playerMutagens = playerMutagens;
     }
 
     private void Start()
@@ -20,6 +22,9 @@ public class GameplayEntrypoint : MonoBehaviour
         _playerTools.Add(ToolType.Shotgun);
         _playerTools.Add(ToolType.Pickaxe);
         _playerTools.Add(ToolType.Mutagen);
+        
+        _playerMutagens.Add();
+        
         _dayCycleService.StartDay();
         this.Log("Gameplay started");
     }

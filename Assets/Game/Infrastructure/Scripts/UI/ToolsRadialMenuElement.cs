@@ -17,8 +17,11 @@ public class ToolsRadialMenuElement : MonoBehaviour
 
     [SerializeField] private TMP_Text _toolName;
     [SerializeField] private TMP_Text _toolCounts;
+    [SerializeField] private TMP_Text _count;
     
     private PlayerTools _playerTools;
+    private PlayerMutagens _playerMutagens;
+    
     private List<SerializedPair<ToolType, Sprite>> _toolSprites;
     private List<SerializedPair<ToolType, string>> _toolNames;
     
@@ -26,9 +29,10 @@ public class ToolsRadialMenuElement : MonoBehaviour
     private float _lastSwitchTime;
 
     [Inject]
-    private void Initialize(PlayerTools playerTools, GameConfig config)
+    private void Initialize(PlayerTools playerTools, GameConfig config, PlayerMutagens playerMutagens)
     {
         _playerTools = playerTools;
+        _playerMutagens = playerMutagens;
         _toolSprites = config.ToolSprites;
         _toolNames = config.ToolNames;
     }
@@ -44,11 +48,22 @@ public class ToolsRadialMenuElement : MonoBehaviour
         if (_tools.Count == 0)
         {
             _toolImage.gameObject.SetActive(false);
-
+            
             return;
         }
         _toolImage.gameObject.SetActive(_playerTools.Contains(_tools[_currentTool]));
         _toolImage.sprite = _toolSprites.Find(x => x.Key == _tools[_currentTool]).Value;
+
+        switch (_tools[_currentTool])
+        {
+            case ToolType.Mutagen:
+                _count.text = _playerMutagens.Count.ToString();
+                break;
+            default:
+                if (_count != null)
+                    _count.text = "";
+                break;
+        }
     }
 
     public void SwitchNext()
@@ -160,6 +175,9 @@ public class ToolsRadialMenuElement : MonoBehaviour
     public void ApplyTool()
     {
         if (_tools.Count == 0)
+            return;
+
+        if (_tools[_currentTool] == ToolType.Mutagen && _playerMutagens.Count == 0)
             return;
         
         if (_playerTools.Tool == _tools[_currentTool])

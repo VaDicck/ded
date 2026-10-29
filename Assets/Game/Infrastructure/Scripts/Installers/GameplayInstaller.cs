@@ -41,9 +41,12 @@ public class GameplayInstaller : MonoInstaller
         Container.Bind<PlayerResources>().AsSingle().NonLazy();
         Container.Bind<DayService>().AsSingle().WithArguments(0).NonLazy();
         Container.Bind<QuotaService>().AsSingle().WithArguments(0).NonLazy();
-        Container.Bind<PlayerTools>().AsSingle().NonLazy();
         Container.Bind<PlayerReturner>().AsSingle().WithArguments(_safePlayerTransform.position).NonLazy();
         Container.Bind<CulturesSelection>().AsSingle().NonLazy();
+        
+        Container.Bind<PlayerMutagens>().AsSingle().NonLazy();
+        
+        Container.Bind<PlayerTools>().AsSingle().NonLazy();
         
         Container.Bind<CraftTableService>().AsSingle().NonLazy();
         
