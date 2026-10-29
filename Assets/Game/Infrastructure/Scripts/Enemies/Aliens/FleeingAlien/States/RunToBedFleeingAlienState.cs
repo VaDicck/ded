@@ -1,5 +1,6 @@
 ﻿using System;
 using R3;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class RunToBedFleeingAlienState : IFleeingAlienState
@@ -8,17 +9,15 @@ public class RunToBedFleeingAlienState : IFleeingAlienState
     public event Action RunSpawn;
     
     private Bed _bed;
-    private float _stopDistance = 1.5f;
+    private readonly float _stopDistance = 0.5f;
     private NavMeshAgent _navMeshAgent; 
     
     private BedService _bedService;
-
+    
     public RunToBedFleeingAlienState(NavMeshAgent navMeshAgent, BedService bedService)
     {
         _navMeshAgent = navMeshAgent;
         _bedService = bedService;
-
-        _bedService.CanAttackBeds.Subscribe(RunToSpawn);
     }
     
     public void SetBed(Bed bed)
@@ -30,7 +29,9 @@ public class RunToBedFleeingAlienState : IFleeingAlienState
     {
         _navMeshAgent.updateRotation = true;
         _navMeshAgent.isStopped = false; 
-        _navMeshAgent.SetDestination(_bed.transform.position);
+        
+        Vector3 approachPoint = GetRandomApproachPoint();
+        _navMeshAgent.SetDestination(approachPoint);
     }
 
     public void Tick()
@@ -50,5 +51,24 @@ public class RunToBedFleeingAlienState : IFleeingAlienState
     {
         if(!CanAttack)
             RunSpawn?.Invoke();
+    }
+    
+    private Vector3 GetRandomApproachPoint()
+    {
+        Vector3 bedPos = _bed.transform.position;
+
+        Vector2 randomDir = UnityEngine.Random.insideUnitCircle.normalized;
+    
+        float offsetRadius = 0.3f; 
+
+        Vector3 offset = new Vector3(randomDir.x, 0, randomDir.y) * offsetRadius;
+        Vector3 targetPoint = bedPos + offset;
+
+        if (NavMesh.SamplePosition(targetPoint, out NavMeshHit hit, 3f, NavMesh.AllAreas))
+        {
+            return hit.position;
+        }
+
+        return targetPoint;
     }
 }

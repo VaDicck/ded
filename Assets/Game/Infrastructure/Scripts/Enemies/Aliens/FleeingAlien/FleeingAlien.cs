@@ -10,7 +10,7 @@ public class FleeingAlien : Alien<IFleeingAlienState>
 
     public override AlienType Type => AlienType.Fleeing;
 
-    private bool _isJumping = false;
+    private bool _isJumping;
     
     private BedService _bedService;
 
@@ -83,7 +83,7 @@ public class FleeingAlien : Alien<IFleeingAlienState>
     {
         _stateMachine = new StateMachine<IFleeingAlienState>(new IdleFleeingAlienState(_bedService));
         _stateMachine.AddState<RunToBedFleeingAlienState>(new RunToBedFleeingAlienState(_navMeshAgent, _bedService));
-        _stateMachine.AddState<DiggingBedFleeingAlienState>(new DiggingBedFleeingAlienState(_bedService));
+        _stateMachine.AddState<DiggingBedFleeingAlienState>(new DiggingBedFleeingAlienState(_bedService, _animator, transform));
         _stateMachine.AddState<RunToSpawnFleeingAlienState>(new RunToSpawnFleeingAlienState(_navMeshAgent, _spawnPoint));
     }
     
@@ -109,10 +109,7 @@ public class FleeingAlien : Alien<IFleeingAlienState>
             {
                 _navMeshAgent.isStopped = true;
                 _navMeshAgent.updateRotation = false;
-                
-                StartCoroutine(FaceTarget(bed.transform.position));
-                
-                _animator.SetTrigger("Digging");
+            
                 _stateMachine.GetState<DiggingBedFleeingAlienState>().SetBed(bed);
                 _stateMachine.SetState<DiggingBedFleeingAlienState>();
             };
@@ -132,41 +129,12 @@ public class FleeingAlien : Alien<IFleeingAlienState>
 
     }
     
-    private IEnumerator FaceTarget(Vector3 destination)
-    {
-        Vector3 lookPos = destination - transform.position;
-        lookPos.y = 0; // Чтобы не наклонялся
-    
-        if (lookPos != Vector3.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(lookPos);
-            float time = 0;
-        
-            // Поворачиваемся плавно в течение 0.3 секунд
-            while (time < 0.3f)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, time / 0.3f);
-                time += Time.deltaTime;
-                yield return null;
-            }
-            transform.rotation = targetRotation;
-        }
-    }
-
     protected override void Die()
     {
         if (_stateMachine.CurrentState is DiggingBedFleeingAlienState diggingState)
             diggingState.StopHitting();
 
-        //_alienModel.SetActive(false);
-        
         GameObject parts = Instantiate(_brokenPartsPrefab, transform.position, transform.rotation);
-
-        /*if (parts.TryGetComponent(out AlienBroken alienBroken))
-        {
-            alienBroken.Destroyed += () => Destroy(gameObject);
-            return;
-        }*/
         
         Destroy(gameObject);
     }
