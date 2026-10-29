@@ -9,6 +9,8 @@ public class MutatedChicken : ChickenBase
     public event Action AlienDetected;
     public event Action AlienLost;
 
+    public List<AlienBase> Aliens => _aliens;
+
     [Header("Night attack")]
     [SerializeField] private float _attackDamage = 20f;
     [SerializeField] private float _attackInterval = 1.2f;
@@ -52,7 +54,12 @@ public class MutatedChicken : ChickenBase
         _stateMachine.AddState(new PeckChickenState(_navMeshAgent));
         
         _stateMachine.AddState(new HuntFleeingAlienState());
-        _stateMachine.AddState(new ChaseFleeingAlienState());
+        _stateMachine.AddState(new ChaseFleeingAlienState(
+    this,
+    _navMeshAgent,
+    _attackRange,
+    _attackDamage,
+    _attackInterval));
     }
 
     private void SubscribeOnDay()
@@ -107,6 +114,7 @@ public class MutatedChicken : ChickenBase
             if (!other.gameObject.TryGetComponent<AlienBase>(out var alien))
                 return;
 
+            _stateMachine.SetState<ChaseFleeingAlienState>();
             _aliens.Add(alien);
             this.LogError($"Detected Alien {_aliens.Count}");
             alien.Death += RemoveAlien;
