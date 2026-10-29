@@ -16,3 +16,4 @@ MonoBehaviour:
   <FoodCapacity>k__BackingField: 200
   <Quotas>k__BackingField: {fileID: 11400000, guid: 60261e4471e9ae14b966be9eaa299267, type: 2}
   <CraftingTable>k__BackingField: {fileID: 11400000, guid: a4304a337967b0f43a8147accc29e5d0, type: 2}
+  <UnlockedCultures>k__BackingField: 0000000002000000

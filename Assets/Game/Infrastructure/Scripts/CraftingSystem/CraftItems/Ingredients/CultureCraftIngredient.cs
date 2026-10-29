@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
+using Zenject;
 
 [CreateAssetMenu(fileName = "CultureCraftIngredient", menuName = "CraftingSystem/Ingredient/Culture")]
 public class CultureCraftIngredient : TypedCraftIngredient<CultureType>
 {
     private PlayerCultures _playerCultures;
     
-    public void Initialize(PlayerCultures playerCultures)
+    [Inject]
+    private void Initialize(PlayerCultures playerCultures)
     {
         _playerCultures = playerCultures;
     }

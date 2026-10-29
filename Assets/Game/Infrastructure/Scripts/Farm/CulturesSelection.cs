@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 
 public class CulturesSelection
@@ -18,9 +19,13 @@ public class CulturesSelection
     
     private CancellationTokenSource _cancellationTokenSource;
     
-    public CulturesSelection(InputController inputController, CarrotCulture.Factory carrotFactory, TomatoCulture.Factory tomatoFactory,
+    private readonly List<CultureType> _unlockedCultures;
+    
+    public CulturesSelection(GameConfig config, InputController inputController, CarrotCulture.Factory carrotFactory, TomatoCulture.Factory tomatoFactory,
         CornCulture.Factory cornFactory, PepperCulture.Factory pepperFactory)
     {
+        _unlockedCultures = new(config.UnlockedCultures);
+        
         _inputController = inputController;
         
         _carrotFactory = carrotFactory;
@@ -42,9 +47,27 @@ public class CulturesSelection
         Hidden?.Invoke();
         _cancellationTokenSource.Cancel();
     }
+
+    public bool UnlockCulture(CultureType cultureType)
+    {
+        if (_unlockedCultures.Contains(cultureType))
+            return false;
+        
+        _unlockedCultures.Add(cultureType);
+
+        return true;
+    }
+
+    public bool IsUnlocked(CultureType culture)
+    {
+        return  _unlockedCultures.Contains(culture);
+    }
     
     public void Select(CultureType cultureType)
     {
+        if (_unlockedCultures.Contains(cultureType) == false)
+            return;
+        
         Culture culture = null;
         
         switch (cultureType)

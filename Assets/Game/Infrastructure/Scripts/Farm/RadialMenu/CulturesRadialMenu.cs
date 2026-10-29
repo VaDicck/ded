@@ -36,6 +36,11 @@ public class CulturesRadialMenu : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
+
+        foreach (var pair in _elementsWithWeights)
+        {
+            pair.Key.Show();
+        }
     }
     
     private void Update()
