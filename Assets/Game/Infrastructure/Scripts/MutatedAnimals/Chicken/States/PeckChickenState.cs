@@ -19,8 +19,6 @@ public class PeckChickenState : IChickenState
     {
         _agent.isStopped = true;
         _peckEndTime = Time.time + _peckDuration;
-
-        this.Log("КЛЮЕТ");
     }
 
     public void Exit()
