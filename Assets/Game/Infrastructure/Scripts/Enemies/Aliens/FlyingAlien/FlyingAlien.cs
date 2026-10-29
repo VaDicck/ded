@@ -64,6 +64,11 @@ public class FlyingAlien : Alien<IFlyingAlienState>
             _stateMachine.SetState<WanderFlyingAlienState>();
         };
         
+        _stateMachine.GetState<FlyToSpawnFlyingAlienState>().Performed += () =>
+        {
+            Destroy(gameObject);
+        };
+        
         attackState.PlayerTooFar += () =>
         {
             chaseState.SetPlayer(_playerTransform);
@@ -121,11 +126,6 @@ public class FlyingAlien : Alien<IFlyingAlienState>
         _stateMachine.SetState<FlyToSpawnFlyingAlienState>();
         
         _flyToSpawn = true;
-            
-        _stateMachine.GetState<FlyToPointFlyingAlienState>().Performed += () =>
-        {
-            Destroy(gameObject);
-        };
     }
 
     protected override void Die()

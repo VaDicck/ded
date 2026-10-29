@@ -73,7 +73,8 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 2073535685903565543}
   _wanderRadius: 15
   _peckProbability: 0.5
-  _peckCheckInterval: 4
+  _peckCheckInterval: 6
+  _peckDuration: 4
   _animator: {fileID: 4242192897686957000}
   _spawnPoint: {fileID: 0}
 --- !u!136 &6972517237347878933

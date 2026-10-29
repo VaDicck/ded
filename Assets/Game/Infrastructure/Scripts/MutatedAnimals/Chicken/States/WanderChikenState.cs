@@ -7,10 +7,8 @@ public class WanderChickenState : IChickenState
     private readonly Transform _transformChicken;
     private readonly NavMeshAgent _agent;
     private readonly float _wanderRadius;
-    private readonly float _minWanderTime = 2f;
-    private readonly float _maxWanderTime = 6f;
     
-    private readonly int _gardenMask;
+    //private readonly int _gardenMask;
 
     private float _nextWanderTime;
 
@@ -20,8 +18,8 @@ public class WanderChickenState : IChickenState
         _agent = agent;
         _wanderRadius = wanderRadius;
         
-        int gardenIndex = NavMesh.GetAreaFromName("Garden");
-        _gardenMask = gardenIndex >= 0 ? (1 << gardenIndex) : NavMesh.AllAreas;
+        //int gardenIndex = NavMesh.GetAreaFromName("Garden");
+        //_gardenMask = gardenIndex >= 0 ? (1 << gardenIndex) : NavMesh.AllAreas;
     }
 
     public void Enter()
@@ -49,16 +47,9 @@ public class WanderChickenState : IChickenState
         Vector3 randomDirection = Random.insideUnitSphere * _wanderRadius;
         randomDirection += _transformChicken.position;
 
-        if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, _wanderRadius * 1.5f, _gardenMask))
+        if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, _wanderRadius * 1.5f, NavMesh.AllAreas/*, _gardenMask*/))
         {
             _agent.SetDestination(hit.position);
         }
-        /*else
-        {
-            _nextWanderTime = Time.time + 0.3f;
-            return;
-        }
-
-        _nextWanderTime = Time.time + Random.Range(_minWanderTime, _maxWanderTime);*/
     }
 }

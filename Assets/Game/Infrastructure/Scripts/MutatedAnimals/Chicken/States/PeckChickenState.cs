@@ -7,20 +7,19 @@ public class PeckChickenState : IChickenState
     public event Action Performed;
 
     private readonly NavMeshAgent _agent;
-    private readonly float _peckDuration = 4f;
+    private readonly float _peckDuration;
     private float _peckEndTime;
 
-    public PeckChickenState(NavMeshAgent agent)
+    public PeckChickenState(NavMeshAgent agent, float peckDuration)
     {
         _agent = agent;
+        _peckDuration = peckDuration;
     }
 
     public void Enter()
     {
         _agent.isStopped = true;
         _peckEndTime = Time.time + _peckDuration;
-
-        this.Log("КЛЮЕТ");
     }
 
     public void Exit()

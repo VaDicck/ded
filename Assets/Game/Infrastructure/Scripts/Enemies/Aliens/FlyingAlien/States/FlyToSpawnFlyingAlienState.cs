@@ -8,7 +8,7 @@ public class FlyToSpawnFlyingAlienState : IFlyingAlienState
 
     private readonly NavMeshAgent _navMeshAgent;
     private readonly Transform _spawnPoint;
-    private readonly float _stopDistance = 0f;
+    private readonly float _stopDistance = 1f;
     
     public FlyToSpawnFlyingAlienState(Transform spawnPoint, NavMeshAgent navMeshAgent)
     {
