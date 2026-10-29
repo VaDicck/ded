@@ -6,15 +6,19 @@ using Object = UnityEngine.Object;
 public class AttackFlyingAlienState : IFlyingAlienState
 {
     public event Action Performed;
+    public event Action PlayerTooFar;
 
     private readonly NavMeshAgent _navMeshAgent;
     private readonly GameObject _projectilePrefab;
     private readonly Transform _projectileSpawnPoint;
     private readonly float _fireRate;
     private readonly float _projectileSpeed;
+    private readonly float _minShootDistance;
     
     private readonly float _shotDelay = 0.79f;
     private float _shotScheduledTime = -1f;
+
+    private int _countShot;
 
     private Transform _player;
     private float _nextFireTime;
@@ -23,7 +27,7 @@ public class AttackFlyingAlienState : IFlyingAlienState
 
     public AttackFlyingAlienState(NavMeshAgent navMeshAgent, GameObject projectilePrefab, 
                                   Transform projectileSpawnPoint, Animator animator,
-                                  float fireRate, float projectileSpeed)
+                                  float fireRate, float projectileSpeed, float minShootDistance)
     {
         _animator = animator;
         _navMeshAgent = navMeshAgent;
@@ -31,6 +35,7 @@ public class AttackFlyingAlienState : IFlyingAlienState
         _projectileSpawnPoint = projectileSpawnPoint;
         _fireRate = fireRate;
         _projectileSpeed = projectileSpeed;
+        _minShootDistance = minShootDistance;
     }
 
     public void SetPlayer(Transform player)
@@ -40,14 +45,15 @@ public class AttackFlyingAlienState : IFlyingAlienState
 
     public void Enter()
     {
+        _countShot = 0;
         _navMeshAgent.isStopped = true;
         _navMeshAgent.updateRotation = false;
     }
 
     public void Tick()
     {
-        if (_player == null) return;
-
+        float distanceToPlayer = Vector3.Distance(_navMeshAgent.transform.position, _player.position);
+        
         Vector3 direction = (_player.position - _navMeshAgent.transform.position).normalized;
         if (direction != Vector3.zero)
         {
@@ -56,6 +62,12 @@ public class AttackFlyingAlienState : IFlyingAlienState
                 _navMeshAgent.transform.rotation, targetRotation, Time.deltaTime * 8f);
         }
 
+        if (_countShot > 1 && distanceToPlayer > _minShootDistance)
+        {
+            PlayerTooFar?.Invoke();
+            return;
+        }
+        
         if (Time.time >= _nextFireTime && _shotScheduledTime < 0)
         {
             _animator.SetTrigger("Attack");        
@@ -72,6 +84,7 @@ public class AttackFlyingAlienState : IFlyingAlienState
 
     private void Shoot()
     {
+        _countShot++;
         Vector3 spawnPos = _projectileSpawnPoint.position;
         Vector3 dir = (_player.position - spawnPos).normalized;
         Quaternion rot = Quaternion.LookRotation(dir) * Quaternion.Euler(0, -90, 0);

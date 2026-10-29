@@ -18,5 +18,5 @@ MonoBehaviour:
   <Step1Prefab>k__BackingField: {fileID: 919132149155446097, guid: 43109d87cb8cc414a8538916722f748e, type: 3}
   <Step2Prefab>k__BackingField: {fileID: 919132149155446097, guid: 51bacabea9d23ea4f9a2ef4f6ae6f7c9, type: 3}
   <Step3Prefab>k__BackingField: {fileID: 919132149155446097, guid: a7cc0c7ff6674de44bc846eaa22f68ea, type: 3}
-  <Health>k__BackingField: 10
-  <HealthMutated>k__BackingField: 10
+  <Health>k__BackingField: 100
+  <HealthMutated>k__BackingField: 100

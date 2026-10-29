@@ -89,6 +89,7 @@ MonoBehaviour:
   _projectileSpawnPoint: {fileID: 6219793101788205381}
   _fireRate: 3
   _projectileSpeed: 9
+  _minShootDistance: 8
 --- !u!195 &3447074362510899307
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -153,7 +154,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 8.16
+  m_Radius: 12.19
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &25315280317605366
 PrefabInstance:
