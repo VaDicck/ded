@@ -10,6 +10,7 @@ public abstract class ChickenBase : MonoBehaviour
     [SerializeField] protected float _wanderRadius = 15f;
     [SerializeField] private float _peckProbability = 0.25f;
     [SerializeField] private float _peckCheckInterval = 4f;
+    [SerializeField] protected float _peckDuration = 4f;
     
     [SerializeField] protected Animator _animator;
     
@@ -62,7 +63,7 @@ public abstract class ChickenBase : MonoBehaviour
 
     protected void PeckCheck()
     {
-        if (Time.time >= _nextPeckCheckTime && _stateMachine.CurrentState is WanderChickenState)
+        if (Time.time >= _nextPeckCheckTime)
         {
             if (Random.value < _peckProbability)
             {

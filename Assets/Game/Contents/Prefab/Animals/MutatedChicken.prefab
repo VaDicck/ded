@@ -50,8 +50,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MutatedChicken
   _navMeshAgent: {fileID: -2734820537299717358}
   _wanderRadius: 15
-  _peckProbability: 0.25
-  _peckCheckInterval: 4
+  _peckProbability: 0.35
+  _peckCheckInterval: 5
+  _peckDuration: 6.48
   _animator: {fileID: 6864753992705600884}
   _spawnPoint: {fileID: 0}
   _attackDamage: 20

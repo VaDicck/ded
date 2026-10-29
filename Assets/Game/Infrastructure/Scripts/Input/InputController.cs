@@ -14,6 +14,8 @@ public class InputController
     public event Action PausePressed;
     public event Action RadialMenuCanceled;
     public event Action OpenRadialMenu;
+    public event Action RadialMenuWheelDown;
+    public event Action RadialMenuWheelUp;
     
     public ReadOnlyReactiveProperty<float> XSensitivity => _xSensitivity;
     public ReadOnlyReactiveProperty<float> YSensitivity => _ySensitivity;
@@ -95,5 +97,7 @@ public class InputController
         
         _playerInputActions.RadialMenu.OpenRadialMenu.started += _ => OnOpenRadialMenu();
         _playerInputActions.RadialMenu.OpenRadialMenu.canceled += _ => OnCloseRadialMenu();
+        _playerInputActions.RadialMenu.WheelUp.performed += _ => RadialMenuWheelUp?.Invoke();
+        _playerInputActions.RadialMenu.WheelDown.performed += _ => RadialMenuWheelDown?.Invoke();
     }
 }

@@ -7,8 +7,6 @@ public class WanderChickenState : IChickenState
     private readonly Transform _transformChicken;
     private readonly NavMeshAgent _agent;
     private readonly float _wanderRadius;
-    private readonly float _minWanderTime = 2f;
-    private readonly float _maxWanderTime = 6f;
     
     //private readonly int _gardenMask;
 

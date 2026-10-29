@@ -41,7 +41,7 @@ public class MutatedChicken : ChickenBase
     {
         _stateMachine = new StateMachine<IChickenState>(new IdleChickenState());
         _stateMachine.AddState(new WanderChickenState(transform, _navMeshAgent, _wanderRadius));
-        _stateMachine.AddState(new PeckChickenState(_navMeshAgent));
+        _stateMachine.AddState(new PeckChickenState(_navMeshAgent, _peckDuration));
         
         _stateMachine.AddState(new ChaseFleeingAlienState(
             this,

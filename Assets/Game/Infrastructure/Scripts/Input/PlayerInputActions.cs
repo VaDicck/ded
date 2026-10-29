@@ -242,7 +242,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e2a0de7a-36fa-43b3-a647-2ddfce406167"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -361,15 +361,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""RadialMenu"",
-                    ""type"": ""Button"",
-                    ""id"": ""ea9267aa-51ed-477c-a874-1b895f71086a"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -392,17 +383,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MousePosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c2b81f98-a91d-4f49-85ca-1ad6a40a86b0"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RadialMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -429,13 +409,31 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""WheelUp"",
+                    ""type"": ""Value"",
+                    ""id"": ""b721c191-e587-4b7a-a45f-7a9777557c0f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""WheelDown"",
+                    ""type"": ""Value"",
+                    ""id"": ""7efdc681-8710-4748-8d6b-7678d098bd81"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""5af94ceb-429c-4803-a2d6-2225e2914952"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -451,6 +449,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2e5adaf-0a24-4d32-a4b8-1a10497a6681"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WheelUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fc76d9d0-b51e-4831-92e4-75162b5da195"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WheelDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -475,11 +495,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Back = m_UI.FindAction("Back", throwIfNotFound: true);
         m_UI_MousePosition = m_UI.FindAction("MousePosition", throwIfNotFound: true);
-        m_UI_RadialMenu = m_UI.FindAction("RadialMenu", throwIfNotFound: true);
         // RadialMenu
         m_RadialMenu = asset.FindActionMap("RadialMenu", throwIfNotFound: true);
         m_RadialMenu_OpenRadialMenu = m_RadialMenu.FindAction("OpenRadialMenu", throwIfNotFound: true);
         m_RadialMenu_MousePosition = m_RadialMenu.FindAction("MousePosition", throwIfNotFound: true);
+        m_RadialMenu_WheelUp = m_RadialMenu.FindAction("WheelUp", throwIfNotFound: true);
+        m_RadialMenu_WheelDown = m_RadialMenu.FindAction("WheelDown", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -759,7 +780,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Back;
     private readonly InputAction m_UI_MousePosition;
-    private readonly InputAction m_UI_RadialMenu;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -779,10 +799,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/MousePosition".
         /// </summary>
         public InputAction @MousePosition => m_Wrapper.m_UI_MousePosition;
-        /// <summary>
-        /// Provides access to the underlying input action "UI/RadialMenu".
-        /// </summary>
-        public InputAction @RadialMenu => m_Wrapper.m_UI_RadialMenu;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -815,9 +831,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @MousePosition.started += instance.OnMousePosition;
             @MousePosition.performed += instance.OnMousePosition;
             @MousePosition.canceled += instance.OnMousePosition;
-            @RadialMenu.started += instance.OnRadialMenu;
-            @RadialMenu.performed += instance.OnRadialMenu;
-            @RadialMenu.canceled += instance.OnRadialMenu;
         }
 
         /// <summary>
@@ -835,9 +848,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @MousePosition.started -= instance.OnMousePosition;
             @MousePosition.performed -= instance.OnMousePosition;
             @MousePosition.canceled -= instance.OnMousePosition;
-            @RadialMenu.started -= instance.OnRadialMenu;
-            @RadialMenu.performed -= instance.OnRadialMenu;
-            @RadialMenu.canceled -= instance.OnRadialMenu;
         }
 
         /// <summary>
@@ -877,6 +887,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IRadialMenuActions> m_RadialMenuActionsCallbackInterfaces = new List<IRadialMenuActions>();
     private readonly InputAction m_RadialMenu_OpenRadialMenu;
     private readonly InputAction m_RadialMenu_MousePosition;
+    private readonly InputAction m_RadialMenu_WheelUp;
+    private readonly InputAction m_RadialMenu_WheelDown;
     /// <summary>
     /// Provides access to input actions defined in input action map "RadialMenu".
     /// </summary>
@@ -896,6 +908,14 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "RadialMenu/MousePosition".
         /// </summary>
         public InputAction @MousePosition => m_Wrapper.m_RadialMenu_MousePosition;
+        /// <summary>
+        /// Provides access to the underlying input action "RadialMenu/WheelUp".
+        /// </summary>
+        public InputAction @WheelUp => m_Wrapper.m_RadialMenu_WheelUp;
+        /// <summary>
+        /// Provides access to the underlying input action "RadialMenu/WheelDown".
+        /// </summary>
+        public InputAction @WheelDown => m_Wrapper.m_RadialMenu_WheelDown;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -928,6 +948,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @MousePosition.started += instance.OnMousePosition;
             @MousePosition.performed += instance.OnMousePosition;
             @MousePosition.canceled += instance.OnMousePosition;
+            @WheelUp.started += instance.OnWheelUp;
+            @WheelUp.performed += instance.OnWheelUp;
+            @WheelUp.canceled += instance.OnWheelUp;
+            @WheelDown.started += instance.OnWheelDown;
+            @WheelDown.performed += instance.OnWheelDown;
+            @WheelDown.canceled += instance.OnWheelDown;
         }
 
         /// <summary>
@@ -945,6 +971,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @MousePosition.started -= instance.OnMousePosition;
             @MousePosition.performed -= instance.OnMousePosition;
             @MousePosition.canceled -= instance.OnMousePosition;
+            @WheelUp.started -= instance.OnWheelUp;
+            @WheelUp.performed -= instance.OnWheelUp;
+            @WheelUp.canceled -= instance.OnWheelUp;
+            @WheelDown.started -= instance.OnWheelDown;
+            @WheelDown.performed -= instance.OnWheelDown;
+            @WheelDown.canceled -= instance.OnWheelDown;
         }
 
         /// <summary>
@@ -1077,13 +1109,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMousePosition(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "RadialMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnRadialMenu(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "RadialMenu" which allows adding and removing callbacks.
@@ -1106,5 +1131,19 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMousePosition(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "WheelUp" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWheelUp(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "WheelDown" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWheelDown(InputAction.CallbackContext context);
     }
 }
