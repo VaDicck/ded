@@ -17,3 +17,16 @@ MonoBehaviour:
   <Quotas>k__BackingField: {fileID: 11400000, guid: 60261e4471e9ae14b966be9eaa299267, type: 2}
   <CraftingTable>k__BackingField: {fileID: 11400000, guid: a4304a337967b0f43a8147accc29e5d0, type: 2}
   <UnlockedCultures>k__BackingField: 0000000002000000
+  <ToolSprites>k__BackingField:
+  - <Key>k__BackingField: 5
+    <Value>k__BackingField: {fileID: 21300000, guid: e79923aa4bd34f543ad53d3b1b1507a3, type: 3}
+  - <Key>k__BackingField: 3
+    <Value>k__BackingField: {fileID: 21300000, guid: ff97921dffe981d44b05f2bedbffbd47, type: 3}
+  - <Key>k__BackingField: 7
+    <Value>k__BackingField: {fileID: 21300000, guid: a78a907515e65a04ca72fc66dfb6dd01, type: 3}
+  - <Key>k__BackingField: 6
+    <Value>k__BackingField: {fileID: 21300000, guid: 9115c6bd92a0b3343bff8f35a90956cf, type: 3}
+  - <Key>k__BackingField: 4
+    <Value>k__BackingField: {fileID: 21300000, guid: 576f0b4800928e241b8e6905b1492a53, type: 3}
+  - <Key>k__BackingField: 8
+    <Value>k__BackingField: {fileID: 21300000, guid: 005fd8be86f7e6c468453a9ec062f8da, type: 3}

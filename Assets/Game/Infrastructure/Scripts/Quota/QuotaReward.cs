@@ -11,7 +11,7 @@ public class QuotaReward
 
     public void GetReward()
     {
-        _extraReward.GetReward();
+        _extraReward?.GetReward();
     }
 
     public void Initialize(DiContainer container)

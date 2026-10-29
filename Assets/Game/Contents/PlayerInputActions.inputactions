@@ -156,7 +156,7 @@
                 {
                     "name": "",
                     "id": "e2a0de7a-36fa-43b3-a647-2ddfce406167",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -275,15 +275,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "RadialMenu",
-                    "type": "Button",
-                    "id": "ea9267aa-51ed-477c-a874-1b895f71086a",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -306,17 +297,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "MousePosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c2b81f98-a91d-4f49-85ca-1ad6a40a86b0",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RadialMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -343,13 +323,31 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "WheelUp",
+                    "type": "Value",
+                    "id": "b721c191-e587-4b7a-a45f-7a9777557c0f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "WheelDown",
+                    "type": "Value",
+                    "id": "7efdc681-8710-4748-8d6b-7678d098bd81",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "5af94ceb-429c-4803-a2d6-2225e2914952",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -365,6 +363,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2e5adaf-0a24-4d32-a4b8-1a10497a6681",
+                    "path": "<Mouse>/scroll/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WheelUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc76d9d0-b51e-4831-92e4-75162b5da195",
+                    "path": "<Mouse>/scroll/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WheelDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

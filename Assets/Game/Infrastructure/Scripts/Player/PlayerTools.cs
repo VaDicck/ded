@@ -21,6 +21,11 @@ public class PlayerTools
         return true;
     }
 
+    public bool Contains(ToolType toolType)
+    {
+        return _tools.Contains(toolType);
+    }
+
     public void PutOff()
     {
         _currentTool = null;

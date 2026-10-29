@@ -19,16 +19,11 @@ public class PauseMenu : MonoBehaviour
     {
         _inputController = inputController;
         _playerReturner = playerReturner;
-    }
-
-    private void Start()
-    {
+        
         _inputController.PausePressed += Show;
         _stuckButton.onClick.AddListener(OnStuckButtonClicked);
         _continueButton.onClick.AddListener(Hide);
         _exitButton.onClick.AddListener(OnExitButtonClicked);
-        
-        Hide();
     }
 
     private void Hide()
