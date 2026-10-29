@@ -7,14 +7,15 @@ public class FlyingAlien : Alien<IFlyingAlienState>
 {
     public event Action PlayerDetected;
     public event Action PlayerLost;
+    
+    public override AlienType Type => AlienType.Flying;
 
     [SerializeField] private GameObject _brokenPartsPrefab;
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private Transform _projectileSpawnPoint;
     [SerializeField] private float _fireRate = 3f;
     [SerializeField] private float _projectileSpeed = 3f;
-
-    public override AlienType Type => AlienType.Flying;
+    [SerializeField] private float _minShootDistance = 8f;
 
     [Inject] private BedService _bedService;
 
@@ -23,7 +24,7 @@ public class FlyingAlien : Alien<IFlyingAlienState>
     
     private int _playerLayer;
 
-    private bool _flySpawn;
+    private bool _flyToSpawn;
 
     public class Factory : PlaceholderFactory<FlyingAlien> { }
     
@@ -31,6 +32,7 @@ public class FlyingAlien : Alien<IFlyingAlienState>
     {
         _playerLayer = LayerMask.NameToLayer("Player");
         _animator.SetTrigger("Fly");
+        
         _stateMachine = new StateMachine<IFlyingAlienState>(
             new FlyToPointFlyingAlienState(_bedService, _navMeshAgent));
 
@@ -39,10 +41,13 @@ public class FlyingAlien : Alien<IFlyingAlienState>
 
         _stateMachine.AddState<AttackFlyingAlienState>(
             new AttackFlyingAlienState(_navMeshAgent , _projectilePrefab, 
-                _projectileSpawnPoint, _animator, _fireRate, _projectileSpeed));
+                _projectileSpawnPoint, _animator, _fireRate, _projectileSpeed, _minShootDistance));
         
         _stateMachine.AddState<FlyToSpawnFlyingAlienState>(
             new FlyToSpawnFlyingAlienState(_spawnPoint, _navMeshAgent));
+        
+        _stateMachine.AddState<ChasePlayerFlyingAlienState>(
+            new ChasePlayerFlyingAlienState(_navMeshAgent, _minShootDistance));
         
         //TODO maybe in alienBase?
         _bedService.CanAttackBeds.Subscribe(FlyToSpawn);
@@ -50,33 +55,45 @@ public class FlyingAlien : Alien<IFlyingAlienState>
 
     protected override void Subscribe()
     {
+        ChasePlayerFlyingAlienState chaseState = _stateMachine.GetState<ChasePlayerFlyingAlienState>();
+        AttackFlyingAlienState attackState = _stateMachine.GetState<AttackFlyingAlienState>();
+        
         _stateMachine.GetState<FlyToPointFlyingAlienState>().Performed += () =>
         {
             _animator.SetTrigger("Fly");
             _stateMachine.SetState<WanderFlyingAlienState>();
         };
-
+        
+        attackState.PlayerTooFar += () =>
+        {
+            chaseState.SetPlayer(_playerTransform);
+            _animator.SetTrigger("Fly");
+            _stateMachine.SetState<ChasePlayerFlyingAlienState>();
+        };
+        
+        chaseState.Performed += () =>
+        {
+            attackState.SetPlayer(_playerTransform);
+            _stateMachine.SetState<AttackFlyingAlienState>();
+        };
+        
         PlayerDetected += () =>
         {
-            AttackFlyingAlienState attackState = _stateMachine.GetState<AttackFlyingAlienState>();
-            attackState.SetPlayer(_playerTransform);
-            _animator.SetTrigger("Attack");
-            _stateMachine.SetState<AttackFlyingAlienState>();
+            chaseState.SetPlayer(_playerTransform);
+            _animator.SetTrigger("Fly");        
+            _stateMachine.SetState<ChasePlayerFlyingAlienState>();
         };
 
         PlayerLost += () =>
         {
-            if (_stateMachine.CurrentState is AttackFlyingAlienState)
-            {
-                _animator.SetTrigger("Fly");
-                _stateMachine.SetState<WanderFlyingAlienState>();
-            }
+            _animator.SetTrigger("Fly");
+            _stateMachine.SetState<WanderFlyingAlienState>();
         };
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(_flySpawn) return;
+        if(_flyToSpawn) return;
 
         if (other.gameObject.layer != _playerLayer || _playerInRange) return;
         
@@ -87,7 +104,7 @@ public class FlyingAlien : Alien<IFlyingAlienState>
 
     private void OnTriggerExit(Collider other)
     {
-        if(_flySpawn) return;
+        if(_flyToSpawn) return;
 
         if (other.gameObject.layer != _playerLayer || !_playerInRange) return;
         
@@ -103,7 +120,7 @@ public class FlyingAlien : Alien<IFlyingAlienState>
         _animator.SetTrigger("Fly");
         _stateMachine.SetState<FlyToSpawnFlyingAlienState>();
         
-        _flySpawn = true;
+        _flyToSpawn = true;
             
         _stateMachine.GetState<FlyToPointFlyingAlienState>().Performed += () =>
         {
