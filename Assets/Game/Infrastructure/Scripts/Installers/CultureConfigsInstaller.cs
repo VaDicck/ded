@@ -8,6 +8,10 @@ public class CultureConfigsInstaller : MonoInstaller
     [SerializeField] private CornCultureConfig _cornConfig;
     [SerializeField] private PepperCultureConfig _pepperConfig;
     
+    [SerializeField] private MutatedCarrotConfig _mutatedCarrotConfig;
+    [SerializeField] private MutatedCornConfig _mutatedCornConfig;
+    [SerializeField] private MutatedPepperConfig _mutatedPepperConfig;
+    
     public override void InstallBindings()
     {
         Container.Bind<CarrotCultureConfig>().FromInstance(_carrotConfig).AsSingle();
@@ -15,12 +19,20 @@ public class CultureConfigsInstaller : MonoInstaller
         Container.Bind<CornCultureConfig>().FromInstance(_cornConfig).AsSingle();
         Container.Bind<PepperCultureConfig>().FromInstance(_pepperConfig).AsSingle();
         
+        Container.Bind<MutatedCarrotConfig>().FromInstance(_mutatedCarrotConfig).AsSingle();
+        Container.Bind<MutatedCornConfig>().FromInstance(_mutatedCornConfig).AsSingle();
+        Container.Bind<MutatedPepperConfig>().FromInstance(_mutatedPepperConfig).AsSingle();
+        
         Container.BindFactory<MutatedCarrot, MutatedCarrot.Factory>()
-            .FromComponentInNewPrefab(_carrotConfig.MutatedPrefab.gameObject)
+            .FromComponentInNewPrefab(_mutatedCarrotConfig.MutatedPrefab)
             .UnderTransformGroup("MutatedCultures");
 
         Container.BindFactory<MutatedCorn, MutatedCorn.Factory>()
-            .FromComponentInNewPrefab(_cornConfig.MutatedPrefab.gameObject)
+            .FromComponentInNewPrefab(_mutatedCornConfig.MutatedPrefab)
+            .UnderTransformGroup("MutatedCultures");
+        
+        Container.BindFactory<MutatedPepper, MutatedPepper.Factory>()
+            .FromComponentInNewPrefab(_mutatedPepperConfig.MutatedPrefab)
             .UnderTransformGroup("MutatedCultures");
     }
 }

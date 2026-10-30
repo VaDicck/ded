@@ -9314,7 +9314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6336910056293635423, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6603709766578066053, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: _toDisable.Array.size

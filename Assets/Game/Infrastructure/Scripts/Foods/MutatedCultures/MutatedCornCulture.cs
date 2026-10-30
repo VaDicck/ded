@@ -4,16 +4,18 @@ using Zenject;
 public class MutatedCornCulture : MutatedCulture<MutatedCorn.Factory, MutatedCorn>
 {
     public MutatedCornCulture(CultureConfig config, PlayerCultures playerCultures,
-        DayCycleService dayCycleService, Transform bedTransform)
-        : base(config, playerCultures, dayCycleService, bedTransform) 
+        DayCycleService dayCycleService, Transform bedTransform, MutatedCornConfig mutatedConfig)
+        : base(config, playerCultures, dayCycleService, bedTransform, mutatedConfig) 
     {
-        
+        _mutatedConfig = mutatedConfig;
     }
 
     public override CultureType Type => CultureType.MutatedCorn;
     
     [Inject] private PlayerResources _playerResources;
 
+    private MutatedCornConfig _mutatedConfig;
+    
     private bool _canGiveResources;
     
     public override bool IsInteract()
