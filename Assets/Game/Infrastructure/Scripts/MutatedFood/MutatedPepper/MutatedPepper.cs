@@ -52,7 +52,6 @@ public class MutatedPepper : MutatedFood
     
     private void OnTriggerEnter(Collider other)
     {
-        this.Log($"Enter {other.gameObject.layer}");
         if (other.gameObject.layer != _layerAlien)
             return;
 
@@ -113,8 +112,11 @@ public class MutatedPepper : MutatedFood
     {
         if (_currentTarget == null) return;
 
-        Vector3 direction = (_currentTarget.transform.position - transform.position).normalized;
-        if (direction == Vector3.zero) return;
+        Vector3 direction = _currentTarget.transform.position - transform.position;
+        direction.y = 0f;                  
+        if (direction.sqrMagnitude < 0.001f) return;
+
+        direction.Normalize();
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(
