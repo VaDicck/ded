@@ -13,6 +13,7 @@ public class Chicken : ChickenBase, IInteractable
     private bool _isMutated = false;
     
     [Inject] private MutatedChicken.Factory _mutatedChickenFactory;
+    [Inject] private PlayerMutagens _playerMutagens;
     
     public UniTask Interact()
     {
@@ -24,6 +25,9 @@ public class Chicken : ChickenBase, IInteractable
         if (tool != ToolType.Mutagen)
             return UniTask.FromResult(false);
 
+        if(!_playerMutagens.Use())
+            return UniTask.FromResult(false);
+        
         UseMutagen();
         return UniTask.FromResult(true);
     }
@@ -85,12 +89,9 @@ public class Chicken : ChickenBase, IInteractable
         _stateMachine.GetState<PeckChickenState>().Performed -= Walk;
     }
 
-    [ContextMenu("Use Mutagen")]
     private void UseMutagen()
     {
-        //TODO take mutagen
         _isMutated = true;
-        this.Log("use mutagen");
         _navMeshAgent.isStopped = true;
 
         Unsubscribe();

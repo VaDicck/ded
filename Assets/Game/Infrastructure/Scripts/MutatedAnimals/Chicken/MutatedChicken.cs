@@ -15,26 +15,31 @@ public class MutatedChicken : ChickenBase
     [SerializeField] private float _attackDamage = 20f;
     [SerializeField] private float _attackInterval = 1.2f;
     [SerializeField] private float _attackRange = 2.5f;
+    [SerializeField] private float _nightSpeed = 5f;
 
     private List<AlienBase> _aliens = new List<AlienBase>();
 
     private int _alienLayer;
+    private float _daySpeed;
 
     public class Factory : PlaceholderFactory<MutatedChicken> { }
 
     private void Awake()
     {
         _alienLayer = LayerMask.NameToLayer("Enemies");
+        _daySpeed = _navMeshAgent.speed;
     }
 
     protected override void OnDayStart()
     {
         _stateMachine.SetState<IdleChickenState>();
+        _navMeshAgent.speed = _daySpeed;
     }
 
     protected override void OnDayEnd()
     {
         _stateMachine.SetState<WanderChickenState>(); 
+        _navMeshAgent.speed = _nightSpeed;
     }
 
     protected override void AddStates()
@@ -93,6 +98,11 @@ public class MutatedChicken : ChickenBase
 
             RemoveAlien(alien);
         }
+    }
+
+    private void OnAttack(float numberAttack)
+    {
+        _stateMachine.GetState<ChaseFleeingAlienState>().AttackEnd(numberAttack);
     }
 
     private void RemoveAlien(AlienBase alienBase)
