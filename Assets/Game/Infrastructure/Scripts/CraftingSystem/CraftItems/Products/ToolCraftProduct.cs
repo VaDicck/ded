@@ -13,7 +13,7 @@ public class ToolCraftProduct : TypedCraftProduct<ToolType>
         _playerTools = playerTools;
     }
     
-    public override void Craft()
+    protected override void GiveProduct()
     {
         _playerTools.Add(Item);
     }

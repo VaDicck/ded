@@ -16,4 +16,9 @@ public class ResourceCraftIngredient : TypedCraftIngredient<ResourceType>
     {
         return _playerResources.CountOf(Item) >= amount;
     }
+
+    public override void Craft(int amount)
+    {
+        _playerResources.Remove(Item, amount);
+    }
 }

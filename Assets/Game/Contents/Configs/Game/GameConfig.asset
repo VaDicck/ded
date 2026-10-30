@@ -19,15 +19,15 @@ MonoBehaviour:
   <UnlockedCultures>k__BackingField: 00000000020000000300000005000000
   <ToolSprites>k__BackingField:
   - <Key>k__BackingField: 5
-    <Value>k__BackingField: {fileID: 21300000, guid: e79923aa4bd34f543ad53d3b1b1507a3, type: 3}
+    <Value>k__BackingField: {fileID: 21300000, guid: 6e0aa146642058c479cb48ae538b4b21, type: 3}
   - <Key>k__BackingField: 3
-    <Value>k__BackingField: {fileID: 21300000, guid: ff97921dffe981d44b05f2bedbffbd47, type: 3}
+    <Value>k__BackingField: {fileID: 21300000, guid: 29f2a78e0eba6fc46beea18760dd9d41, type: 3}
   - <Key>k__BackingField: 7
-    <Value>k__BackingField: {fileID: 21300000, guid: a78a907515e65a04ca72fc66dfb6dd01, type: 3}
+    <Value>k__BackingField: {fileID: 21300000, guid: 950f09d7438d2c34ba55b83a0c5d66a9, type: 3}
   - <Key>k__BackingField: 6
-    <Value>k__BackingField: {fileID: 21300000, guid: 9115c6bd92a0b3343bff8f35a90956cf, type: 3}
+    <Value>k__BackingField: {fileID: 21300000, guid: 081093776be71a9449c3d24d914babc9, type: 3}
   - <Key>k__BackingField: 4
-    <Value>k__BackingField: {fileID: 21300000, guid: 576f0b4800928e241b8e6905b1492a53, type: 3}
+    <Value>k__BackingField: {fileID: 21300000, guid: 2fd4d742652fcee43a60b050dc0bfae0, type: 3}
   - <Key>k__BackingField: 8
     <Value>k__BackingField: {fileID: 21300000, guid: 005fd8be86f7e6c468453a9ec062f8da, type: 3}
   - <Key>k__BackingField: 9
@@ -47,3 +47,37 @@ MonoBehaviour:
     <Value>k__BackingField: "\u041C\u0443\u0442\u0430\u0433\u0435\u043D"
   - <Key>k__BackingField: 9
     <Value>k__BackingField: "\u0412\u0437\u0440\u044B\u0432\u043D\u043E\u0439 \u0442\u043E\u043C\u0430\u0442"
+  <Cultures>k__BackingField:
+    <Sprites>k__BackingField:
+    - <Key>k__BackingField: 0
+      <Value>k__BackingField: {fileID: 0}
+    - <Key>k__BackingField: 2
+      <Value>k__BackingField: {fileID: 0}
+    - <Key>k__BackingField: 5
+      <Value>k__BackingField: {fileID: 0}
+    - <Key>k__BackingField: 3
+      <Value>k__BackingField: {fileID: 0}
+    <Names>k__BackingField:
+    - <Key>k__BackingField: 0
+      <Value>k__BackingField: "\u041C\u043E\u0440\u043A\u043E\u0432\u044C"
+    - <Key>k__BackingField: 2
+      <Value>k__BackingField: "\u0422\u043E\u043C\u0430\u0442"
+    - <Key>k__BackingField: 5
+      <Value>k__BackingField: "\u041F\u0435\u0440\u0435\u0446"
+    - <Key>k__BackingField: 3
+      <Value>k__BackingField: "\u041A\u0443\u043A\u0443\u0440\u0443\u0437\u0430"
+  <Resources>k__BackingField:
+    <Sprites>k__BackingField:
+    - <Key>k__BackingField: 0
+      <Value>k__BackingField: {fileID: 0}
+    - <Key>k__BackingField: 1
+      <Value>k__BackingField: {fileID: 0}
+    - <Key>k__BackingField: 2
+      <Value>k__BackingField: {fileID: 0}
+    <Names>k__BackingField:
+    - <Key>k__BackingField: 0
+      <Value>k__BackingField: "\u0416\u0435\u043B\u0435\u0437\u043E"
+    - <Key>k__BackingField: 1
+      <Value>k__BackingField: "\u041C\u0435\u0442\u0430\u043B\u043B\u043E\u043B\u043E\u043C"
+    - <Key>k__BackingField: 2
+      <Value>k__BackingField: "\u0414\u0435\u0440\u0435\u0432\u043E"

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f846e0e5b44cd1a4c5431380a23e90, type: 3}
   m_Name: WoodCraftIngredient
   m_EditorClassIdentifier: Assembly-CSharp::ResourceCraftIngredient
-  <Sprite>k__BackingField: {fileID: 0}
-  <Name>k__BackingField: Wood
+  <Sprite>k__BackingField: {fileID: 2037500093, guid: abfbc2526aeb590468d9a2f6453aef74, type: 3}
+  <Name>k__BackingField: "\u0414\u0435\u0440\u0435\u0432\u043E"
   <Item>k__BackingField: 2
