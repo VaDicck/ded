@@ -12,10 +12,13 @@ public class MutatedChicken : ChickenBase
     public List<AlienBase> Aliens => _aliens;
 
     [Header("Night attack")]
-    [SerializeField] private float _attackDamage = 20f;
+    [SerializeField] private float _attackFistDamage;
+    [SerializeField] private float _attackBeakDamage;
+    [SerializeField] private float _attackJumpDamage;
     [SerializeField] private float _attackInterval = 1.2f;
     [SerializeField] private float _attackRange = 2.5f;
     [SerializeField] private float _nightSpeed = 5f;
+    [SerializeField] private float _jumpAoERadius = 3.5f;
 
     private List<AlienBase> _aliens = new List<AlienBase>();
 
@@ -38,7 +41,7 @@ public class MutatedChicken : ChickenBase
 
     protected override void OnDayEnd()
     {
-        _stateMachine.SetState<WanderChickenState>(); 
+        Walk();
         _navMeshAgent.speed = _nightSpeed;
     }
 
@@ -52,8 +55,7 @@ public class MutatedChicken : ChickenBase
             this,
             _navMeshAgent,
             _attackRange,
-            _attackDamage,
-            _attackInterval, _animator));
+            _attackInterval, _animator, _attackFistDamage, _attackBeakDamage, _attackJumpDamage, _jumpAoERadius));
     }
 
     protected override void Subscribe()

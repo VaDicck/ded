@@ -1016,6 +1016,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2008652361}
     - target: {fileID: -7911512899527169979, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
+      propertyPath: _attackDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7911512899527169979, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
       propertyPath: _peckProbability
       value: 0.4
       objectReference: {fileID: 0}
@@ -2784,7 +2788,7 @@ MonoBehaviour:
   - {fileID: 767710627}
   - {fileID: 2101838825}
   - {fileID: 1106250023}
-  _countAliens: 6
+  _countAliens: 8
   _durationSpawn: 0
 --- !u!1 &832585958
 GameObject:
@@ -7295,7 +7299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1681877428
 Transform:
   m_ObjectHideFlags: 0

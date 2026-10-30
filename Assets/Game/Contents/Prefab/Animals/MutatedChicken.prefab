@@ -55,10 +55,13 @@ MonoBehaviour:
   _peckDuration: 6.48
   _animator: {fileID: 6864753992705600884}
   _spawnPoint: {fileID: 0}
-  _attackDamage: 20
+  _attackFistDamage: 20
+  _attackBeakDamage: 40
+  _attackJumpDamage: 25
   _attackInterval: 1.2
   _attackRange: 2.5
   _nightSpeed: 5
+  _jumpAoERadius: 5
 --- !u!195 &-2734820537299717358
 NavMeshAgent:
   m_ObjectHideFlags: 0
