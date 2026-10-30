@@ -37,7 +37,13 @@ public class FleeingAlien : Alien<IFleeingAlienState>
     
     private IEnumerator JumpOverNavMeshLink()
     {
-        _isJumping = true;
+        //TODO rewrite
+        if(_isOnGarden)
+            _isOnGarden = false;
+        else
+            _isOnGarden = true;
+
+            _isJumping = true;
         _navMeshAgent.isStopped = true;
         
         OffMeshLinkData data = _navMeshAgent.currentOffMeshLinkData;
