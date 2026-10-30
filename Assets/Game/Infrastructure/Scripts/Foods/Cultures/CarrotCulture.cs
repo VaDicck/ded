@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-public class CarrotCulture : MutableSimpleCulture<MutatedCarrotCulture>
+public class CarrotCulture : SimpleCulture
 {
     public CarrotCulture(CarrotCultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
         : base(config, playerCultures, dayCycleService) { }
