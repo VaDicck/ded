@@ -20,7 +20,6 @@ public class MutatedPepperCulture : MutatedCulture<MutatedPepper.Factory, Mutate
 
     public override ToolType UseTool()
     {
-
         if (!_isPoured.Value)
             return ToolType.Bailer;
 
@@ -31,17 +30,13 @@ public class MutatedPepperCulture : MutatedCulture<MutatedPepper.Factory, Mutate
     {
         if (_isPoured.Value)
         {
-            //TODO zakriza
-        }
-        else
-        {
-            //TODO rasstroiza
+            _mutatedFood.StartAttack();
         }
     }
 
     protected override void OnNightEnded()
     {
-
+        _mutatedFood.Idle();
         _isPoured.Value = false;
     }
 }

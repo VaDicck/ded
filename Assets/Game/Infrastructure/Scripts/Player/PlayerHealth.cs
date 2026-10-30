@@ -8,7 +8,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     
     public void TakeDamage(float damage, Vector3 hitPoint)
     {
-        ShowRandomHitOverlay();
+        //TODO REWRITE
+        if(hitPoint == Vector3.one)
+            ShowRandomHitOverlay();
     }
 
     [ContextMenu("ShowRandomHitOverlay")]

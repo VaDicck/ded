@@ -2148,6 +2148,81 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &5852830405674316726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8983301408672267860}
+  - component: {fileID: 324236294369158923}
+  - component: {fileID: 4174439891385892865}
+  m_Layer: 5
+  m_Name: Icon_product
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8983301408672267860
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852830405674316726}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5604346899357056697}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &324236294369158923
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852830405674316726}
+  m_CullTransparentMesh: 1
+--- !u!114 &4174439891385892865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852830405674316726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5865860198016855346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,6 +2431,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4480867045948438796}
+  - {fileID: 8983301408672267860}
   m_Father: {fileID: 9183635583666679751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3031,12 +3107,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CraftTableCraftView
   _productName: {fileID: 4027308835910087406}
-  _productImage: {fileID: 4545124818607193948}
+  _productImage: {fileID: 4174439891385892865}
   _productAmount: {fileID: 6330018003860071672}
   _contentHolder: {fileID: 3129633661091871653}
   _ingredientsHolder: {fileID: 6961096738775454956}
   _craftButton: {fileID: 5778884739023941074}
-  _ingredientPrefab: {fileID: 310906414029291930, guid: 5c956d4d9a07b9e49931604dc141dea3, type: 3}
+  _ingredientPrefab: {fileID: 310906414029291930, guid: 7d1ad5f815284804793a0c3da1feb15a, type: 3}
 --- !u!1 &8026784608626189643
 GameObject:
   m_ObjectHideFlags: 0
@@ -4559,6 +4635,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2270970611749067762, guid: e0bf39777640a0741a04bfe683f2c4c3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 554663526236660416}
+    - targetCorrespondingSourceObject: {fileID: 2270970611749067762, guid: e0bf39777640a0741a04bfe683f2c4c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5802355179718748310}
   m_SourcePrefab: {fileID: 100100000, guid: e0bf39777640a0741a04bfe683f2c4c3, type: 3}
 --- !u!114 &1767485435380020446 stripped
 MonoBehaviour:
@@ -4604,6 +4683,21 @@ GameObject:
   m_PrefabInstance: {fileID: 5016821139510824673}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &554663526236660416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6492870708665849107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40bebe058c9520849b7e8ba0a0f932f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FadeBlur
+  _material: {fileID: 2100000, guid: 72a0d6b84ed1ae948b5f773dbb70a980, type: 2}
+  _blur: 1.5
+  _speed: 4
+--- !u!114 &5802355179718748310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4776,6 +4870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToolsRadialMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 7073037760309354902, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7447315393387719063, guid: 0737492ad791543498b8e22d050354e0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4863,6 +4961,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2492827385900373443, guid: 0737492ad791543498b8e22d050354e0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8992752887915286768}
+    - targetCorrespondingSourceObject: {fileID: 2492827385900373443, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2862616838059904641}
   m_SourcePrefab: {fileID: 100100000, guid: 0737492ad791543498b8e22d050354e0, type: 3}
 --- !u!224 &1443459245777015469 stripped
 RectTransform:
@@ -4875,6 +4976,21 @@ GameObject:
   m_PrefabInstance: {fileID: 8309738818708618042}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8992752887915286768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5893613364182232825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40bebe058c9520849b7e8ba0a0f932f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FadeBlur
+  _material: {fileID: 2100000, guid: 72a0d6b84ed1ae948b5f773dbb70a980, type: 2}
+  _blur: 1.5
+  _speed: 4
+--- !u!114 &2862616838059904641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

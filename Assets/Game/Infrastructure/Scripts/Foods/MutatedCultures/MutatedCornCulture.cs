@@ -65,7 +65,33 @@ public class MutatedCornCulture : MutatedCulture<MutatedCorn.Factory, MutatedCor
     private void GiveResources()
     {
         _mutatedFood.Open();
-        _playerResources.Add(ResourceType.Metal, 1);
+        
+        ResourceType randomResource = GetRandomResourceType();
+        
+        _playerResources.Add(randomResource, GetRangeByResource(randomResource));
         _canGiveResources = false;
+    }
+    
+    private ResourceType GetRandomResourceType()
+    {
+        return (ResourceType)UnityEngine.Random.Range(0, 3);
+    }
+
+    private int GetRangeByResource(ResourceType resourceType)
+    {
+        Range currentRange = new Range();
+        switch (resourceType)
+        {
+            case ResourceType.Metal:
+                currentRange = _mutatedConfig.CountMetal;
+                break;
+            case ResourceType.Scrap:
+                currentRange = _mutatedConfig.CountScrap;
+                break;
+            case ResourceType.Wood:
+                currentRange = _mutatedConfig.CountWood; 
+                break;
+        }
+        return UnityEngine.Random.Range(currentRange.Min, currentRange.Max + 1);
     }
 }

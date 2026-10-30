@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86f846e0e5b44cd1a4c5431380a23e90, type: 3}
+  m_Name: ScrapCraftIngredient
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceCraftIngredient
+  <Sprite>k__BackingField: {fileID: 502871822, guid: abfbc2526aeb590468d9a2f6453aef74, type: 3}
+  <Name>k__BackingField: "\u0417\u0430\u043F\u0447\u0430\u0441\u0442\u0438"
+  <Item>k__BackingField: 0

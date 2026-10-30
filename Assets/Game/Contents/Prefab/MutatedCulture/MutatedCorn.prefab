@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8048202728390587687}
   - component: {fileID: 7358090308268901249}
   - component: {fileID: 2679650346602278377}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: MutatedCorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}

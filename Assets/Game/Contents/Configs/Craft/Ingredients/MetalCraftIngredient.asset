@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f846e0e5b44cd1a4c5431380a23e90, type: 3}
   m_Name: MetalCraftIngredient
   m_EditorClassIdentifier: Assembly-CSharp::ResourceCraftIngredient
-  <Sprite>k__BackingField: {fileID: 0}
-  <Name>k__BackingField: Metal
-  <Count>k__BackingField: 5
+  <Sprite>k__BackingField: {fileID: -1076545708, guid: abfbc2526aeb590468d9a2f6453aef74, type: 3}
+  <Name>k__BackingField: "\u0416\u0435\u043B\u0435\u0437\u043E"
   <Item>k__BackingField: 0

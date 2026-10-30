@@ -3,7 +3,12 @@ guid: 52f6b12f534286f4f8f254d094e9ff76
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MutoVegetables
+    second: {fileID: 2100000, guid: 9e7c3ef969ece8d4caee8930b35a2a35, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
