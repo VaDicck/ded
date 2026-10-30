@@ -24,7 +24,7 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     
     private bool _isDead;
 
-    protected bool _isOnGarden = true; //TODO rewrite
+    protected bool _isOnGarden; //TODO rewrite
 
     [Inject]
     private void Init(AlienService alienService)

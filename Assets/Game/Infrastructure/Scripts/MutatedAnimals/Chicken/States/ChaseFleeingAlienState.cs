@@ -107,13 +107,11 @@ public class ChaseFleeingAlienState : IChickenState
         _target = null;
         float minDistance = float.MaxValue;
 
-        //this.LogError("Выбираем цель");
         foreach (var alien in _chicken.Aliens)
         {
             if (alien != null)
             {
                 float dist = Vector3.Distance(_chicken.transform.position, alien.transform.position);
-                //this.LogError($"Пришелец на дистанции {dist} мин {minDistance}, на огороде {alien.IsOnGarden}");
                 if (dist < minDistance && alien.IsOnGarden)
                 {
                     minDistance = dist;

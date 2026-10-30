@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using Zenject;
 
 public class MutatedChicken : ChickenBase
@@ -81,7 +80,7 @@ public class MutatedChicken : ChickenBase
     {
         if (other.gameObject.layer == _alienLayer)
         {
-            if (!other.gameObject.TryGetComponent<AlienBase>(out var alien))
+            if (!other.gameObject.TryGetComponent<FleeingAlien>(out var alien))
                 return;
 
             _stateMachine.SetState<ChaseFleeingAlienState>();
@@ -95,7 +94,7 @@ public class MutatedChicken : ChickenBase
     {
         if (other.gameObject.layer == _alienLayer)
         {
-            if (!other.gameObject.TryGetComponent<AlienBase>(out var alien))
+            if (!other.gameObject.TryGetComponent<FleeingAlien>(out var alien))
                 return;
 
             RemoveAlien(alien);
@@ -115,5 +114,17 @@ public class MutatedChicken : ChickenBase
         if (_aliens.Count != 0) return;
 
         Walk();
+    }
+    
+    private void OnDestroy()
+    {
+        foreach (var alien in _aliens.ToArray())
+        {
+            if (alien != null)
+            {
+                alien.Death -= RemoveAlien;
+            }
+        }
+        _aliens.Clear();
     }
 }
