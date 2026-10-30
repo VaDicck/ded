@@ -20,7 +20,17 @@ public abstract class CraftProduct : ScriptableObject
         return true;
     }
 
-    public abstract void Craft();
+    public void Craft()
+    {
+        foreach (var pair in Ingredients)
+        {
+            pair.Key.Craft(pair.Value);
+        }
+        
+        GiveProduct();
+    }
+
+    protected abstract void GiveProduct();
 
     public abstract bool CanCraft();
 }

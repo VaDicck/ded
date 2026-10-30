@@ -6,4 +6,5 @@ public abstract class CraftIngredient : ScriptableObject
     [field: SerializeField] public string Name { get; private set; }
 
     public abstract bool IsEnough(int amount);
+    public abstract void Craft(int amount);
 }

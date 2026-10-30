@@ -14,11 +14,16 @@ public class PlayerCultures
     public PlayerCultures(GameConfig config)
     {
         _foodCapacity = config.FoodCapacity;
+
+        foreach (var culture in config.UnlockedCultures)
+        {
+            _foodCollection.TryAdd(culture, 0);
+        }
     }
 
     public int AddCultureValue(Culture culture)
     {
-        CultureType cultureType =culture.Type;
+        CultureType cultureType = culture.Type;
         
         _foodCollection.TryAdd(cultureType, 0);
 

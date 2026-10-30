@@ -16,4 +16,9 @@ public class CultureCraftIngredient : TypedCraftIngredient<CultureType>
     {
         return _playerCultures.Count(Item) >= amount;
     }
+
+    public override void Craft(int amount)
+    {
+        _playerCultures.Take(Item, amount);
+    }
 }
