@@ -8,5 +8,6 @@
     Shotgun,
     Pitchfork,
     Rake,
-    Mutagen
+    Mutagen,
+    TomatoGrenade,
 }

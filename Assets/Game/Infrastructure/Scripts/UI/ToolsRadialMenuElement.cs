@@ -21,6 +21,7 @@ public class ToolsRadialMenuElement : MonoBehaviour
     
     private PlayerTools _playerTools;
     private PlayerMutagens _playerMutagens;
+    private PlayerGrenades _playerGrenades;
     
     private List<SerializedPair<ToolType, Sprite>> _toolSprites;
     private List<SerializedPair<ToolType, string>> _toolNames;
@@ -29,10 +30,12 @@ public class ToolsRadialMenuElement : MonoBehaviour
     private float _lastSwitchTime;
 
     [Inject]
-    private void Initialize(PlayerTools playerTools, GameConfig config, PlayerMutagens playerMutagens)
+    private void Initialize(PlayerTools playerTools, GameConfig config, PlayerMutagens playerMutagens, PlayerGrenades playerGrenades)
     {
         _playerTools = playerTools;
         _playerMutagens = playerMutagens;
+        _playerGrenades = playerGrenades;
+        
         _toolSprites = config.ToolSprites;
         _toolNames = config.ToolNames;
     }
@@ -58,10 +61,18 @@ public class ToolsRadialMenuElement : MonoBehaviour
         {
             case ToolType.Mutagen:
                 _count.text = _playerMutagens.Count.ToString();
+                
                 break;
+            
+            case ToolType.TomatoGrenade:
+                _count.text = _playerGrenades.Count(_tools[_currentTool]).ToString();
+
+                break;
+            
             default:
                 if (_count != null)
                     _count.text = "";
+
                 break;
         }
     }
@@ -178,6 +189,9 @@ public class ToolsRadialMenuElement : MonoBehaviour
             return;
 
         if (_tools[_currentTool] == ToolType.Mutagen && _playerMutagens.Count == 0)
+            return;
+
+        if (_tools[_currentTool] == ToolType.TomatoGrenade && _playerGrenades.Count(ToolType.TomatoGrenade) == 0)
             return;
         
         if (_playerTools.Tool == _tools[_currentTool])

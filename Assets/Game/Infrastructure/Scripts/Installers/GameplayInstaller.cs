@@ -46,9 +46,11 @@ public class GameplayInstaller : MonoInstaller
         
         Container.Bind<PlayerMutagens>().AsSingle().NonLazy();
         
+        Container.Bind<PlayerGrenades>().AsSingle().NonLazy();
         Container.Bind<PlayerTools>().AsSingle().NonLazy();
         
         Container.Bind<CraftTableService>().AsSingle().NonLazy();
+        
         
         foreach (var product in _gameConfig.CraftingTable.Products)
         {

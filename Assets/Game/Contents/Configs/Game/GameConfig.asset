@@ -30,6 +30,8 @@ MonoBehaviour:
     <Value>k__BackingField: {fileID: 21300000, guid: 576f0b4800928e241b8e6905b1492a53, type: 3}
   - <Key>k__BackingField: 8
     <Value>k__BackingField: {fileID: 21300000, guid: 005fd8be86f7e6c468453a9ec062f8da, type: 3}
+  - <Key>k__BackingField: 9
+    <Value>k__BackingField: {fileID: 21300000, guid: 7533ce482aeeb414c8782ec2e3931ff0, type: 3}
   <ToolNames>k__BackingField:
   - <Key>k__BackingField: 5
     <Value>k__BackingField: "\u0414\u0440\u043E\u0431\u043E\u0432\u0438\u043A"
@@ -43,3 +45,5 @@ MonoBehaviour:
     <Value>k__BackingField: "\u041B\u0435\u0439\u043A\u0430"
   - <Key>k__BackingField: 8
     <Value>k__BackingField: "\u041C\u0443\u0442\u0430\u0433\u0435\u043D"
+  - <Key>k__BackingField: 9
+    <Value>k__BackingField: "\u0412\u0437\u0440\u044B\u0432\u043D\u043E\u0439 \u0442\u043E\u043C\u0430\u0442"

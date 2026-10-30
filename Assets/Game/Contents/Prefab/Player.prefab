@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 3461452245047153355}
   - component: {fileID: 2918627911804522192}
   - component: {fileID: 2228817970919938731}
+  - component: {fileID: 1980778373080193022}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -251,6 +252,21 @@ MonoBehaviour:
   _effectiveRange: 20
   _shotgun: {fileID: 3515129778242511599}
   _reloadTimeOnePistol: 2
+--- !u!114 &1980778373080193022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770189586896823310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc69febe36843338920f8e438da2b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerGrenadesView
+  _grenadePrefabs:
+  - <Key>k__BackingField: 9
+    <Value>k__BackingField: {fileID: 7027673454664172019, guid: f9dee49acac88db45a1e6143da393489, type: 3}
 --- !u!1 &833508487997849898
 GameObject:
   m_ObjectHideFlags: 0

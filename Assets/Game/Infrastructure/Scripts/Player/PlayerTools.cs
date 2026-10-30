@@ -11,12 +11,20 @@ public class PlayerTools
     private readonly List<ToolType> _tools = new();
 
     private PlayerMutagens _playerMutagens;
+    private PlayerGrenades _playerGrenades;
     
-    public PlayerTools(PlayerMutagens playerMutagens)
+    public PlayerTools(PlayerMutagens playerMutagens, PlayerGrenades playerGrenades)
     {
         _playerMutagens = playerMutagens;
-
+        _playerGrenades = playerGrenades;
+        
         _playerMutagens.Used += count =>
+        {
+            if (count == 0)
+                PutOff();
+        };
+
+        _playerGrenades.Used += (_, count) =>
         {
             if (count == 0)
                 PutOff();
