@@ -44,7 +44,7 @@ public class Chicken : ChickenBase, IInteractable
     
     protected override void AddStates()
     {
-        _stateMachine = new StateMachine<IChickenState>(new IdleChickenState());
+        _stateMachine = new StateMachine<IChickenState>(new IdleChickenState(_animator));
         _stateMachine.AddState(new WanderChickenState(transform, _navMeshAgent, _wanderRadius));
         _stateMachine.AddState(new PeckChickenState(_navMeshAgent, _peckDuration));
     }
