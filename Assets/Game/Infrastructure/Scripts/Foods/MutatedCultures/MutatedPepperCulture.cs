@@ -1,5 +1,4 @@
 using UnityEngine;
-using Zenject;
 
 public class MutatedPepperCulture : MutatedCulture<MutatedPepper.Factory, MutatedPepper>
 {
@@ -28,7 +27,7 @@ public class MutatedPepperCulture : MutatedCulture<MutatedPepper.Factory, Mutate
         return ToolType.None;
     }
 
-    protected override void OnDayEnded()
+    protected override void OnNightStart()
     {
         if (_isPoured.Value)
         {

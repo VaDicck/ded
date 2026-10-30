@@ -7,7 +7,7 @@ public abstract class MutatedCulture<TFactory, TMutated> : Culture
 {
     [Inject] private TFactory _factory;
     
-    protected MutatedFood _mutatedFood;
+    protected TMutated _mutatedFood;
     
     protected MutatedCulture(CultureConfig config, PlayerCultures playerCultures,
         DayCycleService dayCycleService, Transform bedTransform)
@@ -16,7 +16,7 @@ public abstract class MutatedCulture<TFactory, TMutated> : Culture
         _timerDigOut = _config.HealthMutated;
         _bedTransform = bedTransform;
         
-        _dayCycleService.DayEnded += OnDayEnded;
+        _dayCycleService.NightStarted += OnNightStart;
         _dayCycleService.NightEnded += OnNightEnded;
     }
     
@@ -52,11 +52,14 @@ public abstract class MutatedCulture<TFactory, TMutated> : Culture
         return false;
     }
 
-    protected abstract void OnDayEnded();
+    protected abstract void OnNightStart();
     protected abstract void OnNightEnded();
 
     protected override void DigOut()
     {
+        _dayCycleService.DayEnded -= OnNightStart;
+        _dayCycleService.NightEnded -= OnNightEnded;
+
         _mutatedFood.Die();
     }
 

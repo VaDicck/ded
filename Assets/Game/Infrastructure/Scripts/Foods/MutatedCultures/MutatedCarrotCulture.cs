@@ -7,7 +7,7 @@ public class MutatedCarrotCulture : MutatedCulture<MutatedCarrot.Factory, Mutate
         : base(config, playerCultures, dayCycleService, bedTransform) { }
 
     public override CultureType Type => CultureType.MutatedCarrot;
-    protected override void OnDayEnded()
+    protected override void OnNightStart()
     {
     }
 
