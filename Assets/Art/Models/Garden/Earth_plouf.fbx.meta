@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4ea6b705fc78e72488764b3d4e28f2f3
+guid: 31b4d2471c089714eae6fd696db3655a
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Garden
+    second: {fileID: 2100000, guid: 3f6218c7ce4bfee41aa7d59de1077ad3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: No Name
-    second: {fileID: 2100000, guid: 5b8a85a0d6ff9354288d62ddbd596fe5, type: 2}
+    second: {fileID: 2100000, guid: a31cdda642b02b148bac0a9594902b48, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
