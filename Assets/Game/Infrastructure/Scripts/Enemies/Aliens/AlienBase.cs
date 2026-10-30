@@ -7,6 +7,8 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
 {
     public event Action<AlienBase> Death;
     
+    public bool IsOnGarden => _isOnGarden;
+
     public abstract AlienType Type { get; }
 
     [SerializeField] protected NavMeshAgent _navMeshAgent;
@@ -21,6 +23,8 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     private AlienService _alienService;
     
     private bool _isDead;
+
+    protected bool _isOnGarden; //TODO rewrite
 
     [Inject]
     private void Init(AlienService alienService)

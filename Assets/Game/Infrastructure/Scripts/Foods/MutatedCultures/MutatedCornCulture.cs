@@ -5,7 +5,10 @@ public class MutatedCornCulture : MutatedCulture<MutatedCorn.Factory, MutatedCor
 {
     public MutatedCornCulture(CultureConfig config, PlayerCultures playerCultures,
         DayCycleService dayCycleService, Transform bedTransform)
-        : base(config, playerCultures, dayCycleService, bedTransform) { }
+        : base(config, playerCultures, dayCycleService, bedTransform) 
+    {
+        
+    }
 
     public override CultureType Type => CultureType.MutatedCorn;
     
@@ -37,11 +40,11 @@ public class MutatedCornCulture : MutatedCulture<MutatedCorn.Factory, MutatedCor
         return ToolType.None;
     }
     
-    protected override void OnDayEnded()
+    protected override void OnNightStart()
     {
         if (_isPoured.Value)
         {
-            //TODO zakriza
+            _mutatedFood.Close();
         }
         else
         {
@@ -59,6 +62,7 @@ public class MutatedCornCulture : MutatedCulture<MutatedCorn.Factory, MutatedCor
 
     private void GiveResources()
     {
+        _mutatedFood.Open();
         _playerResources.Add(ResourceType.Metal, 1);
         _canGiveResources = false;
     }

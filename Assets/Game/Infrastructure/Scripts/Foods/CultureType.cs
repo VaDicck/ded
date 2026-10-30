@@ -7,5 +7,6 @@
     Garnet,
     Pepper,
     MutatedCarrot,
-    MutatedCorn
+    MutatedCorn,
+    MutatedPepper
 }

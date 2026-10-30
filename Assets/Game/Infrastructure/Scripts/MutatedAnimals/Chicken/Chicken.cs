@@ -27,7 +27,8 @@ public class Chicken : ChickenBase, IInteractable
 
         if(!_playerMutagens.Use())
             return UniTask.FromResult(false);
-        
+
+        _animator.SetTrigger("Die");
         UseMutagen();
         return UniTask.FromResult(true);
     }
@@ -44,7 +45,7 @@ public class Chicken : ChickenBase, IInteractable
     
     protected override void AddStates()
     {
-        _stateMachine = new StateMachine<IChickenState>(new IdleChickenState());
+        _stateMachine = new StateMachine<IChickenState>(new IdleChickenState(_animator));
         _stateMachine.AddState(new WanderChickenState(transform, _navMeshAgent, _wanderRadius));
         _stateMachine.AddState(new PeckChickenState(_navMeshAgent, _peckDuration));
     }

@@ -9,8 +9,11 @@ public class ChaseFleeingAlienState : IChickenState
     private readonly MutatedChicken _chicken;      
     private readonly NavMeshAgent _agent;
     private readonly float _attackRange;
-    private readonly float _attackDamage;
+    private readonly float _attackFistDamage;
+    private readonly float _attackBeakDamage;
+    private readonly float _attackJumpDamage;
     private readonly float _attackInterval;
+    private readonly float _jumpAoERadius;
 
     private float _nextAttackTime;
     private AlienBase _target;
@@ -19,23 +22,28 @@ public class ChaseFleeingAlienState : IChickenState
 
     private bool _isMoving;
 
-    private int _testCount;
+    private int _countFistAttack = 0;
 
     public ChaseFleeingAlienState(MutatedChicken chicken, NavMeshAgent agent,
-                                  float attackRange, float attackDamage, float attackInterval, Animator animator)
+                                  float attackRange, float attackInterval, Animator animator,
+                                  float attackFistDamage, float attackBeakDamage, float attackJumpDamage, float jumpAoERadius)
     {
         _chicken = chicken;
         _agent = agent;
         _attackRange = attackRange;
-        _attackDamage = attackDamage;
+        _attackFistDamage = attackFistDamage;
+        _attackBeakDamage = attackBeakDamage;
+        _attackJumpDamage = attackJumpDamage;
         _attackInterval = attackInterval;
         _animator = animator;
+        _jumpAoERadius = jumpAoERadius;
     }
 
     public void Enter()
     {
         _nextAttackTime = Time.time;
-        _isMoving = false;         
+        _isMoving = false;
+        _countFistAttack = 0;
         ChooseClosestTarget();
     }
 
@@ -99,15 +107,18 @@ public class ChaseFleeingAlienState : IChickenState
         _target = null;
         float minDistance = float.MaxValue;
 
+        //this.LogError("Выбираем цель");
         foreach (var alien in _chicken.Aliens)
         {
-            if (alien == null) continue;
-
-            float dist = Vector3.Distance(_chicken.transform.position, alien.transform.position);
-            if (dist < minDistance)
+            if (alien != null)
             {
-                minDistance = dist;
-                _target = alien;
+                float dist = Vector3.Distance(_chicken.transform.position, alien.transform.position);
+                //this.LogError($"Пришелец на дистанции {dist} мин {minDistance}, на огороде {alien.IsOnGarden}");
+                if (dist < minDistance && alien.IsOnGarden)
+                {
+                    minDistance = dist;
+                    _target = alien;
+                }
             }
         }
     }
@@ -115,29 +126,65 @@ public class ChaseFleeingAlienState : IChickenState
     private void Attack()
     {
         if (_target == null) return;
-        
-        if(_testCount == 3)
-            _testCount = 0;
-        if(_testCount == 0)
-            _animator.SetTrigger("FistAttack");
-        if(_testCount == 1)
-            _animator.SetTrigger("BeakAttack");
-        if(_testCount == 2)
-            _animator.SetTrigger("JumpAttack");
-        /*if (_chicken.Aliens.Count > 2)
+
+        if (GetAliensInJumpZoneCount() > 2)
         {
             _animator.SetTrigger("JumpAttack");
+            _countFistAttack = 0;
+            return;
         }
 
+        if(_countFistAttack > 2)
+        {
+            _animator.SetTrigger("BeakAttack");
+            _countFistAttack = 0;
+            return;
+        }
 
-        _animator.SetTrigger("FistAttack");*/
-        _target.TakeDamage(_attackDamage, Vector3.back); 
-        _testCount++;
+        _animator.SetTrigger("FistAttack");
+        _countFistAttack++;
+    }
+
+    private int GetAliensInJumpZoneCount()
+    {
+        int count = 0;
+        var chickenPos = _chicken.transform.position;
+
+        foreach (var alien in _chicken.Aliens)
+        {
+            if (alien != null &&
+                alien.IsOnGarden &&
+                Vector3.Distance(chickenPos, alien.transform.position) <= _jumpAoERadius)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 
     public void AttackEnd(float numberAttack)
     {
-        this.LogError($"number {numberAttack}");
-        _target?.TakeDamage(_attackDamage, Vector3.back); 
+        //TODO rewrite Vector3.back is a hitPoint
+        switch(numberAttack)
+        {
+            case 0f:
+                _target?.TakeDamage(_attackFistDamage, Vector3.back);
+                break;
+            case 1f:
+                _target?.TakeDamage(_attackBeakDamage, Vector3.back);
+                break;
+            case 2f:
+                var chickenPos = _chicken.transform.position;
+                foreach (var alien in _chicken.Aliens)
+                {
+                    if (alien != null &&
+                        alien.IsOnGarden &&
+                        Vector3.Distance(chickenPos, alien.transform.position) <= _jumpAoERadius)
+                    {
+                        alien?.TakeDamage(_attackJumpDamage, Vector3.back);
+                    }
+                }
+                break;
+        }
     }
 }

@@ -1,6 +1,6 @@
 using Zenject;
 
-public class PepperCulture : SimpleCulture
+public class PepperCulture : MutableSimpleCulture<MutatedPepperCulture>
 {
     public PepperCulture(PepperCultureConfig config, PlayerCultures playerCultures, DayCycleService dayCycleService)
         : base(config, playerCultures, dayCycleService) { }
