@@ -10,10 +10,10 @@ public abstract class MutatedCulture<TFactory, TMutated> : Culture
     protected TMutated _mutatedFood;
     
     protected MutatedCulture(CultureConfig config, PlayerCultures playerCultures,
-        DayCycleService dayCycleService, Transform bedTransform)
+        DayCycleService dayCycleService, Transform bedTransform, MutatedCultureConfig mutatedCultureConfig)
         : base(config, playerCultures, dayCycleService)
     {
-        _timerDigOut = _config.HealthMutated;
+        _timerDigOut = mutatedCultureConfig.HealthMutated;
         _bedTransform = bedTransform;
         
         _dayCycleService.NightStarted += OnNightStart;

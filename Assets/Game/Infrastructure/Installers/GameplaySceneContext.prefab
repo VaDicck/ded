@@ -102,3 +102,6 @@ MonoBehaviour:
   _tomatoConfig: {fileID: 11400000, guid: 023a22c5f429ae249bc4b49ffb4b3c7e, type: 2}
   _cornConfig: {fileID: 11400000, guid: 8db5e1f133b471947ada7a6741b5be49, type: 2}
   _pepperConfig: {fileID: 11400000, guid: 34876cfd2123388459cee88c80da9b1b, type: 2}
+  _mutatedCarrotConfig: {fileID: 11400000, guid: b3f609f3ad1e2f64381be3fb3c4687ce, type: 2}
+  _mutatedCornConfig: {fileID: 11400000, guid: e4107e8f87b7f174f981aadae80f1cbb, type: 2}
+  _mutatedPepperConfig: {fileID: 11400000, guid: 2b71c229b8cd46a4398842da810a46c0, type: 2}
