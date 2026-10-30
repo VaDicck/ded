@@ -50,17 +50,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MutatedChicken
   _navMeshAgent: {fileID: -2734820537299717358}
   _wanderRadius: 15
-  _peckProbability: 0.35
+  _peckProbability: 0.4
   _peckCheckInterval: 5
   _peckDuration: 6.48
   _animator: {fileID: 6864753992705600884}
   _spawnPoint: {fileID: 0}
+  _daySpeed: 1.8
   _attackFistDamage: 20
   _attackBeakDamage: 40
   _attackJumpDamage: 25
   _attackInterval: 1.2
-  _attackRange: 2.5
-  _nightSpeed: 5
+  _attackRange: 1.1
   _jumpAoERadius: 5
 --- !u!195 &-2734820537299717358
 NavMeshAgent:
@@ -72,7 +72,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 1479372276
   m_Radius: 0.47
-  m_Speed: 1.8
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 300

@@ -88,10 +88,29 @@ public class ChaseFleeingAlienState : IChickenState
         {
             _agent.SetDestination(_target.transform.position);
         }
-        else if (Time.time >= _nextAttackTime)
+        else 
         {
-            Attack();
-            _nextAttackTime = Time.time + _attackInterval;
+            RotateTowardsTarget();
+
+            if (Time.time >= _nextAttackTime)
+            {
+                Attack();
+                _nextAttackTime = Time.time + _attackInterval;
+            }
+        }
+    }
+    
+    private void RotateTowardsTarget()
+    {
+        if (_target == null) return;
+
+        Vector3 direction = (_target.transform.position - _chicken.transform.position).normalized;
+        direction.y = 0;
+
+        if (direction.sqrMagnitude > 0.001f)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            _chicken.transform.rotation = Quaternion.Slerp(_chicken.transform.rotation, lookRotation, Time.deltaTime * 10f);
         }
     }
 

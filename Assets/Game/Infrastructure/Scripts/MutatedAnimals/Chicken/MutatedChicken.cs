@@ -10,26 +10,27 @@ public class MutatedChicken : ChickenBase
 
     public List<AlienBase> Aliens => _aliens;
 
+    [SerializeField] private float _daySpeed;
+    
     [Header("Night attack")]
     [SerializeField] private float _attackFistDamage;
     [SerializeField] private float _attackBeakDamage;
     [SerializeField] private float _attackJumpDamage;
     [SerializeField] private float _attackInterval = 1.2f;
     [SerializeField] private float _attackRange = 2.5f;
-    [SerializeField] private float _nightSpeed = 5f;
     [SerializeField] private float _jumpAoERadius = 3.5f;
 
     private List<AlienBase> _aliens = new List<AlienBase>();
 
     private int _alienLayer;
-    private float _daySpeed;
+    private float _nightSpeed;
 
     public class Factory : PlaceholderFactory<MutatedChicken> { }
 
     private void Awake()
     {
         _alienLayer = LayerMask.NameToLayer("Enemies");
-        _daySpeed = _navMeshAgent.speed;
+        _nightSpeed = _navMeshAgent.speed;
     }
 
     protected override void OnDayStart()
