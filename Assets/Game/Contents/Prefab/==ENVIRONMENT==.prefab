@@ -4851,6 +4851,7 @@ Transform:
   - {fileID: 8610954152791649423}
   - {fileID: 1784772023630290609}
   - {fileID: 8765828712401392953}
+  - {fileID: 1015609539240789326}
   m_Father: {fileID: 6571858845919318072}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3149127709666564747
@@ -5630,7 +5631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8610163996394650110
 Transform:
   m_ObjectHideFlags: 0
@@ -6704,7 +6705,6 @@ Transform:
   - {fileID: 6295831255488520119}
   - {fileID: 3931187588060911010}
   - {fileID: 8610163996394650110}
-  - {fileID: 1015609539240789326}
   - {fileID: 6575190638909215954}
   - {fileID: 5919484773705318305}
   - {fileID: 1131314219271756425}
@@ -13529,7 +13529,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6571858845919318072}
+    m_TransformParent: {fileID: 8632110765130552149}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5da60798235bc2f48bc0f5b143c534c4, type: 3}
       propertyPath: m_LocalPosition.x
