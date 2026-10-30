@@ -9,11 +9,12 @@ public class ToolsRadialMenu : MonoBehaviour
     [SerializeField] private Canvas _canvas;
     [SerializeField] private float _deselectedMagnitude;
     [SerializeField] private GameObject _toolText;
+    [SerializeField] private List<GameObject> _toDisable;
     
     private InputController _inputController;
     private SerializedPair<ToolsRadialMenuElement, float> _selectedElement;
     private List<ElementRange> _elementRanges;
-
+    
     [Inject]
     private void Initialize(InputController inputController)
     {
@@ -39,6 +40,11 @@ public class ToolsRadialMenu : MonoBehaviour
         foreach (var pair in _elementsWithWeights)
         {
             pair.Key.Show();
+        }
+
+        foreach (var go in _toDisable)
+        {
+            go.SetActive(false);
         }
     }
     
@@ -146,6 +152,11 @@ public class ToolsRadialMenu : MonoBehaviour
         Time.timeScale = 1f;
         gameObject.SetActive(false);
         _selectedElement = null;
+        
+        foreach (var go in _toDisable)
+        {
+            go.SetActive(true);
+        }
     }
 
     private class ElementRange

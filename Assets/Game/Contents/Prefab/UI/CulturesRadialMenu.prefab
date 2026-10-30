@@ -75,6 +75,75 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2270970611749067762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5434209308219241561}
+  - component: {fileID: 4927432116392016402}
+  m_Layer: 5
+  m_Name: Custom Pass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5434209308219241561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2270970611749067762}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.53850996, y: 0.53850996, z: 0.53850996}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7859109045862130497}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4927432116392016402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2270970611749067762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.CustomPassVolume
+  m_IsGlobal: 0
+  fadeRadius: 0
+  priority: 0
+  customPasses:
+  - rid: 4266327397214191616
+  injectionPoint: 2
+  m_TargetCamera: {fileID: 0}
+  useTargetCamera: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 4266327397214191616
+      type: {class: FullScreenCustomPass, ns: UnityEngine.Rendering.HighDefinition, asm: Unity.RenderPipelines.HighDefinition.Runtime}
+      data:
+        m_Name: UI_Blur
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: -1
+        passFoldout: 0
+        m_Version: 0
+        fullscreenPassMaterial: {fileID: 2100000, guid: 72a0d6b84ed1ae948b5f773dbb70a980, type: 2}
+        materialPassIndex: 0
+        materialPassName: Custom Pass 0
+        fetchColorBuffer: 0
 --- !u!1 &2336949662481440039
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +312,7 @@ MonoBehaviour:
   _cultureType: 0
   _selectedSprite: {fileID: 21300000, guid: 911eef8813e370643879b1467655b9b2, type: 3}
   _normalSprite: {fileID: 21300000, guid: 19b05f97b7233b3498bac08ae1f451df, type: 3}
+  _cultureImage: {fileID: 0}
 --- !u!1 &3377592756033763841
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +342,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5434209308219241561}
   - {fileID: 8048071792594835529}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -471,6 +542,7 @@ MonoBehaviour:
   _cultureType: 3
   _selectedSprite: {fileID: 21300000, guid: 34dd6a92467cb444e8dfd3002f571078, type: 3}
   _normalSprite: {fileID: 21300000, guid: 269d21f0a845bd840ae54db2d87bc628, type: 3}
+  _cultureImage: {fileID: 0}
 --- !u!1 &6873832803360234925
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +711,7 @@ MonoBehaviour:
   _cultureType: 2
   _selectedSprite: {fileID: 21300000, guid: 78ee05eec20394842becf4982f18197b, type: 3}
   _normalSprite: {fileID: 21300000, guid: 0e3e4a794c98fd44394b7367040d4adb, type: 3}
+  _cultureImage: {fileID: 0}
 --- !u!1 &8912499128613323070
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,6 +805,7 @@ MonoBehaviour:
   _cultureType: 5
   _selectedSprite: {fileID: 21300000, guid: b41039d32e393cb4087d148104505ace, type: 3}
   _normalSprite: {fileID: 21300000, guid: 24b47d295b9ee4c4e916220384e7643b, type: 3}
+  _cultureImage: {fileID: 0}
 --- !u!1 &9047578761621414377
 GameObject:
   m_ObjectHideFlags: 0

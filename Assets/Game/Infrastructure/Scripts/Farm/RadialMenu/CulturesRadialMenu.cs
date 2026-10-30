@@ -8,6 +8,7 @@ public class CulturesRadialMenu : MonoBehaviour
     [SerializeField] private List<SerializedPair<CulturesRadialMenuElement, float>> _elementsWithWeights;
     [SerializeField] private Canvas _canvas;
     [SerializeField] private float _deselectedMagnitude;
+    [SerializeField] private List<GameObject> _toDisable;
     
     private SerializedPair<CulturesRadialMenuElement, float> _selectedElement;
     private List<ElementRange> _elementRanges;
@@ -40,6 +41,11 @@ public class CulturesRadialMenu : MonoBehaviour
         foreach (var pair in _elementsWithWeights)
         {
             pair.Key.Show();
+        }
+        
+        foreach (var go in _toDisable)
+        {
+            go.SetActive(false);
         }
     }
     
@@ -128,6 +134,11 @@ public class CulturesRadialMenu : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);
+        
+        foreach (var go in _toDisable)
+        {
+            go.SetActive(true);
+        }
     }
 
     private class ElementRange
