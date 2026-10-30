@@ -27,7 +27,8 @@ public class Chicken : ChickenBase, IInteractable
 
         if(!_playerMutagens.Use())
             return UniTask.FromResult(false);
-        
+
+        _animator.SetTrigger("Die");
         UseMutagen();
         return UniTask.FromResult(true);
     }
