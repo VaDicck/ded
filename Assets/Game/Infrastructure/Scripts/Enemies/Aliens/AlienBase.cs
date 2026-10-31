@@ -40,7 +40,11 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     
     public void SetSpawnPoint(Transform spawnPoint)
     {
+        transform.position = spawnPoint.position;
+        
         _navMeshAgent.Warp(spawnPoint.position);
+        _navMeshAgent.enabled = true;
+        
         _spawnPoint = spawnPoint;
     }
     
