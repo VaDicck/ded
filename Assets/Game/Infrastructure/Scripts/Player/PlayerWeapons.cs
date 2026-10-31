@@ -174,7 +174,7 @@ public class PlayerWeapons : MonoBehaviour
     
     private void StopZoom()
     {
-        _currentWeapon.UnZoom();
+        _currentWeapon?.UnZoom();
         _isZooming.Value = false;
         _currentFOV = _normalFOV;
     }

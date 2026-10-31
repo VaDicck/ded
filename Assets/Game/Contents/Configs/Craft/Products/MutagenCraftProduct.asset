@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26ea54ad913b430396978e0c4cda9964, type: 3}
+  m_Script: {fileID: 11500000, guid: 207b4ce26cd3434d9a1ccd1cc3d59f88, type: 3}
   m_Name: MutagenCraftProduct
-  m_EditorClassIdentifier: Assembly-CSharp::ToolCraftProduct
+  m_EditorClassIdentifier: Assembly-CSharp::MutagenCraftProduct
   <Sprite>k__BackingField: {fileID: 21300000, guid: 9a0985b4eaa4d924aa553c4cf28fd8c3, type: 3}
   <Name>k__BackingField: "\u041C\u0443\u0442\u0430\u0433\u0435\u043D"
   <CraftAmount>k__BackingField: 1
