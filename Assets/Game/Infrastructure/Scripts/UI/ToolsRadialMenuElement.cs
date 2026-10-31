@@ -51,12 +51,22 @@ public class ToolsRadialMenuElement : MonoBehaviour
         if (_tools.Count == 0)
         {
             _toolImage.gameObject.SetActive(false);
+            return;
+        }
+        
+        _count?.gameObject.SetActive(true);
+        
+        if (_playerTools.Contains(_tools[_currentTool]) == false)
+        {
+            _toolImage.gameObject.SetActive(false);
+            _count?.gameObject.SetActive(false);
             
             return;
         }
+        
         _toolImage.gameObject.SetActive(_playerTools.Contains(_tools[_currentTool]));
         _toolImage.sprite = _toolSprites.Find(x => x.Key == _tools[_currentTool]).Value;
-
+        
         switch (_tools[_currentTool])
         {
             case ToolType.Mutagen:
@@ -158,6 +168,9 @@ public class ToolsRadialMenuElement : MonoBehaviour
     public bool SetToolText()
     {
         if (_tools.Count == 0)
+            return false;
+
+        if (_playerTools.Contains(_tools[_currentTool]) == false)
             return false;
         
         _toolName.text = _toolNames.Find(x => x.Key == _tools[_currentTool]).Value;
