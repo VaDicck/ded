@@ -11,6 +11,7 @@ public class GameplayInstaller : MonoInstaller
     [SerializeField] private CountCultureStringView _countCultureStringViewPrefab;
     [SerializeField] private GameConfig _gameConfig;
     [SerializeField] private Transform _safePlayerTransform;
+    [SerializeField] private Chicken _chickenPrefab;
 
     public override void InstallBindings()
     {
@@ -56,6 +57,7 @@ public class GameplayInstaller : MonoInstaller
         
         Container.Bind<CraftTableService>().AsSingle().NonLazy();
         
+        Container.Bind<ChickenSpawner>().AsSingle().WithArguments(_safePlayerTransform.position).NonLazy();
         
         foreach (var product in _gameConfig.CraftingTable.Products)
         {

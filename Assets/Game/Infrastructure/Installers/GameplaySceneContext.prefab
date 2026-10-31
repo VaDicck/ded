@@ -87,6 +87,7 @@ MonoBehaviour:
   _countCultureStringViewPrefab: {fileID: 7930984237246999819, guid: b5bc8502a1ad8234c911d67d5a8987f5, type: 3}
   _gameConfig: {fileID: 11400000, guid: b1b1c9899fc8daa45b1d4cc1cc24f62f, type: 2}
   _safePlayerTransform: {fileID: 0}
+  _chickenPrefab: {fileID: 0}
 --- !u!114 &5583649073785047498
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 [CreateAssetMenu(fileName = "CultureExtraReward", menuName = "Configs/Quotas/Rewards/Culture")]

@@ -15,14 +15,14 @@ MonoBehaviour:
   <Main>k__BackingField:
     <Expected>k__BackingField:
     - <Key>k__BackingField: 0
-      <Value>k__BackingField: 5
+      <Value>k__BackingField: 10
     <Reward>k__BackingField:
       <Ingredients>k__BackingField:
       - <Key>k__BackingField: 0
-        <Value>k__BackingField: 15
+        <Value>k__BackingField: 3
       - <Key>k__BackingField: 2
-        <Value>k__BackingField: 10
-      _extraReward: {fileID: 11400000, guid: 320aeb07baf643c4290f6bd9cac11d21, type: 2}
+        <Value>k__BackingField: 2
+      _extraReward: {fileID: 0}
   <Sub1>k__BackingField:
     <Expected>k__BackingField: []
     <Reward>k__BackingField:
