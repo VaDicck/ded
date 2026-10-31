@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CraftingTableConfig
   <Products>k__BackingField:
   - {fileID: 11400000, guid: 51c36170d5113f54ca44bee1123afd98, type: 2}
+  - {fileID: 11400000, guid: 422ab46ccd5f7fa4dbc3d72168fb0b02, type: 2}
+  - {fileID: 11400000, guid: 103b6ab339e607f43a0938a42686d85b, type: 2}
+  - {fileID: 11400000, guid: b4ffe7b8e6a72cd45bb406eedc302d9e, type: 2}
+  - {fileID: 11400000, guid: ff24f05c3a9f47a48b1451bec5bf512b, type: 2}
