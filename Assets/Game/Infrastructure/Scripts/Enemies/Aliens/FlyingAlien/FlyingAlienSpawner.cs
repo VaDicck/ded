@@ -7,4 +7,9 @@ public class FlyingAlienSpawner : AlienSpawner<FlyingAlien>
     {
         _alienFactory = alienFactory;
     }
+
+    protected override int GetCountAliens()
+    {
+        return _alienService.CountFlyingAlienInWave;
+    }
 }

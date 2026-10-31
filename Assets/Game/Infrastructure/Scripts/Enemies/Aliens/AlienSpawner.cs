@@ -6,28 +6,20 @@ using Zenject;
 public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : AlienBase
 {
     [SerializeField] protected List<Ufo> _ufo;
-    [SerializeField] protected int _countAliens;
     [SerializeField] protected float _durationSpawn;
     
-    protected int _currentSpawn = 0;
-    protected int _spawnedCount = 0;
+    protected int _currentSpawn;
+    protected int _spawnedCount;
     protected Coroutine _spawnCoroutine;
-
-    private bool _canSpawn = false;
     
-    protected BedService _bedService;
-    protected DayCycleService _dayCycleService;
+    private bool _canSpawn;
+    
+    [Inject] protected BedService _bedService;
+    [Inject] protected AlienService _alienService;
     
     protected PlaceholderFactory<TAlien> _alienFactory;
 
     private int _countUfoReady;
-    
-    [Inject]
-    public void Init(BedService bedService, DayCycleService dayCycleService)
-    {
-        _bedService = bedService;
-        _dayCycleService = dayCycleService;
-    }
 
     private void Awake()
     {
@@ -36,11 +28,11 @@ public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : AlienB
             ufo.Arrived += UfoReadySpawn;
         }
         
-        _dayCycleService.NightStarted += OnNightStart;
-        _dayCycleService.NightEnded += () => _canSpawn = false;
+        _alienService.WaveStart += OnWaveStart;
+        _alienService.WaveOver += () => _canSpawn = false;
     }
 
-    private void OnNightStart()
+    private void OnWaveStart()
     {
         _canSpawn = false;
         _countUfoReady = 0;
@@ -64,7 +56,7 @@ public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : AlienB
     
     protected virtual IEnumerator SpawnRoutine()
     {
-        while (_spawnedCount < _countAliens)
+        while (_spawnedCount < GetCountAliens())
         {
             if (!CanSpawn())
                 break;
@@ -81,14 +73,11 @@ public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : AlienB
     protected virtual bool CanSpawn()
     {
         return _bedService.CanAttackBeds.CurrentValue
-               && _spawnedCount < _countAliens && _canSpawn;
+               && _spawnedCount < GetCountAliens() && _canSpawn;
     }
     
     protected virtual void SpawnAlien()
     {
-        if (_ufo.Count == 0)
-            return;
-        
         if (_currentSpawn >= _ufo.Count)
             _currentSpawn = 0;
         
@@ -108,6 +97,8 @@ public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : AlienB
             Spawn();
     }
     
+    protected abstract int GetCountAliens();
+    
     private void OnDestroy()
     {
         foreach (var ufo in _ufo)
@@ -115,6 +106,6 @@ public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : AlienB
             ufo.Arrived -= UfoReadySpawn;
         }
         
-        _dayCycleService.NightStarted -= OnNightStart;
+        _alienService.WaveStart -= OnWaveStart;    
     }
 }

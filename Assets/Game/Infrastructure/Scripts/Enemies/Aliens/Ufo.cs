@@ -16,7 +16,7 @@ public class Ufo : MonoBehaviour
 
     private void Awake()
     {
-        _alienService.AliensOver += Leave;
+        _alienService.WaveOver += Leave;
         _dayCycleService.DayStarted += Hide;
         
         Hide();
@@ -50,7 +50,7 @@ public class Ufo : MonoBehaviour
     
     private void OnDestroy()
     {
-        _alienService.AliensOver -= Leave;
+        _alienService.WaveOver -= Leave;
         _dayCycleService.DayStarted += Hide;
     }
 }
