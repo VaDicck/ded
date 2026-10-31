@@ -12,18 +12,22 @@ public class Ufo : MonoBehaviour
     [SerializeField] private float _delayStartAnimation = 2f;
     
     [Inject] private AlienService _alienService;
+    [Inject] private DayCycleService _dayCycleService;
 
     private void Awake()
     {
         _alienService.AliensOver += Leave;
+        _dayCycleService.DayStarted += Hide;
         
-        gameObject.SetActive(false);
+        Hide();
     }
 
     private void OnEnable()
     {
         StartCoroutine(ArriveCoroutine(_timeAnimation+_delayStartAnimation));
     }
+    
+    private void Hide() => gameObject.SetActive(false);
 
     private void Leave()
     {
@@ -41,11 +45,12 @@ public class Ufo : MonoBehaviour
     private IEnumerator LeaveCoroutine(float delay)
     {
         yield return new WaitForSeconds(delay);
-        gameObject.SetActive(false);
+        Hide();
     }
     
     private void OnDestroy()
     {
         _alienService.AliensOver -= Leave;
+        _dayCycleService.DayStarted += Hide;
     }
 }

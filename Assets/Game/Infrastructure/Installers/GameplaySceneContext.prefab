@@ -81,6 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameplayInstaller
   _fleeingAlienPrefab: {fileID: 5463526947494390661, guid: e7fa4b3749dd3964db82073afa7a134f, type: 3}
   _flyingAlienPrefab: {fileID: 246391356805927339, guid: 3fbf0c06fb6e9f7419ccaea2a58891d3, type: 3}
+  _alienBrokenPrefab: {fileID: 321332029543461483, guid: 5861cb4234e467149a220e5ed4a84cb5, type: 3}
   _mutatedChickenPrefab: {fileID: -7911512899527169979, guid: 83b17b8989da28c44a0b35882b9afa83, type: 3}
   _quotaStringViewPrefab: {fileID: 3931425453679032827, guid: 1022ae23ddf48a6488789e525f81f085, type: 3}
   _countCultureStringViewPrefab: {fileID: 7930984237246999819, guid: b5bc8502a1ad8234c911d67d5a8987f5, type: 3}

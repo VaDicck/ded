@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 public class AlienBroken : MonoBehaviour
 {
     public event Action Destroyed;
+    
+    public class Factory : PlaceholderFactory<AlienBroken> { }
 
     [SerializeField] private float _explosionForce = 950f;   
     [SerializeField] private float _explosionRadius = 3.2f;    
@@ -19,10 +22,14 @@ public class AlienBroken : MonoBehaviour
 
     [SerializeField] private float _timeLife = 7f;
 
-    [SerializeField] private Rigidbody[] _rigidbodies;   
+    [SerializeField] private Rigidbody[] _rigidbodies; 
+    
+    [Inject] private DayCycleService _dayCycleService;
 
     private void Start()
     {
+        _dayCycleService.DayStarted += OnDayStarted;
+        
         Vector3 explosionPos = transform.position + Vector3.up * _centerHeight;
 
         foreach (var rb in _rigidbodies)
@@ -35,8 +42,14 @@ public class AlienBroken : MonoBehaviour
         Destroy(gameObject, _timeLife);
     }
 
+    private void OnDayStarted()
+    {
+        Destroy(gameObject);
+    }
+
     private void OnDestroy()
     {
+        _dayCycleService.DayStarted -= OnDayStarted;
         Destroyed?.Invoke();
     }
 }

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : AlienBase
@@ -28,12 +27,8 @@ public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : AlienB
     {
         _bedService = bedService;
         _dayCycleService = dayCycleService;
-        OnInit();
     }
-    
-    //for fabrics
-    protected virtual void OnInit() { }
-    
+
     private void Awake()
     {
         foreach (var ufo in _ufo)

@@ -17,7 +17,6 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     
     [SerializeField] private GameObject _sfxSplashAlien;
     
-    protected Transform _bed; 
     protected Transform _spawnPoint;
     
     private AlienService _alienService;
@@ -25,11 +24,14 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     private bool _isDead;
 
     protected bool _isOnGarden; //TODO rewrite
+    
+    private PlaceholderFactory<AlienBroken> _brokenFactory;
 
     [Inject]
-    private void Init(AlienService alienService)
+    private void Init(AlienService alienService, AlienBroken.Factory alienFactory)
     {
         _alienService = alienService;
+        _brokenFactory = alienFactory;
     }
     
     private void Awake()
@@ -68,10 +70,32 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
         {
             GameObject effect = Instantiate(_sfxSplashAlien, spawnPoint, Quaternion.identity);
             effect.transform.SetParent(transform);
+            Destroy(effect, 2f);
         }
     }
+
+    protected void Die()
+    {
+        SpawnBroken();
+
+        OnDie();
+        
+        Destroy(gameObject);
+    }
+
+    protected virtual void OnDie() { }
+
+    private void SpawnBroken()
+    {
+        _brokenFactory.Create();
+        
+        AlienBroken broken = _brokenFactory.Create();
     
-    protected abstract void Die();
+        broken.transform.SetPositionAndRotation(
+            transform.position, 
+            transform.rotation
+        );
+    }
 
     private void OnDestroy()
     {
