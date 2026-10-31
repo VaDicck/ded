@@ -67,6 +67,7 @@ public abstract class MutatedCulture<TFactory, TMutated> : Culture
     {
         _mutatedFood = _factory.Create();
         
+        _mutatedFood.SetCulture(this);
         _mutatedFood.PlaceOnBed(_bedTransform);
     }
 }
