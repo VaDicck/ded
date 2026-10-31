@@ -47,7 +47,7 @@ public class CraftTableCraftView : MonoBehaviour
         foreach (var ingredientPair in product.Ingredients)
         {
             var ingredientView = Instantiate(_ingredientPrefab, _ingredientsHolder);
-            ingredientView.Initialize(ingredientPair.Key.Sprite, ingredientPair.Value);
+            ingredientView.Initialize(ingredientPair.Key.Sprite, ingredientPair.Key.Name, ingredientPair.Value);
             _ingredients.Add(ingredientView);
         }
         

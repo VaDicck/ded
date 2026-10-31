@@ -3,4 +3,6 @@
     Metal,
     Scrap,
     Wood,
+    Tape,
+    BioTrash,
 }

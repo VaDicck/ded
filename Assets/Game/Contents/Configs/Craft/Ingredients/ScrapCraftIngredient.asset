@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ResourceCraftIngredient
   <Sprite>k__BackingField: {fileID: 502871822, guid: abfbc2526aeb590468d9a2f6453aef74, type: 3}
   <Name>k__BackingField: "\u0417\u0430\u043F\u0447\u0430\u0441\u0442\u0438"
-  <Item>k__BackingField: 0
+  <Item>k__BackingField: 1
