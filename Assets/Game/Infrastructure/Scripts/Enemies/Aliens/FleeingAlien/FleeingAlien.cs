@@ -37,10 +37,10 @@ public class FleeingAlien : Alien<IFleeingAlienState>
     private IEnumerator JumpOverNavMeshLink()
     {
         //TODO rewrite
-        if(_isOnGarden)
-            _isOnGarden = false;
+        if(_isOnGarden.Value)
+            _isOnGarden.Value = false;
         else
-            _isOnGarden = true;
+            _isOnGarden.Value = true;
 
             _isJumping = true;
         _navMeshAgent.isStopped = true;

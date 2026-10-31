@@ -81,13 +81,16 @@ public class MutatedChicken : ChickenBase
     {
         if (other.gameObject.layer == _alienLayer)
         {
-            if (!other.gameObject.TryGetComponent<FleeingAlien>(out var alien))
+            if (!other.gameObject.TryGetComponent<AlienBase>(out var alien))
                 return;
 
-            _stateMachine.SetState<ChaseFleeingAlienState>();
-            _aliens.Add(alien);
-            alien.Death += RemoveAlien;
-            AlienDetected?.Invoke();
+            if (alien.Type == AlienType.Fleeing)
+            {
+                _stateMachine.SetState<ChaseFleeingAlienState>();
+                _aliens.Add(alien);
+                alien.Death += RemoveAlien;
+                AlienDetected?.Invoke();
+            }
         }
     }
 
@@ -95,10 +98,13 @@ public class MutatedChicken : ChickenBase
     {
         if (other.gameObject.layer == _alienLayer)
         {
-            if (!other.gameObject.TryGetComponent<FleeingAlien>(out var alien))
+            if (!other.gameObject.TryGetComponent<AlienBase>(out var alien))
                 return;
 
-            RemoveAlien(alien);
+            if (alien.Type == AlienType.Fleeing)
+            {
+                RemoveAlien(alien);
+            }
         }
     }
 

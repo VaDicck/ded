@@ -59,7 +59,7 @@ public class FlyingAlien : Alien<IFlyingAlienState>
         
         _stateMachine.GetState<FlyToPointFlyingAlienState>().Performed += () =>
         {
-            _isOnGarden = true;//TODO REWRITE
+            _isOnGarden.Value = true;//TODO REWRITE
             _animator.SetTrigger("Fly");
             _stateMachine.SetState<WanderFlyingAlienState>();
         };

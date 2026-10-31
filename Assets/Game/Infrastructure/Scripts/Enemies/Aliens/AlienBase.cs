@@ -2,12 +2,13 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
+using R3;
 
 public abstract class AlienBase :  MonoBehaviour, IDamageable
 {
     public event Action<AlienBase> Death;
     
-    public bool IsOnGarden => _isOnGarden;
+    public ReadOnlyReactiveProperty<bool> IsOnGarden => _isOnGarden;
 
     public abstract AlienType Type { get; }
 
@@ -23,7 +24,7 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     
     private bool _isDead;
 
-    protected bool _isOnGarden; //TODO rewrite
+    protected ReactiveProperty<bool> _isOnGarden = new ReactiveProperty<bool>(); //TODO rewrite
     
     private PlaceholderFactory<AlienBroken> _brokenFactory;
 
