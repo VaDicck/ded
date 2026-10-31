@@ -129,7 +129,7 @@ public class FleeingAlien : Alien<IFleeingAlienState>
             += () =>
             {
                 _animator.SetTrigger("Run");
-                Die();
+                Destroy(gameObject);
             };
 
     }
