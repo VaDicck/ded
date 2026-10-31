@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: c3de1593458109c478b0a16cc1c84441, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Loco_Emmisive
     second: {fileID: 2100000, guid: 7a7c18bcf8e81f144b64b13b705e2289, type: 2}
   - first:
