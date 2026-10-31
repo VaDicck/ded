@@ -64,6 +64,8 @@ public class PlayerWeapons : MonoBehaviour
         _inputController.ZoomStarted += StartZoom;
         _inputController.ZoomFinished += StopZoom;
         _inputController.ReloadPressed += Reload;
+        _inputController.SprintStarted += OnSprintStarted;
+        _inputController.SprintFinished += OnSprintFinished;
 
         _playerTools.ToolChanged += OnToolChanged;
     }
@@ -121,6 +123,9 @@ public class PlayerWeapons : MonoBehaviour
         
         _currentWeapon = _weapon;
         _currentWeapon.Equip();
+        
+        if (_inputController.SprintPressed)
+            _currentWeapon.SetSprintSpread(true);
     }
     
     private void UnequipWeapon()
@@ -128,6 +133,8 @@ public class PlayerWeapons : MonoBehaviour
         _vfxFire.SetActive(false); //TODO govno2.0
         
         StopZoom();
+        
+        _currentWeapon?.SetSprintSpread(false);
         
         _currentWeapon?.Unequip();
         _currentWeapon = null;
@@ -160,18 +167,42 @@ public class PlayerWeapons : MonoBehaviour
     {
         if (_currentWeapon == null) return;
         
+        _currentWeapon.Zoom();
         _isZooming.Value = true;
         _currentFOV = _zoomFOV;
     }
     
     private void StopZoom()
     {
+        _currentWeapon.UnZoom();
         _isZooming.Value = false;
         _currentFOV = _normalFOV;
+    }
+    
+    private void OnSprintStarted()
+    {
+        _currentWeapon?.SetSprintSpread(true);
+    }
+
+    private void OnSprintFinished()
+    {
+        _currentWeapon?.SetSprintSpread(false);
     }
 
     private void Reload()
     {
         _currentWeapon?.Reload();
+    }
+
+    private void OnDestroy()
+    {
+        _inputController.ShootPressed -= Shot;
+        _inputController.ZoomStarted -= StartZoom;
+        _inputController.ZoomFinished -= StopZoom;
+        _inputController.ReloadPressed -= Reload;
+        _inputController.SprintStarted -= OnSprintStarted;
+        _inputController.SprintFinished -= OnSprintFinished;
+
+        _playerTools.ToolChanged -= OnToolChanged;
     }
 }

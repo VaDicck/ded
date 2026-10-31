@@ -11,15 +11,37 @@ public class Shotgun : Weapon
     [SerializeField] private float _effectiveRange = 15f;
     [SerializeField] private GameObject _shotgun;
     
+    [Header("Spread Modifiers")]
+    [SerializeField] private float _sprintSpreadMultiplier = 1.6f;
+    [SerializeField] private float _zoomSpreadMultiplier = 0.7f;
+    
     [Header("Reload")]
     [SerializeField] private float _reloadTimeOnePistol = 4f;
 
     private int _damageLayer;
     private int _enemyLayer;
+    
+    private float _zoomMultiplier = 1f;
+    private float _sprintMultiplier = 1f;
+    
+    public override void Zoom()
+    {
+        _zoomMultiplier = _zoomSpreadMultiplier;
+    }
+
+    public override void UnZoom()
+    {
+        _zoomMultiplier = 1f;
+    }
 
     protected override void Hide()
     {
         _shotgun.SetActive(false);
+    }
+    
+    public override void SetSprintSpread(bool isSprinting)
+    {
+        _sprintMultiplier = isSprinting ? _sprintSpreadMultiplier : 1f;
     }
 
     protected override void Show()
@@ -37,11 +59,13 @@ public class Shotgun : Weapon
     {
         List<RaycastHit> hits = new List<RaycastHit>();
         
+        float effectiveSpread = _spreadAngle * _zoomMultiplier * _sprintMultiplier;
+        
         for (int i = 0; i < _pelletCount; i++)
         {
             Vector3 direction;
             
-            direction = GetCircularSpreadDirection(transform.forward, _spreadAngle);
+            direction = GetCircularSpreadDirection(transform.forward, effectiveSpread);
             
             Ray ray = new Ray(transform.position, direction);
             

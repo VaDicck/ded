@@ -17,6 +17,8 @@ public class InputController
     public event Action RadialMenuWheelDown;
     public event Action RadialMenuWheelUp;
     public event Action OpenInventory;
+    public event Action SprintStarted;
+    public event Action SprintFinished;
     
     public ReadOnlyReactiveProperty<float> XSensitivity => _xSensitivity;
     public ReadOnlyReactiveProperty<float> YSensitivity => _ySensitivity;
@@ -94,6 +96,8 @@ public class InputController
         _playerInputActions.Player.Interact.canceled += _ => InteractStopped?.Invoke(); 
         _playerInputActions.Player.Escape.performed += _ => PausePressed?.Invoke();
         _playerInputActions.Player.OpenInventory.performed += _ => OpenInventory?.Invoke();
+        _playerInputActions.Player.Sprint.started += _ => SprintStarted?.Invoke();
+        _playerInputActions.Player.Sprint.canceled += _ => SprintFinished?.Invoke();
         
         _playerInputActions.UI.Back.performed += _ => BackPressed?.Invoke();
         

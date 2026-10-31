@@ -98,6 +98,11 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
+    public abstract void Zoom();
+    public abstract void UnZoom();
+
+    public abstract void SetSprintSpread(bool isSprinting);
+
     protected abstract void Hide();
     
     protected abstract void Show();
