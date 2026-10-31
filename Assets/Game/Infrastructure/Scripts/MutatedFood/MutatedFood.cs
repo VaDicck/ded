@@ -29,10 +29,4 @@ public class MutatedFood : MonoBehaviour
     {
         _vfxSad.SetActive(!value);
     }
-
-    [ContextMenu("Check")]
-    private void CheckPoured()
-    {
-        this.LogError(_culture.IsPoured.CurrentValue);
-    }
 }

@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f123b06ee615e34db45bf165b30e4a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ufo
+  _animator: {fileID: 2779278065345315046}
+  _timeAnimation: 10
+  _delayStartAnimation: 2
 --- !u!1001 &6018029504555706462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55,15 +58,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5629d7e6d10636040bfff9c7ef422eec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.71999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5629d7e6d10636040bfff9c7ef422eec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.54402
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5629d7e6d10636040bfff9c7ef422eec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.42212
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5629d7e6d10636040bfff9c7ef422eec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -100,10 +103,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5629d7e6d10636040bfff9c7ef422eec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2779278065345315046}
   m_SourcePrefab: {fileID: 100100000, guid: 5629d7e6d10636040bfff9c7ef422eec, type: 3}
 --- !u!4 &6057038645307740085 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5629d7e6d10636040bfff9c7ef422eec, type: 3}
   m_PrefabInstance: {fileID: 6018029504555706462}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6864959327863690511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5629d7e6d10636040bfff9c7ef422eec, type: 3}
+  m_PrefabInstance: {fileID: 6018029504555706462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2779278065345315046
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6864959327863690511}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b9335dce07104e24aacf4a21e81676b4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

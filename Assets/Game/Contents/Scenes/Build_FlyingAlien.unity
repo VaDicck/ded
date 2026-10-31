@@ -1050,6 +1050,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9348c7576d8ac43448cc34805a9bc6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bed
+--- !u!1001 &322525296
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1668552756}
+    m_Modifications:
+    - target: {fileID: 2404915023065208099, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b9335dce07104e24aacf4a21e81676b4, type: 2}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -31.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.585
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174241674120578303, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_Name
+      value: Ufo_3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+--- !u!4 &322525297 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+  m_PrefabInstance: {fileID: 322525296}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &322525298 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5235477879965418418, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+  m_PrefabInstance: {fileID: 322525296}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f123b06ee615e34db45bf165b30e4a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ufo
 --- !u!1001 &334550135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2624,7 +2701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &824705480
 Transform:
   m_ObjectHideFlags: 0
@@ -2656,11 +2733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17d82a18f1846c584893e8e13e93ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlienSpawner
-  _spawnPoints:
-  - {fileID: 1182148868}
-  - {fileID: 767710627}
-  - {fileID: 2101838825}
-  - {fileID: 1106250023}
+  _ufo: []
   _countAliens: 8
   _durationSpawn: 0
 --- !u!1 &832585958
@@ -6621,6 +6694,83 @@ Light:
   m_LightUnit: 2
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1001 &1595420267
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1668552756}
+    m_Modifications:
+    - target: {fileID: 2404915023065208099, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b9335dce07104e24aacf4a21e81676b4, type: 2}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -39.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.099
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 24.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174241674120578303, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_Name
+      value: Ufo_2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+--- !u!4 &1595420268 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+  m_PrefabInstance: {fileID: 1595420267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1595420269 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5235477879965418418, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+  m_PrefabInstance: {fileID: 1595420267}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f123b06ee615e34db45bf165b30e4a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ufo
 --- !u!1 &1597612918
 GameObject:
   m_ObjectHideFlags: 0
@@ -6805,6 +6955,61 @@ MonoBehaviour:
   m_Bidirectional: 1
   m_AutoUpdatePosition: 0
   m_Area: 0
+--- !u!1 &1668552755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1668552756}
+  - component: {fileID: 1668552757}
+  m_Layer: 0
+  m_Name: SpawnsAlien
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1668552756
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668552755}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1882564297}
+  - {fileID: 1688722879}
+  - {fileID: 1595420268}
+  - {fileID: 322525297}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1668552757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668552755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17d82a18f1846c584893e8e13e93ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FleeingAlienSpawner
+  _ufo:
+  - {fileID: 1882564298}
+  - {fileID: 1688722880}
+  - {fileID: 1595420269}
+  - {fileID: 322525298}
+  _countAliens: 8
+  _durationSpawn: 0
 --- !u!1001 &1669492274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7146,7 +7351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1681877428
 Transform:
   m_ObjectHideFlags: 0
@@ -7174,8 +7379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e6fa06b98c4d99a06c8bfc99cde7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlyingAlienSpawner
-  _spawnPoints:
-  - {fileID: 1333055743}
+  _ufo: []
   _countAliens: 3
   _durationSpawn: 1
 --- !u!1 &1688568837
@@ -7418,6 +7622,83 @@ Light:
   m_LightUnit: 0
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1001 &1688722878
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1668552756}
+    m_Modifications:
+    - target: {fileID: 2404915023065208099, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b9335dce07104e24aacf4a21e81676b4, type: 2}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.137
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.218
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -18.551
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174241674120578303, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_Name
+      value: Ufo_1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+--- !u!4 &1688722879 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+  m_PrefabInstance: {fileID: 1688722878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1688722880 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5235477879965418418, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+  m_PrefabInstance: {fileID: 1688722878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f123b06ee615e34db45bf165b30e4a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ufo
 --- !u!1 &1719198471
 GameObject:
   m_ObjectHideFlags: 0
@@ -7857,6 +8138,84 @@ MonoBehaviour:
   m_Bidirectional: 1
   m_AutoUpdatePosition: 0
   m_Area: 0
+--- !u!1001 &1882564296
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1668552756}
+    m_Modifications:
+    - target: {fileID: 2404915023065208099, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b9335dce07104e24aacf4a21e81676b4, type: 2}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174241674120578303, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+      propertyPath: m_Name
+      value: Ufo
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2404915023065208099, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+--- !u!4 &1882564297 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4648202329613924047, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+  m_PrefabInstance: {fileID: 1882564296}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1882564298 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5235477879965418418, guid: 0d35c71cd5867464496b7edabc5385dd, type: 3}
+  m_PrefabInstance: {fileID: 1882564296}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f123b06ee615e34db45bf165b30e4a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ufo
 --- !u!1 &1886440047
 GameObject:
   m_ObjectHideFlags: 0
@@ -9596,3 +9955,4 @@ SceneRoots:
   - {fileID: 1625446217}
   - {fileID: 7636800238835073388}
   - {fileID: 39869066}
+  - {fileID: 1668552756}

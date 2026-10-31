@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
 
 public class AlienService
 {
+    public event Action AliensOver;
+    
     public bool AliensEmpty => _aliens.Count == 0;
     public HashSet<AlienBase> Aliens => _aliens;
 
@@ -17,5 +20,8 @@ public class AlienService
     {
         alien.Death -= RemoveAlien;
         _aliens.Remove(alien);
+        
+        if(_aliens.Count == 0)
+            AliensOver?.Invoke();
     }
 }

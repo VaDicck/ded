@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : AlienBase
 {
-    [SerializeField] protected List<Transform> _spawnPoints;
+    [SerializeField] protected List<Ufo> _ufo;
     [SerializeField] protected int _countAliens;
     [SerializeField] protected float _durationSpawn;
     
@@ -19,6 +20,8 @@ public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : AlienB
     protected DayCycleService _dayCycleService;
     
     protected PlaceholderFactory<TAlien> _alienFactory;
+
+    private int _countUfoReady;
     
     [Inject]
     public void Init(BedService bedService, DayCycleService dayCycleService)
@@ -33,8 +36,24 @@ public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : AlienB
     
     private void Awake()
     {
-        _dayCycleService.NightStarted += Spawn;
+        foreach (var ufo in _ufo)
+        {
+            ufo.Arrived += UfoReadySpawn;
+        }
+        
+        _dayCycleService.NightStarted += OnNightStart;
         _dayCycleService.NightEnded += () => _canSpawn = false;
+    }
+
+    private void OnNightStart()
+    {
+        _canSpawn = false;
+        _countUfoReady = 0;
+        
+        foreach (var ufo in _ufo)
+        {
+            ufo.gameObject.SetActive(true);
+        }
     }
     
     private void Spawn()
@@ -72,22 +91,35 @@ public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : AlienB
     
     protected virtual void SpawnAlien()
     {
-        if (_spawnPoints == null || _spawnPoints.Count == 0)
+        if (_ufo.Count == 0)
             return;
         
-        if (_currentSpawn >= _spawnPoints.Count)
+        if (_currentSpawn >= _ufo.Count)
             _currentSpawn = 0;
         
         TAlien alien = _alienFactory.Create();
-        Transform spawnPoint = _spawnPoints[_currentSpawn];
+        Transform spawnPoint = _ufo[_currentSpawn].transform;
         
         alien.SetSpawnPoint(spawnPoint);
         
         _currentSpawn++;
     }
+
+    private void UfoReadySpawn()
+    {
+        _countUfoReady++;
+
+        if (_countUfoReady == _ufo.Count)
+            Spawn();
+    }
     
     private void OnDestroy()
     {
-        _dayCycleService.NightStarted -= Spawn;
+        foreach (var ufo in _ufo)
+        {
+            ufo.Arrived -= UfoReadySpawn;
+        }
+        
+        _dayCycleService.NightStarted -= OnNightStart;
     }
 }
