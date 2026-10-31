@@ -40,7 +40,7 @@ public class CraftTableElementView : MonoBehaviour
         foreach (var pair in _craftProduct.Ingredients)
         {
             var ingredient = Instantiate(_ingredientPrefab, _ingredientsHolder);
-            ingredient.Initialize(pair.Key.Sprite, pair.Value);
+            ingredient.Initialize(pair.Key.Sprite, pair.Key.Name, pair.Value);
             _ingredients.Add(ingredient);
         }
     }

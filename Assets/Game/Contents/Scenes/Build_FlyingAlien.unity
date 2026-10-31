@@ -9342,6 +9342,10 @@ PrefabInstance:
       propertyPath: _playerMovement
       value: 
       objectReference: {fileID: 1029258962}
+    - target: {fileID: 1175919775776510661, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
+      propertyPath: m_TargetCamera
+      value: 
+      objectReference: {fileID: 257215193}
     - target: {fileID: 2635109819847704802, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: _playerInteractions
       value: 
@@ -9474,6 +9478,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9003505678338310698, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
+      propertyPath: m_TargetCamera
+      value: 
+      objectReference: {fileID: 257215193}
     - target: {fileID: 9207782228077085778, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

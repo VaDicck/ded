@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86f846e0e5b44cd1a4c5431380a23e90, type: 3}
+  m_Script: {fileID: 11500000, guid: 0599e956988d4a989edfeca5ebe44379, type: 3}
   m_Name: TomatoCraftIngredient
-  m_EditorClassIdentifier: Assembly-CSharp::ResourceCraftIngredient
+  m_EditorClassIdentifier: Assembly-CSharp::CultureCraftIngredient
   <Sprite>k__BackingField: {fileID: 21300000, guid: 7533ce482aeeb414c8782ec2e3931ff0, type: 3}
-  <Name>k__BackingField: "\u041F\u043E\u043C\u0438\u0434\u043E\u0440"
-  <Item>k__BackingField: 0
+  <Name>k__BackingField: "\u0422\u043E\u043C\u0430\u0442"
+  <Item>k__BackingField: 2

@@ -16,7 +16,7 @@ MonoBehaviour:
   <Name>k__BackingField: "\u0422\u043E\u043C\u0430\u0442\u043D\u0430\u044F \u0433\u0440\u0430\u043D\u0430\u0442\u0430"
   <CraftAmount>k__BackingField: 1
   <Ingredients>k__BackingField:
-  - <Key>k__BackingField: {fileID: 11400000, guid: a69e88eb9a7f4f14e9a968b666048486, type: 2}
+  - <Key>k__BackingField: {fileID: 11400000, guid: 9fa36249c3bd7724f85dfcfe6205b977, type: 2}
     <Value>k__BackingField: 1
   - <Key>k__BackingField: {fileID: 11400000, guid: 6e6fed7e07bfe104f9922597d5288d19, type: 2}
     <Value>k__BackingField: 5
