@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using R3;
 
 public class ChaseFleeingAlienState : IChickenState
 {
@@ -55,6 +56,16 @@ public class ChaseFleeingAlienState : IChickenState
             return;
         }
 
+        if (_target != null && !_target.IsOnGarden.CurrentValue)
+        {
+            ChooseClosestTarget();
+            if (_target == null)
+            {
+                Performed?.Invoke();   
+                return;
+            }
+        }
+        
         if (!_chicken.Aliens.Contains(_target))
         {
             ChooseClosestTarget();
@@ -131,7 +142,7 @@ public class ChaseFleeingAlienState : IChickenState
             if (alien != null)
             {
                 float dist = Vector3.Distance(_chicken.transform.position, alien.transform.position);
-                if (dist < minDistance && alien.IsOnGarden)
+                if (dist < minDistance && alien.IsOnGarden.CurrentValue)
                 {
                     minDistance = dist;
                     _target = alien;
@@ -170,7 +181,7 @@ public class ChaseFleeingAlienState : IChickenState
         foreach (var alien in _chicken.Aliens)
         {
             if (alien != null &&
-                alien.IsOnGarden &&
+                alien.IsOnGarden.CurrentValue &&
                 Vector3.Distance(chickenPos, alien.transform.position) <= _jumpAoERadius)
             {
                 count++;
@@ -195,7 +206,7 @@ public class ChaseFleeingAlienState : IChickenState
                 foreach (var alien in _chicken.Aliens)
                 {
                     if (alien != null &&
-                        alien.IsOnGarden &&
+                        alien.IsOnGarden.CurrentValue &&
                         Vector3.Distance(chickenPos, alien.transform.position) <= _jumpAoERadius)
                     {
                         alien?.TakeDamage(_attackJumpDamage, Vector3.back);

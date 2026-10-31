@@ -5,6 +5,7 @@ public class GameplayInstaller : MonoInstaller
 {
     [SerializeField] private FleeingAlien _fleeingAlienPrefab;
     [SerializeField] private FlyingAlien _flyingAlienPrefab;
+    [SerializeField] private AlienBroken _alienBrokenPrefab;
     [SerializeField] private MutatedChicken _mutatedChickenPrefab;
     [SerializeField] private QuotaStringView _quotaStringViewPrefab;
     [SerializeField] private CountCultureStringView _countCultureStringViewPrefab;
@@ -22,6 +23,10 @@ public class GameplayInstaller : MonoInstaller
         Container.BindFactory<FlyingAlien, FlyingAlien.Factory>()
             .FromComponentInNewPrefab(_flyingAlienPrefab.gameObject)
             .UnderTransformGroup("Enemies");
+        
+        Container.BindFactory<AlienBroken, AlienBroken.Factory>()
+            .FromComponentInNewPrefab(_alienBrokenPrefab.gameObject)
+            .UnderTransformGroup("AlienBroken");
         
         Container.BindFactory<QuotaStringView, QuotaStringView.Factory>()
             .FromComponentInNewPrefab(_quotaStringViewPrefab.gameObject);

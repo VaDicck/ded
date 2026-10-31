@@ -4,23 +4,34 @@ using Zenject;
 
 public class SleepingBed : MonoBehaviour, IInteractable
 {
-    public bool IsInteractable => !_dayCycleService.IsDay && _alienService.AliensEmpty;
+    public bool IsInteractable => !_dayCycleService.IsDay && _canStartDay;
     public bool IsUsable => false;
     
-    private DayCycleService _dayCycleService;
-    private AlienService _alienService;
-        
+    [Inject] private DayCycleService _dayCycleService;
+    [Inject] private AlienService _alienService;
+
+    private bool _canStartDay;
+    
     public UniTask Interact()
     {
         _dayCycleService.StartDay();
+        _canStartDay = false;
         
         return UniTask.CompletedTask;
     }
 
-    [Inject]
-    private void Init(DayCycleService dayCycleService, AlienService alienService)
+    private void Awake()
     {
-        _dayCycleService = dayCycleService;
-        _alienService = alienService;
+        _alienService.AliensOver += OnAliensOver;
+    }
+
+    private void OnAliensOver()
+    {
+        _canStartDay = true;
+    }
+
+    private void OnDestroy()
+    {
+        _alienService.AliensOver -= OnAliensOver;
     }
 }

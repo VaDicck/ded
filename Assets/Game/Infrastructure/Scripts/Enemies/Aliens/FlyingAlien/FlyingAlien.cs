@@ -10,7 +10,6 @@ public class FlyingAlien : Alien<IFlyingAlienState>
     
     public override AlienType Type => AlienType.Flying;
 
-    [SerializeField] private GameObject _brokenPartsPrefab;
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private Transform _projectileSpawnPoint;
     [SerializeField] private float _fireRate = 3f;
@@ -60,7 +59,7 @@ public class FlyingAlien : Alien<IFlyingAlienState>
         
         _stateMachine.GetState<FlyToPointFlyingAlienState>().Performed += () =>
         {
-            _isOnGarden = true;//TODO REWRITE
+            _isOnGarden.Value = true;//TODO REWRITE
             _animator.SetTrigger("Fly");
             _stateMachine.SetState<WanderFlyingAlienState>();
         };
@@ -127,12 +126,5 @@ public class FlyingAlien : Alien<IFlyingAlienState>
         _stateMachine.SetState<FlyToSpawnFlyingAlienState>();
         
         _flyToSpawn = true;
-    }
-
-    protected override void Die()
-    {
-        Instantiate(_brokenPartsPrefab, _projectileSpawnPoint.position, transform.rotation);
-
-        Destroy(gameObject);
     }
 }
