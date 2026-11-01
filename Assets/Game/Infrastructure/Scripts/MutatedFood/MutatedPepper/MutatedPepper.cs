@@ -155,7 +155,7 @@ public class MutatedPepper : MutatedFood
         Vector3 spawnPos = _projectileSpawnPoint.position;
         Vector3 direction = (_currentTarget.transform.position - spawnPos).normalized;
 
-        Quaternion rotation = Quaternion.LookRotation(direction);
+        Quaternion rotation = Quaternion.LookRotation(direction) * Quaternion.Euler(0f, -90f, 0f);
 
         GameObject projectileGO = Instantiate(_projectilePrefab, spawnPos, rotation);
         projectileGO.GetComponent<Projectile>().Launch(direction, _projectileSpeed, _damageBullet);
