@@ -3,11 +3,10 @@ using Zenject;
 
 public class AudioInstaller : MonoInstaller
 {
-    [SerializeField] private AudioConfig _audioConfig;
-
+    [SerializeField] private AudioService _audioServicePrefab;
+    
     public override void InstallBindings()
     {
-        Container.BindInstance(_audioConfig).AsSingle();
-        Container.BindInterfacesAndSelfTo<AudioService>().AsSingle().NonLazy();
+        Container.Bind<AudioService>().FromComponentInNewPrefab(_audioServicePrefab).AsSingle().NonLazy();
     }
 }

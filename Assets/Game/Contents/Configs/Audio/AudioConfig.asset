@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf33edfe6d94acf44ac15e7fa78ba561, type: 3}
-  m_Name: MainAudioConfig
+  m_Name: AudioConfig
   m_EditorClassIdentifier: Assembly-CSharp::AudioConfig
-  Music:
-  - <Key>k__BackingField: TEST
-    <Value>k__BackingField: {fileID: 8300000, guid: 2460cb4aa5b369542bc816e36a655799, type: 3}
-  Sfx:
-  - <Key>k__BackingField: ShotShotgun
-    <Value>k__BackingField: {fileID: 8300000, guid: 833287f98db708b46a28dd14c905b032, type: 3}
+  <DefaultMasterVolume>k__BackingField: 1
+  <DefaultMusicVolume>k__BackingField: 1
+  <DefaultSfxVolume>k__BackingField: 1
+  <MasterVolumeName>k__BackingField: MasterVolume
+  <MusicVolumeName>k__BackingField: MusicVolume
+  <SfxVolumeName>k__BackingField: SfxVolume

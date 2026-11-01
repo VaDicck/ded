@@ -13,4 +13,5 @@ public class GameConfig : ScriptableObject
     [field: SerializeField] public List<SerializedPair<ToolType, string>> ToolNames { get; private set; } = new();
     [field: SerializeField] public CulturesConfig Cultures { get; private set; } = new();
     [field: SerializeField] public ResourcesConfig Resources { get; private set; } = new();
+    [field: SerializeField] public AudioConfig AudioConfig { get; private set; } = new();
 }

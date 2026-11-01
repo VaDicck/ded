@@ -1,57 +1,70 @@
 using UnityEngine;
-using System.Collections.Generic;
+using UnityEngine.Audio;
 using Zenject;
 
-public class AudioService : IInitializable
+public class AudioService : MonoBehaviour
 {
-    private readonly AudioConfig _config;
-    private readonly Dictionary<string, AudioClip> _sfxMap = new();
-    private readonly Dictionary<string, AudioClip> _musicMap = new();
-
-    private AudioSource _musicSource;
-    private AudioSource _sfxSource;
-
-    public AudioService(AudioConfig config)
+    public float MusicVolume
     {
-        _config = config;
-    }
-
-    public void Initialize()
-    {
-        var audioGo = new GameObject("AudioService");
-        Object.DontDestroyOnLoad(audioGo);
-
-        _musicSource = audioGo.AddComponent<AudioSource>();
-        _musicSource.loop = true;
-
-        _sfxSource = audioGo.AddComponent<AudioSource>();
-
-        foreach (var entry in _config.Sfx)
+        get
         {
-            if (!string.IsNullOrEmpty(entry.Key))
-                _sfxMap[entry.Key] = entry.Value;
-        }
+            _audioMixer.GetFloat(_config.MusicVolumeName, out var volume);
 
-        foreach (var entry in _config.Music)
-        {
-            if (!string.IsNullOrEmpty(entry.Key))
-                _musicMap[entry.Key] = entry.Value;
+            return Mathf.Pow(10, volume / 20);
         }
     }
 
-    public void PlaySFX(string key)
+    public float SfxVolume
     {
-        if (_sfxMap.TryGetValue(key, out var clip))
-            _sfxSource.PlayOneShot(clip);
+        get
+        {
+            _audioMixer.GetFloat(_config.SfxVolumeName, out var volume);
+
+            return Mathf.Pow(10, volume / 20);
+        }
+    }
+    
+    private AudioConfig _config;
+
+    [SerializeField] private AudioSource _musicSource;
+    [SerializeField] private AudioSource _sfxSource;
+    [SerializeField] private AudioMixer _audioMixer;
+    
+    [Inject]
+    private void Init(GameConfig gameConfig) 
+    {
+        _config = gameConfig.AudioConfig;
     }
 
-    public void PlayMusic(string key)
+    private void Start()
     {
-        if (!_musicMap.TryGetValue(key, out var clip)) return;
-        
+        _audioMixer.SetFloat(_config.MasterVolumeName, _config.DefaultMasterVolume);
+        _audioMixer.SetFloat(_config.MusicVolumeName, _config.DefaultMusicVolume);
+        _audioMixer.SetFloat(_config.SfxVolumeName, _config.DefaultSfxVolume);
+    }
+    
+    public void PlayMusic(AudioClip clip, float volume = 1)
+    {
         _musicSource.clip = clip;
+        _musicSource.volume = volume;
+        _musicSource.loop = true;
         _musicSource.Play();
     }
 
-    public void StopMusic() => _musicSource.Stop();
+    public void PlaySfx(AudioClip clip, float volume = 1)
+    {
+        _sfxSource.clip = clip;
+        _sfxSource.volume = volume;
+        _sfxSource.Play();
+    }
+    
+    public void SetVolume(string group, float volume)
+    {
+        var value = Mathf.Log10(volume) * 20;
+
+        if (volume == 0)
+            value = -80;
+
+        _audioMixer.SetFloat(group, value);
+    }
 }
