@@ -39,7 +39,9 @@ public class PlayerCultures
         }
                 
         CultureCountChanged?.Invoke(cultureType, _foodCollection[cultureType]);
-        CultureAdded?.Invoke(cultureType, _foodCollection[cultureType]);
+        
+        if (culture.Count - extra > 0)
+            CultureAdded?.Invoke(cultureType, culture.Count - extra);
         
         this.Log($"Added {culture.Count - extra} of type: {cultureType}");
         

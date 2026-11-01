@@ -19,7 +19,7 @@ public class PlayerResources
         }
         
         ResourceChanged?.Invoke(ingredient, _ingredients[ingredient]);
-        ResourceAdded?.Invoke(ingredient, _ingredients[ingredient]);
+        ResourceAdded?.Invoke(ingredient, amount);
 
         this.Log($"Ingredient {ingredient} has been added in the amount of {amount}");
     }
