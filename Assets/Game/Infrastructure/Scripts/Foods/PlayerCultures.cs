@@ -5,6 +5,7 @@ public class PlayerCultures
 {
     public event Action<CultureType> CultureEmpty;
     public event Action<CultureType, int> CultureCountChanged;
+    public event Action<CultureType, int> CultureAdded;
     
     public IReadOnlyDictionary<CultureType, int> Cultures => _foodCollection;
     
@@ -38,6 +39,7 @@ public class PlayerCultures
         }
                 
         CultureCountChanged?.Invoke(cultureType, _foodCollection[cultureType]);
+        CultureAdded?.Invoke(cultureType, _foodCollection[cultureType]);
         
         this.Log($"Added {culture.Count - extra} of type: {cultureType}");
         
