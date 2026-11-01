@@ -7,6 +7,12 @@ public class Train : MonoBehaviour
     [SerializeField] private List<Carriage> _carriages;
     [SerializeField] private Animator _animator;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource _audio;
+    [SerializeField] private AudioClip _arriveClip;
+    [SerializeField] private AudioClip _leaveClip;
+    [SerializeField] private AudioClip _idleClip;
+
     private DayCycleService _dayCycleService;
 
     private bool _left = true;
@@ -23,19 +29,24 @@ public class Train : MonoBehaviour
         _dayCycleService.NightStarted += Leave;
     }
 
-    [ContextMenu("Train Arrive")]
+    private void Start()
+    {
+        _audio.clip = _idleClip;
+        _audio.Play();
+        Arrive();
+    }
+
     private void Arrive()
     {
         if (_left == false)
             return;
         
+        _audio.PlayOneShot(_arriveClip, 0.5f);
         _left = false;
         Hide();
         Show();
-        this.Log("Train arrive");
     }
 
-    [ContextMenu("Train Leave")]
     private void Leave()
     {
         if (_left)
@@ -43,10 +54,11 @@ public class Train : MonoBehaviour
         
         _left = true;
         
+        _audio.PlayOneShot(_leaveClip, 0.5f);
+        
         _animator.SetTrigger("Leave");
         
         _animator.SetTrigger("Moving");
-        this.Log("Train Leave");
     }
 
     private void Arrived()
