@@ -15,6 +15,11 @@ public class Carriage : MonoBehaviour, IInteractable
     [SerializeField] private Quota.Element _quotaElement;
     [SerializeField] private CarriageMenu _carriageMenu;
     
+    [Header("Audio")]
+    [SerializeField] private AudioSource _audio;
+    [SerializeField] private AudioClip _vegetablesFold;
+    [SerializeField] private float _soundVolume;
+    
     private PlayerCultures _playerCultures;
     private QuotaService _quotaService;
     
@@ -60,6 +65,8 @@ public class Carriage : MonoBehaviour, IInteractable
                 countTakeCulture = _playerCultures.Take(expected.Key, countExpectedCulture-countActualCulture);
             else
                 countTakeCulture = _playerCultures.Take(expected.Key, countExpectedCulture);
+
+            _audio.PlayOneShot(_vegetablesFold, _soundVolume);
             
             _quotaService.AddCulture(_quotaElement, expected.Key, countTakeCulture);
             
