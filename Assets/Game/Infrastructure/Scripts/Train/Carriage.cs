@@ -66,7 +66,8 @@ public class Carriage : MonoBehaviour, IInteractable
             else
                 countTakeCulture = _playerCultures.Take(expected.Key, countExpectedCulture);
 
-            _audio.PlayOneShot(_vegetablesFold, _soundVolume);
+            if(countTakeCulture>0)
+                _audio.PlayOneShot(_vegetablesFold, _soundVolume);
             
             _quotaService.AddCulture(_quotaElement, expected.Key, countTakeCulture);
             
