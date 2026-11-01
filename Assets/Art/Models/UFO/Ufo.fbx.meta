@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: c3de1593458109c478b0a16cc1c84441, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Ray_Inner
     second: {fileID: 2100000, guid: e29876a3b9d0e5449a95405d339296fd, type: 2}
   - first:
@@ -106,7 +111,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.02
+    globalScale: 2
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
