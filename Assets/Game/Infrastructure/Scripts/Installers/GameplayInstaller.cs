@@ -31,6 +31,9 @@ public class GameplayInstaller : MonoInstaller
         
         Container.BindFactory<QuotaStringView, QuotaStringView.Factory>()
             .FromComponentInNewPrefab(_quotaStringViewPrefab.gameObject);
+
+        Container.BindFactory<Chicken, Chicken.Factory>().
+            FromComponentInNewPrefab(_chickenPrefab.gameObject);
         
         Container.BindFactory<MutatedChicken, MutatedChicken.Factory>()
             .FromComponentInNewPrefab(_mutatedChickenPrefab.gameObject);

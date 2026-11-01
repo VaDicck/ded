@@ -911,54 +911,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23d61a64c73b0ef459bd697a9e79d2cf, type: 3}
---- !u!1 &231133885
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 231133887}
-  - component: {fileID: 231133886}
-  m_Layer: 0
-  m_Name: BedsForceUnlocker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &231133886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231133885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 084bc96e3cdbca6458a6903b7aed6442, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BedsForceUnlocker
-  _beds:
-  - {fileID: 2122848530}
-  - {fileID: 535108600}
-  - {fileID: 498765444}
---- !u!4 &231133887
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231133885}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &242163833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,10 +1024,6 @@ PrefabInstance:
     - target: {fileID: 8462711798705074759, guid: b68c0bf4cb8a49241a8b663802d35865, type: 3}
       propertyPath: _plowTool
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8462711798705074759, guid: b68c0bf4cb8a49241a8b663802d35865, type: 3}
-      propertyPath: _unlockTool
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8762300422830796825, guid: b68c0bf4cb8a49241a8b663802d35865, type: 3}
       propertyPath: m_Name
@@ -1322,9 +1270,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 850242550806946231, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
-      propertyPath: _chickenPrefab
+      propertyPath: _flyingAlienPrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 246391356805927339, guid: 3fbf0c06fb6e9f7419ccaea2a58891d3, type: 3}
     - target: {fileID: 850242550806946231, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
       propertyPath: _safePlayerTransform
       value: 
@@ -2031,6 +1979,10 @@ PrefabInstance:
     - target: {fileID: 8462711798705074759, guid: b68c0bf4cb8a49241a8b663802d35865, type: 3}
       propertyPath: _plowTool
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462711798705074759, guid: b68c0bf4cb8a49241a8b663802d35865, type: 3}
+      propertyPath: _unlockTool
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8762300422830796825, guid: b68c0bf4cb8a49241a8b663802d35865, type: 3}
       propertyPath: m_Name
@@ -2786,7 +2738,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlienSpawner
   _ufo: []
-  _countAliens: 8
   _durationSpawn: 0
 --- !u!1 &832585958
 GameObject:
@@ -3310,6 +3261,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4404c72740a5ff340ac098395e7f9dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractions
+--- !u!1 &933612167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 933612169}
+  - component: {fileID: 933612168}
+  m_Layer: 0
+  m_Name: BedsForceUnlocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &933612168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933612167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084bc96e3cdbca6458a6903b7aed6442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BedsForceUnlocker
+  _beds:
+  - {fileID: 2122848530}
+  - {fileID: 535108600}
+  - {fileID: 498765444}
+--- !u!4 &933612169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933612167}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &954601310
 GameObject:
   m_ObjectHideFlags: 0
@@ -3841,10 +3840,6 @@ PrefabInstance:
       propertyPath: _plowTool
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 8462711798705074759, guid: b68c0bf4cb8a49241a8b663802d35865, type: 3}
-      propertyPath: _unlockTool
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 8762300422830796825, guid: b68c0bf4cb8a49241a8b663802d35865, type: 3}
       propertyPath: m_Name
       value: Bed (7)
@@ -4257,10 +4252,6 @@ PrefabInstance:
     - target: {fileID: 8462711798705074759, guid: b68c0bf4cb8a49241a8b663802d35865, type: 3}
       propertyPath: _plowTool
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8462711798705074759, guid: b68c0bf4cb8a49241a8b663802d35865, type: 3}
-      propertyPath: _unlockTool
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8762300422830796825, guid: b68c0bf4cb8a49241a8b663802d35865, type: 3}
       propertyPath: m_Name
@@ -6947,6 +6938,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1668552756}
   - component: {fileID: 1668552757}
+  - component: {fileID: 1668552758}
   m_Layer: 0
   m_Name: SpawnsAlien
   m_TagString: Untagged
@@ -6990,7 +6982,22 @@ MonoBehaviour:
   - {fileID: 1688722880}
   - {fileID: 1595420269}
   - {fileID: 322525298}
-  _countAliens: 8
+  _durationSpawn: 0
+--- !u!114 &1668552758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668552755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e6fa06b98c4d99a06c8bfc99cde7eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlyingAlienSpawner
+  _ufo:
+  - {fileID: 1688722880}
+  - {fileID: 322525298}
   _durationSpawn: 0
 --- !u!1001 &1669492274
 PrefabInstance:
@@ -7362,7 +7369,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlyingAlienSpawner
   _ufo: []
-  _countAliens: 3
   _durationSpawn: 1
 --- !u!1 &1688568837
 GameObject:
@@ -9332,14 +9338,6 @@ PrefabInstance:
       propertyPath: _playerInteractions
       value: 
       objectReference: {fileID: 914531414}
-    - target: {fileID: 4884273295017632565, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: '_tools.Array.data[0]'
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4884273295017632565, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: '_tools.Array.data[1]'
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5197438552782933868, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -9727,6 +9725,10 @@ PrefabInstance:
       propertyPath: _plowTool
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8462711798705074759, guid: b68c0bf4cb8a49241a8b663802d35865, type: 3}
+      propertyPath: _unlockTool
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8762300422830796825, guid: b68c0bf4cb8a49241a8b663802d35865, type: 3}
       propertyPath: m_Name
       value: Bed (4)
@@ -9953,4 +9955,4 @@ SceneRoots:
   - {fileID: 7636800238835073388}
   - {fileID: 39869066}
   - {fileID: 1668552756}
-  - {fileID: 231133887}
+  - {fileID: 933612169}
