@@ -9,7 +9,6 @@ public class GameplayInstaller : MonoInstaller
     [SerializeField] private MutatedChicken _mutatedChickenPrefab;
     [SerializeField] private QuotaStringView _quotaStringViewPrefab;
     [SerializeField] private CountCultureStringView _countCultureStringViewPrefab;
-    [SerializeField] private GameConfig _gameConfig;
     [SerializeField] private Transform _safePlayerTransform;
     [SerializeField] private Chicken _chickenPrefab;
 
@@ -40,9 +39,7 @@ public class GameplayInstaller : MonoInstaller
         
         Container.BindFactory<CountCultureStringView, CountCultureStringView.Factory>()
             .FromComponentInNewPrefab(_countCultureStringViewPrefab.gameObject);
-
         
-        Container.Bind<GameConfig>().FromInstance(_gameConfig).AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<DayCycleService>().AsSingle().NonLazy();
         Container.Bind<BedService>().AsSingle().NonLazy();
         Container.Bind<AlienService>().AsSingle().NonLazy();
@@ -62,15 +59,7 @@ public class GameplayInstaller : MonoInstaller
         
         Container.Bind<ChickenSpawner>().AsSingle().WithArguments(_safePlayerTransform).NonLazy();
         
-        foreach (var product in _gameConfig.CraftingTable.Products)
-        {
-            Container.Inject(product);
-
-            foreach (var ingredient in product.Ingredients)
-            {
-                Container.Inject(ingredient.Key);
-            }
-        }
+        Container.Bind<IInitializable>().To<ConfigsInitializer>().AsSingle().NonLazy();
         
         CultureFactoriesInstaller.Install(Container);
     }
