@@ -19,16 +19,21 @@ public class MutatedPepper : MutatedFood
 
     private int _layerAlien;
     private bool _canAttack;
+    private bool _isAttacking;
+    private int _currentAttackIndex = -1;
 
     public void StartAttack()
     {
         _canAttack = true;
+        _isAttacking = false;
         _nextFireTime = Time.time;
     }
 
     public void Idle()
     {
+        _animator.SetTrigger("Idle");
         _canAttack = false;
+        _isAttacking = false;
         _currentTarget = null;
     }
 
@@ -47,7 +52,24 @@ public class MutatedPepper : MutatedFood
             return;
         
         LookAtTarget();
-        TryShoot();
+        TryStartAttack();
+    }
+    
+    private void TryStartAttack()
+    {
+        if (_isAttacking || Time.time < _nextFireTime) 
+            return;
+
+        StartNewAttack();
+    }
+    
+    private void StartNewAttack()
+    {
+        _isAttacking = true;
+
+        _currentAttackIndex = (_currentAttackIndex + 1) % 3;
+
+        _animator.SetTrigger($"Attack{_currentAttackIndex + 1}");
     }
     
     private void OnTriggerEnter(Collider other)
@@ -118,32 +140,31 @@ public class MutatedPepper : MutatedFood
 
         direction.Normalize();
 
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        Quaternion targetRotation = Quaternion.LookRotation(direction) * 
+                                    Quaternion.Euler(0f, 180f, 0f);
+        
         transform.rotation = Quaternion.Slerp(
             transform.rotation, 
             targetRotation, 
             Time.deltaTime * _rotationSpeed);
     }
 
-    private void TryShoot()
-    {
-        if (Time.time < _nextFireTime) return;
-
-        Shoot();
-        _nextFireTime = Time.time + _fireRate;
-    }
-
-    private void Shoot()
+    private void Shot()       
     {
         if (_currentTarget == null) return;
-
         Vector3 spawnPos = _projectileSpawnPoint.position;
         Vector3 direction = (_currentTarget.transform.position - spawnPos).normalized;
 
-        Quaternion rotation = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 90, 0);
+        Quaternion rotation = Quaternion.LookRotation(direction);
 
         GameObject projectileGO = Instantiate(_projectilePrefab, spawnPos, rotation);
+        projectileGO.GetComponent<Projectile>().Launch(direction, _projectileSpeed, _damageBullet);
+    }
 
-        projectileGO.GetComponent<Projectile>().Launch(direction, _projectileSpeed, 60);
+    private void EndAttack()
+    {
+        _isAttacking = false;
+        _nextFireTime = Time.time + _fireRate;
+        _animator.SetTrigger("Idle");
     }
 }

@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde9f62699146c44a81722d95a06c7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MutatedPepper
-  _animator: {fileID: 0}
+  _animator: {fileID: 6321341017530207277}
   _vfxSad: {fileID: 6034184893268997997}
   _projectilePrefab: {fileID: 7404608359833101551, guid: 3de1e0e54aab99642bc0fa804457904e, type: 3}
   _projectileSpawnPoint: {fileID: 8541880526787884494}
