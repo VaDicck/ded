@@ -30,13 +30,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9093897603110657435}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7808772, z: 0, w: 0.62468463}
+  m_LocalRotation: {x: 0, y: -0.7808776, z: 0, w: 0.6246841}
   m_LocalPosition: {x: -3.45278, y: 2.488, z: 10.379019}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -63.611, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -102.682, z: 0}
 --- !u!20 &2007915815137007918
 Camera:
   m_ObjectHideFlags: 0
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.CustomPassVolume
   m_IsGlobal: 1
   fadeRadius: 0
-  priority: 1
+  priority: 0
   customPasses:
   - rid: 8048716082884640843
   injectionPoint: 3
