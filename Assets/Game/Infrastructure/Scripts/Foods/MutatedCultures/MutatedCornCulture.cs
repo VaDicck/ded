@@ -58,8 +58,6 @@ public class MutatedCornCulture : MutatedCulture<MutatedCorn.Factory, MutatedCor
     {
         if (_isPoured.Value)
             _canGiveResources = true;
-        
-        _isPoured.Value = false;
     }
 
     private void GiveResources()
@@ -70,6 +68,7 @@ public class MutatedCornCulture : MutatedCulture<MutatedCorn.Factory, MutatedCor
         
         _playerResources.Add(randomResource, GetRangeByResource(randomResource));
         _canGiveResources = false;
+        _isPoured.Value = false;
     }
     
     private ResourceType GetRandomResourceType()
