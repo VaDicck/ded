@@ -53,10 +53,10 @@ MonoBehaviour:
   _vfxSad: {fileID: 6034184893268997997}
   _projectilePrefab: {fileID: 7404608359833101551, guid: 3de1e0e54aab99642bc0fa804457904e, type: 3}
   _projectileSpawnPoint: {fileID: 8541880526787884494}
-  _fireRate: 0.5
-  _projectileSpeed: 10
+  _fireRate: 1
+  _projectileSpeed: 2
   _rotationSpeed: 8
-  _damageBullet: 30
+  _damageBullet: 5
 --- !u!135 &8610481452985221334
 SphereCollider:
   m_ObjectHideFlags: 0
