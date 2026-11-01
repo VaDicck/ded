@@ -55,6 +55,22 @@ public class ToolsRadialMenuElement : MonoBehaviour
         }
         
         _count?.gameObject.SetActive(true);
+
+        int tool = _currentTool;
+        int extra = 0;
+        
+        while (_playerTools.Contains(_tools[tool]) == false)
+        {
+            tool = (_currentTool + 1) % _tools.Count;
+            extra++;
+
+            if (extra > _tools.Count)
+            {
+                break;
+            }
+        }
+
+        _currentTool = tool;
         
         if (_playerTools.Contains(_tools[_currentTool]) == false)
         {
