@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Table
+    second: {fileID: 2100000, guid: af9603d8feaa0724d9cc62390777e653, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Trim_Second_Color
     second: {fileID: 2100000, guid: 3648ad08ee817a643924c7217fe9ba7d, type: 2}
   materials:
