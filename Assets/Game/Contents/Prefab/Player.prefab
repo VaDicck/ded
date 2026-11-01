@@ -207,6 +207,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractions
   _interactionDistance: 2
+  _pickaxeSound: {fileID: 8300000, guid: 2f9ee7e9901887443a5ea4b47c6b7f0d, type: 3}
+  _rakeSound: {fileID: 8300000, guid: 9229eee21dd446d4a88b24bc55154775, type: 3}
+  _pitchforkSound: {fileID: 8300000, guid: 05c1c78ae1459304aa9d99d40ac2b7b6, type: 3}
+  _wateringSound: {fileID: 8300000, guid: 255b22242a2639246923630a55f0320e, type: 3}
 --- !u!114 &2918627911804522192
 MonoBehaviour:
   m_ObjectHideFlags: 0

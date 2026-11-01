@@ -12,6 +12,8 @@ public class Chicken : ChickenBase, IInteractable
     
     private bool _isMutated = false;
     
+    [SerializeField] private AudioClip _dieSound;
+    
     [Inject] private MutatedChicken.Factory _mutatedChickenFactory;
     [Inject] private PlayerMutagens _playerMutagens;
     
@@ -27,8 +29,7 @@ public class Chicken : ChickenBase, IInteractable
 
         if(!_playerMutagens.Use())
             return UniTask.FromResult(false);
-
-        _animator.SetTrigger("Die");
+        
         UseMutagen();
         return UniTask.FromResult(true);
     }
@@ -62,13 +63,7 @@ public class Chicken : ChickenBase, IInteractable
     {
         if (_isMutated)
         {
-            MutatedChicken mutatedChicken = _mutatedChickenFactory.Create();
-            
-            mutatedChicken.SetSpawnPoint(transform);
-            
-            mutatedChicken.WarpTo(transform.position);
-            
-            Destroy(gameObject);
+            Mutate();
             
             return;
         }
@@ -92,9 +87,29 @@ public class Chicken : ChickenBase, IInteractable
 
     private void UseMutagen()
     {
+        _animator.SetTrigger("Die");
+        _audio.Stop();
+        _audio.PlayOneShot(_dieSound);
+        
         _isMutated = true;
         _navMeshAgent.isStopped = true;
 
+        Unsubscribe();
+    }
+
+    private void Mutate()
+    {
+        MutatedChicken mutatedChicken = _mutatedChickenFactory.Create();
+            
+        mutatedChicken.SetSpawnPoint(transform);
+            
+        mutatedChicken.WarpTo(transform.position);
+            
+        Destroy(gameObject);
+    }
+    
+    private void OnDestroy()
+    {
         Unsubscribe();
     }
 }
