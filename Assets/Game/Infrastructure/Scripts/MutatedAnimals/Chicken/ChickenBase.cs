@@ -15,6 +15,10 @@ public abstract class ChickenBase : MonoBehaviour
     [SerializeField] protected Animator _animator;
     
     [SerializeField] private Transform _spawnPoint;
+    
+    [Header("Audio")]
+    [SerializeField] protected AudioSource _audio;
+    [SerializeField] protected AudioClip _idleSound;
 
     protected StateMachine<IChickenState> _stateMachine;
 
@@ -40,6 +44,9 @@ public abstract class ChickenBase : MonoBehaviour
 
     private void Start()
     {
+        _audio.clip = _idleSound;
+        _audio.Play();
+        
         _dayCycleService.DayStarted += OnDayStart;
         _dayCycleService.DayEnded += OnDayEnd;
 
@@ -67,6 +74,8 @@ public abstract class ChickenBase : MonoBehaviour
         {
             if (Random.value < _peckProbability)
             {
+                _audio.Pause();
+                
                 _animator.SetTrigger("Peck");
                 _stateMachine.SetState<PeckChickenState>();
             }
@@ -76,6 +85,8 @@ public abstract class ChickenBase : MonoBehaviour
     
     protected void Walk()
     {
+        _audio.UnPause();
+        
         _animator.SetTrigger("Walk");
         _stateMachine.SetState<WanderChickenState>();
     }
