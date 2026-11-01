@@ -54,9 +54,9 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 7404608359833101551, guid: 3de1e0e54aab99642bc0fa804457904e, type: 3}
   _projectileSpawnPoint: {fileID: 8541880526787884494}
   _fireRate: 1
-  _projectileSpeed: 2
+  _projectileSpeed: 8
   _rotationSpeed: 8
-  _damageBullet: 5
+  _damageBullet: 7
 --- !u!135 &8610481452985221334
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 8993004481962258224}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.176, y: 1.266, z: -0.18}
+  m_LocalPosition: {x: -0.04, y: 1.408, z: -0.438}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
