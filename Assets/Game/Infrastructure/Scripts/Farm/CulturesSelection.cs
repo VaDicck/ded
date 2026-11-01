@@ -4,6 +4,7 @@ using System.Threading;
 
 public class CulturesSelection
 {
+    public event Action<CultureType> CultureOpened;
     public event Action<Culture> Selected;
     public event Action Shown;
     public event Action Hidden;
@@ -54,7 +55,7 @@ public class CulturesSelection
             return false;
         
         _unlockedCultures.Add(cultureType);
-
+        CultureOpened?.Invoke(cultureType);
         return true;
     }
 

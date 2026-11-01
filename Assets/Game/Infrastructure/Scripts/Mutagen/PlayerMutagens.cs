@@ -2,6 +2,8 @@
 
 public class PlayerMutagens
 {
+    public event Action Added;
+    
     public event Action<int> Used;
     public int Count => _count;
     
@@ -10,6 +12,7 @@ public class PlayerMutagens
     public void Add()
     {
         _count++;
+        Added?.Invoke();
     }
 
     public bool Use()
