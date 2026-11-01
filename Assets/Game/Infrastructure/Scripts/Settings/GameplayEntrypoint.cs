@@ -7,15 +7,17 @@ public class GameplayEntrypoint : MonoBehaviour
     private PlayerTools _playerTools;
     private PlayerMutagens _playerMutagens;
     private PlayerGrenades _playerGrenades;
-
+    private ChickenSpawner _chickenSpawner;
+    
     [Inject]
     private void Initialize(DayCycleService dayCycleService, PlayerTools playerTools, PlayerMutagens playerMutagens,
-        PlayerGrenades playerGrenades)
+        PlayerGrenades playerGrenades, ChickenSpawner chickenSpawner)
     {
         _dayCycleService = dayCycleService;
         _playerTools = playerTools;
         _playerMutagens = playerMutagens;
         _playerGrenades = playerGrenades;
+        _chickenSpawner = chickenSpawner;
     }
 
     private void Start()

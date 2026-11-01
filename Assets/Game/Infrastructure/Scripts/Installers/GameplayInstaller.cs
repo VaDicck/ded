@@ -60,7 +60,7 @@ public class GameplayInstaller : MonoInstaller
         
         Container.Bind<CraftTableService>().AsSingle().NonLazy();
         
-        Container.Bind<ChickenSpawner>().AsSingle().WithArguments(_safePlayerTransform.position).NonLazy();
+        Container.Bind<ChickenSpawner>().AsSingle().WithArguments(_safePlayerTransform).NonLazy();
         
         foreach (var product in _gameConfig.CraftingTable.Products)
         {

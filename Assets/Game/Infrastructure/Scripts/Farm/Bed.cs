@@ -65,9 +65,12 @@ public class Bed : MonoBehaviour, IInteractable
         _stateMachine.AddState<PlantedBedState>(new PlantedBedState(_plantedState, _poured));
         
         Subscribe();
+        
+        if (_unlockTool == ToolType.None)
+            UnlockForce();
     }
 
-    public void UnlockForce()
+    private void UnlockForce()
     {
         _stateMachine.SetState<RawBedState>();
     }

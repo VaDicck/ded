@@ -15,16 +15,16 @@ MonoBehaviour:
   <Main>k__BackingField:
     <Expected>k__BackingField:
     - <Key>k__BackingField: 2
-      <Value>k__BackingField: 30
-    - <Key>k__BackingField: 0
       <Value>k__BackingField: 20
+    - <Key>k__BackingField: 0
+      <Value>k__BackingField: 30
     <Reward>k__BackingField:
       <Ingredients>k__BackingField: []
       _extraReward: {fileID: 11400000, guid: 552a0281ba2ff234ea9ecc6321f8fa6f, type: 2}
   <Sub1>k__BackingField:
     <Expected>k__BackingField:
     - <Key>k__BackingField: 2
-      <Value>k__BackingField: 15
+      <Value>k__BackingField: 10
     <Reward>k__BackingField:
       <Ingredients>k__BackingField:
       - <Key>k__BackingField: 1
@@ -33,7 +33,7 @@ MonoBehaviour:
   <Sub2>k__BackingField:
     <Expected>k__BackingField:
     - <Key>k__BackingField: 0
-      <Value>k__BackingField: 15
+      <Value>k__BackingField: 10
     <Reward>k__BackingField:
       <Ingredients>k__BackingField:
       - <Key>k__BackingField: 4

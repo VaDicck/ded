@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: CornCultureConfig
   m_EditorClassIdentifier: Assembly-CSharp::CornCultureConfig
   <DropAmount>k__BackingField:
-    _min: 6
-    _max: 6
+    _min: 7
+    _max: 10
   <Step1Prefab>k__BackingField: {fileID: 919132149155446097, guid: 168f7d9633770214fa42232a8c3410ae, type: 3}
   <Step2Prefab>k__BackingField: {fileID: 919132149155446097, guid: 9f6c1ce377d7ae0448e601ea50faf842, type: 3}
   <Step3Prefab>k__BackingField: {fileID: 919132149155446097, guid: eaa030cc8d49fd7468ac084b9d387004, type: 3}
-  <Health>k__BackingField: 100
-  <HealthMutated>k__BackingField: 100
-  <MutatedPrefab>k__BackingField: {fileID: 7358090308268901249, guid: 2f2285943f796634a831516ba37b2e03, type: 3}
+  <Health>k__BackingField: 10

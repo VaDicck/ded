@@ -74,6 +74,10 @@ MonoBehaviour:
       <Value>k__BackingField: {fileID: 0}
     - <Key>k__BackingField: 2
       <Value>k__BackingField: {fileID: 0}
+    - <Key>k__BackingField: 3
+      <Value>k__BackingField: {fileID: 0}
+    - <Key>k__BackingField: 4
+      <Value>k__BackingField: {fileID: 0}
     <Names>k__BackingField:
     - <Key>k__BackingField: 0
       <Value>k__BackingField: "\u0416\u0435\u043B\u0435\u0437\u043E"
@@ -81,3 +85,7 @@ MonoBehaviour:
       <Value>k__BackingField: "\u041C\u0435\u0442\u0430\u043B\u043B\u043E\u043B\u043E\u043C"
     - <Key>k__BackingField: 2
       <Value>k__BackingField: "\u0414\u0435\u0440\u0435\u0432\u043E"
+    - <Key>k__BackingField: 3
+      <Value>k__BackingField: "\u0418\u0437\u043E\u043B\u0435\u043D\u0442\u0430"
+    - <Key>k__BackingField: 4
+      <Value>k__BackingField: "\u0411\u0438\u043E\u043C\u0443\u0441\u043E\u0440"
