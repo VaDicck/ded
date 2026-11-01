@@ -100,4 +100,12 @@ public abstract class SimpleCulture : Culture
         this.Log($"{Type} was grown");
         RaiseGrown();
     }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+
+        if (_prefab != null)
+            Object.Destroy(_prefab);
+    }
 }

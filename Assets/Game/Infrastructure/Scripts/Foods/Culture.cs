@@ -112,7 +112,7 @@ public abstract class Culture: IDisposable
     protected void RaiseWatered(bool value) =>  Watered?.Invoke(value);
     protected void RaiseGrown() =>  Grown?.Invoke();
     
-    public void Dispose()
+    public virtual void Dispose()
     {
         _dayCycleService.DayStarted -= OnDayStarted;
     }

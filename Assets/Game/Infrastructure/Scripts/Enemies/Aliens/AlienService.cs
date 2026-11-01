@@ -20,7 +20,7 @@ public class AlienService
     private int _countFleeingAlienInWave;
     private int _countFlyingAlienInWave;
     
-    private int _countFleeingAlienOneBed = 3;
+    private int _countFleeingAlienOneBed = 2;
     private int _countFlyingAlienOneBed = 1;
     
     private HashSet<AlienBase> _aliens  = new HashSet<AlienBase>();

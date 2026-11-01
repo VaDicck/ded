@@ -83,7 +83,7 @@ public class PlantedBedState : IBedState
             _culture.IsGrown.Dispose();
             _culture.Dispose();
         }
-
+        
         ActivateVisualState(false);
         _pouredVisuals.SetActive(false);
     }
