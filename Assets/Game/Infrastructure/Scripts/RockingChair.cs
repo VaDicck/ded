@@ -9,17 +9,24 @@ public class RockingChair : MonoBehaviour, IInteractable
     
     private DayCycleService _dayCycleService;
     private TimeFadeService _fadeService;
+    private AudioService _audioService;
+    
+    [SerializeField] private AudioClip _grandpaSleepSound;
+    [SerializeField, Range(0,1)] private float _sleepVolume;
     
     [Inject]
-    private void Init(DayCycleService dayCycleService, TimeFadeService fadeService)
+    private void Init(DayCycleService dayCycleService, TimeFadeService fadeService, AudioService audioService)
     {
         _dayCycleService = dayCycleService;
         _fadeService = fadeService;
+        _audioService = audioService;
     }
     
     public UniTask Interact()
     {
         _fadeService.Fade("Ночь", () => _dayCycleService.StartNight());
+        
+        _audioService.PlaySfx(_grandpaSleepSound, _sleepVolume);
         
         return UniTask.CompletedTask;
     }

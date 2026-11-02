@@ -125,3 +125,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254b4e6445dc82541b0d336f57cd3905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SleepingBed
+  _sleepSound: {fileID: 8300000, guid: 07fae2b785de2e14e9d35238067b626e, type: 3}
