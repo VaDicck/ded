@@ -98,7 +98,7 @@ public abstract class ChickenBase : MonoBehaviour
 
     protected abstract void Subscribe();
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     { 
         _dayCycleService.DayStarted -= OnDayStart;
         _dayCycleService.DayEnded -= OnDayEnd;

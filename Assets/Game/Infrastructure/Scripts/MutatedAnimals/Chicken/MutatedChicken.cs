@@ -129,8 +129,10 @@ public class MutatedChicken : ChickenBase
         Walk();
     }
     
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
+        
         foreach (var alien in _aliens.ToArray())
         {
             if (alien != null)

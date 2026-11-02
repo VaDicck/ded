@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class AlienService
 {
@@ -78,8 +79,16 @@ public class AlienService
     {
         int countPlantedBed = _bedService.GetBedsByState<PlantedBedState>().Count;
 
-        _countFleeingAlienInWave = countPlantedBed * _countFleeingAlienOneBed;
-        _countFlyingAlienInWave = countPlantedBed * _countFlyingAlienOneBed;
+        if (_dayCycleService.CurrentNumberDay > 2)
+        {
+            _countFleeingAlienInWave = CalculateAliens(countPlantedBed);
+            _countFlyingAlienInWave = _countFleeingAlienInWave / 3;
+        }
+        else
+        {
+            _countFleeingAlienInWave = 2;
+            _countFlyingAlienInWave = 0;
+        }
         
         _waveActive = true;
         WaveStart?.Invoke();
@@ -90,5 +99,17 @@ public class AlienService
         _currentCountAlienInWave = 0;
         _waveActive = false;
         WaveOver?.Invoke();
+    }
+    
+    private int CalculateAliens(int beds, int helpers = 0, float baseCoefficient = 1.5f, float helperExponent = 0.5f)
+    {
+        if (beds <= 0) return 0;
+        
+        int defenders = 1 + helpers;
+        float multiplier = Mathf.Pow(defenders, helperExponent);
+        
+        float rawValue = baseCoefficient * beds * multiplier;
+        
+        return Mathf.RoundToInt(rawValue);
     }
 }

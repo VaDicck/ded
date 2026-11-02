@@ -115,8 +115,10 @@ public class Chicken : ChickenBase, IInteractable
         _audio.Play();
     }
     
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
+        
         Unsubscribe();
     }
 }
