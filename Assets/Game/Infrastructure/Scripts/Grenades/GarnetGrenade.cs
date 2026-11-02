@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class GarnetGrenade : BaseGrenade
 {
@@ -11,6 +12,8 @@ public class GarnetGrenade : BaseGrenade
     [SerializeField] private float _force;
     [SerializeField] private float _explodeTime;
     [SerializeField] private List<Vector3> _directions;
+    [SerializeField] private GameObject _visuals;
+    [SerializeField] private VisualEffect _effect;
     
     protected override IEnumerator Explode()
     {
@@ -22,8 +25,10 @@ public class GarnetGrenade : BaseGrenade
             grenade.Throw(direction * _force);
             this.Log($"{direction} {grenade.name}");
         }
-
+        
         Exploded?.Invoke();
-        Destroy(gameObject);
+        _visuals.SetActive(false);
+        _effect?.gameObject.SetActive(true);
+        Destroy(gameObject, 3);
     }
 }
