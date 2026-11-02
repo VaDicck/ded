@@ -19,9 +19,11 @@ public class InventoryView : MonoBehaviour
 
     private GameConfig _gameConfig;
     private InputController _inputController;
+    private AudioService _audioService;
     
     [Inject]
-    private void Initialize(PlayerCultures cultures, PlayerResources playerResources, GameConfig gameConfig, InputController inputController)
+    private void Initialize(PlayerCultures cultures, PlayerResources playerResources
+        , GameConfig gameConfig, InputController inputController, AudioService audioService)
     {
         _playerCultures = cultures;
         _playerResources = playerResources;
@@ -29,6 +31,8 @@ public class InventoryView : MonoBehaviour
         _gameConfig = gameConfig;
         _inputController = inputController;
         _inputController.OpenInventory += Show;
+
+        _audioService = audioService;
     }
 
     private void Start()
@@ -49,6 +53,7 @@ public class InventoryView : MonoBehaviour
         _inputController.BackPressed += Hide;
         _inputController.SwitchToUi();
         Time.timeScale = 0;
+        _audioService.GameTimeScale.Value = Time.timeScale;
     }
 
     private void Hide()
@@ -57,6 +62,7 @@ public class InventoryView : MonoBehaviour
         _inputController.BackPressed -= Hide;
         _inputController.SwitchToGameplay();
         Time.timeScale = 1;
+        _audioService.GameTimeScale.Value = Time.timeScale;
     }
     
     private void OpenCultures()

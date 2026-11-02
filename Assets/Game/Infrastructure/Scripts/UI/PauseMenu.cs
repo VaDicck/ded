@@ -14,11 +14,14 @@ public class PauseMenu : MonoBehaviour
     
     private bool _isPaused;
     
+    private AudioService _audioService;
+    
     [Inject]
-    private void Init(InputController inputController, PlayerReturner playerReturner)
+    private void Init(InputController inputController, PlayerReturner playerReturner, AudioService audioService)
     {
         _inputController = inputController;
         _playerReturner = playerReturner;
+        _audioService = audioService;
         
         _inputController.PausePressed += Show;
         _stuckButton.onClick.AddListener(OnStuckButtonClicked);
@@ -30,6 +33,7 @@ public class PauseMenu : MonoBehaviour
     {
         _inputController.BackPressed -= Hide;
         Time.timeScale = 1;
+        _audioService.GameTimeScale.Value = Time.timeScale;
         
         _isPaused = false;
         gameObject.SetActive(false);
@@ -41,7 +45,8 @@ public class PauseMenu : MonoBehaviour
     {
         _inputController.BackPressed += Hide;
         Time.timeScale = 0;
-        
+        _audioService.GameTimeScale.Value = Time.timeScale;
+
         _isPaused = true;
         gameObject.SetActive(true);
         
