@@ -11,11 +11,14 @@ public class CraftTableView : MonoBehaviour
     private CraftTableService _service;
     private InputController _inputController;
     
+    private AudioService _audioService;
+    
     [Inject]
-    private void Initialize(CraftTableService service, InputController inputController)
+    private void Initialize(CraftTableService service, InputController inputController, AudioService audioService)
     {
         _service = service;
         _inputController = inputController;
+        _audioService = audioService;
 
         _service.ShowPerformed += Show;
     }
@@ -26,6 +29,8 @@ public class CraftTableView : MonoBehaviour
         _backButton.onClick.AddListener(Hide);
         _inputController.SwitchToUi();
         Time.timeScale = 0;
+        _audioService.GameTimeScale.Value = Time.timeScale;
+
         gameObject.SetActive(true);
         _craftTableProductListView.Show();
     }
@@ -38,6 +43,8 @@ public class CraftTableView : MonoBehaviour
         _craftTableProductListView.Hide();
         _craftTableCraftView.Hide();
         Time.timeScale = 1;
+        _audioService.GameTimeScale.Value = Time.timeScale;
+
         gameObject.SetActive(false);
     }
     

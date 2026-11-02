@@ -1,9 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using Zenject;
+using R3;
 
 public class AudioService : MonoBehaviour
 {
+    public readonly ReactiveProperty<float> GameTimeScale = new ReactiveProperty<float>(1f);
+    
     public float MusicVolume
     {
         get
@@ -28,7 +32,10 @@ public class AudioService : MonoBehaviour
 
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private AudioSource _sfxSource;
+    [SerializeField] private AudioSource _uiSfxSource;
     [SerializeField] private AudioMixer _audioMixer;
+    
+    private IDisposable _timeScaleSubscription;
     
     [Inject]
     private void Init(GameConfig gameConfig) 
@@ -41,6 +48,18 @@ public class AudioService : MonoBehaviour
         _audioMixer.SetFloat(_config.MasterVolumeName, _config.DefaultMasterVolume);
         _audioMixer.SetFloat(_config.MusicVolumeName, _config.DefaultMusicVolume);
         _audioMixer.SetFloat(_config.SfxVolumeName, _config.DefaultSfxVolume);
+        
+        _timeScaleSubscription = GameTimeScale.Subscribe(ApplySfxPitch);
+    }
+    
+    private void ApplySfxPitch(float scale)
+    {
+        _audioMixer.SetFloat(_config.SfxPitchName, scale);
+
+        if (scale <= 0f)
+            _sfxSource.Pause();
+        else
+            _sfxSource.UnPause();
     }
     
     public void PlayMusic(AudioClip clip, float volume = 1)
@@ -53,9 +72,16 @@ public class AudioService : MonoBehaviour
 
     public void PlaySfx(AudioClip clip, float volume = 1)
     {
-        _sfxSource.clip = clip;
+        if (GameTimeScale.Value <= 0f) return;
+        
         _sfxSource.volume = volume;
-        _sfxSource.Play();
+        _sfxSource.PlayOneShot(clip);
+    }
+    
+    public void PlayUiSfx(AudioClip clip, float volume = 1)   
+    {
+        _uiSfxSource.volume = volume;
+        _uiSfxSource.PlayOneShot(clip);
     }
     
     public void SetVolume(string group, float volume)
@@ -66,5 +92,10 @@ public class AudioService : MonoBehaviour
             value = -80;
 
         _audioMixer.SetFloat(group, value);
+    }
+    
+    private void OnDestroy()
+    {
+        _timeScaleSubscription?.Dispose();
     }
 }

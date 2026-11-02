@@ -18,3 +18,4 @@ MonoBehaviour:
   <MasterVolumeName>k__BackingField: MasterVolume
   <MusicVolumeName>k__BackingField: MusicVolume
   <SfxVolumeName>k__BackingField: SfxVolume
+  <SfxPitchName>k__BackingField: SfxPitch
