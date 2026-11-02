@@ -28,11 +28,6 @@ public class GameplayEntrypoint : MonoBehaviour
         _playerTools.Add(ToolType.Bailer);
         _playerTools.Add(ToolType.Shotgun);
         _playerTools.Add(ToolType.Shovel);
-
-        _playerTools.Add(ToolType.GarnetGrenade);
-        
-        _playerGrenades.Add(ToolType.GarnetGrenade);
-        _playerGrenades.Add(ToolType.GarnetGrenade);
         
         _dayCycleService.StartDay();
         this.Log("Gameplay started");
