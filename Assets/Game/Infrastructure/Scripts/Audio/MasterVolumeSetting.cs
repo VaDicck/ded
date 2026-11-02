@@ -4,6 +4,7 @@ public class MasterVolumeSetting : VolumeSetting
     {
         base.Start();
         
+        _slider.value = _audioConfig.DefaultMasterVolume;
         UpdateText(_audioConfig.DefaultSfxVolume);
     }
 
