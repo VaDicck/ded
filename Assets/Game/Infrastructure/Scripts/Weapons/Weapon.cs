@@ -19,6 +19,7 @@ public abstract class Weapon : MonoBehaviour
     [Header("Audio")]
     [SerializeField] protected AudioSource _audioSource;
     [SerializeField, Range(0, 1)] protected float _shootVolume;
+    [SerializeField, Range(0, 1)] protected float _zoomVolume;
     [SerializeField] protected AudioClip _noAmmoSound;
     [SerializeField] protected AudioClip _shotSound;
     [SerializeField] protected AudioClip _zoomSound;

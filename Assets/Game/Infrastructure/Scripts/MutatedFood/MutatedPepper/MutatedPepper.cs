@@ -31,7 +31,6 @@ public class MutatedPepper : MutatedFood
 
     public void Idle()
     {
-        _animator.SetTrigger("Idle");
         _canAttack = false;
         _isAttacking = false;
         _currentTarget = null;
@@ -53,6 +52,16 @@ public class MutatedPepper : MutatedFood
         
         LookAtTarget();
         TryStartAttack();
+    }
+    
+    protected override void OnPour(bool value)
+    {
+        base.OnPour(value);
+        
+        if(value)
+            _animator.SetTrigger("PouredIdle");
+        else
+            _animator.SetTrigger("NoPouredIdle");
     }
     
     private void TryStartAttack()
@@ -165,6 +174,6 @@ public class MutatedPepper : MutatedFood
     {
         _isAttacking = false;
         _nextFireTime = Time.time + _fireRate;
-        _animator.SetTrigger("Idle");
+        _animator.SetTrigger("PouredIdle");
     }
 }
