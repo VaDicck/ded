@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    void TakeDamage(float damage, Vector3 hitPoint);
+    void TakeDamage(float damage, Vector3 hitPoint, AudioClip audioClip = null);
 }

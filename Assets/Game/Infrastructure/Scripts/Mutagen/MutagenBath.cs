@@ -20,8 +20,9 @@ public class MutagenBath : MonoBehaviour, IInteractable
     private float _currentCountBioTrash = 0;
 
     private bool _canTake;
+    private bool _canInteract; //for Tutorial
     
-    public bool IsInteractable => _dayCycleService.IsDay && _currentCountBioTrash>=1;
+    public bool IsInteractable => _dayCycleService.IsDay && _currentCountBioTrash>=1 && _canInteract;
     public bool IsUsable => false;
     
     public UniTask Interact()
@@ -41,6 +42,16 @@ public class MutagenBath : MonoBehaviour, IInteractable
     {
         _vfx.SetActive(false);
         _dayCycleService.NightEnded += OnNightEnded;
+    }
+
+    public void CanInteract()
+    {
+        _canInteract = true;
+    }
+
+    public void CantInteract()
+    {
+        _canInteract = false;
     }
 
     private void OnNightEnded()

@@ -183,7 +183,9 @@ public class MutatedPepper : MutatedFood
     {
         if (_currentTarget == null) return;
         Vector3 spawnPos = _projectileSpawnPoint.position;
-        Vector3 direction = (_currentTarget.transform.position - spawnPos).normalized;
+        Vector3 targetCenter = _currentTarget.transform.position + Vector3.up * 0.4f; 
+
+        Vector3 direction = (targetCenter - spawnPos).normalized;
 
         Quaternion rotation = Quaternion.LookRotation(direction) * Quaternion.Euler(0f, -90f, 0f);
 

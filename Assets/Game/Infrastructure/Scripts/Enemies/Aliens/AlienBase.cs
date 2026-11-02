@@ -54,11 +54,16 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
         _spawnPoint = spawnPoint;
     }
     
-    public void TakeDamage(float damage, Vector3 hitPoint)
+    public void TakeDamage(float damage, Vector3 hitPoint, AudioClip audioClip = null)
     {
         if(_isDead) return;
         
         _health -= damage;
+
+        if (audioClip != null)
+        {
+            _audio.PlayOneShot(audioClip);
+        }
 
         SpawnSfx(hitPoint);
 

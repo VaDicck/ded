@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: MutatedCornConfig
   m_EditorClassIdentifier: Assembly-CSharp::MutatedCornConfig
   <MutatedPrefab>k__BackingField: {fileID: 8174773158749219173, guid: 2f2285943f796634a831516ba37b2e03, type: 3}
-  <HealthMutated>k__BackingField: 60
+  <HealthMutated>k__BackingField: 34
   <CountMetal>k__BackingField:
-    _min: 2
+    _min: 1
     _max: 3
   <CountScrap>k__BackingField:
-    _min: 1
-    _max: 3
+    _min: 4
+    _max: 6
   <CountWood>k__BackingField:
-    _min: 1
-    _max: 3
+    _min: 3
+    _max: 5
