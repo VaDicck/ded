@@ -8,18 +8,21 @@ public class AmbientManager : MonoBehaviour
     [SerializeField] private AudioClip _daySound;
     [SerializeField] private AudioClip _nightSound;
     [SerializeField] private AudioClip _alienAttackSound;
+    [SerializeField] private AudioClip _quotaReachedSound;
     [SerializeField, Range(0,1)] private float _dayVolume;
     [SerializeField, Range(0,1)] private float _nightVolume;
     [SerializeField, Range(0,1)] private float _attackVolume;
 
     private DayCycleService _dayCycleService;
     private AlienService _alienService;
+    private QuotaService _quotaService;
     
     [Inject]
-    private void Init(DayCycleService dayCycleService, AlienService alienService)
+    private void Init(DayCycleService dayCycleService, AlienService alienService, QuotaService quotaService)
     {
         _dayCycleService = dayCycleService;
         _alienService = alienService;
+        _quotaService = quotaService;
     }
 
     private void Start()
@@ -28,6 +31,7 @@ public class AmbientManager : MonoBehaviour
         _dayCycleService.DayEnded += PlayNightSound;
         _alienService.WaveStart += PlayAlienAttackSound;
         _alienService.WaveOver += StopAlienAttackSound;
+        _quotaService.QuotaReached += PlayReachedSound;
     }
 
     private void PlayDaySound()
@@ -58,11 +62,17 @@ public class AmbientManager : MonoBehaviour
         _audioSource.Play();
     }
 
+    private void PlayReachedSound()
+    {
+        _audioSource.PlayOneShot(_quotaReachedSound);
+    }
+
     private void OnDestroy()
     {
         _dayCycleService.DayStarted -= PlayDaySound;
         _dayCycleService.DayEnded -= PlayNightSound;
         _alienService.WaveStart -= PlayAlienAttackSound;
         _alienService.WaveOver -= StopAlienAttackSound;
+        _quotaService.QuotaReached -= PlayReachedSound;
     }
 }
