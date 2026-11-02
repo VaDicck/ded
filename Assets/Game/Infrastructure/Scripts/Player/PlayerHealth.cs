@@ -3,6 +3,10 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
     [SerializeField] private GameObject[] _hitOverlays = new GameObject[5];
+    
+    [Header("Audio")]
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _hitSound;
 
     private int _currentHitOverlay;
     
@@ -24,5 +28,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         _currentHitOverlay++;
         
         selectedOverlay.SetActive(true);
+        _audioSource.PlayOneShot(_hitSound);
     }
 }

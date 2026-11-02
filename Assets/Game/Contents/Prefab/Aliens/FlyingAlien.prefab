@@ -219,7 +219,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 7404608359833101551, guid: a3cc1030f82f15b42aab1189bc2394d1, type: 3}
   _projectileSpawnPoint: {fileID: 6219793101788205381}
   _fireRate: 3
-  _projectileSpeed: 9
+  _projectileSpeed: 12
   _minShootDistance: 8
   _flySound: {fileID: 8300000, guid: 4dfeacd258d7aa449958270c454f7a87, type: 3}
   _attack1Sound: {fileID: 8300000, guid: 9f593114b4b090f47895913c1ae9c501, type: 3}
