@@ -8,16 +8,18 @@ public class RockingChair : MonoBehaviour, IInteractable
     public bool IsUsable => false;
     
     private DayCycleService _dayCycleService;
+    private TimeFadeService _fadeService;
     
     [Inject]
-    private void Init(DayCycleService dayCycleService)
+    private void Init(DayCycleService dayCycleService, TimeFadeService fadeService)
     {
         _dayCycleService = dayCycleService;
+        _fadeService = fadeService;
     }
     
     public UniTask Interact()
     {
-        _dayCycleService.StartNight();
+        _fadeService.Fade("Ночь", () => _dayCycleService.StartNight());
         
         return UniTask.CompletedTask;
     }

@@ -60,6 +60,7 @@ public class GameplayInstaller : MonoInstaller
         Container.Bind<ChickenSpawner>().AsSingle().WithArguments(_safePlayerTransform).NonLazy();
         
         Container.Bind<IInitializable>().To<ConfigsInitializer>().AsSingle().NonLazy();
+        Container.Bind<TimeFadeService>().AsSingle().NonLazy();
         
         CultureFactoriesInstaller.Install(Container);
     }
