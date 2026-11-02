@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrenadeCraftProduct
   <Sprite>k__BackingField: {fileID: 21300000, guid: d4b30a16ce54fc1459784177943b4acd, type: 3}
   <Name>k__BackingField: "\u0413\u0440\u0430\u043D\u0430\u0442'\u0430"
-  <Description>k__BackingField: 
+  <Description>k__BackingField: "\u0413\u0440\u0430\u043D\u0430\u0442\u0430 - \u0433\u0440\u0430\u043D\u0430\u0442\u0430,
+    \u0447\u0435\u0440\u0442\u043E\u0432\u0441\u043A\u0438 \u043F\u0440\u043E\u0441\u0442\u043E.
+    \u0410\u0445\u0440\u0435\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u0440\u0430\u0437\u043B\u0435\u0442\u0430\u0435\u0442\u0441\u044F
+    \u043D\u0430 \u043C\u0430\u043B\u0435\u043D\u044C\u043A\u0438\u0435 \u0441\u0435\u043C\u0435\u0447\u043A\u0438
+    \u0432\u043E \u0432\u0441\u0435 \u0441\u0442\u043E\u0440\u043E\u043D\u044B!"
   <CraftAmount>k__BackingField: 1
   <Ingredients>k__BackingField:
   - <Key>k__BackingField: {fileID: 11400000, guid: b4950e5d80d061b47a09d1e68b569fed, type: 2}
