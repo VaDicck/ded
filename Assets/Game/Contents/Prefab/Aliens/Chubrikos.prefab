@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 1894188396959641881}
   - component: {fileID: 3774149738629321997}
   - component: {fileID: 1946211089845375040}
+  - component: {fileID: 4894719103844030759}
   m_Layer: 11
   m_Name: Chubrikos
   m_TagString: Untagged
@@ -278,6 +279,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.33, z: 0}
+--- !u!114 &4894719103844030759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724716924210646740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd2b19528385a04a8e2323d36cd5a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomMaterial
+  _materials:
+  - {fileID: 2100000, guid: b067839d47228c449aa195c31b235ec1, type: 2}
+  - {fileID: 2100000, guid: ffc9b27ec0449bc46a4f7af7f197ba2a, type: 2}
+  _meshRenderer: {fileID: 5730195379481663788}
 --- !u!1001 &4815468678356039345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -439,5 +456,10 @@ PrefabInstance:
 --- !u!4 &4997098115444183386 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1aea41ee19b1dbf43921940a0e750f6c, type: 3}
+  m_PrefabInstance: {fileID: 4815468678356039345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5730195379481663788 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8262340146541056099, guid: 1aea41ee19b1dbf43921940a0e750f6c, type: 3}
   m_PrefabInstance: {fileID: 4815468678356039345}
   m_PrefabAsset: {fileID: 0}
