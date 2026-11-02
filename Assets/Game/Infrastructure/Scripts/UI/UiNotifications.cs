@@ -6,18 +6,23 @@ public class UiNotifications : MonoBehaviour
     [SerializeField] private PlusNotification _plusNotificationPrefab;
     [SerializeField] private RectTransform _holder;
     [SerializeField] private CultureOpenedNotification _cultureOpenedNotification; 
+    [SerializeField] private ChickenOpenedNotification _chickenOpenedNotification;
     
     private PlayerCultures _cultures;
     private PlayerResources _resources;
     private PlayerMutagens _mutagens;
     private PlayerGrenades _grenades;
     private CulturesSelection _culturesSelection;
+    private ChickenSpawner _chickenSpawner;
 
     private GameConfig _config;
     
     [Inject]
-    private void Initialize(PlayerCultures cultures, PlayerResources resources,
-        PlayerMutagens mutagens, PlayerGrenades grenades, CulturesSelection culturesSelection, GameConfig config)
+    private void Initialize(
+        PlayerCultures cultures, PlayerResources resources,
+        PlayerMutagens mutagens, PlayerGrenades grenades,
+        CulturesSelection culturesSelection, ChickenSpawner chickenSpawner,
+        GameConfig config)
     {
         _cultures = cultures;
         _resources = resources;
@@ -25,6 +30,7 @@ public class UiNotifications : MonoBehaviour
         _grenades = grenades;
 
         _culturesSelection = culturesSelection;
+        _chickenSpawner = chickenSpawner;
         
         _config = config;
     }
@@ -36,6 +42,7 @@ public class UiNotifications : MonoBehaviour
         _mutagens.Added += OnMutagen;
         _grenades.Added += OnGrenade;
         _culturesSelection.CultureOpened += OnCultureOpened;
+        _chickenSpawner.Spawned += OnChickenOpened;
     }
 
     private void OnCulture(CultureType type, int count)
@@ -68,6 +75,11 @@ public class UiNotifications : MonoBehaviour
         string cultureName = _config.Cultures.Names.Find(x => x.Key == type).Value;
         
         _cultureOpenedNotification.Show(sprite, cultureName);
+    }
+
+    private void OnChickenOpened()
+    {
+        _chickenOpenedNotification.Show();
     }
     
     private void CreatePlusNotification(Sprite sprite, int count)
