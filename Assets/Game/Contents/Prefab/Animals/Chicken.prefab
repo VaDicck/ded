@@ -81,6 +81,7 @@ MonoBehaviour:
   _audio: {fileID: 2596985007205100981}
   _idleSound: {fileID: 8300000, guid: f173b89b77b6f8f439c1cb341df4b0a6, type: 3}
   _dieSound: {fileID: 8300000, guid: c32b60b7643c53840964fb6f200aeb4c, type: 3}
+  _peckSound: {fileID: 8300000, guid: f17f1242472c1234e9f5e1db1e4b01f5, type: 3}
 --- !u!136 &6972517237347878933
 CapsuleCollider:
   m_ObjectHideFlags: 0

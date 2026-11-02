@@ -7014,6 +7014,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2166204371272849099, guid: 23d61a64c73b0ef459bd697a9e79d2cf, type: 3}
+      propertyPath: priority
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166204371272849099, guid: 23d61a64c73b0ef459bd697a9e79d2cf, type: 3}
+      propertyPath: m_IsGlobal
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166204371272849099, guid: 23d61a64c73b0ef459bd697a9e79d2cf, type: 3}
+      propertyPath: injectionPoint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166204371272849099, guid: 23d61a64c73b0ef459bd697a9e79d2cf, type: 3}
+      propertyPath: useTargetCamera
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166204371272849099, guid: 23d61a64c73b0ef459bd697a9e79d2cf, type: 3}
+      propertyPath: managedReferences[8048716082884640843].renderQueueType
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4032372661675503197, guid: 23d61a64c73b0ef459bd697a9e79d2cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.184556

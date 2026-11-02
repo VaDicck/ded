@@ -24,10 +24,17 @@ public class ChaseFleeingAlienState : IChickenState
     private bool _isMoving;
 
     private int _countFistAttack = 0;
+    
+    private AudioSource _audioSource;
+    private AudioClip _fistAttackSound;
+    private AudioClip _beackAttackSound;
+    private AudioClip _jumpAttackSound;
 
     public ChaseFleeingAlienState(MutatedChicken chicken, NavMeshAgent agent,
                                   float attackRange, float attackInterval, Animator animator,
-                                  float attackFistDamage, float attackBeakDamage, float attackJumpDamage, float jumpAoERadius)
+                                  float attackFistDamage, float attackBeakDamage, float attackJumpDamage, float jumpAoERadius,
+                                  AudioSource source, AudioClip fistAttackSound, AudioClip beackAttackSound,
+                                  AudioClip jumpAttackSound)
     {
         _chicken = chicken;
         _agent = agent;
@@ -38,6 +45,10 @@ public class ChaseFleeingAlienState : IChickenState
         _attackInterval = attackInterval;
         _animator = animator;
         _jumpAoERadius = jumpAoERadius;
+        _audioSource = source;
+        _fistAttackSound = fistAttackSound;
+        _beackAttackSound = beackAttackSound;
+        _jumpAttackSound = jumpAttackSound;
     }
 
     public void Enter()
@@ -157,6 +168,7 @@ public class ChaseFleeingAlienState : IChickenState
 
         if (GetAliensInJumpZoneCount() > 2)
         {
+            _audioSource.PlayOneShot(_jumpAttackSound);
             _animator.SetTrigger("JumpAttack");
             _countFistAttack = 0;
             return;
@@ -164,11 +176,13 @@ public class ChaseFleeingAlienState : IChickenState
 
         if(_countFistAttack > 2)
         {
+            _audioSource.PlayOneShot(_beackAttackSound);
             _animator.SetTrigger("BeakAttack");
             _countFistAttack = 0;
             return;
         }
 
+        _audioSource.PlayOneShot(_fistAttackSound);
         _animator.SetTrigger("FistAttack");
         _countFistAttack++;
     }

@@ -13,6 +13,7 @@ public class Chicken : ChickenBase, IInteractable
     private bool _isMutated = false;
     
     [SerializeField] private AudioClip _dieSound;
+    [SerializeField] private AudioClip _peckSound;
     
     [Inject] private MutatedChicken.Factory _mutatedChickenFactory;
     [Inject] private PlayerMutagens _playerMutagens;
@@ -106,6 +107,12 @@ public class Chicken : ChickenBase, IInteractable
         mutatedChicken.WarpTo(transform.position);
             
         Destroy(gameObject);
+    }
+    
+    protected override void OnPeck()
+    {
+        _audio.clip = _peckSound;
+        _audio.Play();
     }
     
     private void OnDestroy()

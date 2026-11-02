@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Shotgun : Weapon
@@ -26,12 +27,22 @@ public class Shotgun : Weapon
     
     public override void Zoom()
     {
+        if(_isZooming) return;
+        
+        _isZooming = true;
         _zoomMultiplier = _zoomSpreadMultiplier;
+        
+        _audioSource.PlayOneShot(_zoomSound);
     }
 
     public override void UnZoom()
     {
+        if(!_isZooming) return;
+
+        _isZooming = false;
         _zoomMultiplier = 1f;
+        
+        _audioSource.PlayOneShot(_unzoomSound);
     }
 
     protected override void Hide()
