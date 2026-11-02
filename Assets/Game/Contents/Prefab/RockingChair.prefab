@@ -67,6 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b044d6921dea394cbe4ae1e7156ec09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RockingChair
+  _grandpaSleepSound: {fileID: 8300000, guid: b09cd457ced2b5e48b1e21dbe9c8c646, type: 3}
+  _sleepVolume: 0.739
 --- !u!1001 &3010050946065481596
 PrefabInstance:
   m_ObjectHideFlags: 0
