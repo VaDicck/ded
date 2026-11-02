@@ -9,5 +9,7 @@ public class CultureFactoriesInstaller : Installer<CultureFactoriesInstaller>
         Container.BindFactory<TomatoCulture, TomatoCulture.Factory>();
         Container.BindFactory<CornCulture, CornCulture.Factory>();
         Container.BindFactory<PepperCulture, PepperCulture.Factory>();
+        Container.BindFactory<GarnetCulture, GarnetCulture.Factory>();
+        Container.BindFactory<PotatoCulture, PotatoCulture.Factory>();
     }
 }
