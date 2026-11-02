@@ -10,11 +10,13 @@ public class CultureOpenedNotification : MonoBehaviour
     [SerializeField] private Button _applyButton;
 
     private InputController _inputController;
+    private AudioService _audioService;
     
     [Inject]
-    private void Initialize(InputController inputController)
+    private void Initialize(InputController inputController, AudioService audioService)
     {
         _inputController = inputController;
+        _audioService = audioService;
     }
 
     private void Start()
@@ -28,6 +30,7 @@ public class CultureOpenedNotification : MonoBehaviour
         gameObject.SetActive(true);
         _inputController.SwitchToUi();
         Time.timeScale = 0f;
+        _audioService.GameTimeScale.Value = Time.timeScale;
         _icon.sprite = sprite;
         _name.text = name;
     }
@@ -38,5 +41,6 @@ public class CultureOpenedNotification : MonoBehaviour
         gameObject.SetActive(false);
         _inputController.SwitchToGameplay();
         Time.timeScale = 1f;
+        _audioService.GameTimeScale.Value = Time.timeScale;
     }
 }
