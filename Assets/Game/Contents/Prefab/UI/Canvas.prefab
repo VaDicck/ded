@@ -10262,6 +10262,34 @@ PrefabInstance:
       propertyPath: '_tools.Array.data[2]'
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6388557500228127424, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388557500228127424, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388557500228127424, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388557500228127424, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388557500228127424, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388557500228127424, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388557500228127424, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7073037760309354902, guid: 0737492ad791543498b8e22d050354e0, type: 3}
       propertyPath: m_Name
       value: ToolsRadialMenu

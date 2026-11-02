@@ -574,6 +574,12 @@ MonoBehaviour:
     <Value>k__BackingField: TakeGrenade
   - <Key>k__BackingField: 10
     <Value>k__BackingField: TakeGrenade
+  - <Key>k__BackingField: 1
+    <Value>k__BackingField: TakeShovel
+  - <Key>k__BackingField: 2
+    <Value>k__BackingField: TakeAxe
+  - <Key>k__BackingField: 8
+    <Value>k__BackingField: TakeMutagen
   _tools:
   - <Key>k__BackingField: 4
     <Value>k__BackingField: {fileID: 176537791708615803}
@@ -586,6 +592,12 @@ MonoBehaviour:
   - <Key>k__BackingField: 9
     <Value>k__BackingField: {fileID: 8582886784518620002}
   - <Key>k__BackingField: 10
+    <Value>k__BackingField: {fileID: 8582886784518620002}
+  - <Key>k__BackingField: 1
+    <Value>k__BackingField: {fileID: 8582886784518620002}
+  - <Key>k__BackingField: 2
+    <Value>k__BackingField: {fileID: 8582886784518620002}
+  - <Key>k__BackingField: 8
     <Value>k__BackingField: {fileID: 8582886784518620002}
   _idleTriggerName: Idle_Without_Gun
 --- !u!114 &658639547130487766
