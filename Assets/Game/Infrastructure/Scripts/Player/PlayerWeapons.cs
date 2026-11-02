@@ -165,7 +165,7 @@ public class PlayerWeapons : MonoBehaviour
     
     private void StartZoom()
     {
-        if (_currentWeapon == null && _currentWeapon.IsZooming) return;
+        if (_currentWeapon == null || _currentWeapon.IsZooming) return;
         
         _currentWeapon.Zoom();
         _isZooming.Value = _currentWeapon.IsZooming;
@@ -174,7 +174,7 @@ public class PlayerWeapons : MonoBehaviour
     
     private void StopZoom()
     {
-        if (_currentWeapon == null && !_currentWeapon.IsZooming) return;
+        if (_currentWeapon == null || !_currentWeapon.IsZooming) return;
         
         _currentWeapon.UnZoom();
         _isZooming.Value = _currentWeapon.IsZooming;

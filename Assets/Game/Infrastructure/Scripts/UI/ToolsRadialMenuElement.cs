@@ -95,6 +95,11 @@ public class ToolsRadialMenuElement : MonoBehaviour
 
                 break;
             
+            case  ToolType.GarnetGrenade:
+                _count.text = _playerGrenades.Count(_tools[_currentTool]).ToString();
+
+                break;
+            
             default:
                 if (_count != null)
                     _count.text = "";
