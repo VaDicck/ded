@@ -13,6 +13,8 @@ public class CulturesSelection
     private readonly TomatoCulture.Factory _tomatoFactory;
     private readonly CornCulture.Factory _cornFactory;
     private readonly PepperCulture.Factory _pepperFactory;
+    private readonly GarnetCulture.Factory _garnetFactory;
+    private readonly PotatoCulture.Factory _potatoFactory;
 
     private readonly InputController _inputController;
     
@@ -22,8 +24,10 @@ public class CulturesSelection
     
     private readonly List<CultureType> _unlockedCultures;
     
-    public CulturesSelection(GameConfig config, InputController inputController, CarrotCulture.Factory carrotFactory, TomatoCulture.Factory tomatoFactory,
-        CornCulture.Factory cornFactory, PepperCulture.Factory pepperFactory)
+    public CulturesSelection(GameConfig config, InputController inputController,
+        CarrotCulture.Factory carrotFactory, TomatoCulture.Factory tomatoFactory,
+        CornCulture.Factory cornFactory, PepperCulture.Factory pepperFactory,
+        GarnetCulture.Factory garnetCultureFactory, PotatoCulture.Factory potatoCultureFactory)
     {
         _unlockedCultures = new(config.UnlockedCultures);
         
@@ -33,6 +37,8 @@ public class CulturesSelection
         _tomatoFactory = tomatoFactory;
         _cornFactory = cornFactory;
         _pepperFactory = pepperFactory;
+        _garnetFactory = garnetCultureFactory;
+        _potatoFactory = potatoCultureFactory;
     }
 
     public void Show()
@@ -84,6 +90,15 @@ public class CulturesSelection
                 break;
             case CultureType.Pepper:
                 culture = _pepperFactory.Create();
+                break;
+            case CultureType.Garnet:
+                culture = _garnetFactory.Create();
+                break;
+            case CultureType.Potato:
+                culture = _potatoFactory.Create();
+                break;
+            default:
+                this.LogWarning("Unknown culture type: " + cultureType);
                 break;
         }
 

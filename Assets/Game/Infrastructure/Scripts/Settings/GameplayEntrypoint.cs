@@ -8,9 +8,10 @@ public class GameplayEntrypoint : MonoBehaviour
     private PlayerMutagens _playerMutagens;
     private PlayerGrenades _playerGrenades;
     private ChickenSpawner _chickenSpawner;
+    private CulturesSelection _culturesSelection;
     
     [Inject]
-    private void Initialize(DayCycleService dayCycleService, PlayerTools playerTools, PlayerMutagens playerMutagens,
+    private void Initialize(DayCycleService dayCycleService, PlayerTools playerTools, CulturesSelection cultures, PlayerMutagens playerMutagens,
         PlayerGrenades playerGrenades, ChickenSpawner chickenSpawner)
     {
         _dayCycleService = dayCycleService;
@@ -18,6 +19,7 @@ public class GameplayEntrypoint : MonoBehaviour
         _playerMutagens = playerMutagens;
         _playerGrenades = playerGrenades;
         _chickenSpawner = chickenSpawner;
+        _culturesSelection = cultures;
     }
 
     private void Start()

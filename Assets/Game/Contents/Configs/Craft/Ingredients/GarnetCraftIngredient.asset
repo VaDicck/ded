@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0599e956988d4a989edfeca5ebe44379, type: 3}
   m_Name: GarnetCraftIngredient
   m_EditorClassIdentifier: Assembly-CSharp::CultureCraftIngredient
-  <Sprite>k__BackingField: {fileID: 21300000, guid: f99c6de1334d5e94bacf71662d4e73ba, type: 3}
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 620ad42314c20cc4e920195307dcef1a, type: 3}
   <Name>k__BackingField: "\u0413\u0440\u0430\u043D\u0430\u0442"
   <Item>k__BackingField: 4

@@ -59,8 +59,6 @@ public class ToolsRadialMenuElement : MonoBehaviour
         int tool = _currentTool;
         int extra = 0;
         
-        this.Log(_playerTools.Contains(_tools[tool]));
-        
         while (_playerTools.Contains(_tools[tool]) == false)
         {
             tool = (tool + 1) % _tools.Count;

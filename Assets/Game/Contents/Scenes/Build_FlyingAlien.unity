@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7228204048002891284, guid: a3f31f34e57efb646a66bd1314438aff, type: 3}
       propertyPath: _bioTrashPerDay
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -423,6 +423,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameplaySceneContext
       objectReference: {fileID: 0}
+    - target: {fileID: 5583649073785047498, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
+      propertyPath: _garnetConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: a322afe271351ca4f98fb75e74f49ffc, type: 2}
+    - target: {fileID: 5583649073785047498, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
+      propertyPath: _potatoConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: d57be13ba5e592b4eba30b344c6690c3, type: 2}
     - target: {fileID: 7310094702089323522, guid: ce0903f2e9cd2934a8a89b7663eba9de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -796,6 +804,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &547820644 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8582886784518620002, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+  m_PrefabInstance: {fileID: 1029258960}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &711263311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,6 +1464,54 @@ PrefabInstance:
     - target: {fileID: 6301002893765602297, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: m_SlopeLimit
       value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _tools.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _toolTriggerNames.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _tools.Array.data[4].<Key>k__BackingField
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _tools.Array.data[5].<Key>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _tools.Array.data[4].<Value>k__BackingField
+      value: 
+      objectReference: {fileID: 547820644}
+    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _tools.Array.data[5].<Value>k__BackingField
+      value: 
+      objectReference: {fileID: 547820644}
+    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _toolTriggerNames.Array.data[4].<Key>k__BackingField
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _toolTriggerNames.Array.data[5].<Key>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _toolTriggerNames.Array.data[6].<Key>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _toolTriggerNames.Array.data[4].<Value>k__BackingField
+      value: TakeGrenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _toolTriggerNames.Array.data[5].<Value>k__BackingField
+      value: TakeGrenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _toolTriggerNames.Array.data[6].<Value>k__BackingField
+      value: TakeGrenade
       objectReference: {fileID: 0}
     - target: {fileID: 8140115831517907385, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2559,10 +2620,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 346402342270365977, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_text
-      value: I
-      objectReference: {fileID: 0}
     - target: {fileID: 870989120079519889, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: _shotgun
       value: 
@@ -2579,14 +2636,18 @@ PrefabInstance:
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 257215193}
-    - target: {fileID: 2191816258299108466, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_text
-      value: TAB
-      objectReference: {fileID: 0}
     - target: {fileID: 2635109819847704802, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: _playerInteractions
       value: 
       objectReference: {fileID: 914531414}
+    - target: {fileID: 2635109819847704802, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
+      propertyPath: _toolSprites.Array.data[4].<Value>k__BackingField
+      value: 
+      objectReference: {fileID: 21300000, guid: 3dd9c37471f706d4da9e712a5e39bb94, type: 3}
+    - target: {fileID: 2635109819847704802, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
+      propertyPath: _toolSprites.Array.data[5].<Value>k__BackingField
+      value: 
+      objectReference: {fileID: 21300000, guid: 68638b1ca20767047a9cc5c5d5d5eef8, type: 3}
     - target: {fileID: 4164364410392230289, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
