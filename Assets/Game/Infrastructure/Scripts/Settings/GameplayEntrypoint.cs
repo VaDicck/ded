@@ -32,6 +32,7 @@ public class GameplayEntrypoint : MonoBehaviour
         _playerTools.Add(ToolType.GarnetGrenade);
         
         _playerGrenades.Add(ToolType.GarnetGrenade);
+        _playerGrenades.Add(ToolType.GarnetGrenade);
         
         _dayCycleService.StartDay();
         this.Log("Gameplay started");
