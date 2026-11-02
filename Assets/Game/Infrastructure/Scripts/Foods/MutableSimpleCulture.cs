@@ -15,16 +15,12 @@ public abstract class MutableSimpleCulture<TMutatedCulture> : SimpleCulture
         _playerMutagens = playerMutagens;
     }
     
-    public override bool UseTool(ToolType toolType)
+    protected override bool OnUseTool(ToolType toolType)
     {
-        switch (toolType)
+        if (ToolType.Mutagen == toolType)
         {
-            case ToolType.Bailer:
-                return TryPour();
-            
-            case ToolType.Mutagen:
-                UseMutagen();
-                return true;
+            UseMutagen();
+            return true;
         }
 
         return false;

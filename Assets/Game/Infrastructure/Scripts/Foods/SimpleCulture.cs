@@ -55,14 +55,8 @@ public abstract class SimpleCulture : Culture
         RaiseCollected();
     }
     
-    public override bool UseTool(ToolType toolType)
+    protected override bool OnUseTool(ToolType toolType)
     {
-        switch (toolType)
-        {
-            case ToolType.Bailer:
-                return TryPour();
-        }
-
         return false;
     }
     
