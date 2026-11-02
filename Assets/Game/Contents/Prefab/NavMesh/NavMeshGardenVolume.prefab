@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1707549128106813486
 Transform:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &115745369081049413
 Transform:
   m_ObjectHideFlags: 0
@@ -94,8 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifierVolume
   m_SerializedVersion: 0
-  m_Size: {x: 5.686677, y: 7.636565, z: 11.702169}
-  m_Center: {x: 0.48817062, y: 3.3182826, z: -1.3410492}
+  m_Size: {x: 5.686677, y: 7.636565, z: 13.276494}
+  m_Center: {x: 0.48817062, y: 3.3182826, z: -2.1282115}
   m_Area: 1
   m_AffectedAgents: a98c17ec
 --- !u!1 &1055357618072422082
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Size: {x: 4, y: 3, z: 4}
   m_Center: {x: 0, y: 1, z: 0}
   m_Area: 4
-  m_AffectedAgents: f46d2d58
+  m_AffectedAgents: f46d2d58a98c17ec
 --- !u!1 &1631599369722478482
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2794398745655851351
 Transform:
   m_ObjectHideFlags: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Size: {x: 8.4159355, y: 3, z: 10.294206}
   m_Center: {x: 2.2079685, y: 1, z: 3.1471019}
   m_Area: 4
-  m_AffectedAgents: f46d2d58
+  m_AffectedAgents: f46d2d58a98c17ec
 --- !u!1 &2813729527978559655
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Size: {x: 9.525202, y: 3, z: 10.4355345}
   m_Center: {x: 1.9128534, y: 0, z: -3.1848063}
   m_Area: 4
-  m_AffectedAgents: f46d2d58
+  m_AffectedAgents: f46d2d58a98c17ec
 --- !u!114 &7132917437888669960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Size: {x: 26.924194, y: 3, z: 18.882431}
   m_Center: {x: 0.2655964, y: 1, z: -7.4412155}
   m_Area: 4
-  m_AffectedAgents: f46d2d58
+  m_AffectedAgents: f46d2d58a98c17ec
 --- !u!114 &6376598194889577875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,7 +413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7296231641408136256
 Transform:
   m_ObjectHideFlags: 0
@@ -462,7 +462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &614837949705514715
 Transform:
   m_ObjectHideFlags: 0
@@ -511,7 +511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1340487926498128960
 Transform:
   m_ObjectHideFlags: 0
@@ -560,7 +560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8384735554675358076
 Transform:
   m_ObjectHideFlags: 0
@@ -641,7 +641,7 @@ MonoBehaviour:
   m_Size: {x: 5.1801586, y: 3, z: 8.248595}
   m_Center: {x: -0.59007955, y: 1, z: 1.5615325}
   m_Area: 4
-  m_AffectedAgents: f46d2d58
+  m_AffectedAgents: f46d2d58a98c17ec
 --- !u!1 &6980561754488516355
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,7 +658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5332505289580076335
 Transform:
   m_ObjectHideFlags: 0
@@ -707,7 +707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8289428387800970609
 Transform:
   m_ObjectHideFlags: 0
@@ -740,6 +740,55 @@ MonoBehaviour:
   m_Center: {x: 1.6, y: 6.3400774, z: -25.833057}
   m_Area: 1
   m_AffectedAgents: f46d2d58
+--- !u!1 &7357155746900016857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9017390944223957698}
+  - component: {fileID: 4002389146530984871}
+  m_Layer: 0
+  m_Name: --FlyingAlien--_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9017390944223957698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7357155746900016857}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.14808886, z: -0, w: 0.9889741}
+  m_LocalPosition: {x: -33.34, y: 0, z: 15.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1735947971679111284}
+  m_LocalEulerAnglesHint: {x: 0, y: 17.032, z: 0}
+--- !u!114 &4002389146530984871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7357155746900016857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifierVolume
+  m_SerializedVersion: 0
+  m_Size: {x: 13.438904, y: 7.020382, z: 33.745895}
+  m_Center: {x: -2.1053314, y: 3.0101914, z: -14.87294}
+  m_Area: 1
+  m_AffectedAgents: a98c17ec
 --- !u!1 &7691051595193648240
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,7 +805,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &919564395013510341
 Transform:
   m_ObjectHideFlags: 0
@@ -836,6 +885,7 @@ Transform:
   - {fileID: 919564395013510341}
   - {fileID: 8289428387800970609}
   - {fileID: 3076520537220919299}
+  - {fileID: 9017390944223957698}
   - {fileID: 115745369081049413}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 57.197, z: 0}
@@ -889,7 +939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3076520537220919299
 Transform:
   m_ObjectHideFlags: 0
@@ -970,4 +1020,4 @@ MonoBehaviour:
   m_Size: {x: 12.310724, y: 3, z: 17.642632}
   m_Center: {x: -0.2123518, y: 1, z: -6.8213177}
   m_Area: 4
-  m_AffectedAgents: f46d2d58
+  m_AffectedAgents: f46d2d58a98c17ec
