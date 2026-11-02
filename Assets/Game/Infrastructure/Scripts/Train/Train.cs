@@ -31,8 +31,6 @@ public class Train : MonoBehaviour
 
     private void Start()
     {
-        _audio.clip = _idleClip;
-        _audio.Play();
         Arrive();
     }
 
@@ -41,7 +39,6 @@ public class Train : MonoBehaviour
         if (_left == false)
             return;
         
-        _audio.PlayOneShot(_arriveClip, 0.5f);
         _left = false;
         Hide();
         Show();
@@ -54,7 +51,7 @@ public class Train : MonoBehaviour
         
         _left = true;
         
-        _audio.PlayOneShot(_leaveClip, 0.5f);
+        _audio.PlayOneShot(_leaveClip);
         
         _animator.SetTrigger("Leave");
         
@@ -74,6 +71,9 @@ public class Train : MonoBehaviour
     private void Show()
     {
         gameObject.SetActive(true);
+        _audio.clip = _idleClip;
+        _audio.Play();
+        _audio.PlayOneShot(_arriveClip);
 
         foreach (var carriage in _carriages)
         {
