@@ -15,6 +15,7 @@ public class PlayerInteractions : MonoBehaviour
     [SerializeField] private AudioClip _axeSound;
     [SerializeField] private AudioClip _pitchforkSound;
     [SerializeField] private AudioClip _wateringSound;
+    [SerializeField] private AudioClip _mutagenSound;
     
     private InputController _inputController;
     private PlayerTools _playerTools;
@@ -59,7 +60,7 @@ public class PlayerInteractions : MonoBehaviour
             if(!resultUse)
                 return;
 
-             PlaySfxTool(toolType);
+            PlaySfxTool(toolType);
         }
     }
         
@@ -110,6 +111,9 @@ public class PlayerInteractions : MonoBehaviour
                 break;            
             case ToolType.Axe:
                 _audioService.PlaySfx(_axeSound);
+                break;
+            case ToolType.Mutagen:
+                _audioService.PlaySfx(_mutagenSound);
                 break;
         }
     }

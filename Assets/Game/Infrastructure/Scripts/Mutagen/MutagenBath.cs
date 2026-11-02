@@ -10,6 +10,10 @@ public class MutagenBath : MonoBehaviour, IInteractable
     [SerializeField] private float _bioTrashPerDay = 2;
     [SerializeField] private GameObject _vfx;
     
+    [Header("Audio")]
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _takeMutagenSound;
+    
     [Inject] private PlayerResources _playerResources;
     [Inject] private DayCycleService _dayCycleService;
 
@@ -27,6 +31,7 @@ public class MutagenBath : MonoBehaviour, IInteractable
         _currentCountBioTrash -= amountToGive;
         _canTake = false;
         _vfx.SetActive(false);
+        _audioSource.PlayOneShot(_takeMutagenSound);
         
         _playerResources.Add(ResourceType.BioTrash, amountToGive);
         return UniTask.CompletedTask;

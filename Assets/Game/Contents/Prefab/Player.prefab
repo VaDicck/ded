@@ -179,7 +179,7 @@ MonoBehaviour:
         InputAction: {fileID: -493091155414541446, guid: 399c786594975c4419cc9fe17654106c, type: 3}
         Gain: 1
         CancelDeltaTime: 0
-      InputValue: 0
+      InputValue: 1
       Driver:
         AccelTime: 0
         DecelTime: 0
@@ -214,6 +214,7 @@ MonoBehaviour:
   _axeSound: {fileID: 8300000, guid: 1d63ffdf18038f14483b991595a85cd2, type: 3}
   _pitchforkSound: {fileID: 8300000, guid: bec9c15d1f392804ebe561a47ce531f2, type: 3}
   _wateringSound: {fileID: 8300000, guid: 255b22242a2639246923630a55f0320e, type: 3}
+  _mutagenSound: {fileID: 8300000, guid: 6b2e4ad5b5ceb114fa780bcfbea554f0, type: 3}
 --- !u!114 &2918627911804522192
 MonoBehaviour:
   m_ObjectHideFlags: 0
