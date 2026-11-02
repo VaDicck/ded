@@ -52,12 +52,14 @@ public class PlayerInteractions : MonoBehaviour
 
         if (_interactable.IsUsable && _playerTools.Tool != null)
         {
-            bool resultUse = await _interactable.Use((ToolType) _playerTools.Tool);
+            ToolType toolType = (ToolType) _playerTools.Tool;
+            
+            bool resultUse = await _interactable.Use(toolType);
 
             if(!resultUse)
                 return;
 
-             PlaySfxTool((ToolType)_playerTools.Tool);
+             PlaySfxTool(toolType);
         }
     }
         
