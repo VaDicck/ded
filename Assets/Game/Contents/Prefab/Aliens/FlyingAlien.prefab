@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 5130715632998334395}
   - component: {fileID: 8053134148088632446}
   - component: {fileID: 1208458007773489995}
+  - component: {fileID: 8094584951684599095}
   m_Layer: 11
   m_Name: FlyingAlien
   m_TagString: Untagged
@@ -218,9 +219,9 @@ MonoBehaviour:
   _audio: {fileID: 4310196011075445940}
   _projectilePrefab: {fileID: 7404608359833101551, guid: a3cc1030f82f15b42aab1189bc2394d1, type: 3}
   _projectileSpawnPoint: {fileID: 6219793101788205381}
-  _fireRate: 3
-  _projectileSpeed: 12
-  _minShootDistance: 8
+  _fireRate: 1.6
+  _projectileSpeed: 23
+  _minShootDistance: 10
   _flySound: {fileID: 8300000, guid: 4dfeacd258d7aa449958270c454f7a87, type: 3}
   _attack1Sound: {fileID: 8300000, guid: 9f593114b4b090f47895913c1ae9c501, type: 3}
   _attack2Sound: {fileID: 8300000, guid: 4225d8859fe959741b41c7f1783f9e6b, type: 3}
@@ -232,7 +233,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6014802101477557910}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: -334000983
   m_Radius: 0.45
   m_Speed: 8
@@ -318,6 +319,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8094584951684599095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6014802101477557910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd2b19528385a04a8e2323d36cd5a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomMaterial
+  _materials:
+  - {fileID: 2100000, guid: b067839d47228c449aa195c31b235ec1, type: 2}
+  - {fileID: 2100000, guid: ffc9b27ec0449bc46a4f7af7f197ba2a, type: 2}
+  _meshRenderer: {fileID: 9170665570217839850}
 --- !u!1001 &25315280317605366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1427,5 +1444,10 @@ Transform:
 --- !u!95 &5851132168838371431 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 640476cc493423f46ab34018e2a483ea, type: 3}
+  m_PrefabInstance: {fileID: 25315280317605366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &9170665570217839850 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9159564776224139548, guid: 640476cc493423f46ab34018e2a483ea, type: 3}
   m_PrefabInstance: {fileID: 25315280317605366}
   m_PrefabAsset: {fileID: 0}
