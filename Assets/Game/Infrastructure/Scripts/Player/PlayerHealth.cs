@@ -6,15 +6,19 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     
     [Header("Audio")]
     [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private AudioClip _hitSound;
 
     private int _currentHitOverlay;
     
-    public void TakeDamage(float damage, Vector3 hitPoint)
+    public void TakeDamage(float damage, Vector3 hitPoint, AudioClip audioClip = null)
     {
         //TODO REWRITE
-        if(hitPoint == Vector3.one)
-            ShowRandomHitOverlay();
+        if(hitPoint != Vector3.one) return;
+        
+        ShowRandomHitOverlay();
+        
+        if(audioClip == null) return;
+        
+        _audioSource.PlayOneShot(audioClip);
     }
 
     [ContextMenu("ShowRandomHitOverlay")]
@@ -28,6 +32,5 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         _currentHitOverlay++;
         
         selectedOverlay.SetActive(true);
-        _audioSource.PlayOneShot(_hitSound);
     }
 }
