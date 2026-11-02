@@ -53,11 +53,11 @@ public class CarriageMenu : MonoBehaviour, IDisposable
 
         if (_quotaElement.Reward.ExtraReward != null)
         {
-            var rewardElement = Instantiate(_rewardElementPrefab);
+            var rewardElement = Instantiate(_rewardElementPrefab, _rewardHolder);
             rewardElement.transform.localScale = Vector3.one;
             rewardElement.transform.localPosition = Vector3.zero;
             rewardElement.transform.localRotation = Quaternion.identity;
-            rewardElement.Initialize(_quotaElement.Reward.ExtraReward.Icon, 1);
+            rewardElement.Initialize(_quotaElement.Reward.ExtraReward.Icon, 0);
             _rewardElements.Add(rewardElement);
         }
     }
