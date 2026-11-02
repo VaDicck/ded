@@ -44,20 +44,19 @@ public class MutatedCornCulture : MutatedCulture<MutatedCorn.Factory, MutatedCor
     
     protected override void OnNightStart()
     {
-        if (_isPoured.Value)
+        if (!_isPoured.Value)
         {
-            _mutatedFood.Close();
-        }
-        else
-        {
-            //TODO rasstroiza
+            _mutatedFood.Sad();
         }
     }
 
     protected override void OnNightEnded()
     {
         if (_isPoured.Value)
+        {
+            _mutatedFood.CanGiveResources();
             _canGiveResources = true;
+        } 
     }
 
     private void GiveResources()

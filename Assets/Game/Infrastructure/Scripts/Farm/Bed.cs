@@ -32,6 +32,11 @@ public class Bed : MonoBehaviour, IInteractable
     [Header("Tools")] 
     [SerializeField] private ToolType _unlockTool;
     [SerializeField] private ToolType _plowTool;
+    
+    [Header("Audio")] 
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _plantedSound;
+    [SerializeField] private AudioClip _collectedSound;
 
     private StateMachine<IBedState> _stateMachine;
     
@@ -53,6 +58,9 @@ public class Bed : MonoBehaviour, IInteractable
         _rawState.gameObject.SetActive(false);
         _plowedState.gameObject.SetActive(false);
         _plantedState.gameObject.SetActive(false);
+        
+        Planted += OnPlanted;
+        Collected += OnCollected;
     }
     
     private void Start()
@@ -109,5 +117,15 @@ public class Bed : MonoBehaviour, IInteractable
             
             UpdatePlantedStateBeds?.Invoke();
         };
+    }
+
+    private void OnPlanted()
+    {
+        _audioSource.PlayOneShot(_plantedSound);
+    }
+
+    private void OnCollected()
+    {
+        _audioSource.PlayOneShot(_collectedSound);
     }
 }
