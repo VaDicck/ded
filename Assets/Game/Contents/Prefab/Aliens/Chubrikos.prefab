@@ -206,7 +206,8 @@ MonoBehaviour:
   _animator: {fileID: 772952679108185679}
   _sfxSplashAlien: {fileID: 3990862495863414018, guid: 1d3cc85384e970b4d94144cb276af7c6, type: 3}
   _audio: {fileID: 5307146290436373992}
-  _audioClip: {fileID: 8300000, guid: f71758565d94b1b47826c45bd63833f6, type: 3}
+  _runSound: {fileID: 8300000, guid: f71758565d94b1b47826c45bd63833f6, type: 3}
+  _digingSound: {fileID: 8300000, guid: 0cd0340b61eeb104cac2e16050e5493b, type: 3}
 --- !u!195 &1894188396959641881
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -214,7 +215,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8724716924210646740}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.19
   m_Speed: 5
