@@ -5,7 +5,7 @@ using TMPro;
 
 public abstract class VolumeSetting : MonoBehaviour
 {
-    [SerializeField] private Slider _slider;
+    [SerializeField] protected Slider _slider;
     [SerializeField] private TMP_Text _currentCount;
 
     protected AudioService _audioService;
