@@ -83,6 +83,7 @@ public abstract class AlienSpawner<TAlien> : MonoBehaviour where TAlien : AlienB
         
         TAlien alien = _alienFactory.Create();
         Transform spawnPoint = _ufo[_currentSpawn].transform;
+        _ufo[_currentSpawn].Spawn();
         
         alien.SetSpawnPoint(spawnPoint);
         

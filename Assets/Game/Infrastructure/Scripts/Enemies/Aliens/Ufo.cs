@@ -11,6 +11,11 @@ public class Ufo : MonoBehaviour
     [SerializeField] private float _timeAnimation;
     [SerializeField] private float _delayStartAnimation = 2f;
     
+    [Header("Audio")]
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _flySound;
+    [SerializeField] private AudioClip _spawnSound;
+    
     [Inject] private AlienService _alienService;
     [Inject] private DayCycleService _dayCycleService;
 
@@ -24,15 +29,26 @@ public class Ufo : MonoBehaviour
 
     private void OnEnable()
     {
+        _audioSource.clip = _flySound;
+        _audioSource.Play();
         StartCoroutine(ArriveCoroutine(_timeAnimation+_delayStartAnimation));
     }
-    
-    private void Hide() => gameObject.SetActive(false);
+
+    public void Spawn()
+    {
+        _audioSource.PlayOneShot(_spawnSound);
+    }
+
+    private void Hide()
+    {
+        _audioSource.Stop();
+        gameObject.SetActive(false);
+    }
 
     private void Leave()
     {
         _animator.SetTrigger("Leave");
-
+        
         StartCoroutine(LeaveCoroutine(_timeAnimation+_delayStartAnimation));
     }
     
