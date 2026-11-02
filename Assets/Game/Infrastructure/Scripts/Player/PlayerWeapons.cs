@@ -72,9 +72,9 @@ public class PlayerWeapons : MonoBehaviour
     
     private void Update()
     {
-        if (_currentWeapon == null) return;
-        
         UpdateZoom();
+        
+        if (_currentWeapon == null) return;
         
         _playerInputY = _panTilt.TiltAxis.Value + _recoilCurrent;
         
