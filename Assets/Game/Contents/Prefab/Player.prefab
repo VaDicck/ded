@@ -67,11 +67,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770189586896823310}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08901856, y: -0.15385215, z: 0.013918706, w: 0.9839774}
+  m_LocalRotation: {x: 0.23249963, y: 0.7620747, z: -0.47614586, w: 0.37211722}
   m_LocalPosition: {x: -0.00000055506825, y: 0.61800003, z: 0.17300074}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8555353194467069170}
   - {fileID: 156412642475827134}
   - {fileID: 8194114488866105397}
   m_Father: {fileID: 8140115831517907385}
@@ -134,7 +135,7 @@ MonoBehaviour:
   ReferenceFrame: 0
   RecenterTarget: 0
   PanAxis:
-    Value: -17.77333
+    Value: 127.94796
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -144,7 +145,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   TiltAxis:
-    Value: 10.338736
+    Value: 63.99446
     Center: 0
     Range: {x: -70, y: 70}
     Wrap: 0
@@ -252,6 +253,7 @@ MonoBehaviour:
   _animatorHand: {fileID: 8931445173760385191}
   _audioSource: {fileID: 4048530080270325751}
   _shootVolume: 0.34
+  _zoomVolume: 0.09
   _noAmmoSound: {fileID: 8300000, guid: 91cafe1ea40e95749a81685f4d3669fa, type: 3}
   _shotSound: {fileID: 8300000, guid: 833287f98db708b46a28dd14c905b032, type: 3}
   _zoomSound: {fileID: 8300000, guid: 29cebfd923fa5f14a98d5c843a67252f, type: 3}
@@ -434,7 +436,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1900177056686849254}
-  - {fileID: 8555353194467069170}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 104.943, z: 0}
 --- !u!33 &4183176312163715777
@@ -937,12 +938,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4576751158708821088}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.088, y: 0.121, z: 1.032}
+  m_LocalRotation: {x: -0.4086297, y: 0.52270824, z: -0.31465775, w: 0.67881405}
+  m_LocalPosition: {x: 0.80799454, y: 0.036554575, z: 0.5817578}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8140115831517907385}
+  m_Father: {fileID: 1900177056686849254}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &4048530080270325751
 AudioSource:

@@ -32,7 +32,7 @@ public class Shotgun : Weapon
         _isZooming = true;
         _zoomMultiplier = _zoomSpreadMultiplier;
         
-        _audioSource.PlayOneShot(_zoomSound);
+        _audioSource.PlayOneShot(_zoomSound, _zoomVolume);
     }
 
     public override void UnZoom()
@@ -42,7 +42,7 @@ public class Shotgun : Weapon
         _isZooming = false;
         _zoomMultiplier = 1f;
         
-        _audioSource.PlayOneShot(_unzoomSound);
+        _audioSource.PlayOneShot(_unzoomSound, _zoomVolume);
     }
 
     protected override void Hide()
