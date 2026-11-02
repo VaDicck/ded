@@ -10,4 +10,5 @@ public class AudioConfig : ScriptableObject
     [field: SerializeField] public string MasterVolumeName { get; private set; }
     [field: SerializeField] public string MusicVolumeName { get; private set; }
     [field: SerializeField] public string SfxVolumeName { get; private set; }
+    [field: SerializeField] public string SfxPitchName { get; private set; }
 }

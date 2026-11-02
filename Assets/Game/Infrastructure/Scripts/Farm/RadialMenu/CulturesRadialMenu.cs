@@ -16,11 +16,14 @@ public class CulturesRadialMenu : MonoBehaviour
     private CulturesSelection _culturesSelection;
     private InputController _inputController;
     
+    private AudioService _audioService;
+    
     [Inject]
-    private void Initialize(CulturesSelection cultureSelection, InputController inputController)
+    private void Initialize(CulturesSelection cultureSelection, InputController inputController, AudioService audioService)
     {
         _culturesSelection = cultureSelection;
         _inputController = inputController;
+        _audioService = audioService;
 
         _culturesSelection.Shown += Show;
         _culturesSelection.Hidden += Hide;
@@ -37,6 +40,7 @@ public class CulturesRadialMenu : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
+        _audioService.GameTimeScale.Value = Time.timeScale;
 
         foreach (var pair in _elementsWithWeights)
         {
@@ -131,6 +135,8 @@ public class CulturesRadialMenu : MonoBehaviour
             _selectedElement.Key.ApplyCulture();
         }
         Time.timeScale = 1f;
+        _audioService.GameTimeScale.Value = Time.timeScale;
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);

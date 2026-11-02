@@ -6,23 +6,23 @@ public class UISoundHandler : MonoBehaviour, IPointerEnterHandler, IPointerDownH
 {
     [Header("Audio")]
     [SerializeField] private AudioClip _downSound;   
-    [SerializeField] public AudioClip _upSound;  
-    [SerializeField] public AudioClip _hoverSound; 
+    [SerializeField] private AudioClip _upSound;  
+    [SerializeField] private AudioClip _hoverSound; 
     
     [Inject] private AudioService _audioService;
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _audioService.PlaySfx(_hoverSound);
+        _audioService.PlayUiSfx(_hoverSound);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        _audioService.PlaySfx(_downSound);
+        _audioService.PlayUiSfx(_downSound);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        _audioService.PlaySfx(_upSound);
+        _audioService.PlayUiSfx(_upSound);
     }
 }

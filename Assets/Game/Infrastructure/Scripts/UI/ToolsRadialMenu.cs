@@ -15,10 +15,13 @@ public class ToolsRadialMenu : MonoBehaviour
     private SerializedPair<ToolsRadialMenuElement, float> _selectedElement;
     private List<ElementRange> _elementRanges;
     
+    private AudioService _audioService;
+    
     [Inject]
-    private void Initialize(InputController inputController)
+    private void Initialize(InputController inputController, AudioService audioService)
     {
         _inputController = inputController;
+        _audioService = audioService;
         _inputController.OpenRadialMenu += Show;
         _inputController.RadialMenuCanceled += Hide;
         _inputController.RadialMenuWheelDown += ShowNextElement;
@@ -34,6 +37,7 @@ public class ToolsRadialMenu : MonoBehaviour
     {
         gameObject.SetActive(true);
         Time.timeScale = 0.2f;
+        _audioService.GameTimeScale.Value = Time.timeScale;
 
         _selectedElement = null;
         
@@ -150,6 +154,7 @@ public class ToolsRadialMenu : MonoBehaviour
             _selectedElement.Key.ApplyTool();
         }
         Time.timeScale = 1f;
+        _audioService.GameTimeScale.Value = Time.timeScale;
         gameObject.SetActive(false);
         _selectedElement = null;
         
