@@ -184,10 +184,10 @@ MonoBehaviour:
   _audioSource: {fileID: 4669472058764870416}
   _projectilePrefab: {fileID: 7404608359833101551, guid: 3de1e0e54aab99642bc0fa804457904e, type: 3}
   _projectileSpawnPoint: {fileID: 8541880526787884494}
-  _fireRate: 1
-  _projectileSpeed: 8
-  _rotationSpeed: 8
-  _damageBullet: 7
+  _fireRate: 0.5
+  _projectileSpeed: 14
+  _rotationSpeed: 10
+  _damageBullet: 14
   _idleSound: {fileID: 8300000, guid: 54eceea69e38fdc4bb839f1613783f25, type: 3}
   _attack1Sound: {fileID: 8300000, guid: 748c97c8805b7cf4a8fcabf162e4aaa6, type: 3}
   _attack2Sound: {fileID: 8300000, guid: 16e77ea0e44655745abdb6ffc144486a, type: 3}
@@ -313,6 +313,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8608658199542690832, guid: 863e6fe5901e5dd4d96c5587ce1c4677, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 863e6fe5901e5dd4d96c5587ce1c4677, type: 3}
       propertyPath: m_Name
       value: MutoVegetable_Pepper
@@ -321,13 +325,43 @@ PrefabInstance:
     - {fileID: 5866666021909216657, guid: 863e6fe5901e5dd4d96c5587ce1c4677, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -8608658199542690832, guid: 863e6fe5901e5dd4d96c5587ce1c4677, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7542311948042539462}
   m_SourcePrefab: {fileID: 100100000, guid: 863e6fe5901e5dd4d96c5587ce1c4677, type: 3}
 --- !u!4 &8504329230963484571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 863e6fe5901e5dd4d96c5587ce1c4677, type: 3}
   m_PrefabInstance: {fileID: 8182982376829337712}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8721271151410596736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8608658199542690832, guid: 863e6fe5901e5dd4d96c5587ce1c4677, type: 3}
+  m_PrefabInstance: {fileID: 8182982376829337712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &7542311948042539462
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8721271151410596736}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1454300294646581433, guid: 863e6fe5901e5dd4d96c5587ce1c4677, type: 3}
 --- !u!1001 &8380156599597520072
 PrefabInstance:
   m_ObjectHideFlags: 0

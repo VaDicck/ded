@@ -18,14 +18,6 @@ public class MutatedPepperCulture : MutatedCulture<MutatedPepper.Factory, Mutate
 
     }
 
-    public override ToolType UseTool()
-    {
-        if (!_isPoured.Value)
-            return ToolType.Bailer;
-
-        return ToolType.None;
-    }
-
     protected override void OnNightStart()
     {
         if (_isPoured.Value)
