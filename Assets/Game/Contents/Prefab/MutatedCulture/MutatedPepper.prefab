@@ -184,8 +184,8 @@ MonoBehaviour:
   _audioSource: {fileID: 4669472058764870416}
   _projectilePrefab: {fileID: 7404608359833101551, guid: 3de1e0e54aab99642bc0fa804457904e, type: 3}
   _projectileSpawnPoint: {fileID: 8541880526787884494}
-  _fireRate: 0.5
-  _projectileSpeed: 14
+  _fireRate: 0.2
+  _projectileSpeed: 19
   _rotationSpeed: 10
   _damageBullet: 14
   _idleSound: {fileID: 8300000, guid: 54eceea69e38fdc4bb839f1613783f25, type: 3}
