@@ -59,8 +59,27 @@ public abstract class Culture: IDisposable
     protected abstract void OnSetTransform();
     
     public abstract ToolType UseTool();
-    
-    public abstract bool UseTool(ToolType toolType);
+
+    public bool UseTool(ToolType toolType)
+    {
+        if (toolType == ToolType.Shovel)
+        {
+            DigOut();
+            RaiseCollected();
+            _countEnemyHitting = 0;
+            return false;
+        }
+
+        if (toolType == ToolType.Bailer)
+        {
+            TryPour();
+            return false;
+        }
+        
+        return OnUseTool(toolType);
+    }
+
+    protected abstract bool OnUseTool(ToolType toolType);
     
     public abstract bool IsInteract();
 

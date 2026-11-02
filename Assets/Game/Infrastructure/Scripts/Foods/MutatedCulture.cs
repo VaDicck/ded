@@ -40,14 +40,8 @@ public abstract class MutatedCulture<TFactory, TMutated> : Culture
         return ToolType.None;
     }
     
-    public override bool UseTool(ToolType toolType)
+    protected override bool OnUseTool(ToolType toolType)
     {
-        switch (toolType)
-        {
-            case ToolType.Bailer:
-                return TryPour();
-        }
-
         return false;
     }
 
