@@ -66,4 +66,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6a842c78e66cb4c97a5a65751d3761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MutagenBath
-  _bioTrashPerDay: 0.35
+  _bioTrashPerDay: 5
