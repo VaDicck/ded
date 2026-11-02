@@ -282,6 +282,8 @@ MonoBehaviour:
   _grenadePrefabs:
   - <Key>k__BackingField: 9
     <Value>k__BackingField: {fileID: 7027673454664172019, guid: f9dee49acac88db45a1e6143da393489, type: 3}
+  - <Key>k__BackingField: 10
+    <Value>k__BackingField: {fileID: 2999172472113979519, guid: c591475f04518734c9414fd74cb2b091, type: 3}
 --- !u!1 &833508487997849898
 GameObject:
   m_ObjectHideFlags: 0

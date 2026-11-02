@@ -70,7 +70,7 @@ public class PlayerGrenadesView : MonoBehaviour
 
         if (_playerGrenades.Use((ToolType)_grenade.Value))
         {
-            var grenade = Instantiate(prefab.Value, transform.position, transform.rotation);
+            var grenade = Instantiate(prefab.Value, transform.position, Quaternion.identity);
         
             var throwVector = transform.forward;
             throwVector.y += 0.1f;
