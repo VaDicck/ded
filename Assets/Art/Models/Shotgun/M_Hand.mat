@@ -45,10 +45,10 @@ Material:
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
-  - TransparentBackface
-  - RayTracingPrepass
-  - TransparentDepthPostpass
   - TransparentDepthPrepass
+  - RayTracingPrepass
+  - TransparentBackface
+  - TransparentDepthPostpass
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
