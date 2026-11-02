@@ -2559,6 +2559,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 346402342270365977, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
+      propertyPath: m_text
+      value: I
+      objectReference: {fileID: 0}
     - target: {fileID: 870989120079519889, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: _shotgun
       value: 
@@ -2575,6 +2579,10 @@ PrefabInstance:
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 257215193}
+    - target: {fileID: 2191816258299108466, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
+      propertyPath: m_text
+      value: TAB
+      objectReference: {fileID: 0}
     - target: {fileID: 2635109819847704802, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: _playerInteractions
       value: 
