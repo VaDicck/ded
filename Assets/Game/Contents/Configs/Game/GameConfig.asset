@@ -36,6 +36,8 @@ MonoBehaviour:
     <Value>k__BackingField: {fileID: 21300000, guid: 427aa62682d86934a90ebdc92fb62a61, type: 3}
   - <Key>k__BackingField: 10
     <Value>k__BackingField: {fileID: 21300000, guid: a7689d7c0888deb4ba1df89555a2612e, type: 3}
+  - <Key>k__BackingField: 1
+    <Value>k__BackingField: {fileID: 21300000, guid: ffb49cef0fd63814b9f5d083fd443c31, type: 3}
   <ToolNames>k__BackingField:
   - <Key>k__BackingField: 5
     <Value>k__BackingField: "\u0414\u0440\u043E\u0431\u043E\u0432\u0438\u043A"
@@ -55,6 +57,8 @@ MonoBehaviour:
     <Value>k__BackingField: "\u0412\u0437\u0440\u044B\u0432\u043D\u043E\u0439 \u0442\u043E\u043C\u0430\u0442"
   - <Key>k__BackingField: 10
     <Value>k__BackingField: "\u0413\u0440\u0430\u043D\u0430\u0442'\u0430"
+  - <Key>k__BackingField: 1
+    <Value>k__BackingField: "\u041B\u043E\u043F\u0430\u0442\u0430"
   <Cultures>k__BackingField:
     <Sprites>k__BackingField:
     - <Key>k__BackingField: 0

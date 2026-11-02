@@ -10254,6 +10254,14 @@ PrefabInstance:
       propertyPath: '_tools.Array.data[2]'
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4186815687716612981, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: _tools.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186815687716612981, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: '_tools.Array.data[2]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7073037760309354902, guid: 0737492ad791543498b8e22d050354e0, type: 3}
       propertyPath: m_Name
       value: ToolsRadialMenu
