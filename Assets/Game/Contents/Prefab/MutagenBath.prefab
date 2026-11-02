@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3169758157014303983}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.12759858, z: -0, w: 0.99182594}
-  m_LocalPosition: {x: 0.4199633, y: 0.59, z: 0.011331564}
+  m_LocalPosition: {x: 0.128, y: 0.59, z: 0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -144,7 +144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4503096426150387539}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.12759858, z: -0, w: 0.99182594}
+  m_LocalRotation: {x: 0, y: -0.12760131, z: 0, w: 0.9918256}
   m_LocalPosition: {x: 5.154, y: 0.92961, z: 5.022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -186,3 +186,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MutagenBath
   _bioTrashPerDay: 5
+  _vfx: {fileID: 3169758157014303983}
