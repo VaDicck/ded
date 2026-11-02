@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
+    public bool IsZooming => _isZooming;
     public int MaxCountPatron => _maxCountPatron; 
     public ReadOnlyReactiveProperty<int> CurrentCountPatron => _currentCountPatron;
     
@@ -15,8 +16,18 @@ public abstract class Weapon : MonoBehaviour
     protected ReactiveProperty<int> _currentCountPatron = new(0);
     private float _lastShotTime;
     
+    [Header("Audio")]
+    [SerializeField] protected AudioSource _audioSource;
+    [SerializeField, Range(0, 1)] protected float _shootVolume;
+    [SerializeField] protected AudioClip _noAmmoSound;
+    [SerializeField] protected AudioClip _shotSound;
+    [SerializeField] protected AudioClip _zoomSound;
+    [SerializeField] protected AudioClip _unzoomSound;
+    
     protected Coroutine _reloadCoroutine;
     protected bool _isReloading = false;
+    
+    protected bool _isZooming = false;
 
     private void Start()
     {
@@ -28,6 +39,7 @@ public abstract class Weapon : MonoBehaviour
     {
         if (_currentCountPatron.CurrentValue < 1)
         {
+            _audioSource.PlayOneShot(_noAmmoSound);
             Reload();
             return false;
         }
@@ -43,6 +55,7 @@ public abstract class Weapon : MonoBehaviour
         _animator.SetTrigger("Shot");
         _animatorHand.SetTrigger("Shot");
         
+        _audioSource.PlayOneShot(_shotSound, _shootVolume);
         ReleasePatron();
 
         _currentCountPatron.Value--;
