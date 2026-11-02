@@ -6489,6 +6489,50 @@ PrefabInstance:
       propertyPath: '_toDisable.Array.data[3]'
       value: 
       objectReference: {fileID: 6099912117223227800}
+    - target: {fileID: 3092994191990138897, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092994191990138897, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092994191990138897, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092994191990138897, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092994191990138897, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092994191990138897, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092994191990138897, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3502238940752336911, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: _tools.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3502238940752336911, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: '_tools.Array.data[0]'
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3502238940752336911, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: '_tools.Array.data[1]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3502238940752336911, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: '_tools.Array.data[2]'
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7073037760309354902, guid: 0737492ad791543498b8e22d050354e0, type: 3}
       propertyPath: m_Name
       value: ToolsRadialMenu
@@ -6576,6 +6620,14 @@ PrefabInstance:
     - target: {fileID: 7447315393387719063, guid: 0737492ad791543498b8e22d050354e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964648624758744826, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: _tools.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964648624758744826, guid: 0737492ad791543498b8e22d050354e0, type: 3}
+      propertyPath: '_tools.Array.data[1]'
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
