@@ -1262,7 +1262,8 @@ PrefabInstance:
     - {fileID: 3248012673041667734, guid: b542228e7d6df4d438a049bd4eb6ed26, type: 3}
     - {fileID: 936510394360851590, guid: b542228e7d6df4d438a049bd4eb6ed26, type: 3}
     - {fileID: 688187093177647679, guid: b542228e7d6df4d438a049bd4eb6ed26, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6226237195209887355, guid: b542228e7d6df4d438a049bd4eb6ed26, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8233269307548763525, guid: b542228e7d6df4d438a049bd4eb6ed26, type: 3}
@@ -1447,6 +1448,10 @@ PrefabInstance:
     - target: {fileID: 1146625480943203812, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276042209240535156, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6301002893765602297, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: m_SlopeLimit
