@@ -54,13 +54,13 @@ MonoBehaviour:
   <Cultures>k__BackingField:
     <Sprites>k__BackingField:
     - <Key>k__BackingField: 0
-      <Value>k__BackingField: {fileID: 0}
+      <Value>k__BackingField: {fileID: 21300000, guid: 005b900d94fa80348be6becce080ec1b, type: 3}
     - <Key>k__BackingField: 2
-      <Value>k__BackingField: {fileID: 0}
+      <Value>k__BackingField: {fileID: 21300000, guid: 7533ce482aeeb414c8782ec2e3931ff0, type: 3}
     - <Key>k__BackingField: 5
-      <Value>k__BackingField: {fileID: 0}
+      <Value>k__BackingField: {fileID: 21300000, guid: cd12d2b7226fb274e82f92daf6b8a9f6, type: 3}
     - <Key>k__BackingField: 3
-      <Value>k__BackingField: {fileID: 0}
+      <Value>k__BackingField: {fileID: 21300000, guid: a8ec9731de3f45b48930f76f9dc0fc8e, type: 3}
     <Names>k__BackingField:
     - <Key>k__BackingField: 0
       <Value>k__BackingField: "\u041C\u043E\u0440\u043A\u043E\u0432\u044C"
@@ -73,15 +73,15 @@ MonoBehaviour:
   <Resources>k__BackingField:
     <Sprites>k__BackingField:
     - <Key>k__BackingField: 0
-      <Value>k__BackingField: {fileID: 0}
+      <Value>k__BackingField: {fileID: -1076545708, guid: abfbc2526aeb590468d9a2f6453aef74, type: 3}
     - <Key>k__BackingField: 1
-      <Value>k__BackingField: {fileID: 0}
+      <Value>k__BackingField: {fileID: 502871822, guid: abfbc2526aeb590468d9a2f6453aef74, type: 3}
     - <Key>k__BackingField: 2
-      <Value>k__BackingField: {fileID: 0}
+      <Value>k__BackingField: {fileID: 2037500093, guid: abfbc2526aeb590468d9a2f6453aef74, type: 3}
     - <Key>k__BackingField: 3
-      <Value>k__BackingField: {fileID: 0}
+      <Value>k__BackingField: {fileID: -1459338299, guid: abfbc2526aeb590468d9a2f6453aef74, type: 3}
     - <Key>k__BackingField: 4
-      <Value>k__BackingField: {fileID: 0}
+      <Value>k__BackingField: {fileID: 21300000, guid: 005fd8be86f7e6c468453a9ec062f8da, type: 3}
     <Names>k__BackingField:
     - <Key>k__BackingField: 0
       <Value>k__BackingField: "\u0416\u0435\u043B\u0435\u0437\u043E"
