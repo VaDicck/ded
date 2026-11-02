@@ -11,7 +11,11 @@ public class MutatedPepper : MutatedFood
     [SerializeField] private float _fireRate = 2f;        
     [SerializeField] private float _projectileSpeed = 10f; 
     [SerializeField] private float _rotationSpeed = 8f;     
-    [SerializeField] private float _damageBullet = 30f;     
+    [SerializeField] private float _damageBullet = 30f;   
+    
+    [SerializeField] private AudioClip _idleSound;
+    [SerializeField] private AudioClip _attack1Sound;
+    [SerializeField] private AudioClip _attack2Sound;
 
     private readonly HashSet<AlienBase> _enemiesInRange = new();
     private AlienBase _currentTarget;
@@ -38,6 +42,8 @@ public class MutatedPepper : MutatedFood
 
     private void Awake()
     {
+        _audioSource.clip = _idleSound;
+        _audioSource.Play();
         _layerAlien = LayerMask.NameToLayer("Enemies");
     }
 
@@ -79,6 +85,21 @@ public class MutatedPepper : MutatedFood
         _currentAttackIndex = (_currentAttackIndex + 1) % 3;
 
         _animator.SetTrigger($"Attack{_currentAttackIndex + 1}");
+
+        PlayAttackSound();
+    }
+
+    private void PlayAttackSound()
+    {
+        switch (_currentAttackIndex%2)
+        {
+            case 0:
+                _audioSource.PlayOneShot(_attack1Sound);
+                break;
+            case 1:
+                _audioSource.PlayOneShot(_attack2Sound);
+                break;
+        }
     }
     
     private void OnTriggerEnter(Collider other)
