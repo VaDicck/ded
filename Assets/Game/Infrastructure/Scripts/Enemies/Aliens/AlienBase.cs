@@ -91,8 +91,6 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
 
     private void SpawnBroken()
     {
-        _brokenFactory.Create();
-        
         AlienBroken broken = _brokenFactory.Create();
     
         broken.transform.SetPositionAndRotation(

@@ -24,11 +24,17 @@ public class AlienBroken : MonoBehaviour
 
     [SerializeField] private Rigidbody[] _rigidbodies; 
     
+    [Header("Audio")]
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _boomSound;
+    
     [Inject] private DayCycleService _dayCycleService;
 
     private void Start()
     {
         _dayCycleService.DayStarted += OnDayStarted;
+
+        _audioSource.PlayOneShot(_boomSound);
         
         Vector3 explosionPos = transform.position + Vector3.up * _centerHeight;
 
