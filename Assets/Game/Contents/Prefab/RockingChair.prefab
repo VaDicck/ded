@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7935977003059563046}
-  - component: {fileID: 1624051872718317963}
   - component: {fileID: 6601171326958174474}
+  - component: {fileID: 4137907451742744754}
   m_Layer: 3
   m_Name: RockingChair
   m_TagString: Untagged
@@ -34,7 +34,21 @@ Transform:
   - {fileID: 3336991532123347095}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1624051872718317963
+--- !u!114 &6601171326958174474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8999328493757598260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b044d6921dea394cbe4ae1e7156ec09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RockingChair
+  _grandpaSleepSound: {fileID: 8300000, guid: b09cd457ced2b5e48b1e21dbe9c8c646, type: 3}
+  _sleepVolume: 0.739
+--- !u!65 &4137907451742744754
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,22 +67,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.7, y: 0.79, z: 0.52}
-  m_Center: {x: 0.09, y: 0.46, z: 0}
---- !u!114 &6601171326958174474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8999328493757598260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b044d6921dea394cbe4ae1e7156ec09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RockingChair
-  _grandpaSleepSound: {fileID: 8300000, guid: b09cd457ced2b5e48b1e21dbe9c8c646, type: 3}
-  _sleepVolume: 0.739
+  m_Size: {x: 0.7499646, y: 1.4168991, z: 0.66381484}
+  m_Center: {x: -0.12501775, y: 0.2084511, z: -0.2342702}
 --- !u!1001 &3010050946065481596
 PrefabInstance:
   m_ObjectHideFlags: 0
