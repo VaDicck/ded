@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7228204048002891284, guid: a3f31f34e57efb646a66bd1314438aff, type: 3}
       propertyPath: _bioTrashPerDay
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
