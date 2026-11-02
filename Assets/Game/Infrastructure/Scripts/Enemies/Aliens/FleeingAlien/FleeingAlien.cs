@@ -5,9 +5,10 @@ using Zenject;
 
 public class FleeingAlien : Alien<IFleeingAlienState>
 {
-    [SerializeField] private AudioClip _audioClip;
-
     public override AlienType Type => AlienType.Fleeing;
+    
+    [SerializeField] private AudioClip _runSound;
+    [SerializeField] private AudioClip _digingSound;
 
     private bool _isJumping;
     
@@ -86,7 +87,7 @@ public class FleeingAlien : Alien<IFleeingAlienState>
 
     protected override void AddStates()
     {
-        _audio.clip = _audioClip;
+        _audio.clip = _runSound;
         _audio.Play();
         
         _stateMachine = new StateMachine<IFleeingAlienState>(new IdleFleeingAlienState(_bedService));
@@ -118,6 +119,9 @@ public class FleeingAlien : Alien<IFleeingAlienState>
                 _navMeshAgent.isStopped = true;
                 _navMeshAgent.updateRotation = false;
             
+                _audio.clip = _digingSound;
+                _audio.Play();
+                
                 _stateMachine.GetState<DiggingBedFleeingAlienState>().SetBed(bed);
                 _stateMachine.SetState<DiggingBedFleeingAlienState>();
             };
@@ -125,6 +129,9 @@ public class FleeingAlien : Alien<IFleeingAlienState>
         _stateMachine.GetState<DiggingBedFleeingAlienState>().Performed
             += () =>
             {
+                _audio.clip = _runSound;
+                _audio.Play();
+                
                 _stateMachine.SetState<IdleFleeingAlienState>();
             };
 
