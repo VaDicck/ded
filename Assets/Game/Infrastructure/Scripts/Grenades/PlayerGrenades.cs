@@ -6,7 +6,7 @@ public class PlayerGrenades
 {
     public event Action<ToolType> Added;
     public event Action<ToolType, int> Used;
-    public static readonly IReadOnlyList<ToolType> AllowedGrenades = new List<ToolType>() { ToolType.TomatoGrenade };
+    public static readonly IReadOnlyList<ToolType> AllowedGrenades = new List<ToolType>() { ToolType.TomatoGrenade, ToolType.GarnetGrenade };
     
     private Dictionary<ToolType, int> _grenades = new();
 

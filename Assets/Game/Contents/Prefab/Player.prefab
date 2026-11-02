@@ -210,7 +210,8 @@ MonoBehaviour:
   _interactionDistance: 2
   _pickaxeSound: {fileID: 8300000, guid: 2f9ee7e9901887443a5ea4b47c6b7f0d, type: 3}
   _rakeSound: {fileID: 8300000, guid: 9229eee21dd446d4a88b24bc55154775, type: 3}
-  _pitchforkSound: {fileID: 8300000, guid: 05c1c78ae1459304aa9d99d40ac2b7b6, type: 3}
+  _axeSound: {fileID: 8300000, guid: 1d63ffdf18038f14483b991595a85cd2, type: 3}
+  _pitchforkSound: {fileID: 8300000, guid: bec9c15d1f392804ebe561a47ce531f2, type: 3}
   _wateringSound: {fileID: 8300000, guid: 255b22242a2639246923630a55f0320e, type: 3}
 --- !u!114 &2918627911804522192
 MonoBehaviour:
@@ -282,6 +283,8 @@ MonoBehaviour:
   _grenadePrefabs:
   - <Key>k__BackingField: 9
     <Value>k__BackingField: {fileID: 7027673454664172019, guid: f9dee49acac88db45a1e6143da393489, type: 3}
+  - <Key>k__BackingField: 10
+    <Value>k__BackingField: {fileID: 2999172472113979519, guid: c591475f04518734c9414fd74cb2b091, type: 3}
 --- !u!1 &833508487997849898
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,4 +10,5 @@
     Rake,
     Mutagen,
     TomatoGrenade,
+    GarnetGrenade,
 }
