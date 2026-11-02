@@ -8,6 +8,7 @@ public class MutagenBath : MonoBehaviour, IInteractable
     public event Action CanTakeBioTrash;
     
     [SerializeField] private float _bioTrashPerDay = 2;
+    [SerializeField] private GameObject _vfx;
     
     [Inject] private PlayerResources _playerResources;
     [Inject] private DayCycleService _dayCycleService;
@@ -25,6 +26,7 @@ public class MutagenBath : MonoBehaviour, IInteractable
         
         _currentCountBioTrash -= amountToGive;
         _canTake = false;
+        _vfx.SetActive(false);
         
         _playerResources.Add(ResourceType.BioTrash, amountToGive);
         return UniTask.CompletedTask;
@@ -32,6 +34,7 @@ public class MutagenBath : MonoBehaviour, IInteractable
 
     private void Start()
     {
+        _vfx.SetActive(false);
         _dayCycleService.NightEnded += OnNightEnded;
     }
 
@@ -42,6 +45,7 @@ public class MutagenBath : MonoBehaviour, IInteractable
         if (_currentCountBioTrash < 1 || _canTake)
             return;
 
+        _vfx.SetActive(true);
         CanTakeBioTrash?.Invoke();
         _canTake = true;
     }

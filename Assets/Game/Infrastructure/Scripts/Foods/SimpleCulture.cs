@@ -60,8 +60,7 @@ public abstract class SimpleCulture : Culture
         switch (toolType)
         {
             case ToolType.Bailer:
-                _isPoured.Value = true;
-                return true;
+                return TryPour();
         }
 
         return false;
