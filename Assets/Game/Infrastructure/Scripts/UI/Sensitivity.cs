@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
-using R3;
 using TMPro;
 
 public class Sensitivity : MonoBehaviour
