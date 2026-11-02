@@ -881,11 +881,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &547820644 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8582886784518620002, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-  m_PrefabInstance: {fileID: 1029258960}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &711263311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,46 +1532,6 @@ PrefabInstance:
     - target: {fileID: 1146625480943203812, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      propertyPath: _tools.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      propertyPath: _toolTriggerNames.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      propertyPath: _tools.Array.data[6].<Key>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      propertyPath: _tools.Array.data[7].<Key>k__BackingField
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      propertyPath: _tools.Array.data[6].<Value>k__BackingField
-      value: 
-      objectReference: {fileID: 547820644}
-    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      propertyPath: _tools.Array.data[7].<Value>k__BackingField
-      value: 
-      objectReference: {fileID: 547820644}
-    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      propertyPath: _toolTriggerNames.Array.data[6].<Key>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      propertyPath: _toolTriggerNames.Array.data[7].<Key>k__BackingField
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      propertyPath: _toolTriggerNames.Array.data[6].<Value>k__BackingField
-      value: TakeShovel
-      objectReference: {fileID: 0}
-    - target: {fileID: 6449076004381707763, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
-      propertyPath: _toolTriggerNames.Array.data[7].<Value>k__BackingField
-      value: TakeAxe
       objectReference: {fileID: 0}
     - target: {fileID: 8140115831517907385, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: m_LocalPosition.x

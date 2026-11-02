@@ -31,17 +31,6 @@ public class MutatedCornCulture : MutatedCulture<MutatedCorn.Factory, MutatedCor
         GiveResources();
     }
     
-    public override ToolType UseTool()
-    {
-        if(_canGiveResources)
-            return ToolType.None;
-        
-        if (!_isPoured.Value)
-            return ToolType.Bailer;
-        
-        return ToolType.None;
-    }
-    
     protected override void OnNightStart()
     {
         if (!_isPoured.Value)
