@@ -2559,10 +2559,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 346402342270365977, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_text
-      value: I
-      objectReference: {fileID: 0}
     - target: {fileID: 870989120079519889, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: _shotgun
       value: 
@@ -2579,14 +2575,18 @@ PrefabInstance:
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 257215193}
-    - target: {fileID: 2191816258299108466, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_text
-      value: TAB
-      objectReference: {fileID: 0}
     - target: {fileID: 2635109819847704802, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: _playerInteractions
       value: 
       objectReference: {fileID: 914531414}
+    - target: {fileID: 2635109819847704802, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
+      propertyPath: _toolSprites.Array.data[4].<Value>k__BackingField
+      value: 
+      objectReference: {fileID: 21300000, guid: 3dd9c37471f706d4da9e712a5e39bb94, type: 3}
+    - target: {fileID: 2635109819847704802, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
+      propertyPath: _toolSprites.Array.data[5].<Value>k__BackingField
+      value: 
+      objectReference: {fileID: 21300000, guid: 68638b1ca20767047a9cc5c5d5d5eef8, type: 3}
     - target: {fileID: 4164364410392230289, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
