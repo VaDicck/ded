@@ -90,3 +90,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectInstaller
   _gameConfig: {fileID: 11400000, guid: b1b1c9899fc8daa45b1d4cc1cc24f62f, type: 2}
+  _loadingScreen: {fileID: 2950571811960138163, guid: fdb7ad0b19476b547b0c4117c6e2ef30, type: 3}
