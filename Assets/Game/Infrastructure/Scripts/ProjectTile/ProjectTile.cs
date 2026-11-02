@@ -5,6 +5,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float _lifetime = 5f; 
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private string _layerName;
+    [SerializeField] private AudioClip _audioClip;
     
     private int _layerTarget;
     private float _damage;
@@ -31,7 +32,7 @@ public class Projectile : MonoBehaviour
             if (collider.gameObject.TryGetComponent<IDamageable>(out var damageable))
             {
                 Vector3 hitPoint = Vector3.one;
-                damageable.TakeDamage(_damage, hitPoint);
+                damageable.TakeDamage(_damage, hitPoint, _audioClip);
             }
         }
 
