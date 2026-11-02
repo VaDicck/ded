@@ -28,13 +28,15 @@ public class AlienService
     
     private readonly DayCycleService _dayCycleService;
     private readonly BedService _bedService;
+    private readonly DayService _dayService;
 
     private bool _waveActive;
 
-    public AlienService(DayCycleService dayCycleService, BedService bedService)
+    public AlienService(DayCycleService dayCycleService, BedService bedService, DayService dayService)
     {
         _dayCycleService = dayCycleService;
         _bedService = bedService;
+        _dayService = dayService;
         
         _dayCycleService.NightStarted += OnNightStart;
     }
@@ -79,7 +81,7 @@ public class AlienService
     {
         int countPlantedBed = _bedService.GetBedsByState<PlantedBedState>().Count;
 
-        if (_dayCycleService.CurrentNumberDay > 2)
+        if (_dayService.Day > 2)
         {
             _countFleeingAlienInWave = CalculateAliens(countPlantedBed);
             _countFlyingAlienInWave = _countFleeingAlienInWave / 3;
