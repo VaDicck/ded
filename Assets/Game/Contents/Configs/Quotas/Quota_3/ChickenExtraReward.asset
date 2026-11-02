@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e5b0751f2e43258c5d981fadf21c68, type: 3}
   m_Name: ChickenExtraReward
   m_EditorClassIdentifier: Assembly-CSharp::ChickenExtraReward
+  <Icon>k__BackingField: {fileID: 21300000, guid: b69773803913f2d4f897289f0d02f0c2, type: 3}

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MutatedPepperConfig
   m_EditorClassIdentifier: Assembly-CSharp::MutatedPepperConfig
   <MutatedPrefab>k__BackingField: {fileID: 5360464428284714584, guid: 5cefc84aa0ff6314188cb740c92dcf26, type: 3}
-  <HealthMutated>k__BackingField: 60
+  <HealthMutated>k__BackingField: 25
