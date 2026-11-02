@@ -20,8 +20,7 @@ public abstract class MutableSimpleCulture<TMutatedCulture> : SimpleCulture
         switch (toolType)
         {
             case ToolType.Bailer:
-                _isPoured.Value = true;
-                return true;
+                return TryPour();
             
             case ToolType.Mutagen:
                 UseMutagen();

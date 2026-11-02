@@ -98,6 +98,13 @@ public abstract class Culture: IDisposable
         }
     }
     
+    protected bool TryPour()
+    {
+        if(_isPoured.Value) return false;
+        _isPoured.Value = true;
+        return true;
+    }
+    
     protected virtual void OnDayStarted()
     {
         if (!_isPoured.Value)

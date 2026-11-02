@@ -57,7 +57,7 @@ public class PlayerInteractions : MonoBehaviour
             if(!resultUse)
                 return;
 
-            PlaySfxTool((ToolType)_playerTools.Tool);
+             PlaySfxTool((ToolType)_playerTools.Tool);
         }
     }
         
