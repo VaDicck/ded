@@ -6,6 +6,9 @@ public class MutatedFood : MonoBehaviour
 {
     [SerializeField] protected Animator _animator;
     [SerializeField] protected GameObject _vfxSad;
+    
+    [Header("Audio")]
+    [SerializeField] protected AudioSource _audioSource;
 
     private Culture _culture;
     private IDisposable _subscription;
