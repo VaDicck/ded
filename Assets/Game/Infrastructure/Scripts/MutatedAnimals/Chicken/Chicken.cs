@@ -10,6 +10,8 @@ public class Chicken : ChickenBase, IInteractable
 
     public bool IsUsable => !_isMutated;
     
+    public ToolType UseTool => ToolType.Mutagen;
+    
     private bool _isMutated = false;
     
     [SerializeField] private AudioClip _dieSound;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class TomatoGrenade : BaseGrenade
 {
@@ -9,6 +10,8 @@ public class TomatoGrenade : BaseGrenade
     [SerializeField] private float _explosionTime;
     [SerializeField] private float _explosionRadius;
     [SerializeField] private int _damage;
+    [SerializeField] private GameObject _visuals;
+    [SerializeField] private VisualEffect _effect;
     
     protected override IEnumerator Explode()
     {
@@ -25,6 +28,8 @@ public class TomatoGrenade : BaseGrenade
         }
         
         Exploded?.Invoke();
-        Destroy(gameObject);
+        _visuals.SetActive(false);
+        _effect?.gameObject.SetActive(true);
+        Destroy(gameObject, 3);
     }
 }

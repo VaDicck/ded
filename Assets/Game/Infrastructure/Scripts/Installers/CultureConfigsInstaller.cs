@@ -7,6 +7,8 @@ public class CultureConfigsInstaller : MonoInstaller
     [SerializeField] private TomatoCultureConfig _tomatoConfig;
     [SerializeField] private CornCultureConfig _cornConfig;
     [SerializeField] private PepperCultureConfig _pepperConfig;
+    [SerializeField] private GarnetCultureConfig _garnetConfig;
+    [SerializeField] private PotatoCultureConfig _potatoConfig;
     
     [SerializeField] private MutatedCarrotConfig _mutatedCarrotConfig;
     [SerializeField] private MutatedCornConfig _mutatedCornConfig;
@@ -18,6 +20,8 @@ public class CultureConfigsInstaller : MonoInstaller
         Container.Bind<TomatoCultureConfig>().FromInstance(_tomatoConfig).AsSingle();
         Container.Bind<CornCultureConfig>().FromInstance(_cornConfig).AsSingle();
         Container.Bind<PepperCultureConfig>().FromInstance(_pepperConfig).AsSingle();
+        Container.Bind<GarnetCultureConfig>().FromInstance(_garnetConfig).AsSingle();
+        Container.Bind<PotatoCultureConfig>().FromInstance(_potatoConfig).AsSingle();
         
         Container.Bind<MutatedCarrotConfig>().FromInstance(_mutatedCarrotConfig).AsSingle();
         Container.Bind<MutatedCornConfig>().FromInstance(_mutatedCornConfig).AsSingle();

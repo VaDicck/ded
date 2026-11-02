@@ -7,6 +7,7 @@ public class PlayerGrenadesView : MonoBehaviour
 {
     [SerializeField] private float _throwForce;
     [SerializeField] private List<SerializedPair<ToolType, BaseGrenade>> _grenadePrefabs;
+    [SerializeField] private Animator _animator;
     
     private PlayerGrenades _playerGrenades;
     private InputController _inputController;
@@ -75,7 +76,6 @@ public class PlayerGrenadesView : MonoBehaviour
             var throwVector = transform.forward;
             throwVector.y += 0.1f;
             throwVector.Normalize();
-        
             grenade.Throw(throwVector * _throwForce);
         }
     }

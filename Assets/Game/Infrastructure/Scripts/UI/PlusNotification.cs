@@ -17,8 +17,15 @@ public class PlusNotification : MonoBehaviour
 
     public void Start()
     {
-        var tween = _canvasGroup.DOFade(0, 5);
+        var sequence = DOTween.Sequence();
+
+        sequence.Append(_canvasGroup.DOFade(1, 3));
+        
+        var tween = _canvasGroup.DOFade(0, 1);
         tween.OnComplete(() => Destroy(gameObject));
-        tween.Play();
+
+        sequence.Append(tween);
+
+        sequence.Play();
     }
 }
