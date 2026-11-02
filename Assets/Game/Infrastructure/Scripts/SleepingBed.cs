@@ -1,9 +1,11 @@
+using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
 public class SleepingBed : MonoBehaviour, IInteractable
 {
+    public event Action Interacted;
     public bool IsInteractable => !_dayCycleService.IsDay && !_alienService.WaveActive;
     public bool IsUsable => false;
     
@@ -17,7 +19,11 @@ public class SleepingBed : MonoBehaviour, IInteractable
 
     public UniTask Interact()
     {
-        _fadeService.Fade($"{_dayService.Day+1} День", () => _dayCycleService.StartDay());
+        _fadeService.Fade($"{_dayService.Day+1} День", () =>
+        {
+            _dayCycleService.StartDay();
+            Interacted?.Invoke();
+        });
 
         _audioService.PlaySfx(_sleepSound);
         

@@ -1,9 +1,12 @@
+using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
 public class RockingChair : MonoBehaviour, IInteractable
 {
+    public event Action Interacted;
+    
     public bool IsInteractable => _dayCycleService.IsDay;
     public bool IsUsable => false;
     
@@ -24,7 +27,11 @@ public class RockingChair : MonoBehaviour, IInteractable
     
     public UniTask Interact()
     {
-        _fadeService.Fade("Ночь", () => _dayCycleService.StartNight());
+        _fadeService.Fade("Ночь", () =>
+        {
+            _dayCycleService.StartNight();
+            Interacted?.Invoke();
+        });
         
         _audioService.PlaySfx(_grandpaSleepSound, _sleepVolume);
         
