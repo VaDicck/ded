@@ -27,7 +27,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -88,7 +88,297 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: MutoVegetable_Corn 1(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armature
+      parentName: MutoVegetable_Corn 1(Clone)
+      position: {x: -1.8198286e-17, y: 0.43952167, z: -0.20334192}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 33.138893, y: 33.138893, z: 33.138893}
+    - name: Body_01
+      parentName: Armature
+      position: {x: -0, y: 0, z: -0.0021981713}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Body_02
+      parentName: Body_01
+      position: {x: -0, y: 0.01, z: 0}
+      rotation: {x: 6.4448394e-17, y: -0.0000000060555885, z: 0.045070257, w: 0.99898386}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: Body_02
+      position: {x: -0, y: 0.008812093, z: 1.110223e-18}
+      rotation: {x: -0.000000006296314, y: -0.00000011194639, z: -0.052817322, w: 0.9986042}
+      scale: {x: 0.99999994, y: 0.9999999, z: 1}
+    - name: Hair_01
+      parentName: Head
+      position: {x: -0.0010174304, y: 0.021959582, z: -0.00005106734}
+      rotation: {x: -0.103074595, y: 0.04290403, z: 0.60906297, w: 0.7852243}
+      scale: {x: 1.0149385, y: 1.0149385, z: 1.0149385}
+    - name: Hair_02
+      parentName: Hair_01
+      position: {x: -5.9604643e-10, y: 0.008036245, z: 8.9406965e-10}
+      rotation: {x: 0.012730547, y: 0.018114598, z: 0.1438903, w: 0.98934597}
+      scale: {x: 1.0000818, y: 1.1219293, z: 1.0031567}
+    - name: Hair_03
+      parentName: Hair_02
+      position: {x: 5.3551047e-10, y: 0.009093453, z: 0}
+      rotation: {x: 0.057332586, y: -0.04590757, z: -0.03634834, w: 0.9966365}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+    - name: Hair_03_end
+      parentName: Hair_03
+      position: {x: -0, y: 0.0042354777, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eye_L
+      parentName: Head
+      position: {x: 0.003990933, y: 0.009041747, z: -0.0042288094}
+      rotation: {x: -0.5562193, y: -0.42795613, z: -0.42795563, w: 0.5694977}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eye_L_end
+      parentName: Eye_L
+      position: {x: -0, y: 0.0071672187, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eye_R
+      parentName: Head
+      position: {x: -0.0039909347, y: 0.009041747, z: -0.0042288075}
+      rotation: {x: -0.7071068, y: 0.00000017250126, z: 0.0000000039138603, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eye_R_end
+      parentName: Eye_R
+      position: {x: -0, y: 0.0071672187, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: EyeVeko_L
+      parentName: Head
+      position: {x: 0.0025837976, y: 0.00876407, z: -0.0038581698}
+      rotation: {x: -0.61329985, y: -0.0000000019641224, z: 0.00000014307129, w: 0.7898502}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: EyeVeko_L_end
+      parentName: EyeVeko_L
+      position: {x: -0, y: 0.007985384, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: EyeVeko_R
+      parentName: Head
+      position: {x: -0.0025837994, y: 0.008764069, z: -0.0038581686}
+      rotation: {x: -0.61329985, y: 0.00000018635086, z: -0.0000000031387224, w: 0.7898502}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: EyeVeko_R_end
+      parentName: EyeVeko_R
+      position: {x: -0, y: 0.007985384, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hand_01_L
+      parentName: Armature
+      position: {x: 0.015427059, y: -0.003469566, z: -0.006736911}
+      rotation: {x: 0.75385076, y: 0.19897531, z: 0.10620141, w: 0.61712164}
+      scale: {x: 1.0000014, y: 1.0002388, z: 1.0000279}
+    - name: Hand_02_L
+      parentName: Hand_01_L
+      position: {x: -9.685754e-10, y: 0.016751653, z: -4.4703483e-10}
+      rotation: {x: 0.9944705, y: 0.07937367, z: 0.06854389, w: 0.00547974}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
+    - name: Hand_03_L
+      parentName: Hand_02_L
+      position: {x: -1.4901161e-10, y: 0.010931296, z: 1.4901161e-10}
+      rotation: {x: 0.020460688, y: -0.067950584, z: 0.17568648, w: 0.98188514}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: Hand_04_L
+      parentName: Hand_03_L
+      position: {x: -0.000000002537854, y: 0.0102295065, z: 0.0000000010430813}
+      rotation: {x: 0.1269773, y: -0.5717926, z: 0.71051794, w: 0.38999277}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Hand_05_L
+      parentName: Hand_04_L
+      position: {x: 5.3551047e-10, y: 0.008295148, z: 3.7252902e-11}
+      rotation: {x: 0.48821783, y: 0.17183132, z: -0.47398275, w: 0.7123607}
+      scale: {x: 0.9999998, y: 0.9999999, z: 0.9999999}
+    - name: Hand_05_L_end
+      parentName: Hand_05_L
+      position: {x: -0, y: 0.0059561133, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hand_01_R
+      parentName: Armature
+      position: {x: -0.015427059, y: -0.003469566, z: -0.006736911}
+      rotation: {x: 0.7538508, y: -0.19897537, z: -0.106201425, w: 0.6171216}
+      scale: {x: 1.0000014, y: 1.0002389, z: 1.000028}
+    - name: Hand_02_R
+      parentName: Hand_01_R
+      position: {x: 3.72529e-10, y: 0.016751653, z: -1.4901161e-10}
+      rotation: {x: 0.9944705, y: -0.07937361, z: -0.06854405, w: 0.0054799295}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: Hand_03_R
+      parentName: Hand_02_R
+      position: {x: -0.000000002104789, y: 0.010931296, z: 1.4901161e-10}
+      rotation: {x: 0.020460732, y: 0.067950554, z: -0.17568661, w: 0.9818851}
+      scale: {x: 0.99999994, y: 1.0000001, z: 0.9999999}
+    - name: Hand_04_R
+      parentName: Hand_03_R
+      position: {x: -7.21775e-10, y: 0.010229504, z: 2.2351741e-10}
+      rotation: {x: 0.12697692, y: 0.57179266, z: -0.71051794, w: 0.3899928}
+      scale: {x: 0.99999994, y: 0.9999998, z: 0.9999999}
+    - name: Hand_05_R
+      parentName: Hand_04_R
+      position: {x: 4.6333298e-10, y: 0.008295148, z: 7.4505804e-11}
+      rotation: {x: 0.48821783, y: -0.17183128, z: 0.47398275, w: 0.7123607}
+      scale: {x: 0.99999994, y: 0.9999999, z: 1}
+    - name: Hand_05_R_end
+      parentName: Hand_05_R
+      position: {x: -0, y: 0.0059561133, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SmallPetal_01_L
+      parentName: Armature
+      position: {x: 0.0030932922, y: 0.018760847, z: -0.005356451}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SmallPetal_02_L
+      parentName: SmallPetal_01_L
+      position: {x: -0, y: 0.005934895, z: 0}
+      rotation: {x: 7.5770914e-16, y: 0.00000006698583, z: -0.4985591, w: 0.86685574}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: SmallPetal_03_L
+      parentName: SmallPetal_02_L
+      position: {x: -4.2892964e-10, y: 0.0061632227, z: -4.5983337e-10}
+      rotation: {x: 0.0000000062448167, y: 0.000000091015806, z: -0.62823606, w: 0.77802277}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: SmallPetal_04_L
+      parentName: SmallPetal_03_L
+      position: {x: -2.7151428e-10, y: 0.0054336935, z: 0.0000000010028445}
+      rotation: {x: 0.000000020212232, y: 0.00000020854611, z: -0.5608125, w: 0.82794285}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: SmallPetal_04_L_end
+      parentName: SmallPetal_04_L
+      position: {x: -0, y: 0.0059300275, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SmallPetal_01_R
+      parentName: Armature
+      position: {x: -0.0030932922, y: 0.018760847, z: -0.005356451}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SmallPetal_02_R
+      parentName: SmallPetal_01_R
+      position: {x: -0, y: 0.005934895, z: 0}
+      rotation: {x: 7.5770914e-16, y: -0.00000006698583, z: 0.4985591, w: 0.86685574}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: SmallPetal_03_R
+      parentName: SmallPetal_02_R
+      position: {x: 4.2892992e-10, y: 0.0061632227, z: -4.5983348e-10}
+      rotation: {x: 0.000000006244811, y: -0.00000009101578, z: 0.62823594, w: 0.7780229}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SmallPetal_04_R
+      parentName: SmallPetal_03_R
+      position: {x: 1.074369e-11, y: 0.005433694, z: 0.0000000010028447}
+      rotation: {x: 0.000000020212257, y: -0.00000020854618, z: 0.5608124, w: 0.8279429}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: SmallPetal_04_R_end
+      parentName: SmallPetal_04_R
+      position: {x: -0, y: 0.0059300275, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Petal_1_01_L
+      parentName: Armature
+      position: {x: 0.010213053, y: 0.0014777422, z: -0.0071926103}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Petal_1_02_L
+      parentName: Petal_1_01_L
+      position: {x: -0, y: 0.010310731, z: 0}
+      rotation: {x: 3.2199587e-16, y: 0.000000034262747, z: -0.25500926, w: 0.9669386}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Petal_1_03_L
+      parentName: Petal_1_02_L
+      position: {x: 6.9396155e-10, y: 0.010707405, z: 2.1328986e-10}
+      rotation: {x: -0.000000042050146, y: 0.000000040352557, z: -0.66428864, w: 0.74747616}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Petal_1_04_L
+      parentName: Petal_1_03_L
+      position: {x: 0.0000000011845359, y: 0.011061822, z: -1.5438317e-12}
+      rotation: {x: -0.00000018262664, y: 0.00000023847704, z: -0.56668985, w: 0.82393116}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Petal_1_05_L
+      parentName: Petal_1_04_L
+      position: {x: -0.0000000021428879, y: 0.011028467, z: 1.033095e-10}
+      rotation: {x: 0.00000017784023, y: 0.00000022410933, z: -0.7075847, w: 0.70662856}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Petal_1_05_L_end
+      parentName: Petal_1_05_L
+      position: {x: -0, y: 0.011175284, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Petal_1_01_R
+      parentName: Armature
+      position: {x: -0.011275873, y: 0.0014777422, z: -0.0071926103}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Petal_1_02_R
+      parentName: Petal_1_01_R
+      position: {x: -0, y: 0.010310731, z: 0}
+      rotation: {x: 3.2199587e-16, y: -0.000000034262747, z: 0.25500926, w: 0.9669386}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Petal_1_03_R
+      parentName: Petal_1_02_R
+      position: {x: -0.0000000012900079, y: 0.010707405, z: 2.837123e-10}
+      rotation: {x: -0.000000042050146, y: -0.000000040352543, z: 0.66428864, w: 0.74747616}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Petal_1_04_R
+      parentName: Petal_1_03_R
+      position: {x: 6.0360333e-10, y: 0.011061826, z: 3.2146872e-11}
+      rotation: {x: -0.00000018262662, y: -0.0000002384771, z: 0.5666899, w: 0.82393116}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Petal_1_05_R
+      parentName: Petal_1_04_R
+      position: {x: 1.0329131e-10, y: 0.011028469, z: 6.890715e-11}
+      rotation: {x: 0.00000017784025, y: -0.00000022410931, z: 0.7075847, w: 0.70662856}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Petal_1_05_R_end
+      parentName: Petal_1_05_R
+      position: {x: -0, y: 0.011175284, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Petal_2_01
+      parentName: Armature
+      position: {x: 0.00022574543, y: -0.012463145, z: -0.005561112}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Petal_2_02
+      parentName: Petal_2_01
+      position: {x: -0, y: 0.010310728, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Petal_2_03
+      parentName: Petal_2_02
+      position: {x: -0, y: 0.010707404, z: 0}
+      rotation: {x: -0.15670702, y: 0.0077979555, z: -0.0012373202, w: 0.9876136}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Petal_2_04
+      parentName: Petal_2_03
+      position: {x: 1.8626451e-11, y: 0.0110618295, z: -9.106588e-10}
+      rotation: {x: 0.3352501, y: 0.013214026, z: 0.009999733, w: 0.94198346}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Petal_2_05
+      parentName: Petal_2_04
+      position: {x: 1.8626451e-11, y: 0.011028469, z: -7.8463924e-10}
+      rotation: {x: 0.63359576, y: 0.016076175, z: 0.041022442, w: 0.77240866}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: Petal_2_05_end
+      parentName: Petal_2_05
+      position: {x: -0, y: 0.011175284, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MutoVegetable_Corn_Petal_02.001
+      parentName: MutoVegetable_Corn 1(Clone)
+      position: {x: -1.8198286e-17, y: 0.23285165, z: 0.109277055}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.33138895, y: 0.33138895, z: 0.33138895}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -99,13 +389,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
