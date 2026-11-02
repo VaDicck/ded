@@ -20,6 +20,14 @@ public class QuotaStringView : MonoBehaviour
             return obj;
         }
     }
+
+    private CulturesConfig _culturesConfig;
+    
+    [Inject]
+    private void Initialize(GameConfig config)
+    {
+        _culturesConfig = config.Cultures;
+    }
     
     private CultureType _cultureType;
     private int _expected;
@@ -33,7 +41,6 @@ public class QuotaStringView : MonoBehaviour
 
     public void UpdateActual(int actual)
     {
-        _text.text = $"{_cultureType}: {actual}/{_expected}";
-        _text.color = Color.red;
+        _text.text = $"{_culturesConfig.Names.Find(x => x.Key == _cultureType).Value}: {actual}/{_expected}";
     }
 }
