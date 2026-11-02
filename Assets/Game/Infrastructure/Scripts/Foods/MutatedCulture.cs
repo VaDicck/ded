@@ -27,7 +27,7 @@ public abstract class MutatedCulture<TFactory, TMutated> : Culture
     
     public override bool IsUsable()
     {
-        return !IsGrown.CurrentValue;
+        return true;
     }
 
     public override void Interact() { }
