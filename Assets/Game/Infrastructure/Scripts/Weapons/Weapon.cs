@@ -12,7 +12,6 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected int _maxCountPatron = 6;
     [SerializeField] private float _fireRate = 1f;
     [SerializeField] protected Animator _animator;
-    [SerializeField] protected Animator _animatorHand;
     protected ReactiveProperty<int> _currentCountPatron = new(0);
     private float _lastShotTime;
     
@@ -53,7 +52,6 @@ public abstract class Weapon : MonoBehaviour
         }
         
         _animator.SetTrigger("Shot");
-        _animatorHand.SetTrigger("Shot");
         
         _audioSource.PlayOneShot(_shotSound, _shootVolume);
         ReleasePatron();
@@ -71,7 +69,6 @@ public abstract class Weapon : MonoBehaviour
         {
             _isReloading = true;
             _animator.SetTrigger("StartReload");
-            _animatorHand.SetTrigger("StartReload");
             _reloadCoroutine = StartCoroutine(ReloadRoutine());
         }
     }

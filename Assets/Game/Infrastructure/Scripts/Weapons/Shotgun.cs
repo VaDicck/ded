@@ -59,11 +59,12 @@ public class Shotgun : Weapon
     {
         _damageLayer = LayerMask.GetMask("Damageable");
         _enemyLayer = LayerMask.GetMask("Enemies");
+        
+        _animator.SetTrigger("Idle");
+        _animator.SetTrigger("Idle");
 
-        _animatorHand.SetTrigger("EquipShotgun");
         _shotgun.SetActive(true);
         _animator.SetFloat("ReloadPistolSpeed", _reloadTimeOnePistol);
-        _animatorHand.SetFloat("ReloadPistolSpeed", _reloadTimeOnePistol);
     }
 
     protected override List<RaycastHit> RaycastTarget()
@@ -118,7 +119,6 @@ public class Shotgun : Weapon
         while (_currentCountPatron.CurrentValue < _maxCountPatron)
         {
             _animator.SetTrigger("AddPatron");
-            _animatorHand.SetTrigger("AddPatron");
             
             yield return new WaitForSeconds(_reloadTimeOnePistol);
             
@@ -130,6 +130,5 @@ public class Shotgun : Weapon
         _isReloading = false;
         
         _animator.SetTrigger("EndReload");
-        _animatorHand.SetTrigger("EndReload");
     }
 }

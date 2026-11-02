@@ -52,6 +52,7 @@ GameObject:
   - component: {fileID: 2918627911804522192}
   - component: {fileID: 2228817970919938731}
   - component: {fileID: 1980778373080193022}
+  - component: {fileID: 1070894741503560458}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -248,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun
   _maxCountPatron: 100
   _fireRate: 1.6
-  _animator: {fileID: 7882358799632654895}
+  _animator: {fileID: 1070894741503560458}
   _animatorHand: {fileID: 8931445173760385191}
   _audioSource: {fileID: 4048530080270325751}
   _shootVolume: 0.34
@@ -280,6 +281,28 @@ MonoBehaviour:
   _grenadePrefabs:
   - <Key>k__BackingField: 9
     <Value>k__BackingField: {fileID: 7027673454664172019, guid: f9dee49acac88db45a1e6143da393489, type: 3}
+--- !u!95 &1070894741503560458
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770189586896823310}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 07cdd647ea77da143b49a1fb758cc808, type: 3}
+  m_Controller: {fileID: 9100000, guid: c77fff68018876a449d3417a356e7181, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &833508487997849898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1948,7 +1971,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: 07cdd647ea77da143b49a1fb758cc808, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -2730212327684817343, guid: 07cdd647ea77da143b49a1fb758cc808, type: 3}
@@ -1969,11 +1993,6 @@ Transform:
 --- !u!4 &7355785992679449087 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2730212327684817343, guid: 07cdd647ea77da143b49a1fb758cc808, type: 3}
-  m_PrefabInstance: {fileID: 4326083720676630462}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &7882358799632654895 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 07cdd647ea77da143b49a1fb758cc808, type: 3}
   m_PrefabInstance: {fileID: 4326083720676630462}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8925540585963372083

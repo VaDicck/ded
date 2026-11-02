@@ -3437,6 +3437,10 @@ PrefabInstance:
       propertyPath: _throwForce
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2228817970919938731, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
+      propertyPath: _reloadTimeOnePistol
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8140115831517907385, guid: d4edc903799827e4d96b0ae054e42a91, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.015776
