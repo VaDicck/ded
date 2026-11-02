@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Zenject;
 
 public class UISoundHandler : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler
@@ -11,18 +12,32 @@ public class UISoundHandler : MonoBehaviour, IPointerEnterHandler, IPointerDownH
     
     [Inject] private AudioService _audioService;
     
+    private Button _button;
+
+    private void Start()
+    {
+        _button = GetComponent<Button>();
+    }
+    
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _audioService.PlayUiSfx(_hoverSound);
+        TryPlayAudio(_hoverSound);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        _audioService.PlayUiSfx(_downSound);
+        TryPlayAudio(_downSound);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        _audioService.PlayUiSfx(_upSound);
+        TryPlayAudio(_upSound);
+    }
+    
+    private void TryPlayAudio(AudioClip clip)
+    {
+        if(!_button.interactable) return;
+        
+        _audioService.PlayUiSfx(clip);
     }
 }
