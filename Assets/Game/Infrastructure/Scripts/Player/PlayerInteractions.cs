@@ -12,6 +12,7 @@ public class PlayerInteractions : MonoBehaviour
     [Header("AudioClip")]
     [SerializeField] private AudioClip _pickaxeSound;
     [SerializeField] private AudioClip _rakeSound;
+    [SerializeField] private AudioClip _axeSound;
     [SerializeField] private AudioClip _pitchforkSound;
     [SerializeField] private AudioClip _wateringSound;
     
@@ -104,6 +105,9 @@ public class PlayerInteractions : MonoBehaviour
                 break;
             case ToolType.Bailer:
                 _audioService.PlaySfx(_wateringSound);
+                break;            
+            case ToolType.Axe:
+                _audioService.PlaySfx(_axeSound);
                 break;
         }
     }
