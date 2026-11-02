@@ -3,7 +3,8 @@
     protected override void Start()
     {
         base.Start();
-        
+
+        _slider.value = _audioConfig.DefaultMusicVolume;
         UpdateText(_audioConfig.DefaultMusicVolume);
     }
 
