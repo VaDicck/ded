@@ -10,7 +10,6 @@ public class DayCycleService : ITickable
     public event Action NightEnded;
 
     public bool IsDay => _isDay;
-    public int CurrentNumberDay => _currentNumberDay;
 
     private readonly float _dayLength;
     private readonly float _nightLength;
@@ -18,8 +17,6 @@ public class DayCycleService : ITickable
     private float _time;
     private bool _isDay;
     
-    private int _currentNumberDay = 0;
-
     public DayCycleService(GameConfig config)
     {
         _dayLength = config.DayLength;
@@ -34,8 +31,6 @@ public class DayCycleService : ITickable
     {
         _time = 0;
         _isDay = true;
-        
-        _currentNumberDay++;
         
         NightEnded?.Invoke();
         DayStarted?.Invoke();
