@@ -65,6 +65,9 @@ MonoBehaviour:
   _attackInterval: 1.2
   _attackRange: 1.1
   _jumpAoERadius: 5
+  _fistAttackSound: {fileID: 8300000, guid: 57e5bb248c93a794b918a9056f86074c, type: 3}
+  _beackAttackSound: {fileID: 8300000, guid: fdb5c6d8a63a63442a948d7727eb3b45, type: 3}
+  _jumpAttackSound: {fileID: 8300000, guid: 736d1eba0f2892e48a199331862441a9, type: 3}
 --- !u!195 &-2734820537299717358
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -106,7 +109,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 16.23
+  m_Radius: 25.1
   m_Center: {x: 0, y: 0.77, z: 0}
 --- !u!95 &6864753992705600884
 Animator:

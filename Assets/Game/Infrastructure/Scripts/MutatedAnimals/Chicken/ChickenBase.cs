@@ -74,7 +74,7 @@ public abstract class ChickenBase : MonoBehaviour
         {
             if (Random.value < _peckProbability)
             {
-                _audio.Pause();
+                OnPeck();
                 
                 _animator.SetTrigger("Peck");
                 _stateMachine.SetState<PeckChickenState>();
@@ -82,10 +82,13 @@ public abstract class ChickenBase : MonoBehaviour
             _nextPeckCheckTime = Time.time + _peckCheckInterval;
         }
     }
+
+    protected virtual void OnPeck() { }
     
     protected void Walk()
     {
-        _audio.UnPause();
+        _audio.clip = _idleSound;
+        _audio.Play();
         
         _animator.SetTrigger("Walk");
         _stateMachine.SetState<WanderChickenState>();

@@ -19,6 +19,11 @@ public class MutatedChicken : ChickenBase
     [SerializeField] private float _attackInterval = 1.2f;
     [SerializeField] private float _attackRange = 2.5f;
     [SerializeField] private float _jumpAoERadius = 3.5f;
+    
+    [Header("Audio")]
+    [SerializeField] private AudioClip _fistAttackSound;
+    [SerializeField] private AudioClip _beackAttackSound;
+    [SerializeField] private AudioClip _jumpAttackSound;
 
     private List<AlienBase> _aliens = new List<AlienBase>();
 
@@ -55,7 +60,8 @@ public class MutatedChicken : ChickenBase
             this,
             _navMeshAgent,
             _attackRange,
-            _attackInterval, _animator, _attackFistDamage, _attackBeakDamage, _attackJumpDamage, _jumpAoERadius));
+            _attackInterval, _animator, _attackFistDamage, _attackBeakDamage, _attackJumpDamage, _jumpAoERadius,
+            _audio, _fistAttackSound, _beackAttackSound, _jumpAttackSound));
     }
 
     protected override void Subscribe()
