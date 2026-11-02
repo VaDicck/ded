@@ -142,8 +142,8 @@ MonoBehaviour:
   _force: 10
   _explodeTime: 3
   _directions:
-  - {x: 0, y: 1, z: 0.5}
-  - {x: 0, y: 1, z: -0.5}
+  - {x: 0, y: 1, z: 1}
+  - {x: 0, y: 1, z: -1}
   - {x: 1, y: 1, z: 0}
   - {x: -1, y: 1, z: 0}
 --- !u!54 &8515157691394171011
