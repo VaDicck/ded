@@ -4,6 +4,7 @@ using System.Linq;
 
 public class PlayerGrenades
 {
+    public event Action<ToolType> Added;
     public event Action<ToolType, int> Used;
     public static readonly IReadOnlyList<ToolType> AllowedGrenades = new List<ToolType>() { ToolType.TomatoGrenade };
     
@@ -16,6 +17,8 @@ public class PlayerGrenades
         
         if (!_grenades.TryAdd(grenade, 1))
             _grenades[grenade]++;
+        
+        Added?.Invoke(grenade);
     }
 
     public bool Contains(ToolType grenade)

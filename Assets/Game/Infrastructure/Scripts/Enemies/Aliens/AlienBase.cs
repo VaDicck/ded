@@ -18,6 +18,9 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     
     [SerializeField] private GameObject _sfxSplashAlien;
     
+    [Header("Audio")]
+    [SerializeField] protected AudioSource _audio;
+    
     protected Transform _spawnPoint;
     
     private AlienService _alienService;
@@ -88,8 +91,6 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
 
     private void SpawnBroken()
     {
-        _brokenFactory.Create();
-        
         AlienBroken broken = _brokenFactory.Create();
     
         broken.transform.SetPositionAndRotation(

@@ -24,10 +24,17 @@ public class AttackFlyingAlienState : IFlyingAlienState
     private float _nextFireTime;
     
     private Animator _animator;
+    
+    private AudioSource _audioSource;
+    private AudioClip _attack1Sound;
+    private AudioClip _attack2Sound;
+    private AudioClip _attack3Sound;
 
     public AttackFlyingAlienState(NavMeshAgent navMeshAgent, GameObject projectilePrefab, 
                                   Transform projectileSpawnPoint, Animator animator,
-                                  float fireRate, float projectileSpeed, float minShootDistance)
+                                  float fireRate, float projectileSpeed, float minShootDistance,
+                                  AudioSource audioSource,
+                                  AudioClip attack1Sound, AudioClip attack2Sound, AudioClip attack3Sound)
     {
         _animator = animator;
         _navMeshAgent = navMeshAgent;
@@ -36,6 +43,10 @@ public class AttackFlyingAlienState : IFlyingAlienState
         _fireRate = fireRate;
         _projectileSpeed = projectileSpeed;
         _minShootDistance = minShootDistance;
+        _audioSource = audioSource;
+        _attack1Sound = attack1Sound;
+        _attack2Sound = attack2Sound;
+        _attack3Sound = attack3Sound;
     }
 
     public void SetPlayer(Transform player)
@@ -89,11 +100,31 @@ public class AttackFlyingAlienState : IFlyingAlienState
         Vector3 dir = (_player.position - spawnPos).normalized;
         Quaternion rot = Quaternion.LookRotation(dir) * Quaternion.Euler(0, -90, 0);
 
+        PlayAttackAudio();
+        
         GameObject projectileGO = Object.Instantiate(_projectilePrefab, spawnPos, rot);
 
         if (projectileGO.TryGetComponent<Projectile>(out Projectile projectile))
         {
             projectile.Launch(dir, _projectileSpeed, 0);
+        }
+    }
+
+    private void PlayAttackAudio()
+    {
+        int currentAttackIndex = _countShot % 3;
+
+        switch (currentAttackIndex)
+        {
+            case 0:
+                _audioSource.PlayOneShot(_attack1Sound);
+                break;
+            case 1:
+                _audioSource.PlayOneShot(_attack2Sound);
+                break;
+            case 2:
+                _audioSource.PlayOneShot(_attack3Sound);
+                break;
         }
     }
 }

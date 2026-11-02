@@ -15,6 +15,10 @@ public class FlyingAlien : Alien<IFlyingAlienState>
     [SerializeField] private float _fireRate = 3f;
     [SerializeField] private float _projectileSpeed = 3f;
     [SerializeField] private float _minShootDistance = 8f;
+    [SerializeField] private AudioClip _flySound;
+    [SerializeField] private AudioClip _attack1Sound;
+    [SerializeField] private AudioClip _attack2Sound;
+    [SerializeField] private AudioClip _attack3Sound;
 
     [Inject] private BedService _bedService;
 
@@ -29,6 +33,9 @@ public class FlyingAlien : Alien<IFlyingAlienState>
     
     protected override void AddStates()
     {
+        _audio.clip = _flySound;
+        _audio.Play();
+        
         _playerLayer = LayerMask.NameToLayer("Player");
         _animator.SetTrigger("Fly");
         
@@ -40,7 +47,9 @@ public class FlyingAlien : Alien<IFlyingAlienState>
 
         _stateMachine.AddState<AttackFlyingAlienState>(
             new AttackFlyingAlienState(_navMeshAgent , _projectilePrefab, 
-                _projectileSpawnPoint, _animator, _fireRate, _projectileSpeed, _minShootDistance));
+                _projectileSpawnPoint, _animator, _fireRate, _projectileSpeed,
+                _minShootDistance,
+                _audio, _attack1Sound, _attack2Sound, _attack3Sound));
         
         _stateMachine.AddState<FlyToSpawnFlyingAlienState>(
             new FlyToSpawnFlyingAlienState(_spawnPoint, _navMeshAgent));

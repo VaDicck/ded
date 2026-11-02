@@ -4,7 +4,8 @@ using System.Collections.Generic;
 public class PlayerResources
 {
     public event Action<ResourceType> IngredientsEmpty;
-    public event Action<ResourceType, int> IngredientChanged;
+    public event Action<ResourceType, int> ResourceChanged;
+    public event Action<ResourceType, int> ResourceAdded;
     
     public IReadOnlyDictionary<ResourceType, int> Ingredients => _ingredients;
     
@@ -16,6 +17,9 @@ public class PlayerResources
         {
             _ingredients[ingredient] += amount;
         }
+        
+        ResourceChanged?.Invoke(ingredient, _ingredients[ingredient]);
+        ResourceAdded?.Invoke(ingredient, amount);
 
         this.Log($"Ingredient {ingredient} has been added in the amount of {amount}");
     }
@@ -38,7 +42,7 @@ public class PlayerResources
 
         _ingredients[ingredient] -= amount;
         
-        IngredientChanged?.Invoke(ingredient, _ingredients[ingredient]);
+        ResourceChanged?.Invoke(ingredient, _ingredients[ingredient]);
         
         this.Log($"taken {amount} of type: {ingredient}");
         

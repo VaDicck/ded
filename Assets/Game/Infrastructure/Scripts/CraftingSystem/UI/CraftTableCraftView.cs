@@ -8,6 +8,7 @@ public class CraftTableCraftView : MonoBehaviour
 {
     [Header("UI Elements")]
     [SerializeField] private TMP_Text _productName;
+    [SerializeField] private TMP_Text _productDescription;
     [SerializeField] private Image _productImage;
     [SerializeField] private TMP_Text _productAmount;
     [Space]
@@ -37,6 +38,7 @@ public class CraftTableCraftView : MonoBehaviour
         _contentHolder.gameObject.SetActive(true);
         
         _productName.text = product.Name;
+        _productDescription.text = product.Description;
         _productImage.sprite = product.Sprite;
         
         if (product.CraftAmount > 1)

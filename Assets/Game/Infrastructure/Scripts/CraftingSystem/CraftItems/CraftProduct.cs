@@ -5,6 +5,7 @@ public abstract class CraftProduct : ScriptableObject
 {
     [field: SerializeField] public Sprite Sprite { get; set; }
     [field: SerializeField] public string Name { get; set; }
+    [field: SerializeField] public string Description { get; set; }
     [field: SerializeField] public int CraftAmount { get; private set; }
 
     [field: SerializeField] public List<SerializedPair<CraftIngredient, int>> Ingredients { get; private set; } = new();
