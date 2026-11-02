@@ -323,14 +323,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.CustomPassVolume
-  m_IsGlobal: 1
+  m_IsGlobal: 0
   fadeRadius: 0
-  priority: 0
+  priority: 10
   customPasses:
   - rid: 8048716082884640843
-  injectionPoint: 3
+  injectionPoint: 2
   m_TargetCamera: {fileID: 2007915815137007918}
-  useTargetCamera: 0
+  useTargetCamera: 1
   references:
     version: 2
     RefIds:
@@ -346,7 +346,7 @@ MonoBehaviour:
         m_Version: 0
         filterFoldout: 1
         rendererFoldout: 1
-        renderQueueType: 2
+        renderQueueType: 10
         layerMask:
           serializedVersion: 2
           m_Bits: 128
