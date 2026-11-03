@@ -72,8 +72,7 @@ public abstract class Culture: IDisposable
 
         if (toolType == ToolType.Bailer)
         {
-            TryPour();
-            return true;
+            return TryPour();
         }
         
         return OnUseTool(toolType);

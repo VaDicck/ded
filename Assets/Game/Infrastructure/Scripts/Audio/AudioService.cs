@@ -51,14 +51,15 @@ public class AudioService : MonoBehaviour
     private void Init(GameConfig gameConfig) 
     {
         _config = gameConfig.AudioConfig;
+        
+        _audioMixer.SetFloat(_config.MasterVolumeName, _config.DefaultMasterVolume);
+        _audioMixer.SetFloat(_config.MusicVolumeName, _config.DefaultMusicVolume);
+        _audioMixer.SetFloat(_config.SfxVolumeName, _config.DefaultSfxVolume);
+
     }
 
     private void Start()
     {
-        _audioMixer.SetFloat(_config.MasterVolumeName, _config.DefaultMasterVolume);
-        _audioMixer.SetFloat(_config.MusicVolumeName, _config.DefaultMusicVolume);
-        _audioMixer.SetFloat(_config.SfxVolumeName, _config.DefaultSfxVolume);
-        
         _timeScaleSubscription = GameTimeScale.Subscribe(ApplySfxPitch);
     }
     
