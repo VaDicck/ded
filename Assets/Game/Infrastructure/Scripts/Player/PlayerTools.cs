@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class PlayerTools
 {
+    public event Action ToolUnlocked;
     public event Action<ToolType?> ToolChanged;
     public IReadOnlyCollection<ToolType> Tools => _tools;
     public ToolType? Tool => _currentTool;
@@ -60,7 +61,9 @@ public class PlayerTools
             return false;
         
         _tools.Add(toolType);
-
+        ToolUnlocked?.Invoke();
+        this.Log($"Tool added: {toolType}");
+        
         return true;
     }
 }

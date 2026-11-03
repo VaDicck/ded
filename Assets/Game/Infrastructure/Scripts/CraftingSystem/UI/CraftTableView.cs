@@ -21,6 +21,7 @@ public class CraftTableView : MonoBehaviour
         _audioService = audioService;
 
         _service.ShowPerformed += Show;
+        _service.HidePerformed += Hide;
     }
 
     private void Show()

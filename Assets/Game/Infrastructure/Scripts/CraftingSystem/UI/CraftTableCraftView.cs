@@ -60,7 +60,6 @@ public class CraftTableCraftView : MonoBehaviour
     {
         ClearIngredients();
         _contentHolder.gameObject.SetActive(false);
-        _craftProduct = null;
     }
 
     private void Craft()
@@ -69,6 +68,7 @@ public class CraftTableCraftView : MonoBehaviour
             return;
         
         _craftProduct.Craft();
+        
         _craftButton.interactable = _craftProduct.CanCraft() && _craftProduct.IsEnoughToCraft();
     }
 
