@@ -75,51 +75,51 @@ public class TutorialView : MonoBehaviour
 
     private async void OnBedWatered()
     {
+        _beds.ForEach(x => x.Watered -= OnBedWatered);
         await UniTask.WaitForSeconds(3f);
         _frames[4].SetActive(true);
         _videoPlayer.clip = _videoClips[3];
-        _beds.ForEach(x => x.Watered -= OnBedWatered);
         _rockingChair.SetInteractable(true);
     }
 
     private async void OnChairUsed()
     {
+        _rockingChair.Interacted -= OnChairUsed;
         await UniTask.WaitForSeconds(1f);
         _frames[5].SetActive(true);
         _videoPlayer.clip = _videoClips[4];
-        _rockingChair.Interacted -= OnChairUsed;
     }
 
     private async void OnDefended()
     {
+        _alienService.WaveOver -= OnDefended;
         await UniTask.WaitForSeconds(duration: 3f);
         _frames[6].SetActive(true);
         _videoPlayer.clip = _videoClips[5];
-        _alienService.WaveOver -= OnDefended;
     }
 
     private async void OnAwaken()
     {
+        _beds.ForEach(x => x.Grown -= OnAwaken);
         await UniTask.WaitForSeconds(3f);
         _frames[7].SetActive(true);
         _videoPlayer.clip = _videoClips[6];
-        _beds.ForEach(x => x.Grown -= OnAwaken);
     }
 
     private async void OnPlantGot()
     {
+        _beds.ForEach(x => x.Collected -= OnBedWatered);
         await UniTask.WaitForSeconds(2f);
         _frames[8].SetActive(true);
         _videoPlayer.clip = _videoClips[7];
-        _beds.ForEach(x => x.Collected -= OnBedWatered);
     }
 
     private async void OnQuotaReached()
     {
+        _quotaService.QuotaReached -= OnQuotaReached;
         await UniTask.WaitForSeconds(5f);
         _frames[9].SetActive(true);
         _videoPlayer.clip = _videoClips[8];
-        _quotaService.QuotaReached -= OnQuotaReached;
     }
 
     private void OnCrafted()
@@ -132,10 +132,10 @@ public class TutorialView : MonoBehaviour
 
     private async void OnBedsUnlocked()
     {
+        _beds.ForEach(x => x.Unlocked -= OnBedsUnlocked);
         await UniTask.WaitForSeconds(3f);
         _frames[11].SetActive(true);
         _videoPlayer.clip = _videoClips[10];
-        _beds.ForEach(x => x.Unlocked -= OnBedsUnlocked);
         _bath.CanInteract();
     }
 
