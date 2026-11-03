@@ -18,6 +18,7 @@ public class ToolsRadialMenuElement : MonoBehaviour
     [SerializeField] private TMP_Text _toolName;
     [SerializeField] private TMP_Text _toolCounts;
     [SerializeField] private TMP_Text _count;
+    [SerializeField] private GameObject _scroll;
     
     private PlayerTools _playerTools;
     private PlayerMutagens _playerMutagens;
@@ -212,9 +213,15 @@ public class ToolsRadialMenuElement : MonoBehaviour
         }
 
         if (count <= 1)
+        {
             _toolCounts.text = "";
+            _scroll.gameObject.SetActive(false);
+        }
         else
+        {
             _toolCounts.text =$"{current}/{count}";
+            _scroll.gameObject.SetActive(true);
+        }
 
         return true;
     }
