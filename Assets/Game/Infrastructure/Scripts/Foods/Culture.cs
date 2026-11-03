@@ -67,13 +67,13 @@ public abstract class Culture: IDisposable
             DigOut();
             RaiseCollected();
             _countEnemyHitting = 0;
-            return false;
+            return true;
         }
 
         if (toolType == ToolType.Bailer)
         {
             TryPour();
-            return false;
+            return true;
         }
         
         return OnUseTool(toolType);
