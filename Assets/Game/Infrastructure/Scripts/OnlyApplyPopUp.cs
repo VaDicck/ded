@@ -10,6 +10,7 @@ public class OnlyApplyPopUp : MonoBehaviour
     [SerializeField] private Button _applyButton;
     
     [Inject] private InputController _inputController;
+    [Inject] private AudioService _audioService;
     
     private void Start()
     {
@@ -17,6 +18,7 @@ public class OnlyApplyPopUp : MonoBehaviour
         {
             gameObject.SetActive(false);
             Time.timeScale = 1;
+            _audioService.GameTimeScale.Value = Time.timeScale;
             Applied?.Invoke();
             _inputController.SwitchToGameplay();
         });
@@ -25,6 +27,7 @@ public class OnlyApplyPopUp : MonoBehaviour
     private void Update()
     {
         Time.timeScale = 0;
+        _audioService.GameTimeScale.Value = Time.timeScale;
         _inputController.SwitchToUi();
     }
 }
