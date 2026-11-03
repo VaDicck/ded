@@ -7,8 +7,10 @@ public class RockingChair : MonoBehaviour, IInteractable
 {
     public event Action Interacted;
     
-    public bool IsInteractable => _dayCycleService.IsDay;
+    public bool IsInteractable => _dayCycleService.IsDay && _interactEnabled;
     public bool IsUsable => false;
+
+    private bool _interactEnabled = true;
     
     private DayCycleService _dayCycleService;
     private TimeFadeService _fadeService;
@@ -23,6 +25,11 @@ public class RockingChair : MonoBehaviour, IInteractable
         _dayCycleService = dayCycleService;
         _fadeService = fadeService;
         _audioService = audioService;
+    }
+
+    public void SetInteractable(bool value)
+    {
+        _interactEnabled = value;
     }
     
     public UniTask Interact()

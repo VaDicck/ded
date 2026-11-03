@@ -6,6 +6,7 @@ using Zenject;
 public class MutagenBath : MonoBehaviour, IInteractable
 {
     public event Action CanTakeBioTrash;
+    public event Action Interacted;
     
     [SerializeField] private float _bioTrashPerDay = 2;
     [SerializeField] private GameObject _vfx;
@@ -35,6 +36,7 @@ public class MutagenBath : MonoBehaviour, IInteractable
         _audioSource.PlayOneShot(_takeMutagenSound);
         
         _playerResources.Add(ResourceType.BioTrash, amountToGive);
+        Interacted?.Invoke();
         return UniTask.CompletedTask;
     }
 

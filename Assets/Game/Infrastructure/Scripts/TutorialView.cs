@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Video;
 using Zenject;
 
+[DefaultExecutionOrder(500)]
 public class TutorialView : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _frames;
@@ -14,9 +16,15 @@ public class TutorialView : MonoBehaviour
     [SerializeField] private SleepingBed _sleepingBed;
     [Inject] private QuotaService _quotaService;
     [Inject] private PlayerTools _tools;
+    [SerializeField] private MutagenBath _bath;
+    
+    [Inject] private CraftTableService _craftTableService;
     
     private void Start()
     {
+        _bath.CantInteract();
+        _rockingChair.SetInteractable(false);
+        
         _frames[0].SetActive(true);
         _frames[1].SetActive(true);
         
@@ -38,77 +46,95 @@ public class TutorialView : MonoBehaviour
         _quotaService.QuotaReached += OnQuotaReached;
         
         _tools.ToolUnlocked += OnCrafted;
+        
+        _beds.ForEach(x => x.Unlocked += OnBedsUnlocked);
+        
+        _bath.Interacted += OnBathInteracted;
     }
 
     private void OnBedPlowed()
     {
-        _frames[2].SetActive(false);
+        _frames[2].SetActive(true);
         _videoPlayer.clip = _videoClips[1];
         _beds.ForEach(x => x.Plowed -= OnBedPlowed);
     }
 
     private void OnBedPlanted()
     {
-        _frames[3].SetActive(false);
+        _frames[3].SetActive(true);
         _videoPlayer.clip = _videoClips[2];
         _beds.ForEach(x => x.Planted -= OnBedPlanted);
     }
 
-    private void OnBedWatered()
+    private async void OnBedWatered()
     {
-        _frames[4].SetActive(false);
+        await UniTask.WaitForSeconds(3f);
+        _frames[4].SetActive(true);
         _videoPlayer.clip = _videoClips[3];
         _beds.ForEach(x => x.Watered -= OnBedWatered);
+        _rockingChair.SetInteractable(true);
     }
 
-    private void OnChairUsed()
+    private async void OnChairUsed()
     {
-        _frames[5].SetActive(false);
+        await UniTask.WaitForSeconds(1f);
+        _frames[5].SetActive(true);
         _videoPlayer.clip = _videoClips[4];
         _rockingChair.Interacted -= OnChairUsed;
     }
 
-    private void OnDefended()
+    private async void OnDefended()
     {
-        _frames[6].SetActive(false);
+        await UniTask.WaitForSeconds(duration: 3f);
+        _frames[6].SetActive(true);
         _videoPlayer.clip = _videoClips[5];
         _alienService.WaveOver -= OnDefended;
     }
 
-    private void OnAwaken()
+    private async void OnAwaken()
     {
-        _frames[7].SetActive(false);
+        await UniTask.WaitForSeconds(3f);
+        _frames[7].SetActive(true);
         _videoPlayer.clip = _videoClips[6];
         _beds.ForEach(x => x.Grown -= OnAwaken);
     }
 
-    private void OnPlantGot()
+    private async void OnPlantGot()
     {
-        _frames[8].SetActive(false);
+        await UniTask.WaitForSeconds(2f);
+        _frames[8].SetActive(true);
         _videoPlayer.clip = _videoClips[7];
         _beds.ForEach(x => x.Collected -= OnBedWatered);
     }
 
-    private void OnQuotaReached()
+    private async void OnQuotaReached()
     {
-        _frames[9].SetActive(false);
+        await UniTask.WaitForSeconds(5f);
+        _frames[9].SetActive(true);
         _videoPlayer.clip = _videoClips[8];
         _quotaService.QuotaReached -= OnQuotaReached;
     }
 
     private void OnCrafted()
     {
-        _frames[10].SetActive(false);
+        _craftTableService.Hide();
+        _frames[10].SetActive(true);
         _tools.ToolUnlocked -= OnCrafted;
         _videoPlayer.clip = _videoClips[9];
-        _beds.ForEach(x => x.Unlocked += OnBedsUnlocked);
     }
 
-    private void OnBedsUnlocked()
+    private async void OnBedsUnlocked()
     {
-        _frames[11].SetActive(false);
+        await UniTask.WaitForSeconds(3f);
+        _frames[11].SetActive(true);
         _videoPlayer.clip = _videoClips[10];
         _beds.ForEach(x => x.Unlocked -= OnBedsUnlocked);
+        _bath.CanInteract();
+    }
+
+    private void OnBathInteracted()
+    {
+        _bath.Interacted -= OnBathInteracted;
         Destroy(gameObject);
     }
 }
