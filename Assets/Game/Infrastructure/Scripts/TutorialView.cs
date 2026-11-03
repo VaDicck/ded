@@ -108,7 +108,7 @@ public class TutorialView : MonoBehaviour
 
     private async void OnPlantGot()
     {
-        _beds.ForEach(x => x.Collected -= OnBedWatered);
+        _beds.ForEach(x => x.Collected -= OnPlantGot);
         await UniTask.WaitForSeconds(2f);
         _frames[8].SetActive(true);
         _videoPlayer.clip = _videoClips[7];
