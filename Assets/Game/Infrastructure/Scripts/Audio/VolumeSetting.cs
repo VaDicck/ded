@@ -26,7 +26,9 @@ public abstract class VolumeSetting : MonoBehaviour
 
     protected void UpdateText(float value)
     {
-        _currentCount.text = value.ToString("F3");
+        float percent = (value / _slider.maxValue) * 100f;
+    
+        _currentCount.text = $"{Mathf.RoundToInt(percent)}%";
     }
 
     protected abstract void ApplyVolume(float value);
