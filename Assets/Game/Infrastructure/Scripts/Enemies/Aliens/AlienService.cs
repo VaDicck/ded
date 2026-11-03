@@ -80,16 +80,25 @@ public class AlienService
     private void StartWave()
     {
         int countPlantedBed = _bedService.GetBedsByState<PlantedBedState>().Count;
-
-        if (_dayService.Day > 2)
+        
+        switch (_dayService.Day)
         {
-            _countFleeingAlienInWave = CalculateAliens(countPlantedBed);
-            _countFlyingAlienInWave = _countFleeingAlienInWave / 3;
-        }
-        else
-        {
-            _countFleeingAlienInWave = 2;
-            _countFlyingAlienInWave = 0;
+            case 1:
+                _countFleeingAlienInWave = 2;
+                _countFlyingAlienInWave = 0;
+                break;
+            case 2:
+                _countFleeingAlienInWave = 4;
+                _countFlyingAlienInWave = 0;
+                break;
+            case < 5:
+                _countFleeingAlienInWave = CalculateAliens(countPlantedBed);
+                _countFlyingAlienInWave = 0;
+                break;
+            default:
+                _countFleeingAlienInWave = CalculateAliens(countPlantedBed);
+                _countFlyingAlienInWave = _countFleeingAlienInWave / 3;
+                break;
         }
         
         _waveActive = true;
