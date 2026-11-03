@@ -2623,25 +2623,9 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 418649273615901931, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: priority
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 418649273615901931, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_IsGlobal
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 418649273615901931, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: injectionPoint
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 418649273615901931, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 257215193}
-    - target: {fileID: 418649273615901931, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: useTargetCamera
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1175288027784862946, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: _playerWeapons
       value: 
@@ -2655,177 +2639,45 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 257215193}
     - target: {fileID: 1269838851139300814, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: priority
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1269838851139300814, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_IsGlobal
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1269838851139300814, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: injectionPoint
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1269838851139300814, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 257215193}
-    - target: {fileID: 1269838851139300814, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: useTargetCamera
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2635109819847704802, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: _playerInteractions
       value: 
       objectReference: {fileID: 914531414}
     - target: {fileID: 2707323872551329895, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: priority
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2707323872551329895, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_IsGlobal
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2707323872551329895, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: injectionPoint
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2707323872551329895, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_TargetCamera
-      value: 
-      objectReference: {fileID: 257215193}
-    - target: {fileID: 2707323872551329895, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: useTargetCamera
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3593984178220428912, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: priority
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3593984178220428912, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_IsGlobal
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3593984178220428912, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: injectionPoint
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3593984178220428912, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 257215193}
     - target: {fileID: 3593984178220428912, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: useTargetCamera
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: m_TargetCamera
+      value: 
+      objectReference: {fileID: 257215193}
     - target: {fileID: 4164364410392230289, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5500594450853977440, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_Name
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5679792741787452840, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: priority
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5679792741787452840, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_IsGlobal
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5679792741787452840, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: injectionPoint
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5679792741787452840, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 257215193}
-    - target: {fileID: 5679792741787452840, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: useTargetCamera
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6323932700009798516, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: priority
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6323932700009798516, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_IsGlobal
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6323932700009798516, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: injectionPoint
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6323932700009798516, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 257215193}
-    - target: {fileID: 6323932700009798516, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: useTargetCamera
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6343213343407774996, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: priority
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6343213343407774996, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_IsGlobal
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6343213343407774996, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: injectionPoint
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6343213343407774996, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 257215193}
-    - target: {fileID: 6343213343407774996, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: useTargetCamera
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7411033847459865266, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: priority
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7411033847459865266, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_IsGlobal
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7411033847459865266, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: injectionPoint
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7411033847459865266, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 257215193}
-    - target: {fileID: 7411033847459865266, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: useTargetCamera
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7676198242233004278, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: priority
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7676198242233004278, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_IsGlobal
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7676198242233004278, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: injectionPoint
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7676198242233004278, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 257215193}
-    - target: {fileID: 7676198242233004278, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: useTargetCamera
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7963353564841745834, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_TargetCamera
       value: 
@@ -2842,10 +2694,6 @@ PrefabInstance:
       propertyPath: _rockingChair
       value: 
       objectReference: {fileID: 626795712}
-    - target: {fileID: 8227326484722102157, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: _beds.Array.size
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 8227326484722102157, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: '_beds.Array.data[0]'
       value: 
@@ -2891,25 +2739,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1133440561}
     - target: {fileID: 8690815904694944618, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: priority
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690815904694944618, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_IsGlobal
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690815904694944618, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: injectionPoint
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690815904694944618, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 257215193}
-    - target: {fileID: 8690815904694944618, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: useTargetCamera
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8741006873807916741, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2995,25 +2827,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 257215193}
     - target: {fileID: 9085839024306526425, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: priority
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9085839024306526425, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: m_IsGlobal
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9085839024306526425, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: injectionPoint
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9085839024306526425, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 257215193}
-    - target: {fileID: 9085839024306526425, guid: 54ea366d97821a1408154c87ad0bd7e6, type: 3}
-      propertyPath: useTargetCamera
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
