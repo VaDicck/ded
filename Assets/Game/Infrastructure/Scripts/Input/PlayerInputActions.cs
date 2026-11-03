@@ -283,17 +283,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0b8aa769-f640-445d-b770-9045f2f3b36b"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Reload"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""e6306b91-8029-4d37-be30-b587c48915c9"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",

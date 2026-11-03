@@ -80,5 +80,7 @@ public class MainMenu : MonoBehaviour
         _ufoButton1.onClick.RemoveListener(Ufo1Fall);
         _ufoButton2.onClick.RemoveListener(Ufo2Fall);
         _ufoButton3.onClick.RemoveListener(Ufo3Fall);
+        
+        _audioService.StopMusic();
     }
 }
