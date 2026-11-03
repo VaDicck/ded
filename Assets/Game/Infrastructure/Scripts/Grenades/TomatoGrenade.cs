@@ -29,6 +29,7 @@ public class TomatoGrenade : BaseGrenade
         
         Exploded?.Invoke();
         _visuals.SetActive(false);
+        _audioSource.PlayOneShot(_audioClip);
         _effect?.gameObject.SetActive(true);
         Destroy(gameObject, 3);
     }

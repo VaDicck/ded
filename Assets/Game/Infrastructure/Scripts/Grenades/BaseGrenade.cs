@@ -4,6 +4,8 @@ using UnityEngine;
 public abstract class BaseGrenade : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody; 
+    [SerializeField] protected AudioSource _audioSource; 
+    [SerializeField] protected AudioClip _audioClip; 
     
     public void Throw(Vector3 direction)
     {
