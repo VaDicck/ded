@@ -42,6 +42,7 @@ public class MainMenu : MonoBehaviour
         _quitButton.onClick.AddListener(Application.Quit);
         _playButton.onClick.AddListener(() =>
         {
+            _audioService.StopMusic();
             _loadingScreen.Show(LoadGameSceneRoutine());
         });
     }

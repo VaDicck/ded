@@ -80,6 +80,11 @@ public class AudioService : MonoBehaviour
         _musicSource.loop = true;
         _musicSource.Play();
     }
+    
+    public void StopMusic()
+    {
+        _musicSource.Stop();
+    }
 
     public void PlaySfx(AudioClip clip, float volume = 1)
     {
