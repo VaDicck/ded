@@ -13,8 +13,6 @@ public class OnlyApplyPopUp : MonoBehaviour
     
     private void Start()
     {
-        Time.timeScale = 0;
-        _inputController.SwitchToUi();
         _applyButton.onClick.AddListener(() =>
         {
             gameObject.SetActive(false);
@@ -22,5 +20,11 @@ public class OnlyApplyPopUp : MonoBehaviour
             Applied?.Invoke();
             _inputController.SwitchToGameplay();
         });
+    }
+
+    private void Update()
+    {
+        Time.timeScale = 0;
+        _inputController.SwitchToUi();
     }
 }
