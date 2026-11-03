@@ -58,6 +58,8 @@ public class Chicken : ChickenBase, IInteractable
     {
         //TODO KUKAREKU
         gameObject.SetActive(true);
+
+        Walk();
         
         WarpToSpawnPoint();
     }

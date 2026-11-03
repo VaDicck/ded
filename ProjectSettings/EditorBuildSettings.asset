@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Game/Contents/Scenes/MainMenu.unity
     guid: 6214632e35e5c064e8da403977f31f0d
   - enabled: 1
-    path: Assets/Game/Contents/Scenes/Build_FlyingAlien.unity
-    guid: 5e10139aaa65e3b4480e8efd7328676f
+    path: Assets/Game/Contents/Scenes/Build2.unity
+    guid: 107beffce394bb347a2dcc678ddb177e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 399c786594975c4419cc9fe17654106c, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 96f67bafb86cf4040ab380455d79839d, type: 2}
