@@ -42,7 +42,7 @@ public class MainMenu : MonoBehaviour
         _quitButton.onClick.AddListener(Application.Quit);
         _playButton.onClick.AddListener(() =>
         {
-            _loadingScreen.Show(LoadGameSceneRoutine());
+            _loadingScreen.ShowAndLoadNext();
         });
     }
 
