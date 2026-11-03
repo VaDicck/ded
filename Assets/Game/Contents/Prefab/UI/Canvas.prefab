@@ -1170,7 +1170,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6598313178532065146}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 6
+  m_MaxValue: 2
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -1948,7 +1948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.CustomPassVolume
   m_IsGlobal: 0
   fadeRadius: 0
-  priority: 0
+  priority: 10
   customPasses:
   - rid: 4266327397214191616
   injectionPoint: 2
@@ -2158,7 +2158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.CustomPassVolume
   m_IsGlobal: 0
   fadeRadius: 0
-  priority: 0
+  priority: 10
   customPasses:
   - rid: 4266327397214191616
   injectionPoint: 2
@@ -2530,7 +2530,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 4517730754955882346}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 6
+  m_MaxValue: 2
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -2908,7 +2908,18 @@ MonoBehaviour:
   - {fileID: 32900000, guid: d0e15da2b475e2b4ebba748d1d8ac00d, type: 3}
   _videoPlayer: {fileID: 6079743506006574649}
   _firstFrame: {fileID: 2028442412143776043}
-  _beds: []
+  _beds:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _rockingChair: {fileID: 0}
   _sleepingBed: {fileID: 0}
   _bath: {fileID: 0}
@@ -3562,7 +3573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.CustomPassVolume
   m_IsGlobal: 0
   fadeRadius: 0
-  priority: 0
+  priority: 10
   customPasses:
   - rid: 4266327397214191616
   injectionPoint: 2
@@ -8958,7 +8969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.CustomPassVolume
   m_IsGlobal: 0
   fadeRadius: 0
-  priority: 0
+  priority: 10
   customPasses:
   - rid: 4266327397214191616
   injectionPoint: 2
@@ -10296,7 +10307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.CustomPassVolume
   m_IsGlobal: 0
   fadeRadius: 0
-  priority: 0
+  priority: 10
   customPasses:
   - rid: 4266327397214191616
   injectionPoint: 2
@@ -10636,7 +10647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.CustomPassVolume
   m_IsGlobal: 0
   fadeRadius: 0
-  priority: 0
+  priority: 10
   customPasses:
   - rid: 4266327397214191616
   injectionPoint: 2
@@ -13527,7 +13538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.CustomPassVolume
   m_IsGlobal: 0
   fadeRadius: 0
-  priority: 0
+  priority: 10
   customPasses:
   - rid: 4266327397214191616
   injectionPoint: 2
@@ -14548,7 +14559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.CustomPassVolume
   m_IsGlobal: 0
   fadeRadius: 0
-  priority: 0
+  priority: 10
   customPasses:
   - rid: 4266327397214191616
   injectionPoint: 2
@@ -15867,7 +15878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.CustomPassVolume
   m_IsGlobal: 0
   fadeRadius: 0
-  priority: 0
+  priority: 10
   customPasses:
   - rid: 4266327397214191616
   injectionPoint: 2
@@ -16844,7 +16855,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1843971045566056687}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 6
+  m_MaxValue: 2
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -16897,7 +16908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.CustomPassVolume
   m_IsGlobal: 0
   fadeRadius: 0
-  priority: 0
+  priority: 10
   customPasses:
   - rid: 4266327397214191616
   injectionPoint: 2
@@ -18008,7 +18019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.CustomPassVolume
   m_IsGlobal: 0
   fadeRadius: 0
-  priority: 0
+  priority: 10
   customPasses:
   - rid: 4266327397214191616
   injectionPoint: 2
