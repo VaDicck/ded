@@ -4,8 +4,7 @@ public class MasterVolumeSetting : VolumeSetting
     {
         base.Start();
         
-        _slider.value = _audioConfig.DefaultMasterVolume;
-        UpdateText(_audioConfig.DefaultSfxVolume);
+        _slider.value = _audioService.MasterVolume;
     }
 
     protected override void ApplyVolume(float value)

@@ -8,6 +8,16 @@ public class AudioService : MonoBehaviour
 {
     public readonly ReactiveProperty<float> GameTimeScale = new ReactiveProperty<float>(1f);
     
+    public float MasterVolume
+    {
+        get
+        {
+            _audioMixer.GetFloat(_config.MasterVolumeName, out var volume);
+
+            return Mathf.Pow(10, volume / 20);
+        }
+    }
+    
     public float MusicVolume
     {
         get

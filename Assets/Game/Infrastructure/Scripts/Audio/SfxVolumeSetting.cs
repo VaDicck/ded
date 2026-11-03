@@ -4,8 +4,7 @@ public class SfxVolumeSetting : VolumeSetting
     {
         base.Start();
         
-        _slider.value = _audioConfig.DefaultSfxVolume;
-        UpdateText(_audioConfig.DefaultSfxVolume);
+        _slider.value = _audioService.SfxVolume;
     }
 
     protected override void ApplyVolume(float value)

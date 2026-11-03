@@ -4,8 +4,7 @@
     {
         base.Start();
 
-        _slider.value = _audioConfig.DefaultMusicVolume;
-        UpdateText(_audioConfig.DefaultMusicVolume);
+        _slider.value = _audioService.MusicVolume;
     }
 
     protected override void ApplyVolume(float value)
