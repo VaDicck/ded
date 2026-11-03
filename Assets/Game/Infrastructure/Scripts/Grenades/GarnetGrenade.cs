@@ -29,6 +29,7 @@ public class GarnetGrenade : BaseGrenade
         Exploded?.Invoke();
         _visuals.SetActive(false);
         _effect?.gameObject.SetActive(true);
+        _audioSource.PlayOneShot(_audioClip);
         Destroy(gameObject, 3);
     }
 }
