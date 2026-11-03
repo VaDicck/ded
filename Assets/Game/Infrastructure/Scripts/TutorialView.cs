@@ -10,6 +10,7 @@ public class TutorialView : MonoBehaviour
     [SerializeField] private List<GameObject> _frames;
     [SerializeField] private List<VideoClip> _videoClips;
     [SerializeField] private VideoPlayer _videoPlayer;
+    [SerializeField] private OnlyApplyPopUp _firstFrame;
     [SerializeField] private List<Bed> _beds;
     [SerializeField] private RockingChair _rockingChair;
     [Inject] private AlienService _alienService;
@@ -26,10 +27,8 @@ public class TutorialView : MonoBehaviour
         _rockingChair.SetInteractable(false);
         
         _frames[0].SetActive(true);
-        _frames[1].SetActive(true);
         
-        _videoPlayer.clip = _videoClips[0];
-        _videoPlayer.Play();
+        _firstFrame.Applied += OnFirstFrameApplied;
         
         _beds.ForEach(x => x.Plowed += OnBedPlowed);
         _beds.ForEach(x => x.Planted += OnBedPlanted);
@@ -52,6 +51,14 @@ public class TutorialView : MonoBehaviour
         _bath.Interacted += OnBathInteracted;
     }
 
+    private async void OnFirstFrameApplied()
+    {
+        await UniTask.WaitForSeconds(1f);
+        _frames[1].SetActive(true);
+        _videoPlayer.clip = _videoClips[0];
+        _videoPlayer.Play();
+    }
+    
     private void OnBedPlowed()
     {
         _frames[2].SetActive(true);
