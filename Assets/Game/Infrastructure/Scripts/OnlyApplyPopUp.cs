@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
 public class OnlyApplyPopUp : MonoBehaviour
 {
+    public event Action Applied;
+    
     [SerializeField] private Button _applyButton;
     
     [Inject] private InputController _inputController;
@@ -16,6 +19,7 @@ public class OnlyApplyPopUp : MonoBehaviour
         {
             gameObject.SetActive(false);
             Time.timeScale = 1;
+            Applied?.Invoke();
             _inputController.SwitchToGameplay();
         });
     }
