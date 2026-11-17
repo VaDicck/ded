@@ -206,8 +206,8 @@ MonoBehaviour:
   _health: 30
   _animator: {fileID: 772952679108185679}
   _meshRenderer: {fileID: 5730195379481663788}
-  _hitColor: {r: 1, g: 0, b: 0, a: 0}
-  _durationHit: 0.1
+  _hitMaterial: {fileID: 2100000, guid: 299fe18ae05ab8a439643135b0b36052, type: 2}
+  _durationHit: 0.3
   _sfxSplashAlien: {fileID: 3990862495863414018, guid: 1d3cc85384e970b4d94144cb276af7c6, type: 3}
   _audio: {fileID: 5307146290436373992}
   _runSound: {fileID: 8300000, guid: f71758565d94b1b47826c45bd63833f6, type: 3}

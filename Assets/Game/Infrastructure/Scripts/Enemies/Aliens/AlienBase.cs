@@ -17,7 +17,7 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     [SerializeField] protected float _health = 50f;
     [SerializeField] protected Animator _animator;
     [SerializeField] private Renderer _meshRenderer;  
-    [SerializeField] private Color _hitColor;
+    [SerializeField] private Material _hitMaterial;
     [SerializeField] private float _durationHit;
     
     [SerializeField] private GameObject _sfxSplashAlien;
@@ -37,7 +37,7 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     
     private Coroutine _hitEffectCoroutine;
     private float _originalAnimatorSpeed;
-    private Color _originalColor;
+    private Material _originalMaterial;
 
     [Inject]
     private void Init(AlienService alienService, AlienBroken.Factory alienFactory)
@@ -109,9 +109,9 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
         else
         {
             _originalAnimatorSpeed = _animator.speed;
-            _originalColor = _meshRenderer.material.color;
+            _originalMaterial = _meshRenderer.material;
             _animator.speed = 0f;
-            _meshRenderer.material.color = _hitColor;
+            _meshRenderer.material = _hitMaterial;
         }
 
         _hitEffectCoroutine = StartCoroutine(RestoreAfterDelay());
@@ -121,7 +121,7 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     {
         yield return new WaitForSeconds(_durationHit);
         _animator.speed = _originalAnimatorSpeed;
-        _meshRenderer.material.color = _originalColor;
+        _meshRenderer.material = _originalMaterial;
         _hitEffectCoroutine = null;
     }
     
