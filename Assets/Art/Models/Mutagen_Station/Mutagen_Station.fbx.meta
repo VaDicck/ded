@@ -17,6 +17,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Bath.002
+    second: {fileID: 2100000, guid: 7e083003d8ff0a84db5b1ac01c232c9b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: House_trim
     second: {fileID: 2100000, guid: 16549ef0f366c1d4d827b8345e01851a, type: 2}
   - first:
