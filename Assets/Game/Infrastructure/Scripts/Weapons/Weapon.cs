@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using R3;
@@ -5,6 +6,8 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
+    public event Action Hit;
+    
     public bool IsZooming => _isZooming;
     public int MaxCountPatron => _maxCountPatron; 
     public ReadOnlyReactiveProperty<int> CurrentCountPatron => _currentCountPatron;
@@ -102,6 +105,11 @@ public abstract class Weapon : MonoBehaviour
     private void ReleasePatron()
     {
         List<RaycastHit> hits = RaycastTarget();
+        
+        if(hits.Count < 1)
+            return;
+        
+        Hit?.Invoke();
         
         foreach (RaycastHit hit in hits)
         {

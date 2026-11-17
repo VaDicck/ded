@@ -1,10 +1,14 @@
-﻿using R3;
+﻿using System;
+using R3;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
 public class PlayerWeapons : MonoBehaviour
 {
+    public event Action Hit;
+    
     public Weapon CurrentWeapon => _currentWeapon;
     public ReadOnlyReactiveProperty<bool> IsZooming => _isZooming;
     
@@ -123,6 +127,7 @@ public class PlayerWeapons : MonoBehaviour
         
         _currentWeapon = _weapon;
         _currentWeapon.Equip();
+        _currentWeapon.Hit += OnHit;
         
         if (_inputController.SprintPressed)
             _currentWeapon.SetSprintSpread(true);
@@ -136,7 +141,11 @@ public class PlayerWeapons : MonoBehaviour
         
         _currentWeapon?.SetSprintSpread(false);
         
-        _currentWeapon?.Unequip();
+        if(_currentWeapon == null)
+            return;
+        
+        _currentWeapon.Unequip();
+        _currentWeapon.Hit -= OnHit;
         _currentWeapon = null;
     }
     
@@ -194,6 +203,11 @@ public class PlayerWeapons : MonoBehaviour
     private void Reload()
     {
         _currentWeapon?.Reload();
+    }
+
+    private void OnHit()
+    {
+        Hit?.Invoke();
     }
 
     private void OnDestroy()

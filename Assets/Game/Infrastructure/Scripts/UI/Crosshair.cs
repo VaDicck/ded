@@ -1,17 +1,20 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 public class Crosshair : MonoBehaviour
 {
     [SerializeField] private GameObject _crosshairImage;
+    [SerializeField] private GameObject _hitImage;
     [SerializeField] private RectTransform _holder;
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private PlayerWeapons _playerWeapons;
     [SerializeField] private float _targetSpeed;
     [SerializeField] private float _resizeMultiplier;
     [SerializeField] private float _aimReduction;
+    [SerializeField] private float _hitImageDuration;
     
+    private Coroutine _hitImageCoroutine;
     private PlayerTools _playerTools;
     private float _defaultWidth;
 
@@ -28,8 +31,11 @@ public class Crosshair : MonoBehaviour
     
     private void Start()
     {
+        _playerWeapons.Hit += ShowHitIcon;
         _playerTools.ToolChanged += OnToolChanged;
         _defaultWidth = _holder.rect.width;
+        
+        _hitImage.SetActive(false);
     }
 
     private void Update()
@@ -62,8 +68,27 @@ public class Crosshair : MonoBehaviour
             Show();
     }
     
+    private void ShowHitIcon()
+    {
+        if (_hitImageCoroutine != null)
+            StopCoroutine(_hitImageCoroutine);
+
+        _hitImageCoroutine = StartCoroutine(ShowingHitImage());
+    }
+
+    private IEnumerator ShowingHitImage()
+    {
+        _hitImage.SetActive(true);
+        
+        yield return new WaitForSeconds(_hitImageDuration);
+        
+        _hitImage.SetActive(false);
+        _hitImageCoroutine = null;
+    }
+    
     private void OnDestroy()
     {
+        _playerWeapons.Hit -= ShowHitIcon;
         _playerTools.ToolChanged -= OnToolChanged;
     }
 }
