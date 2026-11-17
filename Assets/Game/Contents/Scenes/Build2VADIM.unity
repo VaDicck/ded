@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1242111770207427958, guid: a3f31f34e57efb646a66bd1314438aff, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2601923985160843588, guid: a3f31f34e57efb646a66bd1314438aff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.156
@@ -170,6 +174,14 @@ PrefabInstance:
     - target: {fileID: 4503096426150387539, guid: a3f31f34e57efb646a66bd1314438aff, type: 3}
       propertyPath: m_Name
       value: MutagenBath
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503096426150387539, guid: a3f31f34e57efb646a66bd1314438aff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228204048002891284, guid: a3f31f34e57efb646a66bd1314438aff, type: 3}
+      propertyPath: _bioTrashPerDay
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
