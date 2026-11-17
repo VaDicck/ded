@@ -215,6 +215,9 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 3447074362510899307}
   _health: 30
   _animator: {fileID: 5851132168838371431}
+  _meshRenderer: {fileID: 9170665570217839850}
+  _hitColor: {r: 1, g: 0, b: 0, a: 0}
+  _durationHit: 0.1
   _sfxSplashAlien: {fileID: 3990862495863414018, guid: 1d3cc85384e970b4d94144cb276af7c6, type: 3}
   _audio: {fileID: 4310196011075445940}
   _projectilePrefab: {fileID: 7404608359833101551, guid: a3cc1030f82f15b42aab1189bc2394d1, type: 3}

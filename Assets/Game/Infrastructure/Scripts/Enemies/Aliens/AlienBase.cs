@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
@@ -15,6 +16,9 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     [SerializeField] protected NavMeshAgent _navMeshAgent;
     [SerializeField] protected float _health = 50f;
     [SerializeField] protected Animator _animator;
+    [SerializeField] private Renderer _meshRenderer;  
+    [SerializeField] private Color _hitColor;
+    [SerializeField] private float _durationHit;
     
     [SerializeField] private GameObject _sfxSplashAlien;
     
@@ -30,6 +34,10 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     protected ReactiveProperty<bool> _isOnGarden = new ReactiveProperty<bool>(); //TODO rewrite
     
     private PlaceholderFactory<AlienBroken> _brokenFactory;
+    
+    private Coroutine _hitEffectCoroutine;
+    private float _originalAnimatorSpeed;
+    private Color _originalColor;
 
     [Inject]
     private void Init(AlienService alienService, AlienBroken.Factory alienFactory)
@@ -60,13 +68,13 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
         
         _health -= damage;
 
-        if (audioClip != null)
-        {
+        if(audioClip != null)
             _audio.PlayOneShot(audioClip);
-        }
-
+        
         SpawnSfx(hitPoint);
-
+        
+        ApplyHitEffect();
+        
         if (_health > 0f) return;
         
         _isDead = true;
@@ -94,6 +102,29 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
 
     protected virtual void OnDie() { }
 
+    private void ApplyHitEffect()
+    {
+        if (_hitEffectCoroutine != null)
+            StopCoroutine(_hitEffectCoroutine);
+        else
+        {
+            _originalAnimatorSpeed = _animator.speed;
+            _originalColor = _meshRenderer.material.color;
+            _animator.speed = 0f;
+            _meshRenderer.material.color = _hitColor;
+        }
+
+        _hitEffectCoroutine = StartCoroutine(RestoreAfterDelay());
+    }
+
+    private IEnumerator RestoreAfterDelay()
+    {
+        yield return new WaitForSeconds(_durationHit);
+        _animator.speed = _originalAnimatorSpeed;
+        _meshRenderer.material.color = _originalColor;
+        _hitEffectCoroutine = null;
+    }
+    
     private void SpawnBroken()
     {
         AlienBroken broken = _brokenFactory.Create();
@@ -106,6 +137,8 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
 
     private void OnDestroy()
     {
+        if (_hitEffectCoroutine != null)
+            StopCoroutine(_hitEffectCoroutine);
         Death?.Invoke(this);
     }
 }
