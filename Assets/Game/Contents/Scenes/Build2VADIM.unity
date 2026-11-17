@@ -1671,6 +1671,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3783688897502503671, guid: d7804fc7611ba0049b68009ab9db8941, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3783688897502503671, guid: d7804fc7611ba0049b68009ab9db8941, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3783688897502503671, guid: d7804fc7611ba0049b68009ab9db8941, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3783688897502503671, guid: d7804fc7611ba0049b68009ab9db8941, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3783688897502503671, guid: d7804fc7611ba0049b68009ab9db8941, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793721431591830697, guid: d7804fc7611ba0049b68009ab9db8941, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793721431591830697, guid: d7804fc7611ba0049b68009ab9db8941, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793721431591830697, guid: d7804fc7611ba0049b68009ab9db8941, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793721431591830697, guid: d7804fc7611ba0049b68009ab9db8941, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793721431591830697, guid: d7804fc7611ba0049b68009ab9db8941, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793721431591830697, guid: d7804fc7611ba0049b68009ab9db8941, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793721431591830697, guid: d7804fc7611ba0049b68009ab9db8941, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5499402586043822755, guid: d7804fc7611ba0049b68009ab9db8941, type: 3}
       propertyPath: m_Name
       value: NextQuotaStand
