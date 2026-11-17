@@ -50,6 +50,7 @@ MonoBehaviour:
   _nightSound: {fileID: 8300000, guid: a878f692d32b30543a30b0f9d3d37d37, type: 3}
   _alienAttackSound: {fileID: 8300000, guid: 5379fdcd2b8a82c4ea2e645257627011, type: 3}
   _quotaReachedSound: {fileID: 8300000, guid: 68ac1907ec88e414ca2d71f8a2506771, type: 3}
+  _music: {fileID: 8300000, guid: 1e33739ee0b84394d82d5f246c84b7b0, type: 3}
   _dayVolume: 0.8
   _nightVolume: 0.8
   _attackVolume: 0.3

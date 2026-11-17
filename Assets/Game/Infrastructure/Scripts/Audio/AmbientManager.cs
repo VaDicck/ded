@@ -9,6 +9,7 @@ public class AmbientManager : MonoBehaviour
     [SerializeField] private AudioClip _nightSound;
     [SerializeField] private AudioClip _alienAttackSound;
     [SerializeField] private AudioClip _quotaReachedSound;
+    [SerializeField] private AudioClip _music;
     [SerializeField, Range(0,1)] private float _dayVolume;
     [SerializeField, Range(0,1)] private float _nightVolume;
     [SerializeField, Range(0,1)] private float _attackVolume;
@@ -16,17 +17,21 @@ public class AmbientManager : MonoBehaviour
     private DayCycleService _dayCycleService;
     private AlienService _alienService;
     private QuotaService _quotaService;
+    private AudioService _audioService;
     
     [Inject]
-    private void Init(DayCycleService dayCycleService, AlienService alienService, QuotaService quotaService)
+    private void Init(DayCycleService dayCycleService, AlienService alienService, QuotaService quotaService, AudioService audioService)
     {
         _dayCycleService = dayCycleService;
         _alienService = alienService;
         _quotaService = quotaService;
+        _audioService = audioService;
     }
 
     private void Start()
     {
+        _audioService.PlayMusic(_music, 0.5f);
+            
         _dayCycleService.DayStarted += PlayDaySound;
         _dayCycleService.DayEnded += PlayNightSound;
         _alienService.WaveStart += PlayAlienAttackSound;
