@@ -38,6 +38,7 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
     private Coroutine _hitEffectCoroutine;
     private float _originalAnimatorSpeed;
     private Material _originalMaterial;
+    private float _originalAgentSpeed;
 
     [Inject]
     private void Init(AlienService alienService, AlienBroken.Factory alienFactory)
@@ -110,7 +111,11 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
         {
             _originalAnimatorSpeed = _animator.speed;
             _originalMaterial = _meshRenderer.material;
+            _originalAgentSpeed = _navMeshAgent.speed;  
+            
             _animator.speed = 0f;
+            _navMeshAgent.speed = 0f;
+            _navMeshAgent.velocity = Vector3.zero; 
             _meshRenderer.material = _hitMaterial;
         }
 
@@ -122,6 +127,7 @@ public abstract class AlienBase :  MonoBehaviour, IDamageable
         yield return new WaitForSeconds(_durationHit);
         _animator.speed = _originalAnimatorSpeed;
         _meshRenderer.material = _originalMaterial;
+        _navMeshAgent.speed = _originalAgentSpeed;   
         _hitEffectCoroutine = null;
     }
     
