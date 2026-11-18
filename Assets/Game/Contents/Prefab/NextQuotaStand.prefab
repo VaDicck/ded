@@ -310,6 +310,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 745460161687338979}
+  - component: {fileID: 3680324167976342009}
   m_Layer: 0
   m_Name: NextQuotaStand
   m_TagString: Untagged
@@ -334,6 +335,27 @@ Transform:
   - {fileID: 495790383584613896}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3680324167976342009
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5499402586043822755}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.4618683, y: 3.9820652, z: 0.45202103}
+  m_Center: {x: -0.013550043, y: 2.0510325, z: 0.015776232}
 --- !u!1001 &102421463916671459
 PrefabInstance:
   m_ObjectHideFlags: 0
