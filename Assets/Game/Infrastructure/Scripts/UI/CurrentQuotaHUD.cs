@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -23,11 +22,8 @@ public class CurrentQuotaHUD : MonoBehaviour
     private void RefreshCurrentQuota()
     {
         UnsubscribeFromQuota(_currentQuota);
-
         _currentQuota = _quotaService.CurrentQuota;
-
         SubscribeToQuota(_currentQuota);
-
         RebuildUI();
     }
 
@@ -77,8 +73,12 @@ public class CurrentQuotaHUD : MonoBehaviour
             var required = kvp.Value;
             var current = actualAll.GetValueOrDefault(culture, 0);
 
+            if (current >= required)
+                continue;
+
             var row = Instantiate(_rowPrefab, _rowsParent);
-            var icon = _config.Cultures.Sprites.Find(x => x.Key == culture)?.Value;            row.SetData(icon, current, required);
+            var icon = _config.Cultures.Sprites.Find(x => x.Key == culture)?.Value;
+            row.SetData(icon, current, required);
             _activeRows[culture] = row;
         }
     }
@@ -95,17 +95,13 @@ public class CurrentQuotaHUD : MonoBehaviour
                 required[pair.Key] += pair.Value;
             else
                 required[pair.Key] = pair.Value;
-        }
 
-        foreach (var kvp in element.Actual)
-        {
-            if (element.Expected.Exists(x => x.Key == kvp.Key))
-            {
-                if (actual.ContainsKey(kvp.Key))
-                    actual[kvp.Key] += kvp.Value;
-                else
-                    actual[kvp.Key] = kvp.Value;
-            }
+            int current = element.Actual.TryGetValue(pair.Key, out var val) ? val : 0;
+
+            if (actual.ContainsKey(pair.Key))
+                actual[pair.Key] += current;
+            else
+                actual[pair.Key] = current;
         }
     }
 
