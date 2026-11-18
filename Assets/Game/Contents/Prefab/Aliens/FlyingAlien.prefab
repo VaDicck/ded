@@ -213,11 +213,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlyingAlien
   _navMeshAgent: {fileID: 3447074362510899307}
-  _health: 30
+  _health: 25
   _animator: {fileID: 5851132168838371431}
   _meshRenderer: {fileID: 9170665570217839850}
   _hitMaterial: {fileID: 2100000, guid: 299fe18ae05ab8a439643135b0b36052, type: 2}
-  _durationHit: 0.3
+  _durationHit: 0.18
   _sfxSplashAlien: {fileID: 3990862495863414018, guid: 1d3cc85384e970b4d94144cb276af7c6, type: 3}
   _audio: {fileID: 4310196011075445940}
   _projectilePrefab: {fileID: 7404608359833101551, guid: a3cc1030f82f15b42aab1189bc2394d1, type: 3}

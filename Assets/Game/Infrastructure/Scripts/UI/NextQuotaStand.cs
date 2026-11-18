@@ -8,7 +8,7 @@ public class NextQuotaStand : MonoBehaviour
 {
     [SerializeField] private TMP_Text _headerText; 
     [SerializeField] private Transform _iconsParent;
-    [SerializeField] private GameObject _cultureIconPrefab; // префаб с Image и Text для количества
+    [SerializeField] private GameObject _cultureIconPrefab; 
     
     [Inject] private QuotaService _quotaService;
     [Inject] private GameConfig _config;
