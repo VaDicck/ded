@@ -30,13 +30,23 @@ public class AmbientManager : MonoBehaviour
 
     private void Start()
     {
-        _audioService.PlayMusic(_music, 0.5f);
-            
         _dayCycleService.DayStarted += PlayDaySound;
+        _dayCycleService.DayStarted += StartMusic;
         _dayCycleService.DayEnded += PlayNightSound;
+        _dayCycleService.DayEnded += StopMusic;
         _alienService.WaveStart += PlayAlienAttackSound;
         _alienService.WaveOver += StopAlienAttackSound;
         _quotaService.QuotaReached += PlayReachedSound;
+    }
+    
+    private void StartMusic()
+    {
+        _audioService.PlayMusic(_music, 0.5f);
+    }
+
+    private void StopMusic()
+    {
+        _audioService.StopMusic();
     }
 
     private void PlayDaySound()
@@ -75,7 +85,9 @@ public class AmbientManager : MonoBehaviour
     private void OnDestroy()
     {
         _dayCycleService.DayStarted -= PlayDaySound;
+        _dayCycleService.DayStarted -= StartMusic;
         _dayCycleService.DayEnded -= PlayNightSound;
+        _dayCycleService.DayEnded -= StopMusic;
         _alienService.WaveStart -= PlayAlienAttackSound;
         _alienService.WaveOver -= StopAlienAttackSound;
         _quotaService.QuotaReached -= PlayReachedSound;
