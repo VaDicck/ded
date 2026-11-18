@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33852ba51c21492badd074ae115638a5, type: 3}
+  m_Name: QuotasConfigTest
+  m_EditorClassIdentifier: Assembly-CSharp::QuotasConfig
+  <Quotas>k__BackingField:
+  - {fileID: 11400000, guid: d25d689ce298e424c9f48a736a0f0f37, type: 2}
+  - {fileID: 11400000, guid: 3743860da95f4ce4bb3165185ae1a098, type: 2}
+  - {fileID: 11400000, guid: dad98928df2e82e43b16abbe720b4152, type: 2}

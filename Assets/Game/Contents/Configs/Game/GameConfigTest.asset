@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2f53aacf0040478ebeb71d4f200492, type: 3}
+  m_Name: GameConfigTest
+  m_EditorClassIdentifier: Assembly-CSharp::GameConfig
+  <DayLength>k__BackingField: 600
+  <FoodCapacity>k__BackingField: 200
+  <Quotas>k__BackingField: {fileID: 11400000, guid: e5a891ff522e2e14296cc9feba6bcd1f, type: 2}
+  <CraftingTable>k__BackingField: {fileID: 11400000, guid: a4304a337967b0f43a8147accc29e5d0, type: 2}
+  <UnlockedCultures>k__BackingField: 00000000
+  <ToolSprites>k__BackingField:
+  - <Key>k__BackingField: 5
+    <Value>k__BackingField: {fileID: 21300000, guid: 6e0aa146642058c479cb48ae538b4b21, type: 3}
+  - <Key>k__BackingField: 3
+    <Value>k__BackingField: {fileID: 21300000, guid: 29f2a78e0eba6fc46beea18760dd9d41, type: 3}
+  - <Key>k__BackingField: 7
+    <Value>k__BackingField: {fileID: 21300000, guid: 950f09d7438d2c34ba55b83a0c5d66a9, type: 3}
+  - <Key>k__BackingField: 6
+    <Value>k__BackingField: {fileID: 21300000, guid: 081093776be71a9449c3d24d914babc9, type: 3}
+  - <Key>k__BackingField: 2
+    <Value>k__BackingField: {fileID: 21300000, guid: d9c9724a6e9c7964bbb8b5f5e592c6e6, type: 3}
+  - <Key>k__BackingField: 4
+    <Value>k__BackingField: {fileID: 21300000, guid: 2fd4d742652fcee43a60b050dc0bfae0, type: 3}
+  - <Key>k__BackingField: 8
+    <Value>k__BackingField: {fileID: 21300000, guid: 9a0985b4eaa4d924aa553c4cf28fd8c3, type: 3}
+  - <Key>k__BackingField: 9
+    <Value>k__BackingField: {fileID: 21300000, guid: 427aa62682d86934a90ebdc92fb62a61, type: 3}
+  - <Key>k__BackingField: 10
+    <Value>k__BackingField: {fileID: 21300000, guid: a7689d7c0888deb4ba1df89555a2612e, type: 3}
+  - <Key>k__BackingField: 1
+    <Value>k__BackingField: {fileID: 21300000, guid: 5a28f5f7d38e1f94287bdd2123448de4, type: 3}
+  <ToolNames>k__BackingField:
+  - <Key>k__BackingField: 5
+    <Value>k__BackingField: "\u0414\u0440\u043E\u0431\u043E\u0432\u0438\u043A"
+  - <Key>k__BackingField: 3
+    <Value>k__BackingField: "\u041A\u0438\u0440\u043A\u0430"
+  - <Key>k__BackingField: 7
+    <Value>k__BackingField: "\u0413\u0440\u0430\u0431\u043B\u0438"
+  - <Key>k__BackingField: 6
+    <Value>k__BackingField: "\u0412\u0438\u043B\u044B"
+  - <Key>k__BackingField: 2
+    <Value>k__BackingField: "\u0422\u043E\u043F\u043E\u0440"
+  - <Key>k__BackingField: 4
+    <Value>k__BackingField: "\u041B\u0435\u0439\u043A\u0430"
+  - <Key>k__BackingField: 8
+    <Value>k__BackingField: "\u041C\u0443\u0442\u0430\u0433\u0435\u043D"
+  - <Key>k__BackingField: 9
+    <Value>k__BackingField: "\u0412\u0437\u0440\u044B\u0432\u043D\u043E\u0439 \u0442\u043E\u043C\u0430\u0442"
+  - <Key>k__BackingField: 10
+    <Value>k__BackingField: "\u0413\u0440\u0430\u043D\u0430\u0442'\u0430"
+  - <Key>k__BackingField: 1
+    <Value>k__BackingField: "\u041B\u043E\u043F\u0430\u0442\u0430"
+  <Cultures>k__BackingField:
+    <Sprites>k__BackingField:
+    - <Key>k__BackingField: 0
+      <Value>k__BackingField: {fileID: 21300000, guid: 005b900d94fa80348be6becce080ec1b, type: 3}
+    - <Key>k__BackingField: 2
+      <Value>k__BackingField: {fileID: 21300000, guid: 7533ce482aeeb414c8782ec2e3931ff0, type: 3}
+    - <Key>k__BackingField: 5
+      <Value>k__BackingField: {fileID: 21300000, guid: cd12d2b7226fb274e82f92daf6b8a9f6, type: 3}
+    - <Key>k__BackingField: 3
+      <Value>k__BackingField: {fileID: 21300000, guid: a8ec9731de3f45b48930f76f9dc0fc8e, type: 3}
+    - <Key>k__BackingField: 4
+      <Value>k__BackingField: {fileID: 21300000, guid: 620ad42314c20cc4e920195307dcef1a, type: 3}
+    - <Key>k__BackingField: 1
+      <Value>k__BackingField: {fileID: 21300000, guid: d6c755905b5e4784ab46b0feca7cbbe4, type: 3}
+    <Names>k__BackingField:
+    - <Key>k__BackingField: 0
+      <Value>k__BackingField: "\u041C\u043E\u0440\u043A\u043E\u0432\u044C"
+    - <Key>k__BackingField: 2
+      <Value>k__BackingField: "\u0422\u043E\u043C\u0430\u0442"
+    - <Key>k__BackingField: 5
+      <Value>k__BackingField: "\u041F\u0435\u0440\u0435\u0446"
+    - <Key>k__BackingField: 3
+      <Value>k__BackingField: "\u041A\u0443\u043A\u0443\u0440\u0443\u0437\u0430"
+    - <Key>k__BackingField: 4
+      <Value>k__BackingField: "\u0413\u0440\u0430\u043D\u0430\u0442"
+    - <Key>k__BackingField: 1
+      <Value>k__BackingField: "\u041A\u0430\u0440\u0442\u043E\u0444\u0435\u043B\u044C"
+  <Resources>k__BackingField:
+    <Sprites>k__BackingField:
+    - <Key>k__BackingField: 0
+      <Value>k__BackingField: {fileID: -1076545708, guid: abfbc2526aeb590468d9a2f6453aef74, type: 3}
+    - <Key>k__BackingField: 1
+      <Value>k__BackingField: {fileID: 502871822, guid: abfbc2526aeb590468d9a2f6453aef74, type: 3}
+    - <Key>k__BackingField: 2
+      <Value>k__BackingField: {fileID: 2037500093, guid: abfbc2526aeb590468d9a2f6453aef74, type: 3}
+    - <Key>k__BackingField: 3
+      <Value>k__BackingField: {fileID: -1459338299, guid: abfbc2526aeb590468d9a2f6453aef74, type: 3}
+    - <Key>k__BackingField: 4
+      <Value>k__BackingField: {fileID: 21300000, guid: 005fd8be86f7e6c468453a9ec062f8da, type: 3}
+    <Names>k__BackingField:
+    - <Key>k__BackingField: 0
+      <Value>k__BackingField: "\u0416\u0435\u043B\u0435\u0437\u043E"
+    - <Key>k__BackingField: 1
+      <Value>k__BackingField: "\u041C\u0435\u0442\u0430\u043B\u043B\u043E\u043B\u043E\u043C"
+    - <Key>k__BackingField: 2
+      <Value>k__BackingField: "\u0414\u0435\u0440\u0435\u0432\u043E"
+    - <Key>k__BackingField: 3
+      <Value>k__BackingField: "\u0418\u0437\u043E\u043B\u0435\u043D\u0442\u0430"
+    - <Key>k__BackingField: 4
+      <Value>k__BackingField: "\u0411\u0438\u043E\u043C\u0443\u0441\u043E\u0440"
+  <AudioConfig>k__BackingField: {fileID: 11400000, guid: 7bfab740f32e8674a92a47b6b350aaec, type: 2}
