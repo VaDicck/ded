@@ -11,16 +11,27 @@ public class NextQuotaStand : MonoBehaviour
     [SerializeField] private GameObject _cultureIconPrefab; 
     
     [Inject] private QuotaService _quotaService;
+    [Inject] private DayCycleService _dayCycleService;
     [Inject] private GameConfig _config;
+
+    private bool _canUpdate;
     
     private void Start()
     {
-        _quotaService.QuotaReached += ShowNextQuota;
+        _quotaService.QuotaReached += OnQuotaReached;
+        _dayCycleService.DayStarted += ShowNextQuota;
+        _canUpdate = true;
         ShowNextQuota();
     }
+
+    private void OnQuotaReached() => _canUpdate = true;
     
     private void ShowNextQuota()
     {
+        if (!_canUpdate)
+            return;
+        
+        _canUpdate = false;
         foreach (Transform child in _iconsParent)
         {
             Destroy(child.gameObject);
@@ -67,6 +78,7 @@ public class NextQuotaStand : MonoBehaviour
     
     private void OnDestroy()
     {
-        _quotaService.QuotaReached -= ShowNextQuota;
+        _quotaService.QuotaReached -= OnQuotaReached; 
+        _dayCycleService.DayStarted -= ShowNextQuota;
     }
 }
