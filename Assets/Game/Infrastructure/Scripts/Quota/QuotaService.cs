@@ -32,6 +32,14 @@ public class QuotaService
         SetCurrentQuota(_currentQuotaNumber);
         QuotaReached += OnQuotaReached;
     }
+    
+    public Quota GetNextQuotaInfo()
+    {
+        int nextId = _currentQuotaNumber + 1;
+        if (nextId >= _gameConfig.Quotas.Quotas.Count)
+            return null;
+        return _gameConfig.Quotas.Quotas[nextId];
+    }
 
     private void OnQuotaReached()
     {
